@@ -3,7 +3,7 @@ defaults: &defaults
     client_id:
     client_secret:  
     authorization_server: https://graph.facebook.com
-    requested_scope: email,offline_access,publish_stream
+    requested_scope: email,offline_access,publish_stream,read_stream
     authorize_path: /oauth/authorize
     access_token_path: /oauth/access_token
 
