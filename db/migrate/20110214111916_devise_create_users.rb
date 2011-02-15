@@ -6,8 +6,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.rememberable
       t.trackable
       #t.oauth2_authenticatable
-      t.oauth2_uid, :integer, :limit => 8  
-      t.oauth2_token, :string, :limit => 149  
+      t.integer :oauth2_uid, :limit => 8  
+      t.string :oauth2_token, :limit => 149  
       t.string :email
         
       # t.confirmable
