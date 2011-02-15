@@ -1,0 +1,3 @@
+[submodule "devise_oauth2_authenticatable"]
+	path = devise_oauth2_authenticatable
+	url = git://github.com/jerryluk/devise_oauth2_authenticatable.git
