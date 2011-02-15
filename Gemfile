@@ -8,16 +8,13 @@ gem "oauth2"
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-gem 'json'
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.1"
   gem 'factory_girl_rails'
 end
 
-# TODO check why it is not working, if given directly from git
-#gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git",  :require => 'devise_oauth2_authenticatable/rails'
-gem 'devise_oauth2_authenticatable', :require => 'devise_oauth2_authenticatable/rails', :path => 'vendor/gems/jerryluk-devise_oauth2_authenticatable-4a4b005'
+gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
