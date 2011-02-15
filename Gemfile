@@ -4,7 +4,9 @@ gem 'rails', '3.0.4'
 gem 'pg'
 
 gem "oauth2"
-gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git"
+# TODO check why it is not working, if given directly from git
+#gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git"
+gem 'devise_oauth2_authenticatable', :require => 'devise_oauth2_authenticatable/rails', :path => 'vendor/gems/devise_oauth2_authenticatable'
 
 gem "devise"
 gem "haml", ">= 3.0.0"
