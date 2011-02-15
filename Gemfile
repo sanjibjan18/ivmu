@@ -11,6 +11,7 @@ gem 'devise_oauth2_authenticatable', :require => 'devise_oauth2_authenticatable/
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
+gem 'json'
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.1"
