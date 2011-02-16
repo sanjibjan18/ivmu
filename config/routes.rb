@@ -1,4 +1,6 @@
 Muvi::Application.routes.draw do
+ 
+  root :to => "fb_tests#index"
   devise_for :users
 
   # The priority is based upon order of creation:
