@@ -1,5 +1,6 @@
-PATH
-  remote: vendor/gems/jerryluk-devise_oauth2_authenticatable-4a4b005
+GIT
+  remote: git://github.com/jerryluk/devise_oauth2_authenticatable.git
+  revision: 4a4b00504aa84a0bfa4139d399e29eddad74c345
   specs:
     devise_oauth2_authenticatable (0.1.0)
       devise (>= 1.0.0)
@@ -40,12 +41,16 @@ GEM
     arel (2.0.8)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    crack (0.1.8)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    facebooker2 (0.0.8)
+      mogli (>= 0.0.12)
+      ruby-hmac
     factory_girl (1.3.2)
     factory_girl_rails (1.0)
       factory_girl (~> 1.3)
@@ -60,6 +65,8 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    httparty (0.7.4)
+      crack (= 0.1.8)
     i18n (0.5.0)
     json (1.5.1)
     mail (2.2.15)
@@ -68,6 +75,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mogli (0.0.25)
+      httparty (>= 0.4.3)
     multi_json (0.0.5)
     multipart-post (1.1.0)
     oauth2 (0.1.1)
@@ -107,6 +116,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    ruby-hmac (0.4.0)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -120,10 +130,10 @@ PLATFORMS
 DEPENDENCIES
   devise
   devise_oauth2_authenticatable!
+  facebooker2
   factory_girl_rails
   haml (>= 3.0.0)
   haml-rails
-  json
   oauth2
   pg
   rails (= 3.0.4)

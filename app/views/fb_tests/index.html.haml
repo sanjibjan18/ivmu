@@ -1,0 +1,14 @@
+%h1= "Welcome #{@myself.first_name} #{@myself.last_name} - #{@myself.email}"
+
+%h3 Your recent posts 
+- @posts.each do |post|
+  %b
+    %u
+      = post.name
+  %br
+  = image_tag(post.icon)
+  = post.description
+  %br
+  = post.message
+  %hr
+  %br   
