@@ -1,14 +1,32 @@
 %h1= "Welcome #{@myself.first_name} #{@myself.last_name} - #{@myself.email}"
 
 %h3 Your recent posts 
-- @posts.each do |post|
-  %b
-    %u
-      = post.name
-  %br
-  = image_tag(post.icon)
-  = post.description
-  %br
-  = post.message
-  %hr
-  %br   
+- unless @posts.blank?
+  - @posts.each do |post|
+    %b
+      %u
+        = post.name
+    %br
+    = image_tag(post.icon)
+    = post.description
+    %br
+    = post.message
+    %hr
+    %br   
+    
+%h3 Your likes   
+- unless @likes.blank?
+  - @likes.each do |like|
+    = like.inspect
+    = like.name 
+    %br
+
+%h3 Your friends     
+- unless @friends.blank?    
+  - @friends.each do |friend|
+    = "#{friend.id} - #{friend.first_name} #{friend.last_name} - #{friend.email}"
+    %br
+    
+    
+    
+    
