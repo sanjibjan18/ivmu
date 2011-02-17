@@ -10,7 +10,7 @@ class FbTestsController < ApplicationController
  
     #Right now data fetch is done in this method.
     #current_user.fetch_fb_feeds
-    @movies = Movie.limit(10).all
+    @movies = Movie.limit(10)
   end
 
 end
