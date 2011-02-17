@@ -7,7 +7,8 @@ class FbTestsController < ApplicationController
     #@friends = @myself.friends
  
     #Right now data fetch is done in this method.
-    current_user.fetch_fb_feeds
+    #current_user.fetch_fb_feeds
+    @movies = Movie.limit(10).all
   end
 
 end

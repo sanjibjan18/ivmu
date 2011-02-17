@@ -1,0 +1,6 @@
+-if error_object.errors.any?
+  #errorExplanation
+    %h2= "#{pluralize(error_object.errors.count, "error")} prohibited this news from being saved:"
+    %ul
+      - error_object.errors.full_messages.each do |msg|
+        %li= msg
