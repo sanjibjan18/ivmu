@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     unless friends.blank? 
       friends.each do |friend|
         #Fetch and store current user's friends list
-        friend = self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid) if self.facebook_friends.where(:value => friend.id).first.blank? 
+        self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid) if self.facebook_friends.where(:value => friend.id).first.blank? 
         
         #Fetch and store friends' likes.
         friend_likes = friend.likes
