@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token
   
   has_many :facebook_feeds
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     unless friends.blank? 
       friends.each do |friend|
         #Fetch and store current user's friends list
-        friend = self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid) unless self.facebook_friends.where(:value => friend.id).first.blank? 
+        friend = self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid) if self.facebook_friends.where(:value => friend.id).first.blank? 
         
         #Fetch and store friends' likes.
         friend_likes = friend.likes
