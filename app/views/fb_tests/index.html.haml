@@ -29,7 +29,7 @@
     %br
     
 - @movies.each do |movie|
-  = movie.name  
+  = movie.inspect
   %div{:style => "border: 1px solid #aaa; background: #f1f1f1;"}   
     - movie.comments.each do |comment|
       = comment.comment
