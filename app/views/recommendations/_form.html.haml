@@ -1,0 +1,18 @@
+= form_for [movie, Recommendation.new] do |f|
+  = render '/shared/error_display', {:error_object => f.object}
+
+  .field
+    = f.label :seen_movie, 'I have seen the movie'
+    = f.radio_button :seen_movie, 1
+    Yes
+    = f.radio_button :seen_movie, 0, :checked => true
+    No 
+  .field
+    = current_user.friends  
+    
+  .field
+    = f.label :message
+    %br
+    = f.text_area :message, :rows => 4, :cols => 100  
+  .actions
+    = f.submit 'Save comment'

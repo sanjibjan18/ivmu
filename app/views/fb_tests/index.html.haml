@@ -38,11 +38,15 @@
     = render '/comments/form', {:movie => movie}  
     %hr
     %h4 Reviews
+    Average rating:
     = movie.average_rating
-    =  current_user.reviwed_movie?(movie)
+    %br  
     - unless current_user.reviwed_movie?(movie)
       = render '/reviews/form', {:movie => movie}
     - else
       = "Your rating #{current_user.my_rating(movie)}"
+    %hr  
+    %h4 Recommendations
+    = render '/recommendations/form', {:movie => movie}  
   %br
   %br        

@@ -11,9 +11,12 @@ class User < ActiveRecord::Base
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
   has_many :reviews
-  has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
+  #has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
   has_many :comments
-  
+  has_many :friend_ships
+  has_many :friends, :through => :friend_ships, :class_name => 'User'
+  has_many :recommendations
+   
   scope :facebook_friend_likes, lambda{|fbid|  facebook_likes.where(:fbid => fbid)}
   
   def fetch_fb_feeds
@@ -43,11 +46,11 @@ class User < ActiveRecord::Base
   
   def reviwed_movie?(movie)
     #reviewed_movies.include?(movie)
-    false
+    self.reviews.where(:movie_id => movie.id).exists? ? false : true
   end
  
   def my_rating(movie)
     review = self.reviews.for_movie(movie).first
-    review.rating
+    review.rating unless review.blank?
   end
 end

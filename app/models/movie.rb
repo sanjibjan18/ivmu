@@ -6,7 +6,8 @@ class Movie < ActiveRecord::Base
    
   acts_as_commentable 
   has_many :reviews
-  has_many :raters, :through => :reviews, :source => :user
+  has_many :reviwers, :through => :reviews, :source => :user
+  has_many :recommendations
   
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count
