@@ -1,4 +1,4 @@
-= form_for [movie, Comment.new] do |f|
+= form_for [movie.id, Comment.new] do |f|
   = render '/shared/error_display', {:error_object => f.object}
 
   .field
