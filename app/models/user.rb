@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
   end
   
   def reviwed_movie?(movie)
-    reviewed_movies.include?(movie)
+    #reviewed_movies.include?(movie)
+    false
   end
  
   def my_rating(movie)
