@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
   MAX_RATING = 5
   belongs_to :movie
   belongs_to :user
-  #after_save :post_to_wall
+  after_save :post_to_wall
   
   def post_to_wall
     if self.facebook

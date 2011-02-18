@@ -42,8 +42,6 @@ class User < ActiveRecord::Base
   end
   
   def reviwed_movie?(movie)
-   puts "pppppppppppppppppppppppppp #{reviews}"
-   puts "ccccccccccccccccccc #{reviewed_movies}"
     reviewed_movies.include?(movie)
   end
  
