@@ -29,10 +29,20 @@
     %br
     
 - @movies.each do |movie|
-  = movie.name
-  %div{:style => "border: 1px solid #aaa; background: #f1f1f1;"}   
+  %h3
+    = movie.name
+  %div{:style => "border: 1px solid #aaa; background: #f1f1f1; padding: 5px 10px;"}   
+    %h4 Comments
     - movie.comments.each do |comment|
-      = comment.comment
-      = link_to 'Post to wall', post_to_wall_movie_comment_path(movie, comment)
+      = comment.comment 
     = render '/comments/form', {:movie => movie}  
-    
+    %hr
+    %h4 Reviews
+    = movie.average_rating
+    =  current_user.reviwed_movie?(movie)
+    - unless current_user.reviwed_movie?(movie)
+      = render '/reviews/form', {:movie => movie}
+    - else
+      = "Your rating #{current_user.my_rating(movie)}"
+  %br
+  %br        

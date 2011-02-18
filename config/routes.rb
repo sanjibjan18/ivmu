@@ -3,9 +3,8 @@ Muvi::Application.routes.draw do
   root :to => "fb_tests#index"
   devise_for :users
   resources :movies do
-    resources :comments do
-      get 'post_to_wall', :on => :member 
-    end
+    resources :comments
+    resources :reviews
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,36 @@
+= form_for [movie, Review.new] do |f|
+  = render '/shared/error_display', {:error_object => f.object}
+
+  .field
+    = f.label :seen_movie, 'I have seen the movie'
+    = f.radio_button :seen_movie, 1
+    Yes
+    = f.radio_button :seen_movie, 0
+    No 
+  .field
+    %label Post to
+    = f.check_box :facebook
+    Facebook
+    = f.check_box :orkut 
+    Orkut
+    = f.check_box :twitter
+    Twitter 
+  .field
+    %label Rate
+    = f.radio_button :rating, '1'
+    1
+    = f.radio_button :rating, '2'
+    2
+    = f.radio_button :rating, '3'
+    3
+    = f.radio_button :rating, '4'
+    4
+    = f.radio_button :rating, '5'
+    5   
+  .field
+    = f.label :description, 'Review'
+    %br
+    = f.text_area :description, :rows => 4, :cols => 100 
+  You can rate a movie only once. Think before you rate.
+  .actions
+    = f.submit 'Rate'

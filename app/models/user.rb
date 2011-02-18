@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :facebook_feeds
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
+  has_many :reviews
+  has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
+  has_many :comments
   
   scope :facebook_friend_likes, lambda{|fbid|  facebook_likes.where(:fbid => fbid)}
   
@@ -38,4 +41,14 @@ class User < ActiveRecord::Base
     end
   end
   
+  def reviwed_movie?(movie)
+   puts "pppppppppppppppppppppppppp #{reviews}"
+   puts "ccccccccccccccccccc #{reviewed_movies}"
+    reviewed_movies.include?(movie)
+  end
+ 
+  def my_rating(movie)
+    review = self.reviews.for_movie(movie).first
+    review.rating
+  end
 end
