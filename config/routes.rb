@@ -1,6 +1,6 @@
 Muvi::Application.routes.draw do
  
-  root :to => "fb_tests#index"
+  root :to => "home#index"
   devise_for :users
   resources :movies do
     resources :comments

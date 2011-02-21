@@ -1,0 +1,43 @@
+%h2= "Edit #{resource_name.to_s.humanize}"
+
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|  
+  = devise_error_messages!
+  %fieldset.registration   
+    .field.left
+      = f.label :email
+      %br
+      = f.text_field :email 
+    .field.left
+      - resource.build_profile if resource.profile.blank?
+      = f.fields_for :profile do |ff|
+        = ff.label :name
+        %br
+        = ff.text_field :name
+    
+    .clear    
+    .field.left
+      = f.label :password
+      %i (leave blank if you don't want to change it)
+      %br
+      = f.password_field :password 
+    .field.left
+      = f.label :password_confirmation
+      %br
+      = f.password_field :password_confirmation  
+    .clear
+    .field  
+      = f.label :current_password 
+      %i (we need your current password to confirm your changes)
+      %br
+      = f.password_field :current_password
+    .clear 
+    = f.hidden_field :token, :value => (f.object.token || params[:token])
+
+    .actions
+      = link_to 'Terms and conditions'
+      &nbsp;
+      = f.submit "Update my profile"
+      \- or - 
+      = link_to 'Cancel', :back
+  
+ 

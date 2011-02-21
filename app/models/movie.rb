@@ -9,7 +9,12 @@ class Movie < ActiveRecord::Base
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
   
+  scope :latest, order('name desc')
+  
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count
   end
+  
+ 
+  
 end
