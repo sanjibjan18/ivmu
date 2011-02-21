@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   layout 'website'
   
   def index
-    @movies = Movie.latest
+    @movies = Movie.latest.limit(6)
   end
 end

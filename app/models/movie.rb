@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
   has_many :recommendations
   
   scope :latest, order('name desc')
-  
+  scope :limit, lambda{|limit| limit(limit)}
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count
   end
