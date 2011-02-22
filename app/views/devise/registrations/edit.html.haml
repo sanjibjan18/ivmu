@@ -1,43 +1,40 @@
-%h2= "Edit #{resource_name.to_s.humanize}"
-
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|  
   = devise_error_messages!
-  %fieldset.registration   
-    .field.left
-      = f.label :email
+  %fieldset.registration
+    .field 
+      = f.label :email, 'Email address'
       %br
-      = f.text_field :email 
-    .field.left
-      - resource.build_profile if resource.profile.blank?
-      = f.fields_for :profile do |ff|
-        = ff.label :name
-        %br
-        = ff.text_field :name
-    
-    .clear    
-    .field.left
+      = f.text_field :email  
+    .field 
       = f.label :password
-      %i (leave blank if you don't want to change it)
       %br
       = f.password_field :password 
-    .field.left
+    .field
       = f.label :password_confirmation
       %br
       = f.password_field :password_confirmation  
-    .clear
-    .field  
-      = f.label :current_password 
-      %i (we need your current password to confirm your changes)
-      %br
-      = f.password_field :current_password
-    .clear 
-    = f.hidden_field :token, :value => (f.object.token || params[:token])
-
+ 
+    - resource.build_user_profile if resource.user_profile.blank?
+    = f.fields_for :user_profile do |ff|
+      .field 
+        = ff.label :display_name
+        %br
+        = ff.text_field :display_name 
+         
+      .field 
+        = ff.label :dob, 'Date of birth'
+        %br
+        = ff.text_field :dob
+      .field 
+        = ff.label :dob, 'Sex'
+        %br
+        = ff.select :sex, ['Male', 'Female']
+    
+      = f.hidden_field 'agreement', :value => 1
     .actions
-      = link_to 'Terms and conditions'
-      &nbsp;
-      = f.submit "Update my profile"
+    
+      = f.submit 'Update profile'
       \- or - 
-      = link_to 'Cancel', :back
+      = link_to 'Cancel', root_path
   
  

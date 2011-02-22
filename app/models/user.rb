@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
   has_many :friend_ships
   has_many :friends, :through => :friend_ships, :class_name => 'User'
   has_many :recommendations
-   
+  has_one :user_profile
+    
   scope :facebook_friend_likes, lambda{|fbid|  facebook_likes.where(:fbid => fbid)}
   
   def fetch_fb_feeds
