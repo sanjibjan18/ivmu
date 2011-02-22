@@ -1,6 +1,8 @@
 Muvi::Application.routes.draw do
  
   root :to => "home#index"
+  match 'fetch' => 'home#fetch'
+  
   devise_for :users
   resources :movies do
     resources :comments

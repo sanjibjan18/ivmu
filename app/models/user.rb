@@ -29,18 +29,26 @@ class User < ActiveRecord::Base
     likes = fb_user.likes
     friends = fb_user.friends
     #Store current user's likes
-    likes.map{|like| self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.oauth2_uid)} unless likes.blank?
+    unless likes.blank?
+      likes.each do |like|
+        self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.oauth2_uid, :fb_item_id => like.id) unless self.facebook_feeds.where(:fb_item_id => like.id).exists?
+      end  
+    end
     
     unless friends.blank? 
       friends.each do |friend|
         #Fetch and store current user's friends list
-        self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid) if self.facebook_friends.where(:value => friend.id).first.blank? 
+        self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid, :fb_item_id => friend.id) unless self.facebook_friends.where(:value => friend.id).exists? 
         
         #Fetch and store friends' likes.
         friend_likes = friend.likes
         unless friend_likes.blank?
           friend_likes.each do |friend_like|
-            self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id)
+            unless self.facebook_friends.where(:value => friend_like.id).exists?
+              if Movie.where(:fbpage_id => friend_like.id).exists?
+                self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
+              end  
+            end  
           end  
         end
       end  
