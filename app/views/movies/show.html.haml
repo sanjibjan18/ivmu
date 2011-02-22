@@ -6,6 +6,7 @@
   .left.details
     %div.cast
       %span.label Cast
+      = @movie.performances_actor
     %div.director
       %span.label Director:
       = @movie.directed_by  
@@ -18,9 +19,10 @@
       %div 
         Users
         = "#{@movie.average_rating_percent} %"
-      %div
-        = @movie.fb_friends_liked(current_user) 
-        friends liked it. 
+      - if current_user  
+        %div
+          = movie.fb_friends_liked(current_user).count 
+          friends liked it.  
         
     %h4 Comments
     - @movie.comments.each do |comment|
