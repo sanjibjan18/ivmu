@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :facebook_feeds
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
+  has_many :facebook_friend_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend_likes'}
   
   has_many :reviews
   #has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
