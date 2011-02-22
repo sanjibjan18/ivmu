@@ -4,4 +4,25 @@
     %br
     = image_tag('no-logo.png')
   .left.details
-    Cast  
+    %div.cast
+      %span.label Cast
+    %div.director
+      %span.label Director:
+      = @movie.directed_by  
+    %div.release
+      %span.label Release Date:
+      = @movie.initial_release_date
+    %div.review
+      %span.label Movie Review:    
+      %div Critics
+      %div 
+        Users
+        = "#{@movie.average_rating_percent} %"
+      %div
+        = @movie.fb_friends_liked(current_user) 
+        friends liked it. 
+        
+    %h4 Comments
+    - @movie.comments.each do |comment|
+      = comment.comment 
+    = render '/comments/form', {:movie => @movie}               

@@ -21,6 +21,7 @@ class Movie < ActiveRecord::Base
   end
  
   def fb_friends_liked(user)
-    user.facebook_likes.facebook_friend_likes(user.oauth2_uid).like_name(self.name)
+    #user.facebook_likes.facebook_friend_likes(user.oauth2_uid).like_name(self.name)
   end
+  
 end
