@@ -2,8 +2,18 @@
   - @movies.in_groups_of(3) do |group| 
     - group.each do |movie|
       - unless movie.blank?
-        .left.movie
-          = image_tag('no-logo.png')
-          %br
-          = link_to movie.name, movie_path(movie)
+        .movie.left
+          .left
+            = image_tag('no-logo.png')
+            %br
+            = link_to movie.name, movie_path(movie)
+          .left
+            %div Critics
+            %div 
+              Users
+              = "#{movie.average_rating_percent} %"
+            %div
+              = movie.fb_friends_liked(current_user).count
+              friends liked it.  
+          .clear   
     .clear   

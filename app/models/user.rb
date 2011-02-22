@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :facebook_feeds
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
+  
   has_many :reviews
   #has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
   has_many :comments
@@ -20,8 +21,6 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friend_ships, :class_name => 'User'
   has_many :recommendations
   has_one :user_profile
-    
-  scope :facebook_friend_likes, lambda{|fbid|  facebook_likes.where(:fbid => fbid)}
   
   def fetch_fb_feeds
     client = Mogli::Client.new(self.oauth2_token)
