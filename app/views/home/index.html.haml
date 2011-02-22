@@ -13,7 +13,7 @@
               Users
               = "#{movie.average_rating_percent} %"
             %div
-              = movie.fb_friends_liked(current_user) 
+              = movie.fb_friends_liked(current_user).count 
               friends liked it.  
           .clear   
     .clear   
