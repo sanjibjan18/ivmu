@@ -1,10 +1,10 @@
 = form_for @search, :url => admin_movies_path, :html => {:method => :get} do |f|
   = f.label :name_contains, 'Movie title'
   = f.text_field :name_contains
-  = f.label :initial_release_date_eq, 'Release Date between'
-  = f.text_field :initial_release_date_gteq , :id => 'release_date_lt'
-  = f.label :initial_release_date_eq, 'and'
-  = f.text_field :initial_release_date_lteq, :id => 'release_date_gt'
+  = f.label :initial_release_date_contains, 'Release Date between'
+  = f.text_field :initial_release_date_contains , :id => 'release_date_lt'
+  = f.label :initial_release_date_contains, 'and'
+  = f.text_field :initial_release_date_contains, :id => 'release_date_gt'
   = f.submit "Search"
 %hr
 %br
