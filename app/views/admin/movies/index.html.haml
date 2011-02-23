@@ -1,0 +1,32 @@
+= form_for @search, :url => admin_movies_path, :html => {:method => :get} do |f|
+  = f.label :name_contains, 'Movie title'
+  = f.text_field :name_contains
+  = f.label :initial_release_date_gteq, 'Release Date between'
+  = f.text_field :initial_release_date_gteq , :id => 'release_date_lt'
+  = f.label :initial_release_date_lteq, 'and'
+  = f.text_field :initial_release_date_lteq, :id => 'release_date_gt'
+  = f.submit "Search"
+%hr
+%br
+= link_to "New Movie", new_admin_movie_path
+
+%table.listing
+  %tr
+    %th Movie Name
+    %th Released Date
+    %th Actions
+
+  - unless @movies.blank?
+    - @movies.each do |movie|
+      %tr
+        %td= movie.name
+        %td= movie.initial_release_date
+        %td
+          = link_to "show", admin_movie_path(movie)
+          |
+          = link_to "Edit", edit_admin_movie_path(movie)
+  -else
+    %tr
+      %td{:colspan => 3}
+        %p Sorry there are no results for your filter request(s)
+

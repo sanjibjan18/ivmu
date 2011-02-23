@@ -1,0 +1,75 @@
+= form_for([:admin, @movie]) do |f|
+  - if @movie.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@movie.errors.count, "error")
+        prohibited this page from being saved:
+      %ul
+        -@movie.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.label :name, "Movie Name"
+  = f.text_field :name
+  %br
+  = f.label :initial_release_date, "Released Date"
+  = f.text_field :initial_release_date, :id => 'release_date_lt'
+  %br
+  = f.label :directed_by , "Directed By"
+  = f.text_field :directed_by
+  %br
+  = f.label :tagline
+  = f.text_field :tagline
+  %br
+  = f.label :performances_actor
+  = f.text_field :performances_actor
+  %br
+  = f.label :genres
+  = f.text_field :genres
+  %br
+  = f.label :produced_by
+  = f.text_field :produced_by
+  %br
+  = f.label :screenplay_by
+  = f.text_field :screenplay_by
+  %br
+  = f.label :story_by
+  = f.text_field :story_by
+  %br
+  = f.label :cinematography
+  = f.text_field :cinematography
+  %br
+  = f.label :music_by
+  = f.text_field :music_by
+  %br
+  = f.label :languages
+  = f.text_field :languages
+  %br
+  = f.label :country_of_origin
+  = f.text_field :country_of_origin
+  %br
+  = f.label :estimated_budget
+  = f.text_field :estimated_budget
+  %br
+  = f.label :production_companies
+  = f.text_field :production_companies
+  %br
+  = f.label :rated
+  = f.text_field :rated
+  %br
+  = f.label :featured_song
+  = f.text_field :featured_song
+  %br
+  = f.label :award_nominations_award
+  = f.text_field :award_nominations_award
+  %br
+  = f.label :award_nominations_award_nominee
+  = f.text_field :award_nominations_award_nominee
+  %br
+  = f.label :award_nominations_nominated_work
+  = f.text_field :award_nominations_nominated_work
+  %hr
+  .actions
+    = f.submit 'Save'
+    \- or -
+    = link_to 'Cancel', admin_movies_path
+

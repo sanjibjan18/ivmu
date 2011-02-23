@@ -11,6 +11,14 @@ Muvi::Application.routes.draw do
     resources :reviews
     resources :recommendations
   end
+
+
+  namespace :admin do
+    root :to => 'movies#index'
+    resources :movies
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

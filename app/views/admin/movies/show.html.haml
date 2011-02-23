@@ -1,0 +1,68 @@
+%table.listing
+  %tr
+    %th
+    %td= image_tag('no-logo.png')
+  %tr
+    %th  Movies name
+    %td= @movie.name
+  %tr
+    %th Released Date
+    %td= @movie.initial_release_date
+  %tr
+    %th Directed By
+    %td= @movie.directed_by
+  %tr
+    %th Tagline
+    %td= @movie.tagline
+  %tr
+    %th Performances Actor
+    %td= @movie.performances_actor
+  %tr
+    %th Genres
+    %td= @movie.genres
+  %tr
+    %th Produced By
+    %td= @movie.produced_by
+  %tr
+    %th Screenplay By
+    %td= @movie.screenplay_by
+  %tr
+    %th Story By
+    %td= @movie.story_by
+  %tr
+    %th Cinematography
+    %td= @movie.cinematography
+  %tr
+    %th Music By
+    %td= @movie.music_by
+  %tr
+    %th Languages
+    %td= @movie.languages
+  %tr
+    %th Country Of Origin
+    %td= @movie.country_of_origin
+  %tr
+    %th Estimated budget
+    %td= number_to_currency @movie.estimated_budget.to_f
+  %tr
+    %th  Production Companies
+    %td= @movie.production_companies
+  %tr
+    %th Rated
+    %td= @movie.rated
+  %tr
+    %th Featured Song
+    %td= @movie.featured_song
+  %tr
+    %th Award Nominations Award
+    %td= @movie.award_nominations_award
+  %tr
+    %th Award Nominations Award Nominee
+    %td= @movie.award_nominations_award_nominee
+  %tr
+    %th Award Nominations Award Nominated Work
+    %td= @movie.award_nominations_nominated_work
+= link_to 'Edit', edit_admin_movie_path(@movie)
+\- or -
+= link_to 'Back', admin_movies_path
+

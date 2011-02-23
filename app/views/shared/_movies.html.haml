@@ -1,0 +1,23 @@
+- unless @movies.blank?
+  - @movies.in_groups_of(3) do |group|
+    - group.each do |movie|
+      - unless movie.blank?
+        .movie.left
+          .left
+            = image_tag('no-logo.png')
+            %br
+            = link_to movie.name, coming_soon_movie_path(movie)
+          .left
+            %div Critics
+            %div
+              Users
+              = "#{movie.average_rating_percent} %"
+            - if current_user
+              %div
+                = movie.fb_friends_liked(current_user).count
+                friends liked it.
+          .clear
+    .clear
+-else
+  %h3 No Movies Found
+

@@ -17,7 +17,7 @@ group :test, :development do
 end
 
 gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git"
-
+gem "meta_search"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
