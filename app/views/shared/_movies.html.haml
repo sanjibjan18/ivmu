@@ -6,7 +6,7 @@
           .left
             = image_tag('no-logo.png')
             %br
-            = link_to movie.name, coming_soon_movie_path(movie)
+              = link_to movie.name, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .left
             %div Critics
             %div
