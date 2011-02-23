@@ -13,8 +13,7 @@
     %div.release
       %span.label Release Date:
       = @movie.initial_release_date
-    %div#rate
-      = render :partial => 'shared/rate'
+
     %div.review
       %span.label Movie Review:
       %div Critics
@@ -30,12 +29,4 @@
     - @movie.comments.each do |comment|
       = comment.comment
     = render '/comments/form', {:movie => @movie}
-
-- if current_user && current_user.reviwed_movie?(@movie)
-  #rate_movie{ :style => 'display:none;'}
-    = render :partial => "reviews/form", :locals => { :movie => @movie}
-  = content_for :js do
-    = javascript_include_tag 'facebox'
-    %script{:type => "text/javascript"}
-      jQuery(document).ready(function($) { $('a[rel*=facebox]').facebox() })
 

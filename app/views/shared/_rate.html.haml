@@ -1,0 +1,8 @@
+- unless current_user.blank?
+  -unless current_user.reviwed_movie?(@movie)
+    %p
+      Your Rating :
+      = current_user.my_rating(@movie)
+  -else
+    = link_to "Rate Movie", '#rate_movie', :rel => 'facebox'
+

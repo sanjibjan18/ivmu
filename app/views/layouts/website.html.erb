@@ -5,23 +5,26 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <%= yield :js %>
 </head>
  <body>
   <div id='global_links' class='right'>
     <% unless current_user -%>
-      <%= link_to 'Sign-up', new_user_registration_path %> 
-      <%= link_to 'Login', new_user_session_path %> 
+      <%= link_to 'Sign-up', new_user_registration_path %>
+      <%= link_to 'Login', new_user_session_path %>
       <%= link_to_oauth2 "Sign In with Facebook" %>
     <%else-%>
+      <%= link_to 'Comming soon movies', coming_soon_movies_path %>
       <%= link_to 'Edit profile', edit_user_registration_path %>
       <%= link_to 'Fetch fb data', fetch_path %>
-      <%= link_to 'Logout', destroy_user_session_path %> 
+      <%= link_to 'Logout', destroy_user_session_path %>
     <%end-%>
   </div>
   <div class='clear'></div>
-  <div id ='wrapper'> 
+  <div id ='wrapper'>
     <%= yield %>
   </div>
- 
+
   </body>
 </html>
+
