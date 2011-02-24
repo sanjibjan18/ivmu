@@ -10,6 +10,13 @@
  <body>
   <div id='global_links' class='right'>
     <% unless current_user -%>
+
+    <a href="/auth/twitter" class="auth_provider">
+      <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+      Twitter
+    </a>
+
+
       <%= link_to 'Sign-up', new_user_registration_path %>
       <%= link_to 'Login', new_user_session_path %>
       <%= link_to_oauth2 "Sign In with Facebook" %>

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @user_token.user_id
+%p
+  %b Provider:
+  = @user_token.provider
+%p
+  %b Uid:
+  = @user_token.uid
+%p
+  %b Token:
+  = @user_token.token
+%p
+  %b Secret:
+  = @user_token.secret
+
+= link_to 'Edit', edit_user_token_path(@user_token)
+\|
+= link_to 'Back', user_tokens_path

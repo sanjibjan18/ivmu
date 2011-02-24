@@ -1,11 +1,16 @@
 Muvi::Application.routes.draw do
 
+  resources :user_tokens
+
   resources :coming_soon_movies
 
   root :to => "home#index"
   match 'fetch' => 'home#fetch'
 
   devise_for :users
+  match '/auth/:provider/callback' => 'user_tokens#create'
+
+
   resources :movies do
     resources :comments
     resources :reviews

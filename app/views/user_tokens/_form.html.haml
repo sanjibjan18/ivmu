@@ -1,0 +1,25 @@
+= form_for @user_token do |f|
+  -if @user_token.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user_token.errors.count, "error")} prohibited this user_token from being saved:"
+      %ul
+        - @user_token.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :provider
+    = f.text_field :provider
+  .field
+    = f.label :uid
+    = f.text_field :uid
+  .field
+    = f.label :token
+    = f.text_field :token
+  .field
+    = f.label :secret
+    = f.text_field :secret
+  .actions
+    = f.submit 'Save'

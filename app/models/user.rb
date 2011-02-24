@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friend_ships, :class_name => 'User'
   has_many :recommendations
   has_one :user_profile
+  has_many :user_tokens
 
   def fetch_fb_feeds
     client = Mogli::Client.new(self.oauth2_token)
@@ -64,6 +65,11 @@ class User < ActiveRecord::Base
   def my_rating(movie)
     review = self.reviews.for_movie(movie).first
     review.rating unless review.blank?
+  end
+
+  def create_user_from_omniauth(omniauth)
+    self.email = omniauth['user_info']['email'] if email.blank?
+    user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'], :secret => omniauth['credentials']['secret'])
   end
 end
 

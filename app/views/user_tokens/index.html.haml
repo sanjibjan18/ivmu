@@ -1,0 +1,27 @@
+%h1 Listing user_tokens
+
+%table
+  %tr
+    %th User
+    %th Provider
+    %th Uid
+    %th Token
+    %th Secret
+    %th
+    %th
+    %th
+
+  - @user_tokens.each do |user_token|
+    %tr
+      %td= user_token.user_id
+      %td= user_token.provider
+      %td= user_token.uid
+      %td= user_token.token
+      %td= user_token.secret
+      %td= link_to 'Show', user_token
+      %td= link_to 'Edit', edit_user_token_path(user_token)
+      %td= link_to 'Destroy', user_token, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New User token', new_user_token_path
