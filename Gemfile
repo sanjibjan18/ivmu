@@ -4,7 +4,7 @@ gem 'rails', '3.0.4'
 gem 'pg'
 
 gem "oauth2"
-
+gem 'omniauth'
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
