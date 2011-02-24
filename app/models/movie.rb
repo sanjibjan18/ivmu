@@ -22,7 +22,7 @@ class Movie < ActiveRecord::Base
   end
 
   def fb_friends_liked(user)
-    user.facebook_friend_likes(user.oauth2_uid).by_fb_item_id(self.fbpage_id)
+    user.facebook_friend_likes(user.facebook_token.uid).by_fb_item_id(self.fbpage_id) unless user.facebook_token.blank?
   end
 
 end

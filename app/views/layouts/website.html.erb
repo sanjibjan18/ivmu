@@ -9,12 +9,17 @@
 </head>
  <body>
   <div id='global_links' class='right'>
-    <% unless current_user -%>
-
-    <a href="/auth/twitter" class="auth_provider">
+      <a href="/auth/twitter" class="auth_provider">
       <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
       Twitter
     </a>
+
+  <a href="/auth/facebook" class="auth_provider">
+    <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+    Facebook
+  </a>
+    <% unless current_user -%>
+
 
 
       <%= link_to 'Sign-up', new_user_registration_path %>

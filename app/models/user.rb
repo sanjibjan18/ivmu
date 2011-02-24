@@ -23,32 +23,40 @@ class User < ActiveRecord::Base
   has_many :recommendations
   has_one :user_profile
   has_many :user_tokens
+  has_one :facebook_token , :class_name => "UserToken", :conditions => { :provider => 'facebook' }
+
+
+  def token
+    facebook_token.token
+  end
 
   def fetch_fb_feeds
-    client = Mogli::Client.new(self.oauth2_token)
-    fb_user = Mogli::User.find("me", client)
+    unless self.facebook_token.blank?
+      client = Mogli::Client.new(self.token)
+      fb_user = Mogli::User.find("me", client)
 
-    likes = fb_user.likes
-    friends = fb_user.friends
-    #Store current user's likes
-    unless likes.blank?
-      likes.each do |like|
-        self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.oauth2_uid, :fb_item_id => like.id) unless self.facebook_feeds.where(:fb_item_id => like.id).exists?
+      likes = fb_user.likes
+      friends = fb_user.friends
+      #Store current user's likes
+      unless likes.blank?
+        likes.each do |like|
+          self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.facebook_token.uid, :fb_item_id => like.id) unless self.facebook_feeds.where(:fb_item_id => like.id).exists?
+        end
       end
-    end
 
-    unless friends.blank?
-      friends.each do |friend|
-        #Fetch and store current user's friends list
-        self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.oauth2_uid, :fb_item_id => friend.id) unless self.facebook_friends.where(:value => friend.id).exists?
+      unless friends.blank?
+        friends.each do |friend|
+          #Fetch and store current user's friends list
+          self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.facebook_token.uid, :fb_item_id => friend.id) unless self.facebook_friends.where(:value => friend.id).exists?
 
-        #Fetch and store friends' likes.
-        friend_likes = friend.likes
-        unless friend_likes.blank?
-          friend_likes.each do |friend_like|
-            unless self.facebook_friends.where(:value => friend_like.id).exists?
-              if Movie.where(:fbpage_id => friend_like.id).exists?
-                self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
+          #Fetch and store friends' likes.
+          friend_likes = friend.likes
+          unless friend_likes.blank?
+            friend_likes.each do |friend_like|
+              unless self.facebook_friends.where(:value => friend_like.id).exists?
+                if Movie.where(:fbpage_id => friend_like.id).exists?
+                  self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
+                end
               end
             end
           end
@@ -60,6 +68,10 @@ class User < ActiveRecord::Base
   def reviwed_movie?(movie)
     #reviewed_movies.include?(movie)
     self.reviews.where(:movie_id => movie.id).exists? ? false : true
+  end
+
+  def has_user_token?(provider, uid)
+    self.user_tokens.where('provider = ? and uid = ? ', provider, uid).exists? ? false : true
   end
 
   def my_rating(movie)
