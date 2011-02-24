@@ -22,7 +22,7 @@
         = "#{@movie.average_rating_percent} %"
       - if current_user
         %div
-          = @movie.fb_friends_liked(current_user).count
+          = @movie.fb_friends_liked(current_user).count rescue 0
           friends liked it.
 
     %h4 Comments
