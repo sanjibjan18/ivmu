@@ -23,6 +23,7 @@ Muvi::Application.routes.draw do
   namespace :admin do
     root :to => 'movies#index'
     resources :movies
+    resources :users
   end
 
 

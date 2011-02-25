@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
   has_many :tweets
 
+  scope :all_without_admin, where(:is_admin => false)
+
   def facebook_token
     facebook_omniauth.token
   end

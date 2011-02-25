@@ -1,0 +1,22 @@
+%h1 User List
+
+%table.listing
+  %tr
+    %th Email
+    %th fb user
+    %th twitter user
+    %th display name
+
+  -unless @users.blank?
+    -@users.each do |user|
+      %tr
+        %td= user.email
+        %td= (user.facebook_omniauth.blank?? "" : 'yes')
+        %td= (user.twitter_omniauth.blank?? "" : 'yes')
+        %td
+          - if user.user_profile.blank?
+            -UserProfile.create!(:display_name => "test_#{user.id}", :user_id => user.id)
+            = "test_#{user.id}"
+          -else
+            = user.user_profile.display_name
+
