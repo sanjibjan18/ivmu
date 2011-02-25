@@ -15,9 +15,9 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   def post_to_wall
-    unless self.user.facebook_token.blank?
+    unless self.user.facebook_omniauth.blank?
       begin
-        client = Mogli::Client.new(self.user.token)
+        client = Mogli::Client.new(self.user.facebook_token)
         @myself  = Mogli::User.find("me", client)
         post = Mogli::Post.new(:message => self.comment)
         @myself.feed_create(post)

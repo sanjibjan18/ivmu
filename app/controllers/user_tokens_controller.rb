@@ -1,10 +1,9 @@
 class UserTokensController < ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => [:create]
 
 
   def create
     omniauth = request.env["omniauth.auth"]
-    puts "ppppppppppppp #{omniauth.inspect}"
     user_token = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if user_token
       flash[:notice] = "Signed in successfully."
@@ -26,7 +25,12 @@ class UserTokensController < ApplicationController
     end
   end
 
-
+  def destroy
+    user_token = current_user.user_tokens.find(params[:id])
+    user_token.destroy
+    flash[:notice] = "Successfully destroyed authentication."
+    redirect_to root_path
+  end
 
 end
 

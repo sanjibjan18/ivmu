@@ -5,10 +5,10 @@ class Review < ActiveRecord::Base
   after_save :post_to_wall
 
   def post_to_wall
-    unless self.user.facebook_token.blank?
+    unless self.user.facebook_omniauth.blank?
       if self.facebook
         begin
-          client = Mogli::Client.new(self.user.token)
+          client = Mogli::Client.new(self.user.facebook_token)
           @myself  = Mogli::User.find("me", client)
           post = Mogli::Post.new(:message => self.description)
           @myself.feed_create(post)
