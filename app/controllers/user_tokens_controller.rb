@@ -9,7 +9,10 @@ class UserTokensController < ApplicationController
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, user_token.user)
     elsif current_user
-      current_user.user_tokens.create!(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'], :secret => omniauth['credentials']['secret']) if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
+      if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
+        current_user.user_tokens.create!(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'], :secret => omniauth['credentials']['secret'])
+        current_user.user_profile.update_attribute("twitter_screen_name", omniauth['extra']['user_hash']['screen_name'])  if omniauth['provider'] == "twitter"
+      end
       flash[:notice] = "Authentication successful."
       redirect_to root_url
     else

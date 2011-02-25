@@ -1,7 +1,8 @@
 class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
-  after_save :post_to_wall
+ # after_save :post_to_wall
+  after_save :post_to_twitter
 
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
@@ -27,5 +28,15 @@ class Comment < ActiveRecord::Base
       end
     end
   end
+
+  def post_to_twitter
+    unless self.user.twitter_omniauth.blank?
+      begin
+        self.user.twitter.update("#{self.comment}")
+      rescue Twitter::Unauthorized
+      end
+    end
+  end
+
 end
 

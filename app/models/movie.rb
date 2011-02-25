@@ -8,6 +8,7 @@ class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
+  has_many :tweets
 
   scope :latest, order('initial_release_date desc')
   scope :limit, lambda{|limit| limit(limit)}

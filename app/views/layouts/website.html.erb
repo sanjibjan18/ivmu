@@ -18,6 +18,9 @@
     <%else-%>
       <%= link_to 'Comming soon movies', coming_soon_movies_path %>
       <%= link_to 'Edit profile', edit_user_registration_path %>
+      <% unless current_user.twitter_omniauth.blank? %>
+        <%= link_to 'Fetch tweets', fetch_tweets_path %>
+      <%end%>
       <%= link_to 'Fetch fb data', fetch_path %>
       <%= link_to 'Logout', destroy_user_session_path %>
       <div>

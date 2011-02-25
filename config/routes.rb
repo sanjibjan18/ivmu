@@ -6,6 +6,7 @@ Muvi::Application.routes.draw do
 
   root :to => "home#index"
   match 'fetch' => 'home#fetch'
+  match 'fetch_tweets' => 'home#fetch_tweets'
 
   devise_for :users
   match '/auth/:provider/callback' => 'user_tokens#create'

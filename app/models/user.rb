@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :user_tokens
   has_one :facebook_omniauth, :class_name => "UserToken", :conditions => { :provider => 'facebook' }
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
-
+  has_many :tweets
 
   def facebook_token
     facebook_omniauth.token
@@ -81,8 +81,47 @@ class User < ActiveRecord::Base
   end
 
   def create_user_from_omniauth(omniauth)
-    self.email = omniauth['user_info']['email'] if email.blank?
-    user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'], :secret => omniauth['credentials']['secret'])
+    case omniauth['provider']
+    when 'facebook'
+      self.apply_facebook(omniauth)
+    when 'twitter'
+      self.apply_twitter(omniauth)
+    end
+    self.user_tokens.build(hash_from_omniauth(omniauth))
   end
+
+  def twitter
+    @twitter_user ||= Twitter::Client.new(:oauth_token => self.twitter_omniauth.token, :oauth_token_secret => self.twitter_omniauth.secret) rescue nil
+  end
+
+
+  protected
+
+  def apply_facebook(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+     self.email = (extra['email'] rescue '')
+     userprofile(extra['name'])
+    end
+  end
+
+  def apply_twitter(omniauth)
+    if (extra = omniauth['extra']['user_hash'] rescue false)
+       userprofile(extra['screen_name'], extra['screen_name'])
+    end
+  end
+
+  def hash_from_omniauth(omniauth)
+   { :provider => omniauth['provider'], :uid => omniauth['uid'],
+     :token => (omniauth['credentials']['token'] rescue nil), :secret => (omniauth['credentials']['secret'] rescue nil)
+   }
+  end
+
+  def userprofile(name=nil, twitter_name=nil)
+    profile = self.build_user_profile
+    profile.display_name = (name rescue '')
+    profile.twitter_screen_name = twitter_name  unless twitter_name.nil?
+  end
+
+
 end
 
