@@ -3,6 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
   belongs_to :user
   after_save :post_to_wall
+  after_save :post_to_twitter
 
   def post_to_wall
     unless self.user.facebook_omniauth.blank?
@@ -15,6 +16,17 @@ class Review < ActiveRecord::Base
         rescue Mogli::Client::OAuthException
           # getting this strange exception. (#506) Duplicate status message
           #TODO handle this exception
+        end
+      end
+    end
+  end
+
+  def post_to_twitter
+    unless self.user.twitter_omniauth.blank?
+      if self.twitter
+        begin
+          self.user.twitter.update("#{self.description}")
+        rescue Twitter::Unauthorized
         end
       end
     end

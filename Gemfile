@@ -19,6 +19,7 @@ end
 gem "devise_oauth2_authenticatable", :git => "git://github.com/jerryluk/devise_oauth2_authenticatable.git"
 gem "meta_search"
 gem "will_paginate", "~> 3.0.pre2"
+gem 'twitter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

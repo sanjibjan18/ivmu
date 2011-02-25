@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
- # after_save :post_to_wall
+  after_save :post_to_wall
   after_save :post_to_twitter
 
   belongs_to :commentable, :polymorphic => true
