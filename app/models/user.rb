@@ -117,7 +117,6 @@ class User < ActiveRecord::Base
   end
 
   def userprofile(name=nil, twitter_name=nil)
-    puts "zzzzzzzzzzzzzzzzzzzzz"
     profile = self.build_user_profile
     profile.display_name = (name rescue '')
     profile.twitter_screen_name = twitter_name  unless twitter_name.nil?

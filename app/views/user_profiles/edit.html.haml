@@ -1,0 +1,13 @@
+%h1  Edit user Profile
+
+= render 'form'
+
+
+#div
+  %p Associated your account
+  -['facebook', 'twitter'].each do |account|
+    -if current_user.instance_eval("#{account}_omniauth").blank?
+      = link_to image_tag("/images/#{account}_64.png",  :alt => "#{account}", :size => "64x64"), "/auth/#{account}" ,:class => 'auth_provider'
+    -else
+      = link_to "Remove #{account} account", user_token_path(current_user.instance_eval("#{account}_omniauth")) , :method => :delete, :confirm => "Are you sure?"
+

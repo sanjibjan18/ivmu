@@ -17,23 +17,14 @@
 
     <%else-%>
       <%= link_to 'Comming soon movies', coming_soon_movies_path %>
-      <%= link_to 'Edit profile', edit_user_registration_path %>
+      <%= link_to 'Edit profile', edit_user_profile_path(current_user) %>
       <% unless current_user.twitter_omniauth.blank? %>
         <%= link_to 'Fetch tweets', fetch_tweets_path %>
       <%end%>
-      <%= link_to 'Fetch fb data', fetch_path %>
+      <% unless current_user.facebook_omniauth.blank? %>
+        <%= link_to 'Fetch fb data', fetch_path %>
+      <%end%>
       <%= link_to 'Logout', destroy_user_session_path %>
-      <div>
-            <p> Associated your account  </p>
-            <% ['facebook', 'twitter'].each do |account| %>
-              <% if current_user.instance_eval("#{account}_omniauth").blank?  %>
-                 <%= link_to image_tag("/images/#{account}_64.png",  :alt => "#{account}", :size => "64x64"), "/auth/#{account}" ,:class => 'auth_provider' %>
-              <%else%>
-                  <%= link_to "Remove associated #{account} account", user_token_path(current_user.instance_eval("#{account}_omniauth")) , :method => :delete, :confirm => "Are you sure?" %>  |
-              <%end%>
-            <%end%>
-      </div>
-
     <%end-%>
   </div>
   <div class='clear'></div>
