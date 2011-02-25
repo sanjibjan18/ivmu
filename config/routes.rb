@@ -1,5 +1,6 @@
 Muvi::Application.routes.draw do
 
+  resources :user_profiles
   resources :user_tokens
 
   resources :coming_soon_movies

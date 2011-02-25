@@ -9,5 +9,6 @@
 user = User.create(:email => 'admin@muvi.in')
 user.password = user.password_confirmation = 'password'
 user.is_admin = true
+user.build_user_profile(:display_name => 'admin')
 user.save(false)
 
