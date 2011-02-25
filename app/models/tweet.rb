@@ -8,16 +8,18 @@ class Tweet < ActiveRecord::Base
       search = Twitter::Search.new
       screen_name = user.user_profile.twitter_screen_name
       Movie.all.each do |movie|
-        if user.tweets_fetched_on.blank?
-          search.containing("#{movie.name}").from("#{screen_name}").each do |tweet|
-            user.tweets.create(:movie_id => movie.id, :content => tweet.text)
+        unless movie.name.blank?
+          if user.tweets_fetched_on.blank?
+            search.containing("#{movie.name}").from("#{screen_name}").each do |tweet|
+              user.tweets.create(:movie_id => movie.id, :content => tweet.text)
+            end
+          else
+            search.containing("#{movie.name}").from("#{screen_name}").since_date("#{user.tweets_fetched_on}").each do |tweet|
+              user.tweets.create(:movie_id => movie.id, :content => tweet.text)
+            end
           end
-        else
-          search.containing("#{movie.name}").from("#{screen_name}").since_date("#{user.tweets_fetched_on}").each do |tweet|
-            user.tweets.create(:movie_id => movie.id, :content => tweet.text)
-          end
+          search.clear
         end
-        search.clear
       end
       user.update_attribute("tweets_fetched_on", Date.today.to_s)
     end
