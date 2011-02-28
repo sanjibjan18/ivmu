@@ -83,12 +83,8 @@ class User < ActiveRecord::Base
   end
 
   def create_user_from_omniauth(omniauth)
-    case omniauth['provider']
-    when 'facebook'
-      self.apply_facebook(omniauth)
-    when 'twitter'
-      self.apply_twitter(omniauth)
-    end
+    self.email = (omniauth['extra']['user_hash']['email'] rescue '' ) if omniauth['provider'] == 'facebook'
+    self.build_user_profile(user_info_from_omniauth(omniauth))
     self.user_tokens.build(hash_from_omniauth(omniauth))
   end
 
@@ -97,33 +93,44 @@ class User < ActiveRecord::Base
   end
 
 
+  def hash_from_omniauth(omniauth)
+    { :provider => omniauth['provider'], :uid => omniauth['uid'],
+      :token => (omniauth['credentials']['token'] rescue nil), :secret => (omniauth['credentials']['secret'] rescue nil)
+    }
+  end
+
+
+  def create_user_tokens(omniauth)
+    self.user_tokens.create!(self.hash_from_omniauth(omniauth) )
+    self.update_user_profile(omniauth)
+  end
+
+  def update_user_profile(omniauth)
+    if self.user_profile.blank?
+      UserProfile.create!(user_info_from_omniauth(omniauth).merge!(:user_id => self.id))
+      self.reload
+    end
+    self.user_profile.update_attribute("twitter_screen_name", (omniauth['extra']['user_hash']['screen_name'] rescue '') ) if omniauth['provider'] == "twitter"
+  end
+
   protected
 
-  def apply_facebook(omniauth)
-    if (extra = omniauth['extra']['user_hash'] rescue false)
-     self.email = (extra['email'] rescue '')
-     userprofile(extra['name'])
+
+  def user_info_from_omniauth(omniauth)
+    user_info = { }
+    case omniauth['provider']
+    when 'facebook'
+      user_info[:display_name] = (omniauth['extra']['user_hash']['name'] rescue '')
+    when 'twitter'
+      user_info[:display_name] = user_info[:twitter_screen_name] = (omniauth['extra']['user_hash']['screen_name'] rescue '')
     end
+    user_info
   end
 
-  def apply_twitter(omniauth)
-    if (extra = omniauth['extra']['user_hash'] rescue false)
-       userprofile(extra['screen_name'], extra['screen_name'])
-    end
-  end
 
-  def hash_from_omniauth(omniauth)
-   { :provider => omniauth['provider'], :uid => omniauth['uid'],
-     :token => (omniauth['credentials']['token'] rescue nil), :secret => (omniauth['credentials']['secret'] rescue nil)
-   }
-  end
 
-  def userprofile(name=nil, twitter_name=nil)
-    profile = self.build_user_profile
-    profile.display_name = (name rescue '')
-    profile.twitter_screen_name = twitter_name  unless twitter_name.nil?
-    profile
-  end
+
+
 
 
 end

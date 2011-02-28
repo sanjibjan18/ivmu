@@ -7,19 +7,11 @@ class UserTokensController < ApplicationController
     user_token = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if user_token
       flash[:notice] = "Signed in successfully."
+      user_token.user.update_user_profile(omniauth) # update or create user profile
       sign_in_and_redirect(:user, user_token.user)
     elsif current_user
-      if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
-        current_user.user_tokens.create!(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'], :secret => omniauth['credentials']['secret'])
-         if omniauth['provider'] == "twitter"
-           name = omniauth['extra']['user_hash']['screen_name']
-           if current_user.user_profile.blank?
-              current_user.user_profile.create!(:twitter_screen_name => name, :screen_name => name)
-           else
-              current_user.user_profile.update_attribute("twitter_screen_name", name)
-           end
-         end
-      end
+       current_user.create_user_tokens(omniauth) if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
+       # create a user token
       flash[:notice] = "Authentication successful."
       redirect_to root_url
     else
@@ -34,6 +26,8 @@ class UserTokensController < ApplicationController
       end
     end
   end
+
+
 
   def destroy
     user_token = current_user.user_tokens.find(params[:id])
