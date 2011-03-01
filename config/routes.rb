@@ -1,5 +1,7 @@
 Muvi::Application.routes.draw do
 
+
+
   resources :user_profiles
   resources :user_tokens
 
@@ -24,6 +26,7 @@ Muvi::Application.routes.draw do
     root :to => 'movies#index'
     resources :movies
     resources :users
+    resources :pages
   end
 
 

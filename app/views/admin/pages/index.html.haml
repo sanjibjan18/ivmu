@@ -1,0 +1,22 @@
+%h1 Listing pages
+
+%table
+  %tr
+    %th Title
+    %th Reference
+    %th
+    %th
+    %th
+
+  - @pages.each do |page|
+    %tr
+      %td= page.title
+      %td= page.reference
+      %td= link_to 'Show', [:admin, page]
+      %td= link_to 'Edit', edit_admin_page_path(page)
+      %td= link_to 'Destroy', [:admin, page], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Page', new_admin_page_path
+
