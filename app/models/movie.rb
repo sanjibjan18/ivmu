@@ -5,7 +5,7 @@ class Movie < ActiveRecord::Base
   set_table_name 'films'
 
   acts_as_commentable
-  has_friendly_id :name
+  #has_friendly_id :name
 
   #TODO for now we will go with this. May need roubust solutionss like permalink-fu or friendly id.
  # def to_param
