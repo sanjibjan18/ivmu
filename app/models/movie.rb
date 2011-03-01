@@ -5,6 +5,13 @@ class Movie < ActiveRecord::Base
   set_table_name 'films'
 
   acts_as_commentable
+  # has_friendly_id :name, :use_slug => true
+  
+  #TODO for now we will go with this. May need roubust solutionss like permalink-fu or friendly id.
+  def to_param
+    "#{id}-#{name.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
+  end 
+  
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
