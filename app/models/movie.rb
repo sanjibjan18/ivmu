@@ -5,20 +5,20 @@ class Movie < ActiveRecord::Base
   set_table_name 'films'
 
   acts_as_commentable
-  # has_friendly_id :name, :use_slug => true
-  
+  has_friendly_id :name
+
   #TODO for now we will go with this. May need roubust solutionss like permalink-fu or friendly id.
-  def to_param
-    "#{id}-#{name.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
-  end 
-  
+ # def to_param
+ #   "#{id}-#{name.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
+ # end
+
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
   has_many :tweets
 
   scope :latest, order('initial_release_date desc')
-  scope :limit, lambda{|limit| limit(limit)}
+  scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
 
