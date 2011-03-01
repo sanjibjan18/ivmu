@@ -3,26 +3,43 @@ class Tweet < ActiveRecord::Base
   belongs_to :movie
 
 
-  def self.fetch_tweets(user)
-    unless user.twitter_omniauth.blank?
-      search = Twitter::Search.new
-      screen_name = user.user_profile.twitter_screen_name
-      Movie.all.each do |movie|
-        unless movie.name.blank?
-          if user.tweets_fetched_on.blank?
-            search.containing("#{movie.name}").from("#{screen_name}").each do |tweet|
-              user.tweets.create(:movie_id => movie.id, :content => tweet.text)
-            end
-          else
-            search.containing("#{movie.name}").from("#{screen_name}").since_date("#{user.tweets_fetched_on}").each do |tweet|
-              user.tweets.create(:movie_id => movie.id, :content => tweet.text)
-            end
-          end
-          search.clear
-        end
+  def self.fetch_tweets #(user)
+    last_tweet = Tweet.last
+    search = Twitter::Search.new
+    Movie.name_is_not_blank.latest.limit(6).each do |movie|
+      if last_tweet.blank?
+        Tweet.tweet_pagination(search.containing("#{movie.name}").per_page(100), movie)
+      else
+        Tweet.tweet_pagination(search.containing("#{movie.name}").since_date("#{last_tweet.created_at.to_date.to_s}").per_page(100), movie)
       end
-      user.update_attribute("tweets_fetched_on", Date.today.to_s)
+      search.clear
+    end # all movies end
+  end # def end
+
+
+  def self.tweet_pagination(search, movie)
+    search.each do |tweet|
+      Tweet.create_tweet(tweet, movie)
     end
+    if search.next_page?
+      search.fetch_next_page
+      Tweet.tweet_pagination(search, movie)
+    else
+      search.fetch_next_page
+      search.each do |tweet|
+        Tweet.create_tweet(tweet, movie)
+      end
+    end
+  end
+
+
+  def self.create_tweet(tweet, movie)
+    movie_tweet = { :content => tweet.text }
+    user_profile = UserProfile.find_by_twitter_screen_name(tweet.from_user)
+    if user_profile
+      movie_tweet[:user_id] = user_profile.user_id
+    end
+    movie.tweets.create(movie_tweet)
   end
 
 end

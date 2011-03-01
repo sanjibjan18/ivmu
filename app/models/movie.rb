@@ -12,6 +12,7 @@ class Movie < ActiveRecord::Base
 
   scope :latest, order('initial_release_date desc')
   scope :limit, lambda{|limit| limit(limit)}
+  scope :name_is_not_blank, where("name IS NOT NULL")
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
 
   def average_rating

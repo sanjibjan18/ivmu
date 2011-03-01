@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   end
 
   def fetch_tweets
-    Tweet.fetch_tweets(current_user) if current_user
+    Tweet.fetch_tweets #(current_user) if current_user
     redirect_to root_path
   end
 
