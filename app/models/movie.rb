@@ -5,22 +5,27 @@ class Movie < ActiveRecord::Base
   set_table_name 'films'
 
   acts_as_commentable
-  #has_friendly_id :name
+  # has_friendly_id :name
+  has_permalink [:name], :update => true
 
-  #TODO for now we will go with this. May need roubust solutionss like permalink-fu or friendly id.
- # def to_param
- #   "#{id}-#{name.downcase.gsub(/[^[:alnum:]]/,'-')}".gsub(/-{2,}/,'-')
- # end
+
+  def to_param
+    permalink
+  end
+
 
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
   has_many :tweets
 
+  scope :find_using_id, lambda{|perm| where("permalink = ?", perm) }
   scope :latest, order('initial_release_date desc')
-  scope :limit, lambda{|l| limit(limit)}
+  #scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
+
+
 
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count

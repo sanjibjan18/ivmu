@@ -7,7 +7,7 @@ class ComingSoonMoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_using_id(params[:id]).first
   end
 
 end

@@ -9,7 +9,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_using_id(params[:id]).first
   end
 
   def new
@@ -17,7 +17,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_using_id(params[:id]).first
   end
 
   def create
@@ -35,7 +35,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_using_id(params[:id]).first
 
     respond_to do |format|
       if @movie.update_attributes(params[:movie])
