@@ -4,6 +4,6 @@
 .containerIn
   = render :partial => 'shared/movies', :locals => { :from => 'home'}
   .right
-    %img{:src => "images/pagination.jpg"}
+    = will_paginate @movies
   .clear
 

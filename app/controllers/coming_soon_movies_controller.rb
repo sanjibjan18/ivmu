@@ -3,7 +3,7 @@ class ComingSoonMoviesController < ApplicationController
   layout 'website'
 
   def index
-    @movies = Movie.comming_soon_movies
+    @movies = Movie.comming_soon_movies.paginate(:page => params[:page] || 1, :per_page => 10)
   end
 
   def show

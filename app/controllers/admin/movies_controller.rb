@@ -5,7 +5,7 @@ class Admin::MoviesController < ApplicationController
 
   def index
     @search = Movie.search(params[:search])
-    @movies = @search.all.paginate(:page => params[:page] || 1, :per_page => 15)
+    @movies = @search.all.paginate(:page => params[:page] || 1, :per_page => 10)
   end
 
   def show
