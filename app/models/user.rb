@@ -70,9 +70,7 @@ class User < ActiveRecord::Base
 
   def reviwed_movie?(movie)
     #reviewed_movies.include?(movie)
-   ac =  self.reviews.where(:movie_id => movie.id).exists? ? true : false
-   puts "ppppppppdddddddpp #{ac}"
-   ac
+   self.reviews.where(:movie_id => movie.id).exists? ? true : false
   end
 
   def has_user_token?(provider, uid)

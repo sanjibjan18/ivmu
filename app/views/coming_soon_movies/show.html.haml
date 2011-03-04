@@ -84,17 +84,23 @@
           %h4 as Pramod Bharadwaj
       .clear
   .clear
-  .comments
-    .leftBox.left
-      %span Sort By :
-      %select
-        %option{:value => "volvo"} Hindi
-        %option{:value => "saab"} Kannada
-        %option{:value => "mercedes"} English
-        %option{:value => "audi"} Tamil
-      .commentBox
-    .rightBox.right
-      .right
-        %img{:src => "/images/pagination.jpg"}
-      .commentBox
+  .right
+    = link_to pluralize(@movie.comments.count, 'comment') , '#'
+  .clear
+  #tabs
+    %ul
+      %li
+        %a{:href => "#tabs-1"} Critics
+      %li
+        %a{:href => "#tabs-2"} Users
+      %li
+        %a{:href => "#tabs-3"} Friends
+    #tabs-1
+      %p sort by date
+    #tabs-2
+      %p users
+    #tabs-3
+      %p friends
+  %br
+  = render '/comments/form', {:movie => @movie}
 
