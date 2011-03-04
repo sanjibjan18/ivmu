@@ -25,7 +25,9 @@ class Movie < ActiveRecord::Base
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
 
-
+  def banner_image
+    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}"
+  end
 
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count

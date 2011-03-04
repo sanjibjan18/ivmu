@@ -4,7 +4,7 @@
       - unless movie.blank?
         .box.left
           .moviBox.left
-            = link_to image_tag('image2.jpg'), (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
+            = link_to image_tag(movie.banner_image), (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .title.right
             = link_to "<h3> #{movie.name} </h3>".html_safe, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .rating.right
