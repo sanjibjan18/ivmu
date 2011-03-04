@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
 
   def banner_image
-    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}"
+    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
   end
 
   def average_rating
