@@ -1,41 +1,113 @@
-.movie_display
-  .left
-    = @movie.name
+= content_for :heading do
+  %span Movie Review:
+  = @movie.name
+
+.containerIn
+  .moviBanner.left
+    .moviImage.left
+      %img{:height => "200px;", :src => "/images/image1.jpg", :width => "125px"}
+    %a{:href => "#"}
+      %img{:src => "/images/viewtrailer.jpg"}
     %br
-    = image_tag('no-logo.png')
-  .left.details
-    %div.cast
-      %span.label Cast
-      = @movie.performances_actor
-    %div.director
-      %span.label Director:
-      = @movie.directed_by
-    %div.release
-      %span.label Release Date:
-      = @movie.initial_release_date
-    %div#rate
-      = render :partial => 'shared/rate'
-    %div.review
-      %span.label Movie Review:
-      %div Critics
-      %div
-        Users
-        = "#{@movie.average_rating_percent} %"
-      - if current_user
-        %div
-          = @movie.fb_friends_liked(current_user).count rescue 0
-          friends liked it.
-
-    %h4 Comments
-    - @movie.comments.each do |comment|
-      = comment.comment
-    = render '/comments/form', {:movie => @movie}
-
-- if current_user && current_user.reviwed_movie?(@movie)
-  #rate_movie{ :style => 'display:none;'}
-    = render :partial => "reviews/form", :locals => { :movie => @movie}
-  = content_for :js do
-    = javascript_include_tag 'facebox'
-    %script{:type => "text/javascript"}
-      jQuery(document).ready(function($) { $('a[rel*=facebox]').facebox() })
+    %a{:href => "#"}
+      %img{:src => "/images/followbutton.jpg"}
+  .moviDetail.right
+    .detail
+      %h3 Movie
+      .left{:style => "width:42%"}
+        .criticsRating
+          %h4 Critics rating
+          .ratingBar
+            %img{:src => "/images/redbar.jpg"}
+            %span 54%
+          = link_to "Average of 20 critics", '#'
+        .criticsRating
+          %h4 Users rating
+          .ratingBar
+            %img{:src => "/images/greenbar.jpg"}
+            %span= "#{@movie.average_rating_percent} %"
+          = link_to "Average of 20 critics", '#'
+      .friendsLiked.right
+        %h4 Friends Linked
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %img{:src => "/images/bubblessabharwal.jpg"}
+        %br
+        = render :partial => 'shared/rate'
+        %br
+        %a{:href => "#"}
+          %img{:src => "/images/recomendbutton.jpg"}
+      .clear
+    .detail
+      %h3 MOVIE INFORMATION
+      %h5
+        DIRECTOR:
+        %span.director Raj Kumar
+        RELEASE DATE :
+        %span 7 January 2011 (India)
+      %h5.cast
+        CAST
+        %a{:href => ""} See More(32)
+      .leftBox.left
+        .actress.left
+          %img{:src => "/images/bubblessabharwal.jpg"}
+        .actressNames.right
+          %h4.large Bubbles Sabharwal
+          %h4 as Mallika Sehgal
+        .clear
+        .actress.left
+          %img{:src => "/images/ranimukherjee.jpg"}
+        .actressNames.right
+          %h4.large Rani Mukherjee
+          %h4 as Meera Gaity
+        .clear
+        .actress.left
+          %img{:src => "/images/myrakarn.jpg"}
+        .actressNames.right
+          %h4.large Myra Karn
+          %h4 as Jessica lall
+      .rightBox.right
+        .actress.left
+          %img{:src => "/images/neilbhoopalam.jpg"}
+        .actressNames.right
+          %h4.large Neil Bhoopalam
+          %h4 as Vikram Jai Singh
+        .clear
+        .actress.left
+          %img{:src => "/images/vidyabalan.jpg"}
+        .actressNames.right
+          %h4.large Vidya Balan
+          %h4 as Sabrina Lall
+        .clear
+        .actress.left
+          %img{:src => "/images/shireeshsharma.jpg"}
+        .actressNames.right
+          %h4.large Shireesh Sharma
+          %h4 as Pramod Bharadwaj
+      .clear
+  .clear
+  .right
+    = link_to pluralize(@movie.comments.count, 'comment') , '#'
+  .clear
+  #tabs
+    %ul
+      %li
+        %a{:href => "#tabs-1"} Critics
+      %li
+        %a{:href => "#tabs-2"} Users
+      %li
+        %a{:href => "#tabs-3"} Friends
+    #tabs-1
+      %p sort by date
+    #tabs-2
+      %p users
+    #tabs-3
+      %p friends
+  %br
+  = render '/comments/form', {:movie => @movie}
+#rate_movie{:style => 'display:none;'}
+  = render :partial => "reviews/form", :locals => { :movie => @movie}
 

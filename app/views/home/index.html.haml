@@ -1,2 +1,9 @@
-= render :partial => 'shared/movies', :locals => { :from => 'home'}
+= content_for :heading do
+  Latest Movie
+  %span Reviews
+.containerIn
+  = render :partial => 'shared/movies', :locals => { :from => 'home'}
+  .right
+    %img{:src => "images/pagination.jpg"}
+  .clear
 

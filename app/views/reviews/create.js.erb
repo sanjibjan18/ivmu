@@ -1,3 +1,3 @@
 $(document).trigger('close.facebox');
-$('#rate').html("<%= escape_javascript(render '/shared/rate') %>");
+$('#rate_movie').html("<%= escape_javascript(render :partial => "reviews/form", :locals => { :movie => @movie}) %>");
 

@@ -59,7 +59,7 @@
   margin: 0;
 }
 
-#facebox .footer {
+#facebox .facebox_footer {
   border-top: 1px solid #DDDDDD;
   padding-top: 5px;
   margin-top: 10px;
@@ -94,3 +94,4 @@
   position: absolute;
   height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
 }
+

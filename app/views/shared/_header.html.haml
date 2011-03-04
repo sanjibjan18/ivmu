@@ -1,0 +1,36 @@
+#header
+  .headerLeft.left
+    %img{:src => "/images/logo.gif"}/
+    %ul.tabs
+      %li= link_to 'Reviews', root_path , :class => ('active' if request.fullpath == '/')
+      %li= link_to 'Coming Soon', coming_soon_movies_path , :class => ('active' if request.fullpath =~ /coming_soon_movies/)
+      %li
+        %a{:href => "#"} Movie News
+      %li
+        %a{:href => "#"} Celebrities
+      %li
+        %a{:href => "#"} Community
+  .headerRight.right
+    %ul.links.right
+      - unless current_user
+        %li= link_to 'Register', new_user_registration_path, :class => 'register'
+        %li= link_to 'Login', new_user_session_path, :class => 'login'
+        %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
+      - else
+        %li= link_to 'profile', edit_user_profile_path(current_user)
+        %li.last= link_to 'Logout', destroy_user_session_path
+    .moviSelect.right
+      %span Movie Language
+      %select
+        %option{:value => "volvo"} Hindi
+        %option{:value => "saab"} Kannada
+        %option{:value => "mercedes"} English
+        %option{:value => "audi"} Tamil
+    .search.right
+      %form#search_box{:action => "#"}
+        .wrapper.left
+          %input#search{:name => "search", :placeholder => "Enter Celebrity Name or Movie", :type => "text"}/
+          %button.search_btn{:type => "submit"}
+            %img{:src => "/images/searchIcon.png", :title => "Search"}/
+        .btn.right Search
+

@@ -1,23 +1,27 @@
 - unless @movies.blank?
-  - @movies.in_groups_of(3) do |group|
+  - @movies.in_groups_of(2) do |group|
     - group.each do |movie|
       - unless movie.blank?
-        .movie.left
-          .left
-            = image_tag('no-logo.png')
-            %br
-              = link_to movie.name, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
-          .left
-            %div Critics
+        .box.left
+          .moviBox.left
+            = link_to image_tag('image2.jpg'), (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
+          .title.right
+            = link_to "<h3> #{movie.name} </h3>".html_safe, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
+          .rating.right
+            %h4 Critics rating
+            .ratingBar
+              %img{:src => "images/R-RatingBar.jpg"}
+              %span 54%
+            %h4 Users rating
+            .ratingBar
+              %img{:src => "images/G-RatingBar.jpg"}
+              %span= "#{movie.average_rating_percent} %"
             %div
-              Users
-              = "#{movie.average_rating_percent} %"
-            - if current_user
-              %div
-                = movie.fb_friends_liked(current_user).count rescue 0
-                friends liked it.
-          .clear
-    .clear
+            %h4
+              = no_of_pepople_liked(movie)
+          %a{:href => "#"}
+            %img{:src => "images/viewTrailerBtn.jpg"}
+
 -else
   %h3 No Movies Found
 

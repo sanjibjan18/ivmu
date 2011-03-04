@@ -1,5 +1,10 @@
-%h2 Comming soon
-%hr
+= content_for :heading do
+  Comming soon
 
-= render :partial => 'shared/movies', :locals => { :from => 'coming_soon'}
+.containerIn
+  = render :partial => 'shared/movies', :locals => { :from => 'coming_soon'}
+  .clear
+  .right
+    %img{:src => "images/pagination.jpg"}
+  .clear
 
