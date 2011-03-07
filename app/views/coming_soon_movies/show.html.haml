@@ -14,13 +14,14 @@
   .moviDetail.right
     .detail
       %h3 Movie
-      .left{:style => "width:42%"}
-
+      .detailLeft.left
         .criticsRating
           %h4 Users rating
-          .ratingBar
-            %img{:src => "/images/greenbar.jpg"}
-            %span= "#{@movie.average_rating_percent} %"
+          .ratingBar.left
+            = ratingbar(@movie.average_rating_percent)
+          .ratingvalue.right
+            = "#{@movie.average_rating_percent} %"
+          .clear
           = link_to "Average of 20 critics", '#'
       .friendsLiked.right
         %h4 Friends Linked

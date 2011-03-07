@@ -9,13 +9,16 @@
             = link_to "<h3> #{movie.name} </h3>".html_safe, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .rating.right
             %h4 Critics rating
-            .ratingBar
-              %img{:src => "images/R-RatingBar.jpg"}
-              %span= "#{movie.average_critics_reviews_rating_percent} %"
+            .ratingBar.left
+              = ratingbar(movie.average_critics_reviews_rating_percent)
+            .ratingvalue.right
+              = "#{movie.average_critics_reviews_rating_percent} %"
+            .clear
             %h4 Users rating
-            .ratingBar
-              %img{:src => "images/G-RatingBar.jpg"}
-              %span= "#{movie.average_rating_percent} %"
+            .ratingBar.left
+              = ratingbar(movie.average_rating_percent)
+            .ratingvalue.right
+              = "#{movie.average_rating_percent} %"
             %div
             %h4
               = no_of_pepople_liked(movie)
