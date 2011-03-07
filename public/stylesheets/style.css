@@ -42,7 +42,7 @@ body {
 	margin: 0px;
 	padding:0px 0px 0px 0px;
 	color: #5a584e;
-	 font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
+	font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
 	font-variant: normal;
 	font-weight: normal;
 	font-size: 12px;
@@ -108,7 +108,7 @@ ul.links li a.login{
 	top:-10px;
 }
 
-.tabs{margin:35px 0px 0px 0px;}
+.tabs{margin:40px 0px 0px 0px;}
 
 .tabs li{display: inline;margin: 0;}
 
@@ -141,7 +141,7 @@ ul.links li a.login{
 }
 
 .moviSelect{
-	background:#E887CE url(/images/selectBg.jpg) repeat-x;
+	background:url(/images/selectBg.jpg) repeat-x;
 	line-height:25px;
 	margin-top:15px;
 	width:64%;
@@ -153,17 +153,17 @@ ul.links li a.login{
 .moviSelect span{color:#fff;font-weight:bold;font-size:14px;text-shadow: 2px 2px 2px #5e5e5e;}
 
 .moviSelect select{
-	background-color:#fff;
+	background:#fff url(/images/selectInnerBg.jpg) repeat-x top;
 	padding:4px;
-	-moz-border-radius:5px;
+	-moz-border-radius:8px;
 	-webkit-border-radius:5px;
 	border:none;
 }
 
 .search{
 	background:url(/images/searchBg.jpg) repeat-x;
-	margin-top:35px;
-	width:85%;
+	margin-top:30px;
+	width:75%;
 	padding:5px 10px;
     text-align:left;
 	border:1px solid #779fb9;
@@ -174,16 +174,16 @@ ul.links li a.login{
 }
 
 #search_box .wrapper {
-	 background:url(/images/search.jpg) repeat-x;
+	 background: url(/images/search.jpg) repeat-x;
 	 border:1px solid #6e9ab5;
-	 width:70%;
-	 padding:5px 5px 0px 30px;
+	 width:65%;
+	 padding:5px 5px 3px 32px;
 	 position:relative;
 	 -moz-border-radius:5px;
   	 -webkit-border-radius:5px;
 	}
 
-#search_box input { border:none; color:#333; font:bold 11px Helvetica, Arial, sans-serif;  }
+#search_box input { border:none; font-color:#445B6B; font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;font-size:11px; width:100%;background-color:none; }
 
 #search_box button {
 	height:20px;
@@ -194,8 +194,8 @@ ul.links li a.login{
 	background:url(/images/search.jpg) repeat-x;
 	border:none;
 }
-.search div.btn{width:15%;color:#fff;margin-top:10px;}
-
+.search div.btn input{width:16%;color:#fff;margin-top:5px;background-image:none;background-color:none;}
+.search div.btn input.ppp{background-image:none;background-color:none;}
 #wrapper{
 	margin:0px auto;
 	padding:8px 0px 0px 0px;
