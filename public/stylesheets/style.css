@@ -90,14 +90,23 @@ ul.links li{
 	padding-right:15px;
 	padding-left:15px;
 	background:url(/images/line.jpg) no-repeat right;
-	position:relative;
-	top:-10px;
+	line-height:30px;
 }
 
 ul.links li.last{background-image:none;position:relative;top:0px;}
 ul.links li a{color:#fff;text-decoration:none;font-weight:bold;}
-ul.links li a.register{background:url(/images/Reg_icon.png) no-repeat left;padding-left:18px;}
-ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-left:18px;}
+ul.links li a.register{
+	background:url(/images/Reg_icon.png) no-repeat left;
+	padding-left:18px;
+	position:relative;
+	top:-10px;
+}
+ul.links li a.login{
+	background:url(/images/login.gif) no-repeat left;
+	padding-left:18px;
+	position:relative;
+	top:-10px;
+}
 
 .tabs{margin:35px 0px 0px 0px;}
 
