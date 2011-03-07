@@ -8,26 +8,26 @@ vertical-align : baseline;
 font-style:normal;
 font-weight:normal;
 }
-
+ 
 :focus {
 outline : 0;
 }
-
-
+ 
+ 
 table {
 border-collapse : separate;
 border-spacing : 0;
 }
-
+ 
 caption, th, td {
 text-align : left;
 font-weight : normal;
 }
-
+ 
 blockquote:before, blockquote:after, q:before, q:after {
 content : "";
 }
-
+ 
 blockquote, q {
 quotes : "" "";
 }
@@ -38,25 +38,24 @@ quotes : "" "";
      src: url("NeoSans-Medium.otf");
    }
 
-body {
-	margin: 0px;
-	padding:0px 0px 0px 0px;
-	color: #5a584e;
+body { 
+	margin: 0px; 
+	padding:0px 0px 0px 0px; 
+	color: #5a584e; 
 	 font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
-	font-variant: normal;
-	font-weight: normal;
-	font-size: 12px;
+	font-variant: normal; 
+	font-weight: normal; 
+	font-size: 12px; 
 	line-height: normal;
 	border-top:3px solid #303747;
-	background:#8087A4 url(/images/body.jpg) repeat-x;
-
+	background:#337b9d url(/images/body.jpg) repeat-x;
+	
 }
 .left{float:left;}
 .right{float:right;}
 .clear{clear:both;}
 p{line-height: 1.5em;}
 a{text-decoration:none;}
-a:hover{text-decoration:underline;}
 
 .main{background:url(/images/bg.jpg) no-repeat top center;min-height:600px;}
 
@@ -90,14 +89,14 @@ ul.links li{
 	text-decoration:none;
 	padding-right:15px;
 	padding-left:15px;
-	background:  url(/images/line.jpg) no-repeat right;
-	top: 10px;
-
+	background:url(/images/line.jpg) no-repeat right;
+	position:relative;
+	top:-10px;
 }
 
-ul.links li.last{background-image:none;  }
+ul.links li.last{background-image:none;position:relative;top:0px;}
 ul.links li a{color:#fff;text-decoration:none;font-weight:bold;}
-ul.links li a.register{background:url(/images/Reg_icon.png) no-repeat left; padding-left:18px;}
+ul.links li a.register{background:url(/images/Reg_icon.png) no-repeat left;padding-left:18px;}
 ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-left:18px;}
 
 .tabs{margin:35px 0px 0px 0px;}
@@ -138,7 +137,7 @@ ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-lef
 	margin-top:15px;
 	width:64%;
 	padding:3px 5px;
-	-moz-border-radius:5px;
+	-moz-border-radius:5px;	
 	-webkit-border-radius:5px;border:1px solid #ea7cd3;
 }
 
@@ -147,7 +146,7 @@ ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-lef
 .moviSelect select{
 	background-color:#fff;
 	padding:4px;
-	-moz-border-radius:5px;
+	-moz-border-radius:5px;	
 	-webkit-border-radius:5px;
 	border:none;
 }
@@ -172,7 +171,7 @@ ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-lef
 	 padding:5px 5px 0px 30px;
 	 position:relative;
 	 -moz-border-radius:5px;
-  	 -webkit-border-radius:5px;
+  	 -webkit-border-radius:5px;	
 	}
 
 #search_box input { border:none; color:#333; font:bold 11px Helvetica, Arial, sans-serif;  }
@@ -208,7 +207,7 @@ ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-lef
 	-webkit-border-radius:5px;
 	padding:20px;
 }
-.fontChange{}
+
 .box{
 	width:44%;
 	padding:15px 12px;
@@ -221,6 +220,7 @@ ul.links li a.login{background:url(/images/login.gif) no-repeat left;padding-lef
 	margin-bottom:15px;
 	margin-right:13px;
 }
+
 
 .moviBox{
 	width:46%;
@@ -304,14 +304,13 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 .moviImage{
 	width:46%;
-	background: url(/images/bannerBottom.jpg) no-repeat center bottom;
+	background: url(/images/banvnerBottom.jpg) no-repeat center bottom;
 	min-height:210px;
 	margin-right:5px;
 }
 
 .moviDetail{width:75%;}
-.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;min-height:200px;
-padding:8px 10px 8px 10px;border:1px solid #ddd;margin-bottom:15px;}
+.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;min-height:250px;padding:8px 10px;border:1px solid #ddd;margin-bottom:15px;}
 
 .detail h3{
 	color:#fff;
@@ -325,13 +324,6 @@ padding:8px 10px 8px 10px;border:1px solid #ddd;margin-bottom:15px;}
 .detail h4{color:#222;margin-top:5px;}
 .detail p{color:#222;padding:10px;}
 
-.detail h5{color:#555;line-height:28px;font-size:12px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
-.detail h5 span{color:#5694bd;}
-.detail h5 span.director{margin-right:100px;}
-
-.detail h5.cast{line-height:25px;border-bottom:none;font-size:11px;}
-.detail h5.cast a{color:#5694bd;text-decoration:none;}
-#comment_comment { width: 70%;}
 .criticsRating{
 	padding:5px;
 	min-height:50px;
@@ -346,19 +338,13 @@ padding:8px 10px 8px 10px;border:1px solid #ddd;margin-bottom:15px;}
 .criticsRating a{color:#649FC1;}
 .friendsLiked{border-left:1px solid #ddd;min-height:100px;width:52%;padding:5px;}
 
-.leftBox{width:49%;min-height:100px;}
-.rightBox{width:49%;min-height:100px;}
 
-.actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:10px;}
+.actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:20%;height:35px;}
 .actress img{width:35px;height:35px;}
 
-div.actressNames{width:75%;}
-div.actressNames h4.large{color:#5d91ba;margin:5px;font-size:12px;}
-div.actressNames h4{color:#222;margin:5px;font-size:10px;margin:0px padding:0px;}
-
-.comments{border-top:2px solid #7da5be;border-left:1px solid #ddd;border-bottom:2px solid #ddd;border-right:1px solid #ddd;padding:10px 20px;min-height:280px;}
-
-.commentBox{border:1px solid #76d9ec;background:url(/images/commentBoxBg.jpg) no-repeat bottom;height:250px;}
+div.actressNames{width:48%;}
+div.actressNames h4.large{color:#5d91ba;margin:5px;font-size:13px;}
+div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;}
 
 .footer{
 	width:950px;
@@ -392,4 +378,3 @@ div.actressNames h4{color:#222;margin:5px;font-size:10px;margin:0px padding:0px;
 
 .footerLeft{width:80%;}
 .footerRight{width:28%;position:relative;top:-61px;text-align:right;}
-
