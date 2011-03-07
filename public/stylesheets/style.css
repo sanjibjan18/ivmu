@@ -8,26 +8,26 @@ vertical-align : baseline;
 font-style:normal;
 font-weight:normal;
 }
- 
+
 :focus {
 outline : 0;
 }
- 
- 
+
+
 table {
 border-collapse : separate;
 border-spacing : 0;
 }
- 
+
 caption, th, td {
 text-align : left;
 font-weight : normal;
 }
- 
+
 blockquote:before, blockquote:after, q:before, q:after {
 content : "";
 }
- 
+
 blockquote, q {
 quotes : "" "";
 }
@@ -38,18 +38,18 @@ quotes : "" "";
      src: url("NeoSans-Medium.otf");
    }
 
-body { 
-	margin: 0px; 
-	padding:0px 0px 0px 0px; 
-	color: #5a584e; 
+body {
+	margin: 0px;
+	padding:0px 0px 0px 0px;
+	color: #5a584e;
 	 font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
-	font-variant: normal; 
-	font-weight: normal; 
-	font-size: 12px; 
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 12px;
 	line-height: normal;
 	border-top:3px solid #303747;
 	background:#337b9d url(/images/body.jpg) repeat-x;
-	
+
 }
 .left{float:left;}
 .right{float:right;}
@@ -146,7 +146,7 @@ ul.links li a.login{
 	margin-top:15px;
 	width:64%;
 	padding:3px 5px;
-	-moz-border-radius:5px;	
+	-moz-border-radius:5px;
 	-webkit-border-radius:5px;border:1px solid #ea7cd3;
 }
 
@@ -155,7 +155,7 @@ ul.links li a.login{
 .moviSelect select{
 	background-color:#fff;
 	padding:4px;
-	-moz-border-radius:5px;	
+	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border:none;
 }
@@ -180,7 +180,7 @@ ul.links li a.login{
 	 padding:5px 5px 0px 30px;
 	 position:relative;
 	 -moz-border-radius:5px;
-  	 -webkit-border-radius:5px;	
+  	 -webkit-border-radius:5px;
 	}
 
 #search_box input { border:none; color:#333; font:bold 11px Helvetica, Arial, sans-serif;  }
@@ -255,8 +255,26 @@ ul.links li a.login{
 
 .rating h4{color:#222;margin-top:5px;}
 
-.ratingBar span{font-size:13px;color:#000;position:relative;top:-10px;left:5px;height:20px;margin:0px;padding:0px;}
+.detailLeft { min-height:100px;width:42%; }
+.ratingBar{
+    width:68%;
+    background-color:#ddd;border: 1px solid #ccc;
+    height:15px;
+    margin:5px 0px;
+    padding:3px;
 
+}
+.positive { background-color:green; }
+.negative { background-color:red; }
+
+.ratingvalue {
+  width:25%;
+  height:28px;
+  line-height:30px;
+  margin-left:5px;
+  font-weight:bold;
+  color:#000;
+}
 .rating h4 a {background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;}
 .sidebar{
 	width:22%;
@@ -387,3 +405,4 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 .footerLeft{width:80%;}
 .footerRight{width:28%;position:relative;top:-61px;text-align:right;}
+
