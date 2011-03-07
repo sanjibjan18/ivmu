@@ -294,12 +294,8 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 
 
 .GrayHeaderBox{
-	background:#fff url(/images/grayBoxHeader.jpg) repeat-x;
+	background:#fff url(/images/grayBoxHeader.jpg) no-repeat top;
 	min-height:160px;
-	-moz-border-radius:8px;
-	-webkit-border-radius:8px;
-	border-top:1px solid #999DA9;
-	border:1px solid #DAE7ED;
 	border-bottom:1px solid #B1B1B1;
 	padding:0px 10px 10px 10px;
 	margin-bottom:20px;
