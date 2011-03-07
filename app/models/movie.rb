@@ -18,6 +18,7 @@ class Movie < ActiveRecord::Base
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
   has_many :tweets
+  has_many :critics_reviews
 
   scope :find_using_id, lambda{|perm| where("permalink = ?", perm) }
   scope :latest, order('initial_release_date desc')
@@ -35,6 +36,10 @@ class Movie < ActiveRecord::Base
 
   def average_rating_percent
     reviews.blank? ? 0 : (100 * reviews.select("SUM(rating) as total").first.total.to_i) / (reviews.count * 5)
+  end
+
+  def average_critics_reviews_rating_percent
+    critics_reviews.blank? ? 0 : (100 * critics_reviews.select("SUM(rating) as total").first.total.to_i) / (critics_reviews.count * 5)
   end
 
   def fb_friends_liked(user)

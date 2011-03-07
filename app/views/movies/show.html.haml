@@ -19,7 +19,7 @@
           %h4 Critics rating
           .ratingBar
             %img{:src => "/images/redbar.jpg"}
-            %span 54%
+            %span= "#{@movie.average_critics_reviews_rating_percent} %"
           = link_to "Average of 20 critics", '#'
         .criticsRating
           %h4 Users rating

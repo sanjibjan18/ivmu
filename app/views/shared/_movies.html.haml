@@ -11,7 +11,7 @@
             %h4 Critics rating
             .ratingBar
               %img{:src => "images/R-RatingBar.jpg"}
-              %span 54%
+              %span= "#{movie.average_critics_reviews_rating_percent} %"
             %h4 Users rating
             .ratingBar
               %img{:src => "images/G-RatingBar.jpg"}
