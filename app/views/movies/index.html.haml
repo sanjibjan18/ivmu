@@ -1,4 +1,6 @@
 = content_for :heading do
+  %span search for
+  = (params[:search][:name_contains] rescue '')
 .containerIn
   = render :partial => 'shared/movies', :locals => { :from => 'home'}
   .right

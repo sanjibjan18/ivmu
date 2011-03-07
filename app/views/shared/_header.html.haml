@@ -29,9 +29,9 @@
     .search.right
       = form_for Movie.search, :url => movies_path, :html => {:method => :get, :id=> 'search_box'} do |f|
         .wrapper.left
-          = f.text_field :name_contains,:placeholder => "Enter Celebrity Name or Movie"
-          %button.search_btn{:type => "submit"}
-            %img{:src => "/images/searchIcon.png", :title => "Search"}/
+          = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie"
+          %button.search_btn
+            %img{:src => "/images/searchIcon.png", :title => "Search"}
         .btn.right
-          = f.submit "Search",:class => 'ppp'
+          = f.submit "Search"
 
