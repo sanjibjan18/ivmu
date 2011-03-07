@@ -22,7 +22,7 @@
           .ratingvalue.right
             = "#{@movie.average_critics_reviews_rating_percent} %"
           .clear
-          = link_to "Average of 20 critics", '#'
+          = link_to "Average of #{@movie.critics_reviews.count} critics", '#'
         .criticsRating
           %h4 Users rating
           .ratingBar.left
@@ -30,7 +30,7 @@
           .ratingvalue.right
             = "#{@movie.average_rating_percent} %"
           .clear
-          = link_to "Average of 20 critics", '#'
+          = link_to "Average of #{@movie.reviews.count} critics", '#'
       .friendsLiked.right
         %h4 Friends Linked
         %img{:src => "/images/bubblessabharwal.jpg"}
