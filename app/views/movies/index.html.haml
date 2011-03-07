@@ -1,0 +1,7 @@
+= content_for :heading do
+.containerIn
+  = render :partial => 'shared/movies', :locals => { :from => 'home'}
+  .right
+    = will_paginate @movies, {:page_links => false}
+  .clear
+
