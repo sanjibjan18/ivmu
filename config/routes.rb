@@ -1,14 +1,8 @@
 Muvi::Application.routes.draw do
-
-
-
   resources :critics_reviews
-
   resources :user_profiles
   resources :user_tokens
-
   resources :coming_soon_movies
-
   root :to => "home#index"
   match 'fetch' => 'home#fetch'
   match 'fetch_tweets' => 'home#fetch_tweets'
@@ -16,13 +10,11 @@ Muvi::Application.routes.draw do
   devise_for :users
   match '/auth/:provider/callback' => 'user_tokens#create'
 
-
   resources :movies do
     resources :comments
     resources :reviews
     resources :recommendations
   end
-
 
   namespace :admin do
     root :to => 'movies#index'

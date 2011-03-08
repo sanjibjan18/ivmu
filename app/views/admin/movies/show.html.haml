@@ -64,10 +64,13 @@
     %td= @movie.award_nominations_nominated_work
   %tr
     %th Meta Title
-    %td= @movie.meta_title
+    %td= @movie.meta_detail.meta_title
   %tr
     %th Meta Keywords
-    %td= @movie.meta_keywords
+    %td= @movie.meta_detail.meta_keywords
+  %tr
+    %th Meta Description
+    %td= @movie.meta_detail.meta_description
 = link_to 'Edit', edit_admin_movie_path(@movie)
 \- or -
 = link_to 'Back', admin_movies_path

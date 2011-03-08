@@ -19,7 +19,11 @@
   .field
     = f.label :value
     %br
-    = f.text_area :value
+    = f.text_area :value, :rows => 10
+  .field
+    = f.label :useage
+    %br
+    = f.text_field :useage
   %hr
   .actions
     = f.submit 'Save setting'
