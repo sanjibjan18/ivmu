@@ -2,6 +2,8 @@ Muvi::Application.routes.draw do
 
 
 
+  resources :critics_reviews
+
   resources :user_profiles
   resources :user_tokens
 

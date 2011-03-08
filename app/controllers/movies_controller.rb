@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find_using_id(params[:id]).includes(:comments).first
+    @movie = Movie.find_using_id(params[:id]).includes([:comments, :critics_reviews]).first
   end
 end
 
