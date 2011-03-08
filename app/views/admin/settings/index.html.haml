@@ -1,0 +1,29 @@
+-content_for :heading do
+  %h2 Listing settings
+
+.left.search_form
+  = form_for [:admin, @search] do |f|
+    = f.text_field :name_starts_with, :placeholder => 'Enter name', :size => 20
+    = f.text_field :key_starts_with, :placeholder => 'Enter key'
+    = f.submit 'Search'
+.clear
+%hr
+  = link_to "Add new setting", new_admin_setting_path
+%table.listing
+  %tr
+    %th Name
+    %th Key
+    %th Value
+    %th
+    %th
+
+  - @settings.each do |setting|
+    %tr
+      %td= setting.name
+      %td= setting.key
+      %td= setting.value
+      %td= link_to 'Edit', edit_admin_setting_path(setting)
+      %td= link_to 'Destroy', [:admin, setting], :confirm => 'Are you sure?', :method => :delete
+
+%br
+

@@ -67,6 +67,12 @@
   %br
   = f.label :award_nominations_nominated_work
   = f.text_field :award_nominations_nominated_work
+  %br
+  = f.label :meta_title
+  = f.text_field :meta_title
+  %br
+  = f.label :meta_keywords
+  = f.text_area :meta_keywords, :rows => 5
   %hr
   .actions
     = f.submit 'Save'
