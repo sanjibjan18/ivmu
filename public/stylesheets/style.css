@@ -183,7 +183,7 @@ ul.links li a.login{
   	 -webkit-border-radius:5px;
 	}
 
-#search_box input { border:none; font-color:#445B6B; font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;font-size:11px; width:100%;background-color:none; }
+#search_box input { border:none; font-color:#445B6B; font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;font-size:11px; width:100%; background:url(/images/no_img.jpg) no-repeat;}
 
 #search_box button {
 	height:20px;
@@ -194,7 +194,8 @@ ul.links li a.login{
 	background:url(/images/search.jpg) repeat-x;
 	border:none;
 }
-.search div.btn input{width:16%;color:#fff;margin-top:5px;background-image:none;background-color:none;}
+.search div.btn input{width:16%;color:#fff;margin-top:10px;background:url(/images/no_img.jpg) no-repeat;background-color:none;font-size:15px;}
+
 #wrapper{
 	margin:0px auto;
 	padding:8px 0px 0px 0px;
