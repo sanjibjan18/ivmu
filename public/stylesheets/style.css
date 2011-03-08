@@ -145,11 +145,16 @@ ul.links li a.login{
 .moviSelect span{color:#fff;font-size:12px;text-shadow: 1px -1px #777, 0px 0px #777;padding:0px;}
 
 .moviSelect select{
-	background: #fff url(/images/selectInnerBg.jpg) repeat-x top;
-	padding:4px;
-	-moz-border-radius:8px;
-	-webkit-border-radius:5px;
-	 
+  background: #fff;
+  color: #000;
+  border:none;
+  font-size: 11px;
+  line-height: 2em;
+  margin: 0;
+  padding: 3px 0px;
+ -webkit-border-top-left-radius:8px;
+ -moz-border-radius:8px;
+ background-image:none;
 }
 
 .search{
