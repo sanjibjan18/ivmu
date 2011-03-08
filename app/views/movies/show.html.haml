@@ -112,7 +112,7 @@
           - unless critics_review.blank?
             %div{:style => 'margin-bottom:9px;'}
               %p
-                = critics_review.summary
+                = truncate(critics_review.summary, :length => 120)
               %p
                 = link_to "Read full review", critics_review
               = Time.parse(critics_review.created_at.to_s).strftime('%d %B %Y').to_s
