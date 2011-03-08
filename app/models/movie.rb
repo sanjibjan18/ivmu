@@ -19,8 +19,10 @@ class Movie < ActiveRecord::Base
   has_many :recommendations
   has_many :tweets
   has_many :critics_reviews
+  has_one :meta_detail
+  accepts_nested_attributes_for :meta_detail, :allow_destroy => true
 
-  scope :find_using_id, lambda{|perm| where("permalink = ?", perm) }
+  scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('initial_release_date desc')
   #scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")

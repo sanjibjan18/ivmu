@@ -115,7 +115,6 @@
                 = truncate(critics_review.summary, :length => 120)
               %p
                 = link_to "Read full review", critics_review
-              = Time.parse(critics_review.created_at.to_s).strftime('%d %B %Y').to_s
 
     #tabs-2
       %p users

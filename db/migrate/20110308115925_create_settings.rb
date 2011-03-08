@@ -4,6 +4,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string :name
       t.string :key
       t.text :value
+      t.string :useage
 
       t.timestamps
     end
@@ -13,3 +14,4 @@ class CreateSettings < ActiveRecord::Migration
     drop_table :settings
   end
 end
+

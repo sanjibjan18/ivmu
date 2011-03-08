@@ -15,10 +15,12 @@ class Admin::MoviesController < ApplicationController
 
   def new
    @movie = Movie.new
+   @movie.build_meta_detail
   end
 
   def edit
     @movie = Movie.find_using_id(params[:id]).first
+    @movie.build_meta_detail if @movie.meta_detail.blank?
   end
 
   def create
