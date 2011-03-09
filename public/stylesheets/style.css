@@ -46,10 +46,11 @@ body {
 	font-variant: normal;
 	font-weight: normal;
 	font-size: 12px;
-	line-height: normal;
 	border-top:3px solid #303747;
 	background:#337b9d url(/images/body.jpg) repeat-x;
 }
+h1,h2,h3,h4{font-weight:bold;}
+
 .left{float:left;}
 .right{float:right;}
 .clear{clear:both;}
@@ -82,13 +83,13 @@ ul.links{
 ul.links li{
 	display:inline;
 	text-decoration:none;
-	padding-right:10px;
+	padding-right:20px;
 	padding-left:20px;
 	line-height:30px;
 }
 
-ul.links li.last{background-image:none;position:relative;top:0px;}
-ul.links li a{color:#fff;text-decoration:none;}
+ul.links li.last{background-image:none;position:relative;top:0px;padding-right:10px;padding-left:10px;}
+ul.links li a{color:#fff;text-decoration:none;font-weight:bold;font-size:11px;}
 ul.links li a.register{
 	background:url(/images/Reg_icon.png) no-repeat left;
 	padding-left:18px;
@@ -160,42 +161,48 @@ ul.links li a.login{
 .search{
 	background:url(/images/searchBg.png) no-repeat;
 	margin-top:32px;
-	width:275px;
-	height:40px;
-	padding:8px 10px;
+	width:285px;
+	height:38px;
+	padding:6px 5px 0px 6px;
     text-align:left;
 }
 
-#search_box .wrapper {
-	 background: url(/images/search.jpg) repeat-x;
-	 border:1px solid #6e9ab5;
-	 width:65%;
-	 padding:5px 5px 3px 28px;
-	 position:relative;
-	 -moz-border-radius:5px;
-  	 -webkit-border-radius:5px;
-	}
-
-#search_box input { border:none; font-color:#000; font-size:11px; width:100%; background:url(/images/no_img.jpg) no-repeat;}
-
-#search_box button {
-	height:20px;
-	position:absolute;
-	left:0px;
-	top:0px;
-	width:28px;
-	background:url(/images/search.jpg) repeat-x;
-	border:none;
+#search {
+  display: inline;
+  float: left;
+  width: 96%;
 }
-.search div.btn input{width:16%;color:#fff;margin-top:10px;background:url(/images/no_img.jpg) no-repeat;background-color:none;font-size:15px;}
+
+#search form {
+  position: relative;
+}
+
+#search input.searchBox {
+  padding: 7px 0px 0px 33px;
+  color: #496374;
+  border: none;
+  background: url('/images/search.png') no-repeat;
+  width:185px;
+  height: 25px;
+  overflow: hidden;
+  
+}
+
+#search input.searchBox:hover {
+  color: #00ccff;
+
+}
 
 ::-webkit-input-placeholder
 {
   color: #4B6275;
   font-size:11px;
   font-weight:bold;
-  letter-spacing:-1px;
+  letter-spacing: -1px;
 }
+
+.search div.btn input{color:#fff;background:url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 1px -1px #777, 0px 0px;padding:0px;line-height:28px; }
+
 
 #wrapper{
 	margin:0px auto;
@@ -206,8 +213,8 @@ ul.links li a.login{
 }
 
 .container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:72%}
-.container h2{font-size:15px;color:#D549A2;line-height:42px;}
-.container h2 span{color:#222;}
+.container h2{font-size:16px;color:#D649A5;line-height:42px;}
+.container h2 span{color:#445B6D;font-weight:bold;}
 
 .containerIn{
 	border:1px solid #ddd;
@@ -222,9 +229,9 @@ ul.links li a.login{
 	width:44%;
 	padding:15px 12px;
 	height:205px;
+	background:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
 	border:1px solid #CCD5DC;
-	border-bottom:2px solid #828587;
-	background-color:#D9E2EB;
+	border-bottom:2px solid #CCc;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	margin-bottom:15px;
@@ -243,12 +250,12 @@ ul.links li a.login{
 
 .title{height:40px;width:51%;}
 
-.title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:14px;color:#2875AD;padding-right:25px;}
+.title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:13px;color:#196EA4;padding-right:25px;}
 
 .rating{
-	width:48%;
-	padding:0px 5px;
-	height:125px;
+	width:46%;
+	padding:8px;
+	height:105px;
 	margin-bottom:10px;
 	border:1px solid #CCD5DC;
 	background-color:#fff;
@@ -256,16 +263,17 @@ ul.links li a.login{
 	-webkit-border-radius:5px;
 }
 
-.rating h4{color:#222;margin-top:8px;}
+.rating h4{color:#686565;font-size:12px;}
 
-.detailLeft { min-height:100px;width:42%; }
+.detailLeft { min-height:100px;width:42%;}
 
 .ratingBar{
-    width:66%;
+    width:64%;
     background-color:#d2dce6;
 	border: 1px solid #becbd4;
     height:12px;
     margin-bottom:5px;
+	margin-top:2px;
     padding:2px;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
@@ -277,12 +285,12 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 .negative { background:url(/images/R-RatingBar.jpg) repeat-x; }
 
 .ratingvalue {
-  width:26%;
+  width:30%;
   height:28px;
   line-height:25px;
-  margin-left:5px;
   font-weight:bold;
   color:#000;
+  font-size:14px;
 }
 .rating h4 a {
 	background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;
@@ -310,12 +318,13 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 	line-height:30px;
 }
 
-.row{background-color:#EBF0F3;margin-top:10px;padding:5px;height:45px;}
-.image{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;}
+.row{background-color:#EBF0F3;margin-top:10px;padding:5px;height:43px;}
+.image{background-color:#fff;padding:3px;border:1px solid #ddd;width:35px;height:35px;}
+
 .image img{width:35px;height:35px;}
 
 .row div.names{width:48%;margin:2px;}
-.row div.names h4{color:#1B6CA3;}
+.row div.names h4{color:#1B6CA3;font-size:11px;}
 
 .icon{width:20%;text-align:right;}
 
@@ -412,4 +421,26 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 .footerLeft{width:80%;}
 .footerRight{width:28%;position:relative;top:-61px;text-align:right;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

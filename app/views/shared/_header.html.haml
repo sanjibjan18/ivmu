@@ -27,11 +27,9 @@
         %option{:value => "mercedes"} English
         %option{:value => "audi"} Tamil
     .search.right
-      = form_for Movie.search, :url => movies_path, :html => {:method => :get, :id=> 'search_box'} do |f|
-        .wrapper.left
-          = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie"
-          %button.search_btn
-            %img{:src => "/images/searchIcon.png", :title => "Search"}
-        .btn.right
-          = f.submit "Search"
+      #search
+        = form_for Movie.search, :url => movies_path, :html => {:method => :get} do |f|
+          = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
+          .btn.right
+            = f.submit "Search"
 
