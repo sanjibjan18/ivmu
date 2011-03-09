@@ -3,8 +3,7 @@ class MoviesController < ApplicationController
   layout 'website'
 
   def index
-    @search = Movie.search(params[:search])
-    @search.meta_sort = "initial_release_date.desc"
+    @search = Movie.latest.search(params[:search])
     @movies = @search.all.paginate(:page => params[:page], :per_page => 10)
     if @movies.size == 1
       redirect_to movie_path(@movies.first) and return
