@@ -52,7 +52,9 @@
         DIRECTOR:
         %span.director Raj Kumar
         RELEASE DATE :
-        %span 7 January 2011 (India)
+        %span
+          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s
+          (India)
       %h5.cast
         CAST
         %a{:href => ""} See More(32)
@@ -118,7 +120,7 @@
               %p
                 = link_to "Read full review", critics_review
         .clear
-              
+
     #tabs-2
       %p users
     - if current_user && current_user.facebook_omniauth
@@ -126,12 +128,10 @@
         %p friends
         - current_user.friends_liked_movie(@movie).each do |like|
           = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
-  
+
   %br
   - unless current_user.blank?
     = render '/comments/form', {:movie => @movie}
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}
-
-
 
