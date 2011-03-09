@@ -2,7 +2,7 @@
 = content_for :heading do
   Latest Movie
   %span Reviews
-.containerIn.borderDiv
+.indexContainerIn.borderDiv
   = render 'shared/movies',  { :from => 'home'}
   .right
     = will_paginate @movies, {:page_links => false}

@@ -209,6 +209,9 @@ ul.links li a.login{
 .container h2{font-size:16px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
+.indexContainerIn{padding:20px 20px 20px 0px;}
+.containerIn{padding:10px;}
+
 .borderDiv{
 	border:1px solid #ddd;
 	border-bottom:2px solid #ddd;
@@ -216,7 +219,6 @@ ul.links li a.login{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 }
-.containerIn{padding:20px 20px 20px 0px;}
 
 
 .box{
@@ -341,7 +343,7 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 .moviImage{
 	width:46%;
-	background: url(/images/banvnerBottom.jpg) no-repeat center bottom;
+	background: url(/images/banxnerBottom.jpg) no-repeat center bottom;
 	min-height:210px;
 	margin-right:5px;
 }
@@ -416,9 +418,7 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 .footerLeft{width:80%;}
 .footerRight{width:28%;position:relative;top:-61px;text-align:right;}
 
-
-
-.containerIn .ui-widget-content { border: none; background: none; color: #777; }
+.containerIn .ui-widget-content { border: none;  color: #777;}
 .containerIn .ui-widget-header {  border: none;  background: none; color: #777; font-weight: bold; }
 .containerIn .ui-widget-content a { color: #2d7aab; font-weight: bold;}
 
@@ -457,7 +457,22 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
   height:100px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
+	padding:0px;
   }
 
 .containerIn .ui-tabs ul.ui-tabs-nav li{margin-right: 5px; padding: 0px 25px 0px 10px; }
 
+
+.containerIn div.reviewBox{
+	width:300px;
+	padding:15px 12px;
+	height:205px;
+	bacxkground:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
+	border:1px solid #6ACDD8;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	margin-bottom:15px;
+	margin-left:15px;
+
+    overflow:hidden
+}
