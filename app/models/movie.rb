@@ -23,7 +23,7 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for :meta_detail, :allow_destroy => true
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
-  scope :latest, order('initial_release_date desc')
+  scope :latest, order('release_date desc')
   #scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)

@@ -4,8 +4,6 @@ class HomeController < ApplicationController
 
   def index
     @movies = Movie.latest.paginate(:page => params[:page] || 1, :per_page => 6)
-
-
   end
 
   def fetch
