@@ -118,7 +118,7 @@
               %p
                 = link_to "Read full review", critics_review
         .clear
-
+              
     #tabs-2
       %p users
     - if current_user && current_user.facebook_omniauth
@@ -126,10 +126,12 @@
         %p friends
         - current_user.friends_liked_movie(@movie).each do |like|
           = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
-
+  
   %br
   - unless current_user.blank?
     = render '/comments/form', {:movie => @movie}
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}
+
+
 
