@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
   def fetch_fb_feeds
     unless self.facebook_omniauth.blank?
+      movie_page_ids = Movie.limit(6).collect(&:fbpage_id)
       client = Mogli::Client.new(self.facebook_token)
       fb_user = Mogli::User.find("me", client)
 
@@ -57,7 +58,7 @@ class User < ActiveRecord::Base
           unless friend_likes.blank?
             friend_likes.each do |friend_like|
               unless self.facebook_friends.where(:value => friend_like.id).exists?
-                if Movie.where(:fbpage_id => friend_like.id).exists?
+                if movie_page_ids.include?(friend_like.id.to_s)
                   self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
                 end
               end
