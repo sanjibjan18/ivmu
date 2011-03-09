@@ -133,7 +133,7 @@ ul.links li a.login{
 	border:1px solid #d05cad;
 }
 
-.moviSelect{
+.languageSelect{
 	background:url(/images/selectBg.png) no-repeat;
 	line-height:33px;
 	margin-top:15px;
@@ -142,10 +142,10 @@ ul.links li a.login{
 	text-align:left;
 }
 
-.moviSelect span{color:#fff;font-size:12px;text-shadow: 1px -1px #777, 0px 0px #777;padding:0px;}
+.languageSelect span{color:#fff;font-size:12px;text-shadow: 1px -1px #777, 0px 0px #777;padding:0px;}
 
-.moviSelect select{
-  background: #fff;
+.languageSelect select{
+  background:#fff url(/images/selectxInnerBg.jpg) repeat-x;
   color: #000;
   border:none;
   font-size: 11px;
@@ -154,7 +154,7 @@ ul.links li a.login{
   padding: 3px 5px;
  -webkit-border-top-left-radius:8px;
  -moz-border-radius:8px;
- background-image:none;
+ 
 }
 
 .search{
@@ -169,7 +169,7 @@ ul.links li a.login{
 #search {
   display: inline;
   float: left;
-  width: 96%;
+  width: 98%;
 }
 
 #search form {
@@ -184,23 +184,17 @@ ul.links li a.login{
   width:177px;
   height: 25px;
   overflow: hidden;
-  
-}
-
-#search input.searchBox:hover {
-  color: #00ccff;
-
 }
 
 ::-webkit-input-placeholder
 {
-  color: #4B6275;
+  color: #657787;
   font-size:11px;
   font-weight:bold;
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background:url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 1px -1px #777, 0px 0px;padding:0px;line-height:28px; }
+.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 1px -1px #777, 0px 0px;padding:0px;line-height:28px; width:40px;margin:0px;}
 
 
 #wrapper{
@@ -215,14 +209,14 @@ ul.links li a.login{
 .container h2{font-size:16px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
-.containerIn{
+.borderDiv{
 	border:1px solid #ddd;
 	border-bottom:2px solid #ddd;
 	min-height:450px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
-	padding:20px 20px 20px 0px;
 }
+.containerIn{padding:20px 20px 20px 0px;}
 
 
 .box{
@@ -248,7 +242,7 @@ ul.links li a.login{
 
 .moviBox img{ height: 200px; width: 130px}
 
-.title{height:45px;width:51%;}
+.title{height:40px;width:51%;}
 
 .title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:13px;color:#196EA4;padding-right:25px;line-height:15px;}
 
