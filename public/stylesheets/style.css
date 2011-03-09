@@ -62,8 +62,8 @@ a{text-decoration:none;}
 
 #header{
 	margin:0px auto;
-	padding:0px 5px;
-	width:960px;
+	padding:0px;
+	width:1000px;
 	min-height:162px;
 	clear:both;
 }
@@ -71,7 +71,7 @@ a{text-decoration:none;}
 
 .headerLeft{width:62%;padding:10px 0px;}
 
-.headerRight{width:36%;text-align:right;}
+.headerRight{width:35%;text-align:right;}
 
 ul.links{
     width:100%;
@@ -117,7 +117,6 @@ ul.links li a.login{
   	-webkit-border-top-right-radius:5px;
 	-moz-border-radius-topleft:5px;
   	-webkit-border-top-left-radius:5px;
-
 	text-shadow: 1px -1px #3F7F91, 0px 0px #3F7F91;
 	border-bottom:none;
 	font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
@@ -138,7 +137,7 @@ ul.links li a.login{
 	background:url(/images/selectBg.png) no-repeat;
 	line-height:33px;
 	margin-top:15px;
-	width:220px;
+	width:210px;
 	padding:3px 0px 3px 8px;
 	text-align:left;
 }
@@ -161,9 +160,9 @@ ul.links li a.login{
 .search{
 	background:url(/images/searchBg.png) no-repeat;
 	margin-top:32px;
-	width:285px;
+	width:275px;
 	height:38px;
-	padding:6px 5px 0px 6px;
+	padding:6px 5px 0px 5px;
     text-align:left;
 }
 
@@ -182,7 +181,7 @@ ul.links li a.login{
   color: #496374;
   border: none;
   background: url('/images/search.png') no-repeat;
-  width:185px;
+  width:177px;
   height: 25px;
   overflow: hidden;
   
@@ -207,12 +206,12 @@ ul.links li a.login{
 #wrapper{
 	margin:0px auto;
 	padding:8px 0px 0px 0px;
-	width:960px;
+	width:1000px;
     min-height:450px;
 	background-color:#DAE8EE;
 }
 
-.container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:72%}
+.container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:725px;}
 .container h2{font-size:16px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
@@ -222,11 +221,12 @@ ul.links li a.login{
 	min-height:450px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
-	padding:20px;
+	padding:20px 20px 20px 0px;
 }
 
+
 .box{
-	width:44%;
+	width:305px;
 	padding:15px 12px;
 	height:205px;
 	background:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
@@ -235,12 +235,12 @@ ul.links li a.login{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	margin-bottom:15px;
-	margin-right:13px;
+	margin-left:20px;
 }
 
 
 .moviBox{
-	width:46%;
+	width:45%;
 	background: url(/images/bannerBottom.jpg) no-repeat center bottom;
 	min-height:210px;
 	margin-right:5px;
@@ -248,12 +248,12 @@ ul.links li a.login{
 
 .moviBox img{ height: 200px; width: 130px}
 
-.title{height:40px;width:51%;}
+.title{height:45px;width:51%;}
 
-.title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:13px;color:#196EA4;padding-right:25px;}
+.title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:13px;color:#196EA4;padding-right:25px;line-height:15px;}
 
 .rating{
-	width:46%;
+	width:47%;
 	padding:8px;
 	height:105px;
 	margin-bottom:10px;
@@ -296,7 +296,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 	background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;
 }
 .sidebar{
-	width:22%;
+	width:210px;
 	min-height:470px;
     margin:5px 10px 0px 0px;
 }
@@ -390,7 +390,7 @@ div.actressNames h4.large{color:#5d91ba;margin:5px;font-size:13px;}
 div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;}
 
 .footer{
-	width:950px;
+	width:990px;
 	margin:0 auto;
 	padding:20px 5px;
 	background: url(/images/footer.jpg) repeat-x;
