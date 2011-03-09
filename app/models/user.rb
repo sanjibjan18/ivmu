@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     self.user_tokens.where('provider = ? and uid = ? ', provider, uid).exists? ? false : true
   end
 
+  def display_name
+    self.user_profile.display_name rescue ''
+  end
+
   def my_rating(movie)
     review = self.reviews.for_movie(movie).first
     review.rating unless review.blank?
@@ -99,6 +103,9 @@ class User < ActiveRecord::Base
     }
   end
 
+   def friends_liked_movie(movie)
+     self.facebook_friend_likes.find_all_by_fb_item_id(movie.fbpage_id) rescue []
+   end
 
   def create_user_tokens(omniauth)
     self.user_tokens.create!(self.hash_from_omniauth(omniauth) )

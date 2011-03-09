@@ -1,0 +1,13 @@
+= render 'shared/meta_title_and_keywords', { :object => @movie }
+= content_for :heading do
+  %span Comments of:
+  = @movie.name
+
+= link_to "Back to movie", @movie
+- @movie.comments.each do |comment|
+  %div
+    = comment.comment
+    %br
+    by
+    = comment.user.display_name
+

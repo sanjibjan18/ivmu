@@ -1,5 +1,6 @@
-= form_for [movie, Comment.new] do |f|
-  = render '/shared/error_display', {:error_object => f.object}
+= form_for([movie, Comment.new], :remote => true) do |f|
+  #error_container_id
+    = render '/shared/error_display', {:error_object => f.object }
 
   .field
     = f.label :comment, 'ADD COMMENTS'

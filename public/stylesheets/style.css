@@ -154,7 +154,7 @@ ul.links li a.login{
   padding: 3px 5px;
  -webkit-border-top-left-radius:8px;
  -moz-border-radius:8px;
- 
+
 }
 
 .search{
@@ -418,23 +418,46 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 
 
+.containerIn .ui-widget-content { border: none; background: none; color: #777; }
+.containerIn .ui-widget-header {  border: none;  background: none; color: #777; font-weight: bold; }
+.containerIn .ui-widget-content a { color: #2d7aab; font-weight: bold;}
 
+.containerIn .ui-tabs .ui-state-default{
+    border: none;
+    border-top: 3px solid #3d86a3;
+    background: #196f92;
+    -moz-border-radius: 7px 7px 0px 0px ;
+    -webkit-border-radius: 7px 7px 0px 0px ;
+    }
 
+ .containerIn .ui-tabs .ui-state-active{
+    background: #7fa4be;
+    background-image: none;
+    border-top: 3px solid #a7c1d1;
+    -moz-border-radius: 7px 7px 0px 0px ;
+    -webkit-border-radius: 7px 7px 0px 0px ;
+    }
 
+.containerIn .ui-tabs .ui-state-active a, .containerIn .ui-tabs .ui-state-default a{
+    color: #fff;
+    margin: 0px;
+    padding: 5px;
+    }
 
+.containerIn .ui-state-default {
+    background-image: none; /* remove default bg image */
+}
 
+.containerIn .ui-tabs ul.ui-tabs-nav{border-bottom: #7da5be solid 5px; -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;  padding-left: 0px;}
 
+.containerIn .ui-tabs .ui-tabs-panel{border: #eee solid 1px;
+  min-height:100px;
+	height:auto !important; /* for ie */
+  height:100px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.containerIn .ui-tabs ul.ui-tabs-nav li{margin-right: 5px; padding: 0px 25px 0px 10px; }
 

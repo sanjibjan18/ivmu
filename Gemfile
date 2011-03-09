@@ -11,6 +11,7 @@ gem "haml-rails"
 gem 'friendly_id', "~>3.1"
 
 gem "facebooker2"
+gem 'delayed_job'
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.1"

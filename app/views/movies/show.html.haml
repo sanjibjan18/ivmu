@@ -95,7 +95,7 @@
       .clear
   .clear
   .right
-    = link_to pluralize(@movie.comments.count, 'comment') , '#'
+    = link_to pluralize(@movie.comments.count, 'comment') , movie_comments_path(@movie) , :id => 'comment_count'
   .clear
   #tabs
     %ul
@@ -103,8 +103,9 @@
         %a{:href => "#tabs-1"} Critics
       %li
         %a{:href => "#tabs-2"} Users
-      %li
-        %a{:href => "#tabs-3"} Friends
+      - if current_user && current_user.facebook_omniauth
+        %li
+          %a{:href => "#tabs-3"} Friends
     #tabs-1
       %p sort by date
       - @movie.critics_reviews.in_groups_of(2) do |group|
@@ -115,13 +116,16 @@
                 = truncate(critics_review.summary, :length => 120)
               %p
                 = link_to "Read full review", critics_review
-
     #tabs-2
       %p users
-    #tabs-3
-      %p friends
+    - if current_user && current_user.facebook_omniauth
+      #tabs-3
+        %p friends
+        - current_user.friends_liked_movie(@movie).each do |like|
+          = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
   %br
-  = render '/comments/form', {:movie => @movie}
+  - unless current_user.blank?
+    = render '/comments/form', {:movie => @movie}
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}
 
