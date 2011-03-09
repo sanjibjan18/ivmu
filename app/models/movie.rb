@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   scope :latest, order('release_date desc')
   #scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")
-  scope :comming_soon_movies, where("initial_release_date > ? ", Date.today)
+  scope :comming_soon_movies, where("release_date > ? ", Date.today)
 
   def banner_image
     self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
