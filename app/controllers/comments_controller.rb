@@ -3,12 +3,6 @@ class CommentsController < ApplicationController
   skip_before_filter :authenticate_user! , :only => [:index]
   layout 'website'
   def index
-    respond_to do |format|
-      format.html { }
-      format.js {
-
-      }
-    end
   end
 
 

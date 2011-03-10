@@ -53,8 +53,7 @@
         %span.director Raj Kumar
         RELEASE DATE :
         %span
-          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s
-          (India)
+          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
       %h5.cast
         CAST
         %a{:href => ""} See More(32)
@@ -114,6 +113,7 @@
         = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']]) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
       #critics_reviews
         = render '/shared/critics_reviews'
+
     #tabs-2
       %p users
     - if current_user && current_user.facebook_omniauth
@@ -127,4 +127,9 @@
     = render '/comments/form', {:movie => @movie}
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}
+:javascript
+  function critics_reviews_sort(movie_id, value) {
+    var url = '/critics_reviews?id='+ movie_id + '&sort='+value ;
+    $.getScript(url); return false;
+  }
 

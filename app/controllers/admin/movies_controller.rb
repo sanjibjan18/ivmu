@@ -4,8 +4,7 @@ class Admin::MoviesController < ApplicationController
   layout 'admin'
 
   def index
-    @search = Movie.search(params[:search])
-    @search.meta_sort = "initial_release_date.desc"
+    @search = Movie.latest.search(params[:search])
     @movies = @search.all.paginate(:page => params[:page], :per_page => 10)
   end
 

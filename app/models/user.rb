@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
   has_many :facebook_friend_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend_likes'}
+  has_many :facebook_friends_posts, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friends_post'}
 
   has_many :reviews
   #has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
@@ -59,6 +60,7 @@ class User < ActiveRecord::Base
             friend_likes.each do |friend_like|
               unless self.facebook_friends.where(:value => friend_like.id).exists?
                 if movie_page_ids.include?(friend_like.id.to_s)
+                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
                   self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
                 end
               end
