@@ -108,8 +108,8 @@
       - if current_user && current_user.twitter_omniauth
         %li= link_to "Twitter", "#tabs-4"
     #tabs-1
-      %p
-        sort by
+     %div.sortbyDate
+        %label  Sort By
         = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']]) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
       #critics_reviews
         = render '/shared/critics_reviews'

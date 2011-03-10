@@ -1,12 +1,29 @@
-= will_paginate(@critics_reviews, :params => { :controller => 'critics_reviews', :action => :index, :id => @movie.id } )
+.pagination.right
+  %span.left
+    %a{:href => "#"}
+      %img{:src => "/images/paginationLeft.jpg"}
+  %span
+    1 to 6 of 50 Movies
+  %span.right
+    %a{:href => "#"}
+      %img{:src => "/images/paginationRight.jpg"}
+.clear
 - @critics_reviews.in_groups_of(2) do |group|
   - group.each do |critics_review|
     - unless critics_review.blank?
-      %div.reviewBox.left
-        %div.reviewIcon.left
-          = image_tag(critics_review.critic_image)
-        %p
-          = truncate(critics_review.summary, :length => 120)
-        = link_to "Read full review", [@movie, critics_review]
-  .clear
+      %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
+        %div.reviewBox.left
+          %div.reviewIcon.left
+            = image_tag(critics_review.critic_image)
+          %p
+            = truncate(critics_review.summary, :length => 120)
+          = link_to "Read full review", [@movie, critics_review]
+        .clear
+        .review
+          .photo.left
+            %img{:src => "/images/jason.jpg"}
+          .profile.right
+            %h3  Jason Pierce
+            %p  Thirty Mile Zone
+            %p.date  6th Jan 2011 
 

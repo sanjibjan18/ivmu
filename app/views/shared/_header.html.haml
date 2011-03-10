@@ -22,7 +22,8 @@
   #top_bar
     .headerLeft.left
       %ul.tabs
-        %li= link_to 'Reviews', root_path , :class => ('active' if request.fullpath == '/')
+        %li{:class => ('active' if request.fullpath == '/')}
+          = link_to 'Reviews', root_path
         %li= link_to 'Coming Soon', coming_soon_movies_path , :class => ('active' if request.fullpath =~ /coming_soon_movies/)
         %li
           %a{:href => "#"} Movie News

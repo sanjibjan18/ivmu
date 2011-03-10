@@ -48,6 +48,7 @@ body {
 	font-size: 12px;
 	border-top:3px solid #303747;
 	background:#337b9d url(/images/body.jpg) repeat-x;
+
 }
 
 h1,h2,h3,h4{font-weight:bold;}
@@ -106,9 +107,9 @@ ul.links li a.login{
 	position:relative;top:-10px;
 }
 
-.tabs{margin:0px; padding: 0px}
+.tabs{margin:0px; padding: 0px;}
 
-.tabs li{display: inline;margin: 0;}
+.tabs li{display: inline;margin: 0; }
 
 
 
@@ -125,7 +126,7 @@ ul.links li a.login{
    font-weight: bold;
    color: #fff;
    width: 92px;
-   line-height:40px;
+   line-height:41px;
    text-align:center;
    background:url('/images/tab.png') no-repeat;
 
@@ -137,11 +138,12 @@ ul.links li a.login{
     background-color:none;
 }
 
-.tabs li a.active {
+.tabs li.active a {
 	background: url(/images/active_tab.png) no-repeat;
 	background-color:none;
 }
 
+ 
 .languageSelect{
 	background:url(/images/selectBg.png) no-repeat;
 	line-height:33px;
@@ -168,9 +170,9 @@ ul.links li a.login{
 
 .search{
 	background:url(/images/searchBg.png) no-repeat;
-	width:275px;
+	width:277px;
 	height:34px;
-	padding:6px 5px 0px 6px;
+	padding:6px 3px 0px 6px;
     text-align:left;
 }
 
@@ -185,11 +187,11 @@ ul.links li a.login{
 }
 
 #search input.searchBox {
-  padding: 7px 0px 0px 33px;
+  padding: 7px 0px 0px 30px;
   color: #496374;
   border: none;
   background: url('/images/search.png') no-repeat;
-  width:177px;
+  width:185px;
   height: 25px;
   overflow: hidden;
 }
@@ -197,7 +199,15 @@ ul.links li a.login{
 ::-webkit-input-placeholder
 {
   color: #657787;
-  font-size:11px;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing: -1px;
+}
+
+::-moz-input-placeholder
+{
+  color: #657787;
+  font-size:12px;
   font-weight:bold;
   letter-spacing: -1px;
 }
@@ -207,7 +217,7 @@ ul.links li a.login{
 
 #wrapper{
 	margin:0px auto;
-	padding:8px 0px 0px 0px;
+	padding:10px 0px 0px 0px;
 	width:1000px;
     min-height:450px;
 	background-color:#DAE8EE;
@@ -291,8 +301,8 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
   height:28px;
   line-height:25px;
   font-weight:bold;
-  color:#000;
-  font-size:14px;
+  color:#333;
+  font-size:15px;
 }
 .rating h4 a {
 	background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;
@@ -397,6 +407,8 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 .criticsRating a{color:#649FC1;}
 
+.criticsRating div.ratingvalue {font-size:18px;}
+
 .actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:5px;}
 .actress img{width:35px;height:35px;}
 
@@ -452,14 +464,15 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 
 .containerIn div.reviewBox{
-	width:300px;
 	padding:15px 12px;
-	height:205px;
+	height:100px;
 	border:1px solid #6ACDD8;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	margin-bottom:15px;
-	margin-left:15px;
+	border-bottom:none;
+	-moz-border-radius-topright	:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius-topleft	:5px;
+	-webkit-border-top-left-radius:5px;
+
 }
 .containerIn div.reviewBox p{color:#222;margin-bottom:20px;}
 .containerIn div.reviewBox a{color:#1C6EA6;line-height:30px;margin-top:20px;}
@@ -468,8 +481,47 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 .field label{color:#4F6475;font-size:11px;font-weight:bold;}
 
+.review{
+	background:#5e7e95 url(/images/reviewBg.jpg) no-repeat;
+	min-height:50px;
+	padding:15px 12px;
+}
 
+.review div.photo{background-color:#fff;padding:3px;border:1px solid #ddd;width:48px;height:48px;}
 
+.review div.photo img{width:48px;height:48px;}
+
+.review div.profile{width:75%;text-align:left;}
+.review div.profile h3{color:#5FA0BC;}
+.review div.profile p{color:#fff;font-size:11px;font-weight:bold;margin:5px 0px;}
+.review div.profile p.date{color:#5BACBE;font-size:10px;font-weight:bold;}
+
+.sortbyDate{margin:10px;}
+.sortbyDate label{color:#000;font-size:12px;}
+
+.sortbyDate select{
+    padding: 2px; 
+	font-size: 12px; 
+	color: #888681; 
+	border: none; 
+	width: 73px; 
+	height: 20px; 
+	background: #fff url(/images/size-selectbox-bg.gif) top center no-repeat; 
+}
+
+a#comment_count{color:#4F86A6;text-decoration:underline;}
+.pagination{
+	position:relative;
+	top:-10px;
+	height:25px;
+	padding:0px;
+    margin-right:10px;
+	width:180px;
+	background-color:#ddd;
+}
+.pagination span{font-size:10px;line-height:25px;padding-left:5px;color:#000;}
+.pagination span.left{width:25px;height:25px;padding:0px;;}
+.pagination span.right{width:25px;height:25px;padding:0px;}
 
 .footer{
 	width:990px;
