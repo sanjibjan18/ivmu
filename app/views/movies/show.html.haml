@@ -53,7 +53,7 @@
         %span.director Raj Kumar
         RELEASE DATE :
         %span
-          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s
+          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
           (India)
       %h5.cast
         CAST
