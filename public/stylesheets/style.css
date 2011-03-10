@@ -64,20 +64,24 @@ a{text-decoration:none;}
 	margin:0px auto;
 	padding:0px;
 	width:1000px;
-	min-height:162px;
+ 
 	clear:both;
 }
 
+.logo {margin-top: 15px;  }
 
-.headerLeft{width:62%;padding:10px 0px;}
+#top_bar{margin-top: 10px; margin-bottom: 0px; }
 
-.headerRight{width:35%;text-align:right;}
+.headerLeft{width:68%; }
+
+.headerRight{width:31%;  }
 
 ul.links{
-    width:100%;
-	background: url(/images/linkBg.png) no-repeat;
+
+	background:  url(/images/linkBg.png) no-repeat;
 	height:35px;
-	text-align:left;
+ 
+ 
 }
 
 ul.links li{
@@ -101,38 +105,41 @@ ul.links li a.login{
 	position:relative;top:-10px;
 }
 
-.tabs{margin:40px 0px 0px 0px;}
+.tabs{margin:0px; padding: 0px}
 
 .tabs li{display: inline;margin: 0;}
 
 
 
 .tabs li a{
-	text-decoration:none;
-	padding:10px 16px;
-	margin-right:3px;
-	color:#fff;
-	font-size:15px;
-	border:1px solid #2190a4;
-	background:#2693AC url(/images/tab.jpg) repeat-x;
-	-moz-border-radius-topright:5px;
-  	-webkit-border-top-right-radius:5px;
-	-moz-border-radius-topleft:5px;
-  	-webkit-border-top-left-radius:5px;
+	
 	text-shadow: 0px -1px #2c6272, 0px 0px;
-	border-bottom:none;
-	font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
+    border-bottom:none;
+   font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
+   display: block;
+   float: left;
+   margin: 0px 6px 0px 0px;
+   padding: 0px 20px 0px 18px;
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: bold;
+   color: #fff;
+   width: 92px;
+   line-height:40px;
+   text-align:center;
+   background:url('/images/tab.png') no-repeat;
+
 }
 
 
 .tabs li a:hover {
-	background:#E887CE url(/images/activetab.jpg) repeat-x;
-	border:1px solid #d05cad;
+	background: url('/images/active_tab.png') no-repeat;
+    background-color:none;
 }
 
 .tabs li a.active {
-	background:#E887CE url(/images/activetab.jpg) repeat-x;
-	border:1px solid #d05cad;
+	background: url(/images/active_tab.png) no-repeat;
+	background-color:none;
 }
 
 .languageSelect{
@@ -140,7 +147,7 @@ ul.links li a.login{
 	line-height:33px;
 	margin-top:15px;
 	width:210px;
-	padding:3px 0px 3px 8px;
+	padding:3px 5px 3px 8px;
 	text-align:left;
 }
 
@@ -161,9 +168,9 @@ ul.links li a.login{
 
 .search{
 	background:url(/images/searchBg.png) no-repeat;
-	margin-top:32px;
+
 	width:275px;
-	height:38px;
+	height:34px;
 	padding:6px 5px 0px 5px;
     text-align:left;
 }
@@ -263,8 +270,6 @@ ul.links li a.login{
 
 .rating h4{color:#686565;font-size:12px;}
 
-.detailLeft { min-height:100px;width:42%;}
-
 .ratingBar{
     width:64%;
     background-color:#d2dce6;
@@ -341,7 +346,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 h3.advertisement{line-height:30px;font-size:14px;}
 
 
-.moviBanner{width:25%;}
+.moviBanner{width:18%;}
 
 .moviImage{
 	width:46%;
@@ -350,8 +355,14 @@ h3.advertisement{line-height:30px;font-size:14px;}
 	margin-right:5px;
 }
 
-.moviDetail{width:75%;}
+.moviDetail{width:79%;}
+
+.leftBox{width:46%;min-height:100px;}
+.rightBox{width:52%;min-height:100px;}
+
 .detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;min-height:250px;padding:8px 10px;border:1px solid #ddd;margin-bottom:15px;}
+
+.detail h5,span,a{font-weight:bold;}
 
 .detail h3{
 	color:#fff;
@@ -365,15 +376,16 @@ h3.advertisement{line-height:30px;font-size:14px;}
 .detail h4{color:#222;margin-top:5px;}
 .detail p{color:#222;padding:10px;}
 
-.detail h5{color:#555;line-height:28px;font-size:12px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
-.detail h5 span{color:#5694bd;}
+.detail h5{color:#555;line-height:28px;font-size:11px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
+.detail h5 span{color:#176B9F;}
 .detail h5 span.director{margin-right:100px;}
 
 .detail h5.cast{line-height:25px;border-bottom:none;font-size:11px;}
-.detail h5.cast a{color:#5694bd;text-decoration:none;}
+.detail h5.cast a{color:#176B9F;text-decoration:none;}
 
 
 .criticsRating{
+	width:80%;
 	padding:5px;
 	min-height:50px;
 	margin-top:10px;
@@ -385,11 +397,6 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 
 .criticsRating a{color:#649FC1;}
-.friendsLiked{border-left:1px solid #ddd;min-height:100px;width:52%;padding:5px;}
-
-.leftBox{width:49%;min-height:100px;}
-.rightBox{width:49%;min-height:100px;}
-
 
 .actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:5px;}
 .actress img{width:35px;height:35px;}

@@ -1,16 +1,7 @@
 #header
-  .headerLeft.left
+  .left.logo
     %img{:src => "/images/logo_in.png"}/
-    %ul.tabs
-      %li= link_to 'Reviews', root_path , :class => ('active' if request.fullpath == '/')
-      %li= link_to 'Coming Soon', coming_soon_movies_path , :class => ('active' if request.fullpath =~ /coming_soon_movies/)
-      %li
-        %a{:href => "#"} Movie News
-      %li
-        %a{:href => "#"} Celebrities
-      %li
-        %a{:href => "#"} Community
-  .headerRight.right
+  .right
     %ul.links.right
       - unless current_user
         %li= link_to 'Register', new_user_registration_path, :class => 'register'
@@ -19,6 +10,7 @@
       - else
         %li= link_to 'profile', edit_user_profile_path(current_user)
         %li.last= link_to 'Logout', destroy_user_session_path
+    .clear
     .languageSelect.right
       %span Movie Language
       %select
@@ -26,10 +18,23 @@
         %option{:value => "saab"} Kannada
         %option{:value => "mercedes"} English
         %option{:value => "audi"} Tamil
-    .search.right
-      #search
-        = form_for Movie.search, :url => movies_path, :html => {:method => :get} do |f|
-          = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
-          .btn.right
-            = f.submit "Search"
-
+  .clear
+  #top_bar
+    .headerLeft.left
+      %ul.tabs
+        %li= link_to 'Reviews', root_path , :class => ('active' if request.fullpath == '/')
+        %li= link_to 'Coming Soon', coming_soon_movies_path , :class => ('active' if request.fullpath =~ /coming_soon_movies/)
+        %li
+          %a{:href => "#"} Movie News
+        %li
+          %a{:href => "#"} Celebrities
+        %li
+          %a{:href => "#"} Community
+    .headerRight.right
+      .search.right
+        #search
+          = form_for Movie.search, :url => movies_path, :html => {:method => :get} do |f|
+            = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
+            .btn.right
+              = f.submit "Search"
+    .clear
