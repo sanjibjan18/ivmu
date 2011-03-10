@@ -114,11 +114,11 @@
         - group.each do |critics_review|
           - unless critics_review.blank?
             %div.reviewBox.left
-              = image_tag(critics_review.critic_image)
+              %div.reviewIcon.left
+                = image_tag(critics_review.critic_image)
               %p
                 = truncate(critics_review.summary, :length => 120)
-              %p
-                = link_to "Read full review", critics_review
+              = link_to "Read full review", critics_review
         .clear
 
     #tabs-2

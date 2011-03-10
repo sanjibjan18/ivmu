@@ -105,9 +105,11 @@ ul.links li a.login{
 
 .tabs li{display: inline;margin: 0;}
 
+
+
 .tabs li a{
 	text-decoration:none;
-	padding:10px 15px;
+	padding:10px 16px;
 	margin-right:3px;
 	color:#fff;
 	font-size:15px;
@@ -117,7 +119,7 @@ ul.links li a.login{
   	-webkit-border-top-right-radius:5px;
 	-moz-border-radius-topleft:5px;
   	-webkit-border-top-left-radius:5px;
-	text-shadow: 1px -1px #3F7F91, 0px 0px #3F7F91;
+	text-shadow: 0px -1px #2c6272, 0px 0px;
 	border-bottom:none;
 	font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
 }
@@ -142,7 +144,7 @@ ul.links li a.login{
 	text-align:left;
 }
 
-.languageSelect span{color:#fff;font-size:12px;text-shadow: 1px -1px #777, 0px 0px #777;padding:0px;}
+.languageSelect span{color:#fff;font-size:12px;text-shadow: 0px -1px #2c6272, 0px 0px;padding:0px;}
 
 .languageSelect select{
   background:#fff url(/images/selectxInnerBg.jpg) repeat-x;
@@ -194,7 +196,7 @@ ul.links li a.login{
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 1px -1px #777, 0px 0px;padding:0px;line-height:28px; margin:0px;}
+.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 0px -1px #2c6272, 0px 0px;padding:0px;line-height:28px; margin:0px;}
 
 
 #wrapper{
@@ -363,6 +365,14 @@ h3.advertisement{line-height:30px;font-size:14px;}
 .detail h4{color:#222;margin-top:5px;}
 .detail p{color:#222;padding:10px;}
 
+.detail h5{color:#555;line-height:28px;font-size:12px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
+.detail h5 span{color:#5694bd;}
+.detail h5 span.director{margin-right:100px;}
+
+.detail h5.cast{line-height:25px;border-bottom:none;font-size:11px;}
+.detail h5.cast a{color:#5694bd;text-decoration:none;}
+
+
 .criticsRating{
 	padding:5px;
 	min-height:50px;
@@ -377,46 +387,18 @@ h3.advertisement{line-height:30px;font-size:14px;}
 .criticsRating a{color:#649FC1;}
 .friendsLiked{border-left:1px solid #ddd;min-height:100px;width:52%;padding:5px;}
 
+.leftBox{width:49%;min-height:100px;}
+.rightBox{width:49%;min-height:100px;}
 
-.actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:20%;height:35px;}
+
+.actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:5px;}
 .actress img{width:35px;height:35px;}
 
-div.actressNames{width:48%;}
+div.actressNames{width:75%;}
 div.actressNames h4.large{color:#5d91ba;margin:5px;font-size:13px;}
 div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;}
 
-.footer{
-	width:990px;
-	margin:0 auto;
-	padding:20px 5px;
-	background: url(/images/footer.jpg) repeat-x;
-	min-height:208px;
-	font-family:" Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
-}
 
-.colOne{width:30%;min-height:200px;}
-.colTwo{width:20%;min-height:200px;margin-left:20px;}
-
-.colTwo h3{color:#FBBC00;font-size:15px;}
-
-.colTwo hr{margin:5px 10px 5px 0px;border-top:1px solid #394A5E;border-bottom:1px solid #5F798A;}
-
-.footer ul{margin:0px;}
-
-.footer ul li{
-	display:block;
-	line-height:22px;
-	list-style:none;
-	background:url(/images/arrow.gif) no-repeat left;
-	padding-left:12px;
-	font-size:12px;
-	color:#8c8b88;
-}
-
-.footer ul li a{color:#fff;text-decoration:none;}
-
-.footerLeft{width:80%;}
-.footerRight{width:28%;position:relative;top:-61px;text-align:right;}
 
 .containerIn .ui-widget-content { border: none;  color: #777;}
 .containerIn .ui-widget-header {  border: none;  background: none; color: #777; font-weight: bold; }
@@ -452,11 +434,11 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
   -webkit-border-radius: 0px;  padding-left: 0px;}
 
 .containerIn .ui-tabs .ui-tabs-panel{border: #eee solid 1px;
-  min-height:100px;
+    min-height:100px;
 	height:auto !important; /* for ie */
-  height:100px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
+    height:100px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
 	padding:0px;
   }
 
@@ -467,12 +449,54 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 	width:300px;
 	padding:15px 12px;
 	height:205px;
-	bacxkground:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
 	border:1px solid #6ACDD8;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	margin-bottom:15px;
 	margin-left:15px;
-
-    overflow:hidden
 }
+.containerIn div.reviewBox p{color:#222;margin-bottom:20px;}
+.containerIn div.reviewBox a{color:#1C6EA6;line-height:30px;margin-top:20px;}
+
+.reviewIcon{width:15%;min-height:200px;}
+
+.field label{color:#4F6475;font-size:11px;font-weight:bold;}
+
+
+
+
+.footer{
+	width:990px;
+	margin:0 auto;
+	padding:20px 5px;
+	background: url(/images/footer.jpg) repeat-x;
+	min-height:208px;
+	font-family:" Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
+}
+
+.colOne{width:30%;min-height:200px;}
+.colTwo{width:20%;min-height:200px;margin-left:20px;}
+
+.colTwo h3{color:#FBBC00;font-size:15px;}
+
+.colTwo hr{margin:5px 10px 5px 0px;border-top:1px solid #394A5E;border-bottom:1px solid #5F798A;}
+
+
+.footer ul{margin:0px;}
+
+.footer ul li{
+	display:block;
+	line-height:22px;
+	list-style:none;
+	background:url(/images/arrow.gif) no-repeat left;
+	padding-left:12px;
+	font-size:12px;
+	color:#8c8b88;
+}
+
+.footer ul li a{color:#fff;text-decoration:none;}
+
+.footerLeft{width:80%;}
+.footerRight{width:28%;position:relative;top:-61px;text-align:right;}
+
+
