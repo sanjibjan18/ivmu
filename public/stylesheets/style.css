@@ -49,6 +49,7 @@ body {
 	border-top:3px solid #303747;
 	background:#337b9d url(/images/body.jpg) repeat-x;
 }
+
 h1,h2,h3,h4{font-weight:bold;}
 
 .left{float:left;}
@@ -112,16 +113,15 @@ ul.links li a.login{
 
 
 .tabs li a{
-	
-	text-shadow: 0px -1px #2c6272, 0px 0px;
-    border-bottom:none;
+   text-shadow: 0px -1px #2c6272, 0px 0px;
+   border-bottom:none;
    font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
    display: block;
    float: left;
    margin: 0px 6px 0px 0px;
    padding: 0px 20px 0px 18px;
    text-decoration: none;
-   font-size: 14px;
+   font-size: 15px;
    font-weight: bold;
    color: #fff;
    width: 92px;
@@ -146,8 +146,8 @@ ul.links li a.login{
 	background:url(/images/selectBg.png) no-repeat;
 	line-height:33px;
 	margin-top:15px;
-	width:210px;
-	padding:3px 5px 3px 8px;
+	width:208px;
+	padding:3px 3px 3px 10px;
 	text-align:left;
 }
 
@@ -168,10 +168,9 @@ ul.links li a.login{
 
 .search{
 	background:url(/images/searchBg.png) no-repeat;
-
 	width:275px;
 	height:34px;
-	padding:6px 5px 0px 5px;
+	padding:6px 5px 0px 6px;
     text-align:left;
 }
 
@@ -203,7 +202,7 @@ ul.links li a.login{
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 0px -1px #2c6272, 0px 0px;padding:0px;line-height:28px; margin:0px;}
+.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:14px;border:none;text-shadow: 0px -1px #222, 0px 0px;padding:0px;line-height:28px; margin:0px;}
 
 
 #wrapper{
