@@ -14,6 +14,7 @@ Muvi::Application.routes.draw do
     resources :comments
     resources :reviews
     resources :recommendations
+    resources :critics_reviews
   end
 
   namespace :admin do
