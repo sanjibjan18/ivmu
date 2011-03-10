@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_one :facebook_omniauth, :class_name => "UserToken", :conditions => { :provider => 'facebook' }
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
   has_many :tweets
+  has_many :twitter_friends
 
   scope :all_without_admin, where(:is_admin => false)
 
@@ -99,6 +100,15 @@ class User < ActiveRecord::Base
     @twitter_user ||= Twitter::Client.new(:oauth_token => self.twitter_omniauth.token, :oauth_token_secret => self.twitter_omniauth.secret) rescue nil
   end
 
+  def fetch_friends_from_twitter
+    twitter.follower_ids.ids.each do |follower_id|
+      self.twitter_friends.create(:twitter_id => follower_id, :friend_type => 'followers')
+    end
+    twitter.friend_ids.ids.each do |friend_id|
+      self.twitter_friends.create(:twitter_id => friend_id, :friend_type => 'following')
+    end
+  end
+
 
   def hash_from_omniauth(omniauth)
     { :provider => omniauth['provider'], :uid => omniauth['uid'],
@@ -106,7 +116,13 @@ class User < ActiveRecord::Base
     }
   end
 
-   def friends_liked_movie(movie)
+  def friends_tweet_for_movie(movie)
+    twitter_friends_ids = self.twitter_friends.collect(&:twitter_id)
+    return [] if twitter_friends_ids.blank?
+    movie.tweets.where('twitter_id in (?)', twitter_friends_ids)
+  end
+
+  def friends_liked_movie(movie)
      self.facebook_friend_likes.find_all_by_fb_item_id(movie.fbpage_id) rescue []
    end
 

@@ -101,13 +101,12 @@
   .clear
   #tabs
     %ul
-      %li
-        %a{:href => "#tabs-1"} Critics
-      %li
-        %a{:href => "#tabs-2"} Users
+      %li= link_to "Critics", "#tabs-1"
+      %li= link_to "Users", "#tabs-2"
       - if current_user && current_user.facebook_omniauth
-        %li
-          %a{:href => "#tabs-3"} Friends
+        %li= link_to "Friends", "#tabs-3"
+      - if current_user && current_user.twitter_omniauth
+        %li= link_to "Twitter", "#tabs-4"
     #tabs-1
       %p
         sort by
@@ -115,7 +114,6 @@
       #critics_reviews
         = render '/shared/critics_reviews'
         .clear
-
     #tabs-2
       %p users
     - if current_user && current_user.facebook_omniauth
@@ -123,6 +121,11 @@
         %p friends
         - current_user.friends_liked_movie(@movie).each do |like|
           = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
+    - if current_user && current_user.twitter_omniauth
+      #tabs-4
+        - current_user.friends_tweet_for_movie(@movie).each do |tweet|
+          %div.reviewBox.left
+            = tweet.content
 
   %br
   - unless current_user.blank?
