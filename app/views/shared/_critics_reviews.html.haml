@@ -1,3 +1,6 @@
+%div.sortbyDate.left
+  %label  Sort By
+  = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']]) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
 .pagination.right
   %span.left
     %a{:href => "#"}

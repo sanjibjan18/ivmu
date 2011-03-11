@@ -210,7 +210,7 @@ ul.links li a.login{
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:14px;border:none;text-shadow: 0px -1px #222, 0px 0px;padding:0px;line-height:28px; margin:0px;}
+.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 0px -1px #888, 0px 0px;padding:0px;line-height:28px; margin:0px; font-weight: bold;}
 
 
 #wrapper{
@@ -233,7 +233,7 @@ ul.links li a.login{
 
 
 .homeContainerIn{padding:20px 20px 20px 0px;}
-.containerIn{padding:10px;}
+.containerIn{padding:12px;}
 
 .borderDiv{
 	border:1px solid #ddd;
@@ -286,7 +286,6 @@ ul.links li a.login{
 }
 
 .rating h4{color:#686565;font-size:12px;}
-
 
 .rating div.ratingBar{
     width:98px;
@@ -357,37 +356,44 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 /*................... Show page css................*/
 
-.leftMoviBanner{width:18%;}
+.leftMoviBanner{width:130px;}
 
 .moviImage{
-	width:46%;
-	background: url(/images/banxnerBottom.jpg) no-repeat center bottom;
+	width:130px;
+	background: url(/images/W-bannertBottom.jpg) no-repeat center bottom;
 	min-height:210px;
 	margin-right:5px;
 }
 
-.moviDetail{width:79%;}
+.moviDetail{width:550px;}
 
-.leftBox{width:46%;min-height:100px;}
-.rightBox{width:52%;min-height:100px;}
 
-.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;padding:0px 10px;border:1px solid #ddd;margin-bottom:15px;}
+.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;
+padding:0px 15px 5px 15px;border:1px solid #ddd;margin-bottom:15px;width:520px;}
 
 .detail h5,span,a{font-weight:bold;}
 
 .detail h3{
 	color:#fff;
 	font-size:12px;
-	background:url(/images/arrow.gif) no-repeat left ;
-	padding-left:20px;
+	background:url(/images/w-arrow.gif) no-repeat left ;
+	padding-left:12px;
 	text-transform:uppercase;
 	line-height:25px;
+     position:relative;
+	left:-10px;
 }
 
 
 .detail p{color:#222;padding:10px;}
 
-.detail h5{color:#555;line-height:28px;font-size:11px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
+.detail h5{
+	color:#4f4f4f;
+	line-height:28px;
+	font-size:11px;
+	border-bottom:1.5px dotted #5694bd;
+	margin:5px 0px;
+}
 .detail h5 span{color:#176B9F;}
 .detail h5 span.director{margin-right:100px;}
 
@@ -396,10 +402,10 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 
 .detail div.rating{
-	width:185px;
+	width:188px;
 	padding:9px 10px;
 	height:62px;
-	margin-top:10px;
+	margin-bottom:8px;
 	border:1px solid #CCD5DC;
 	border-bottom:2px solid #CCD5DC;
 	background-color:#fff;
@@ -430,13 +436,31 @@ h3.advertisement{line-height:30px;font-size:14px;}
 }
 
 
+.detail div.leftBox{width:215px;}
+.detail div.rightBox{width:285px;}
 
-.actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:5px;}
-.actress img{width:35px;height:35px;}
+.friendsLink{
+	width:270px;
+	border-left:1px solid #ddd;
+	min-height:190px;
+	padding-left:15px;
+}
 
-div.actressNames{width:75%;}
-div.actressNames h4.large{color:#5d91ba;margin:5px;font-size:13px;}
-div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;}
+.friendsLink h4{
+	color:#4f4f4f;
+	font-size:14px;
+	margin-top:12px;
+}
+.friendsLink img{ margin:5px 1.5px 0px 0px;}
+.friendsLink a img{ margin:0px;}
+
+.actress{background-color:#fff;padding:2px;border:1px solid #ddd;width:45px;height:45px;margin-bottom:5px;border:1px solid #eee;margin-top:3px;}
+.actress img{width:45px;height:45px;}
+.rightBox div.actressNames{width:220px;margin-left:5px;}
+
+div.actressNames{width:152px;}
+div.actressNames h4.large{color:#186fa4;font-size:13px;margin-top:5px;}
+div.actressNames h4{color:#4f4f4f;font-size:11px;}
 
 
 
@@ -508,6 +532,7 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 .review{
 	background:#5e7e95 url(/images/reviewBg.jpg) no-repeat;
 	min-height:50px;
+	width:296px;
 	padding:15px 12px;
 }
 
@@ -534,18 +559,20 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 }
 
 a#comment_count{color:#4F86A6;text-decoration:underline;}
+
 .pagination{
-	position:relative;
-	top:-10px;
 	height:25px;
 	padding:0px;
-    margin-right:10px;
+    margin:10px;
 	width:180px;
 	background-color:#ddd;
+	border:none;
 }
 .pagination span{font-size:10px;line-height:25px;padding-left:5px;color:#000;}
 .pagination span.left{width:25px;height:25px;padding:0px;;}
 .pagination span.right{width:25px;height:25px;padding:0px;}
+
+.pagination a img{border:none;}
 
 .footer{
 	width:990px;

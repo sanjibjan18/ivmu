@@ -15,7 +15,7 @@
   .moviDetail.right
     .detail
       %h3 Movie
-      %div{ :style => "border-right:1px solid #ddd;", :class => "leftBox left"}
+      %div{ :style => "margin-top:12px;", :class => "leftBox left"}
         .rating
           %h4 Critics Rating
           .ratingBar.left
@@ -32,9 +32,8 @@
             = "#{@movie.average_rating_percent}%"
           .clear
           = link_to "Average of #{@movie.reviews.count} critics", '#'
-      .rightBox.right
+      .friendsLink.right
         %h4 Friends Linked
-        %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
@@ -57,7 +56,7 @@
           (India)
       %h5.cast
         CAST
-        %a{:href => ""} See More(32)
+        %a{:href => ""} See More (32)
       .leftBox.left
         .actress.left
           %img{:src => "/images/bubblessabharwal.jpg"}
@@ -108,9 +107,6 @@
       - if current_user && current_user.twitter_omniauth
         %li= link_to "Twitter", "#tabs-4"
     #tabs-1
-      %div.sortbyDate
-        %label  Sort By
-        = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']]) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
       #critics_reviews
         = render '/shared/critics_reviews'
         .clear
