@@ -81,9 +81,12 @@ ul.links li{
 	display:inline;
 	text-decoration:none;
 	padding-right:20px;
-	padding-left:20px;
+	padding-left:20px; 
+	text-align:center;
 	line-height:30px;
+	width:90px;
 }
+
 
 ul.links li.last{background-image:none;position:relative;top:0px;padding-right:10px;padding-left:10px;}
 ul.links li a{color:#fff;text-decoration:none;font-weight:bold;font-size:11px;}
@@ -168,7 +171,7 @@ ul.links li a.login{
 
 .search{
 	background:url(/images/searchBg.png) no-repeat;
-	width:287px;
+	width:281px;
 	height:34px;
 	padding:6px 3px 0px 6px;
     text-align:left;
@@ -189,7 +192,7 @@ ul.links li a.login{
   color: #496374;
   border: none;
   background: url('/images/search.png') no-repeat;
-  width:195px;
+  width:185px;
   height: 25px;
   overflow: hidden;
 }
@@ -210,7 +213,7 @@ ul.links li a.login{
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:13px;border:none;text-shadow: 0px -1px #888, 0px 0px;padding:0px;line-height:28px; margin:0px; font-weight: bold;}
+.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:14px;border:none;text-shadow: 0px -1px #888, 0px 0px;padding:0px;line-height:28px; margin:0px; font-weight: bold;}
 
 
 #wrapper{
@@ -222,7 +225,7 @@ ul.links li a.login{
 }
 
 .container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:725px;}
-.container h2{font-size:16px;color:#D649A5;line-height:42px;}
+.container h2{font-size:17px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
 .sidebar{
@@ -323,7 +326,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 
 .GrayHeaderBox h3{
 	color:#fff;
-	font-size:13px;
+	font-size:14px;
 	background:url(/images/arrow.gif) no-repeat left ;
 	padding-left:20px;
 	line-height:30px;
@@ -335,7 +338,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .image img{width:35px;height:35px;}
 
 .row div.names{width:48%;margin:2px;}
-.row div.names h4{color:#1B6CA3;font-size:11px;}
+.row div.names h4{color:#1B6CA3;font-size:12px;}
 
 .icon{width:20%;text-align:right;}
 
@@ -511,7 +514,7 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 
 
 .containerIn div.reviewBox{
-    width:294px;
+    width:289px;
 	padding:15px 12px;
 	height:100px;
 	border:1px solid #6ACDD8;
@@ -526,7 +529,7 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .containerIn div.reviewBox a{color:#1C6EA6;line-height:30px;margin-top:20px;}
 
 #tabs-3 div.reviewBox{
-    width:294px;
+    width:289px;
 	padding:15px 12px;
 	height:100px;
 	border:1px solid #6ACDD8;
@@ -541,7 +544,7 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .review{
 	background:#5e7e95 url(/images/reviewBg.jpg) no-repeat;
 	min-height:50px;
-	width:296px;
+	width:291px;
 	padding:15px 12px;
 }
 
@@ -554,7 +557,7 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .review div.profile p{color:#fff;font-size:11px;font-weight:bold;margin:5px 0px;}
 .review div.profile p.date{color:#5BACBE;font-size:10px;font-weight:bold;}
 
-.sortbyDate{margin:10px;}
+.sortbyDate{margin:12px 0px 10px 20px;}
 .sortbyDate label{color:#000;font-size:12px;}
 
 .sortbyDate select{
@@ -572,12 +575,12 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 .pagination{
 	height:25px;
 	padding:0px;
-    margin:10px;
-	width:190px;
+    margin:12px 20px 10px 10px;
+	width:200px;
 	background-color:#ddd;
 	border:none;
 }
-.pagination span{font-size:10px;line-height:25px;padding-left:5px;color:#000;}
+.pagination span{font-size:10px;line-height:25px;padding-left:5px;color:#555;}
 .pagination span.left{width:25px;height:25px;padding:0px;;}
 .pagination span.right{width:25px;height:25px;padding:0px;}
 
