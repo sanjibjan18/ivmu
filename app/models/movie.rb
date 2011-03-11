@@ -18,6 +18,7 @@ class Movie < ActiveRecord::Base
   has_many :reviwers, :through => :reviews, :source => :user
   has_many :recommendations
   has_many :tweets
+  has_many :facebook_feeds
   has_many :critics_reviews
   has_one :meta_detail
   accepts_nested_attributes_for :meta_detail, :allow_destroy => true

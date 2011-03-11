@@ -81,7 +81,7 @@ ul.links li{
 	display:inline;
 	text-decoration:none;
 	padding-right:20px;
-	padding-left:20px; 
+	padding-left:20px;
 	text-align:center;
 	line-height:30px;
 	width:90px;
@@ -221,8 +221,8 @@ ul.links li a.login{
 	border:none;
 	text-shadow: 0px -1px #888, 0px 0px;
 	padding:0px;
-	line-height:28px; 
-	margin:0px 2px 0px 0px; 
+	line-height:28px;
+	margin:0px 2px 0px 0px;
 	font-weight: bold;
 	text-align:left;
 }
@@ -575,9 +575,10 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .review div.profile p.date{color:#5BACBE;font-size:10px;font-weight:bold;}
 
 .sortbyDate{margin:12px 0px 10px 20px;}
-.sortbyDate label{color:#000;font-size:12px;}
+.sortbyDate label{font-weight:bold;color:#000;font-size:12px;}
 
 .sortbyDate select{
+    font-weight:bold;
     padding: 2px;
 	font-size: 12px;
 	color: #888681;

@@ -141,6 +141,12 @@ class User < ActiveRecord::Base
     movie.tweets.where('twitter_id in (?)', twitter_friends_ids)
   end
 
+  def friends_post_for_movie(movie)
+    facebook_friends_ids = self.facebook_friends.collect(&:facebook_id)
+    return [] if facebook_friends_ids.blank?
+    movie.facebook_feeds.where('fbid in (?)', facebook_friends_ids).limit(4)
+  end
+
   def friends_liked_movie(movie)
      self.facebook_friend_likes.where('fb_item_id = ?', movie.fbpage_id) rescue []
    end

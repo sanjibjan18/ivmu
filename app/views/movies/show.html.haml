@@ -106,11 +106,26 @@
     #tabs-1
       #critics_reviews
         = render '/shared/critics_reviews'
+      .clear
     #tabs-2
       %p users
     #tabs-3
       #movie_tweets
         = render '/shared/tweets'
+
+      - if current_user && current_user.facebook_omniauth
+        %hr
+        %h3 Facebook Feeds
+        - current_user.friends_post_for_movie(@movie).each do |post|
+          %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
+            %div.reviewBox.left
+              %div.reviewIcon.left
+                = image_tag("/images/thumbUp.png")
+              %p
+                = truncate(post.value, :length => 120)
+      .clear
+
+
 
   %br
   - unless current_user.blank?
