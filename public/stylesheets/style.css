@@ -168,7 +168,7 @@ ul.links li a.login{
 
 .search{
 	background:url(/images/searchBg.png) no-repeat;
-	width:277px;
+	width:287px;
 	height:34px;
 	padding:6px 3px 0px 6px;
     text-align:left;
@@ -189,7 +189,7 @@ ul.links li a.login{
   color: #496374;
   border: none;
   background: url('/images/search.png') no-repeat;
-  width:185px;
+  width:195px;
   height: 25px;
   overflow: hidden;
 }
