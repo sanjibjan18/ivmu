@@ -525,6 +525,15 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .containerIn div.reviewBox p{color:#222;margin-bottom:20px;}
 .containerIn div.reviewBox a{color:#1C6EA6;line-height:30px;margin-top:20px;}
 
+#tabs-3 div.reviewBox{
+    width:294px;
+	padding:15px 12px;
+	height:100px;
+	border:1px solid #6ACDD8;
+	-moz-border-radius	:5px;
+	-webkit-border-radius:5px;
+}
+
 .reviewIcon{width:15%;min-height:200px;}
 
 .field label{color:#4F6475;font-size:11px;font-weight:bold;}
@@ -564,7 +573,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	height:25px;
 	padding:0px;
     margin:10px;
-	width:180px;
+	width:190px;
 	background-color:#ddd;
 	border:none;
 }
