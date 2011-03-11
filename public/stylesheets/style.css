@@ -213,12 +213,24 @@ ul.links li a.login{
   letter-spacing: -1px;
 }
 
-.search div.btn input{color:#fff;background: url(/images/no_img.jpg) no-repeat;background-color:none;font-size:14px;border:none;text-shadow: 0px -1px #888, 0px 0px;padding:0px;line-height:28px; margin:0px; font-weight: bold;}
+.search div.btn input{
+	color:#fff;
+	background: url(/images/no_img.jpg) no-repeat;
+	background-color:none;
+	font-size:14px;
+	border:none;
+	text-shadow: 0px -1px #888, 0px 0px;
+	padding:0px;
+	line-height:28px; 
+	margin:0px 2px 0px 0px; 
+	font-weight: bold;
+	text-align:left;
+}
 
 
 #wrapper{
 	margin:0px auto;
-	padding:10px 0px 0px 0px;
+	padding:7px 0px 0px 0px;
 	width:1000px;
     min-height:450px;
 	background-color:#DAE8EE;
@@ -318,10 +330,15 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 
 .GrayHeaderBox{
 	background:#fff url(/images/grayBoxHeader.jpg) no-repeat top;
+	width:191px;
 	min-height:160px;
-	border-bottom:1px solid #B1B1B1;
+	border-bottom:1px solid #ccc;
 	padding:0px 10px 10px 10px;
 	margin-bottom:20px;
+	-moz-border-radius-bottomright	:8px;
+	-webkit-border-bottom-right-radius:8px;
+	-moz-border-radius-bottomleft	:8px;
+	-webkit-border-bottom-left-radius:8px;
 }
 
 .GrayHeaderBox h3{
