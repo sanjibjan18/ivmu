@@ -66,7 +66,7 @@ a{text-decoration:none;}
 	margin:0px auto;
 	padding:0px;
 	width:1000px;
- 
+
 	clear:both;
 }
 
@@ -82,8 +82,8 @@ ul.links{
 
 	background:  url(/images/linkBg.png) no-repeat;
 	height:35px;
- 
- 
+
+
 }
 
 ul.links li{
@@ -143,7 +143,7 @@ ul.links li a.login{
 	background-color:none;
 }
 
- 
+
 .languageSelect{
 	background:url(/images/selectBg.png) no-repeat;
 	line-height:33px;
@@ -418,7 +418,8 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 
 
-.containerIn .ui-widget-content { border: none;  color: #777;}
+
+.containerIn .ui-widget-content { border: none;  color: #777;}
 .containerIn .ui-widget-header {  border: none;  background: none; color: #777; font-weight: bold; }
 .containerIn .ui-widget-content a { color: #2d7aab; font-weight: bold;}
 
@@ -464,6 +465,7 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 
 
 .containerIn div.reviewBox{
+    width:294px;
 	padding:15px 12px;
 	height:100px;
 	border:1px solid #6ACDD8;
@@ -500,13 +502,13 @@ div.actressNames h4{color:#222;margin:5px;font-size:11px;margin:0px padding:0px;
 .sortbyDate label{color:#000;font-size:12px;}
 
 .sortbyDate select{
-    padding: 2px; 
-	font-size: 12px; 
-	color: #888681; 
-	border: none; 
-	width: 73px; 
-	height: 20px; 
-	background: #fff url(/images/size-selectbox-bg.gif) top center no-repeat; 
+    padding: 2px;
+	font-size: 12px;
+	color: #888681;
+	border: none;
+	width: 73px;
+	height: 20px;
+	background: #fff url(/images/size-selectbox-bg.gif) top center no-repeat;
 }
 
 a#comment_count{color:#4F86A6;text-decoration:underline;}
@@ -556,5 +558,4 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 
 .footerLeft{width:80%;}
 .footerRight{width:28%;position:relative;top:-61px;text-align:right;}
-
 

@@ -12,7 +12,8 @@ gem 'friendly_id', "~>3.1"
 
 gem "facebooker2"
 gem 'delayed_job'
-gem 'whenever'
+gem 'whenever', :require => false
+
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.1"
