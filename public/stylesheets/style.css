@@ -66,24 +66,15 @@ a{text-decoration:none;}
 	margin:0px auto;
 	padding:0px;
 	width:1000px;
-
 	clear:both;
 }
 
-.logo {margin-top: 15px;  }
-
-#top_bar{margin-top: 10px; margin-bottom: 0px; }
-
-.headerLeft{width:68%; }
-
-.headerRight{width:31%;  }
+.logo {margin-top: 15px;}
 
 ul.links{
-
 	background:  url(/images/linkBg.png) no-repeat;
-	height:35px;
-
-
+	height:34px;
+	width:345px;
 }
 
 ul.links li{
@@ -106,6 +97,13 @@ ul.links li a.login{
 	padding-left:18px;
 	position:relative;top:-10px;
 }
+
+
+#top_bar{margin-top: 10px; margin-bottom: 0px; }
+
+.headerLeft{width:68%; }
+
+.headerRight{width:31%;  }
 
 .tabs{margin:0px; padding: 0px;}
 
@@ -149,7 +147,7 @@ ul.links li a.login{
 	line-height:33px;
 	margin-top:15px;
 	width:208px;
-	padding:3px 3px 3px 10px;
+	padding:3px 2px 3px 10px;
 	text-align:left;
 }
 
@@ -227,7 +225,14 @@ ul.links li a.login{
 .container h2{font-size:16px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
-.indexContainerIn{padding:20px 20px 20px 0px;}
+.sidebar{
+	width:210px;
+	min-height:470px;
+    margin:5px 10px 0px 0px;
+}
+
+
+.homeContainerIn{padding:20px 20px 20px 0px;}
 .containerIn{padding:10px;}
 
 .borderDiv{
@@ -254,24 +259,27 @@ ul.links li a.login{
 
 
 .moviBox{
-	width:45%;
+	width:130px;
 	background: url(/images/bannerBottom.jpg) no-repeat center bottom;
-	min-height:210px;
-	margin-right:5px;
+	height:210px;
 }
 
 .moviBox img{ height: 200px; width: 130px}
 
-.title{height:40px;width:51%;}
+.title{height:45px;width:145px;margin-left:10px;}
 
-.title h3{background:url(/images/thumbDown.png) no-repeat right;font-size:13px;color:#196EA4;padding-right:25px;line-height:15px;}
+.title h3{font-size:14px;color:#196EA4;padding-right:25px;line-height:13px;}
+
+.thmubs_up{background:url(/images/thumbUp.png) no-repeat;height:18px;width:18px;}
+.thmubs_down{background:url(/images/thumbDown.png) no-repeat;height:18px;width:18px;}
 
 .rating{
-	width:47%;
-	padding:8px;
-	height:105px;
-	margin-bottom:10px;
+	width:147px;
+	padding:9px;
+	height:102px;
+	margin-bottom:5px;
 	border:1px solid #CCD5DC;
+	border-bottom:2px solid #CCD5DC;
 	background-color:#fff;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -279,38 +287,30 @@ ul.links li a.login{
 
 .rating h4{color:#686565;font-size:12px;}
 
-.ratingBar{
-    width:64%;
+
+.rating div.ratingBar{
+    width:98px;
     background-color:#d2dce6;
 	border: 1px solid #becbd4;
-    height:12px;
+    height:17px;
     margin-bottom:5px;
 	margin-top:2px;
-    padding:2px;
+    padding:3px 2px 2px 3px;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 
 }
-div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
+div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;height:17px;}
 
 .positive { background:url(/images/G-RatingBar.jpg) repeat-x; }
 .negative { background:url(/images/R-RatingBar.jpg) repeat-x; }
 
 .ratingvalue {
-  width:30%;
-  height:28px;
-  line-height:25px;
-  font-weight:bold;
-  color:#333;
-  font-size:15px;
+  font-weight:bold;font-size:17px;letter-spacing:-1px;width:25px;text-align:left;color:#31384b;margin-left:5px;line-height:28px;
 }
+
 .rating h4 a {
 	background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;
-}
-.sidebar{
-	width:210px;
-	min-height:470px;
-    margin:5px 10px 0px 0px;
 }
 
 
@@ -355,7 +355,9 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;}
 h3.advertisement{line-height:30px;font-size:14px;}
 
 
-.moviBanner{width:18%;}
+/*................... Show page css................*/
+
+.leftMoviBanner{width:18%;}
 
 .moviImage{
 	width:46%;
@@ -369,7 +371,7 @@ h3.advertisement{line-height:30px;font-size:14px;}
 .leftBox{width:46%;min-height:100px;}
 .rightBox{width:52%;min-height:100px;}
 
-.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;min-height:250px;padding:8px 10px;border:1px solid #ddd;margin-bottom:15px;}
+.detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;padding:0px 10px;border:1px solid #ddd;margin-bottom:15px;}
 
 .detail h5,span,a{font-weight:bold;}
 
@@ -378,11 +380,11 @@ h3.advertisement{line-height:30px;font-size:14px;}
 	font-size:12px;
 	background:url(/images/arrow.gif) no-repeat left ;
 	padding-left:20px;
-	margin-bottom:5px;
 	text-transform:uppercase;
+	line-height:25px;
 }
 
-.detail h4{color:#222;margin-top:5px;}
+
 .detail p{color:#222;padding:10px;}
 
 .detail h5{color:#555;line-height:28px;font-size:11px;border-bottom:1px dotted #5694bd;margin:10px 0px;}
@@ -393,21 +395,41 @@ h3.advertisement{line-height:30px;font-size:14px;}
 .detail h5.cast a{color:#176B9F;text-decoration:none;}
 
 
-.criticsRating{
-	width:80%;
-	padding:5px;
-	min-height:50px;
+.detail div.rating{
+	width:185px;
+	padding:9px 10px;
+	height:62px;
 	margin-top:10px;
 	border:1px solid #CCD5DC;
+	border-bottom:2px solid #CCD5DC;
 	background-color:#fff;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 }
+.detail div.rating h4{color:#505050;font-size:14px;}
+
+.detail div.rating a{color:#649FC1;}
 
 
-.criticsRating a{color:#649FC1;}
+.detail div.rating a{color:#196ea4;font-size:12px;}
 
-.criticsRating div.ratingvalue {font-size:18px;}
+.detail div.rating div.ratingvalue {font-size:20px;letter-spacing:-1px;width:36px;padding:0px;text-align:left;color:#31384b;margin-left:5px;}
+
+
+.detail div.rating div.ratingBar{
+    width:128px;
+    background-color:#d2dce6;
+	border: 1px solid #becbd4;
+    height:17px;
+    margin-bottom:5px;
+	margin-top:2px;
+    padding:3px 3px 2px 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+
+}
+
+
 
 .actress{background-color:#fff;padding:5px;border:1px solid #ddd;width:35px;height:35px;margin-bottom:5px;}
 .actress img{width:35px;height:35px;}

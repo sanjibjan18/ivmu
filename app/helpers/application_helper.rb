@@ -9,6 +9,16 @@ module ApplicationHelper
     end
     text.html_safe
   end
+  
+  def thumb_class(rating)
+    class_name = ''
+    if rating.to_i >= 50
+      class_name = "thmubs_up"
+    else
+      class_name = "thmubs_down"
+    end
+    class_name
+  end
 
   def meta_keywords_and_title(key, object)
     if key

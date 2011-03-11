@@ -4,7 +4,7 @@
   = @movie.name
 
 .containerIn.borderDiv
-  .moviBanner.left
+  .leftMoviBanner.left
     .moviImage.left
       = image_tag @movie.banner_image, :size => "125x200"
     %a{:href => "#"}
@@ -16,20 +16,20 @@
     .detail
       %h3 Movie
       %div{ :style => "border-right:1px solid #ddd;", :class => "leftBox left"}
-        .criticsRating
-          %h4 Critics rating
+        .rating
+          %h4 Critics Rating
           .ratingBar.left
             = ratingbar(@movie.average_critics_reviews_rating_percent)
-          .ratingvalue.right
-            = "#{@movie.average_critics_reviews_rating_percent} %"
+          .ratingvalue.left
+            = "#{@movie.average_critics_reviews_rating_percent}%"
           .clear
           = link_to "Average of #{@movie.critics_reviews.count} critics", '#'
-        .criticsRating
-          %h4 Users rating
+        .rating
+          %h4 Users Rating
           .ratingBar.left
             = ratingbar(@movie.average_rating_percent)
-          .ratingvalue.right
-            = "#{@movie.average_rating_percent} %"
+          .ratingvalue.left
+            = "#{@movie.average_rating_percent}%"
           .clear
           = link_to "Average of #{@movie.reviews.count} critics", '#'
       .rightBox.right
