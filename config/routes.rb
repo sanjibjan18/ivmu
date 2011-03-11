@@ -1,4 +1,6 @@
 Muvi::Application.routes.draw do
+  resources :tweets
+
   resources :critics_reviews
   resources :user_profiles
   resources :user_tokens
@@ -15,6 +17,7 @@ Muvi::Application.routes.draw do
     resources :reviews
     resources :recommendations
     resources :critics_reviews
+    resources :tweets
   end
 
   namespace :admin do
