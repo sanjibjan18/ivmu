@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_presence_of :agreement, :message => 'should be accepted.'
 
   has_many :facebook_feeds
-  has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
+  #has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
   has_many :facebook_friend_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend_likes'}
   has_many :facebook_friends_posts, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friends_post'}
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
   has_many :tweets
   has_many :twitter_friends
+  has_many :facebook_friends
 
   scope :all_without_admin, where(:is_admin => false)
 
@@ -43,6 +44,14 @@ class User < ActiveRecord::Base
 
       likes = fb_user.likes
       friends = fb_user.friends
+
+      #store facebook friends of current user in facebook_friends table
+      fb_user.friends.collect(&:id).each do |friend_id|
+        unless self.facebook_friends.collect(&:facebook_id).include?(friend_id.to_s)
+          self.facebook_friends.create!(:facebook_id => friend_id)
+        end
+      end
+
       #Store current user's likes
       unless likes.blank?
         likes.each do |like|
@@ -53,20 +62,30 @@ class User < ActiveRecord::Base
       unless friends.blank?
         friends.each do |friend|
           #Fetch and store current user's friends list
-          self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.facebook_omniauth.uid, :fb_item_id => friend.id) unless self.facebook_friends.where(:value => friend.id).exists?
+          #self.facebook_feeds.create(:feed_type => 'friend', :value => friend.id, :fbid => self.facebook_omniauth.uid, :fb_item_id => friend.id) unless self.facebook_friends.where(:value => friend.id).exists?
 
           #Fetch and store friends' likes.
           friend_likes = friend.likes
           unless friend_likes.blank?
             friend_likes.each do |friend_like|
-              unless self.facebook_friends.where(:value => friend_like.id).exists?
+              unless self.facebook_friends.where(:facebook_id => friend_like.id).exists?
                 if movie_page_ids.include?(friend_like.id.to_s)
-                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
                   self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
                 end
               end
             end
           end
+          #Fetch and store friends' posts.
+          friend.posts.each do |post|
+            unless post.message.blank?
+              Movie.latest.limit(6).compact.each do |movie|
+                if post.message.match("#{movie.name}")
+                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id)
+                end
+              end # movie end
+            end # unless post message blank
+          end # each post end
+
         end
       end
     end
@@ -123,7 +142,7 @@ class User < ActiveRecord::Base
   end
 
   def friends_liked_movie(movie)
-     self.facebook_friend_likes.find_all_by_fb_item_id(movie.fbpage_id) rescue []
+     self.facebook_friend_likes.where('fb_item_id = ?', movie.fbpage_id) rescue []
    end
 
   def create_user_tokens(omniauth)
