@@ -12,7 +12,7 @@ gem 'friendly_id', "~>3.1"
 
 gem "facebooker2"
 gem 'delayed_job'
-gem 'whenever', :require => false
+gem 'whenever',"0.6.2", :require => false
 
 
 group :test, :development do
