@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     @critics_review_search = CriticsReview.search({:movie_id_eq => @movie.id, :meta_sort => "review_date.desc"})
     @critics_reviews = @critics_review_search.all.paginate(:per_page => 2)
     @tweet_search = Tweet.search({:movie_id_eq => @movie.id, :meta_sort => "tweeted_on.desc"})
-    @movie_tweets = @tweet_search.all.paginate(:per_page => 2)
+    @movie_tweets = @tweet_search.all.paginate(:per_page => 4)
   end
 end
 
