@@ -6,6 +6,7 @@ class UserTokensController < ApplicationController
     omniauth = request.env["omniauth.auth"]
     user_token = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if user_token
+      FacebookFeed.delay.fetch_posts_for_films
       flash[:notice] = "Signed in successfully."
       user_token.user.update_user_profile(omniauth) # update or create user profile
       sign_in_and_redirect(:user, user_token.user)
