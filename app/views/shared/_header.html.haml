@@ -12,12 +12,9 @@
         %li.last= link_to 'Logout', destroy_user_session_path
     .clear
     .languageSelect.right
-      %span Movie Language
-      %select
-        %option{:value => "volvo"} Hindi
-        %option{:value => "saab"} Kannada
-        %option{:value => "mercedes"} English
-        %option{:value => "audi"} Tamil
+      %span 
+        Movie Language
+        = select_tag 'Language', options_for_select([ ['Hindi', 'Hindi'],['Kannada', 'Kannada'],['English','English'],['Tamil','Tamil'] ])
   .clear
   #top_bar
     .headerLeft.left
