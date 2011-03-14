@@ -4,7 +4,7 @@
   %span Reviews
 .homeContainerIn.borderDiv
   = render 'shared/movies',  { :from => 'home'}
-
+  = paginate @movies
   .pagination.right
     %span.left
       %a{:href => "#"}

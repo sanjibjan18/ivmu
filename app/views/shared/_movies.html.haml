@@ -1,4 +1,4 @@
-- unless @movies.blank?
+- unless @movies.first.blank?
   - @movies.in_groups_of(2) do |group|
     - group.each do |movie|
       - unless movie.blank?
@@ -9,7 +9,7 @@
             = link_to "<h3> #{movie.name} </h3>".html_safe, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .right
             %div{:class => thumb_class(movie.average_critics_reviews_rating_percent)}
-    
+
           .rating.right
             %h4 Critics rating
             .ratingBar.left
