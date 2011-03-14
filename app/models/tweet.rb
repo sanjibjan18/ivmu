@@ -53,7 +53,7 @@ class Tweet < ActiveRecord::Base
 
 
   def self.create_tweet(tweet, movie)
-    movie_tweet = { :content => tweet.text, :twitter_id => tweet.from_user_id, :tweeted_on => tweet.created_at }
+    movie_tweet = { :content => tweet.text, :twitter_id => tweet.from_user_id, :tweeted_on => tweet.created_at, :twitter_screen_name => tweet.from_user }
     user_profile = UserProfile.find_by_twitter_screen_name(tweet.from_user)
     if user_profile
       movie_tweet[:user_id] = user_profile.user_id
