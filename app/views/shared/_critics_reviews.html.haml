@@ -24,10 +24,10 @@
         .clear
         .review
           .photo.left
-            %img{:src => "/images/jason.jpg"}
+            = image_tag(critics_review.film_critic_profile_image)
           .profile.right
-            %h3  Jason Pierce
-            %p  Thirty Mile Zone
-            %p.date  6th Jan 2011
+            %h3= critics_review.film_critic_name
+            %p= critics_review.film_critic.organization
+            %p.date= Time.parse(critics_review.review_date.to_s).strftime('%d %B %Y').to_s rescue ''
 .clear
 
