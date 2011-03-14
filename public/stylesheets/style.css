@@ -102,6 +102,10 @@ ul.links li a.login{
 	position:relative;top:-10px;
 }
 
+ul.links li a.profile, ul.links li a.logout{
+	padding-left:20px;
+}
+
 
 #top_bar{margin-top: 10px; margin-bottom: 0px; }
 

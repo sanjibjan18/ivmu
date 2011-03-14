@@ -8,11 +8,12 @@
         %li= link_to 'Login', new_user_session_path, :class => 'login'
         %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
       - else
-        %li= link_to 'profile', edit_user_profile_path(current_user)
-        %li.last= link_to 'Logout', destroy_user_session_path
+        %li= link_to 'Profile', edit_user_profile_path(current_user), :class => 'profile'
+
+        %li.last= link_to 'Logout', destroy_user_session_path, :class => 'logout'
     .clear
     .languageSelect.right
-      %span 
+      %span
         Movie Language
         = select_tag 'Language', options_for_select([ ['Hindi', 'Hindi'],['Kannada', 'Kannada'],['English','English'],['Tamil','Tamil'] ])
   .clear
@@ -36,3 +37,4 @@
             .btn.right
               = f.submit "Search"
     .clear
+
