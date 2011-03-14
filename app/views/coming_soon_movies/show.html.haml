@@ -44,7 +44,9 @@
         DIRECTOR:
         %span.director Raj Kumar
         RELEASE DATE :
-        %span 7 January 2011 (India)
+        %span
+          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
+          (India)
       %h5.cast
         CAST
         %a{:href => ""} See More(32)

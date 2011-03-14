@@ -27,6 +27,7 @@ class Movie < ActiveRecord::Base
   scope :latest, order('release_date desc nulls last')
   #scope :limit, lambda{|l| limit(limit)}
   scope :name_is_not_blank, where("name IS NOT NULL")
+  scope :released, where("release_date <= ? ", Date.today)
   scope :comming_soon_movies, where("release_date > ? ", Date.today)
 
   def banner_image
