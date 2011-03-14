@@ -20,11 +20,14 @@
         .clear
         .review
           .photo.left
-            = image_tag Twitter.profile_image("#{tweet.twitter_screen_name rescue 'nithinstany'}", :size => 'normal')
+            - unless tweet.twitter_screen_name.blank?
+              = image_tag Twitter.profile_image("#{tweet.twitter_screen_name}", :size => 'normal')
+            - else
+              = image_tag('twitter_no_photo')
           .profile.right
-            %h3= tweet.twitter_screen_name rescue  'Jason Pierce'
-            %p  Thirty Mile Zone
-            %p.date= Time.parse(tweet.tweeted_on.to_s).strftime('%d %B %Y').to_s rescue '6th Jan 2011'
+            %h3= tweet.twitter_screen_name rescue  ''
+            %p  Twitter
+            %p.date= Time.parse(tweet.tweeted_on.to_s).strftime('%d %B %Y').to_s rescue ''
         .clear
 .clear
 
