@@ -2,10 +2,16 @@
 = content_for :heading do
   Comming soon
 
-.containerIn
+.homeContainerIn.borderDiv
   = render :partial => 'shared/movies', :locals => { :from => 'coming_soon'}
-  .clear
-  .right
-    = will_paginate @movies, {:page_links => false}
+  .pagination.right
+    %span.left
+      %a{:href => "#"}
+        %img{:src => "/images/paginationLeft.jpg"}
+    %span
+      1 to 6 of 50 Movies
+    %span.right
+      %a{:href => "#"}
+        %img{:src => "/images/paginationRight.jpg"}
   .clear
 
