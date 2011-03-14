@@ -28,7 +28,7 @@
           %h4 Users Rating
           .ratingBar.left
             = ratingbar(@movie.average_rating_percent)
-          .ratingvalue.left
+          .ratingvalue.right
             = "#{@movie.average_rating_percent}%"
           .clear
           = link_to "Average of #{@movie.reviews.count} critics", '#'

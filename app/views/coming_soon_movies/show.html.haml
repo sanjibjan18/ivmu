@@ -24,7 +24,7 @@
             = "#{@movie.average_rating_percent} %"
           .clear
           = link_to "Average of 20 critics", '#'
-      .friendsLiked.right
+      .friendsLink.right
         %h4 Friends Linked
         %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
@@ -97,7 +97,7 @@
       %li= link_to "Friends", "#tabs-3"
     #tabs-1
       #critics_reviews
-
+        = render '/shared/critics_reviews'
       .clear
     #tabs-2
       #movie_tweets
