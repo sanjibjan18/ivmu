@@ -2,6 +2,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :user
   belongs_to :movie
 
+  scope :latest, order('tweeted_on desc nulls last')
 
   def self.fetch_tweets #(user)
     last_tweet = Tweet.last
