@@ -236,7 +236,7 @@ ul.links li a.login{
 	background-color:#DAE8EE;
 }
 
-.container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:725px;}
+.container{min-height:500px;padding:0px 20px 20px 20px;background-color:#fff;width:730px;}
 .container h2{font-size:17px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 
@@ -260,7 +260,7 @@ ul.links li a.login{
 
 
 .box{
-	width:305px;
+	width:308px;
 	padding:15px 12px;
 	height:205px;
 	background:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
