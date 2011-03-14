@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   layout 'website'
 
   def index
-    @movies = Movie.latest.paginate(:page => params[:page], :per_page => 2)
+    @movies = Movie.latest.paginate(:page => params[:page], :per_page => 6)
     #puts "pppppppppp #{@movies.inspect}"
   end
 
