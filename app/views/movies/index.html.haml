@@ -2,9 +2,17 @@
 = content_for :heading do
   %span search for
   = (params[:search][:name_contains] rescue '')
-.containerIn
-  = render :partial => 'shared/movies', :locals => { :from => 'home'}
-  .right
-    = will_paginate @movies, {:page_links => false}
+
+.homeContainerIn.borderDiv
+  = render 'shared/movies',  { :from => 'home'}
+  .pagination.right
+    %span.left
+      %a{:href => "#"}
+        %img{:src => "/images/paginationLeft.jpg"}
+    %span
+      1 to 6 of 50 Movies
+    %span.right
+      %a{:href => "#"}
+        %img{:src => "/images/paginationRight.jpg"}
   .clear
 

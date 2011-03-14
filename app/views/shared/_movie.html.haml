@@ -27,7 +27,7 @@
           .ratingvalue.right
             = "#{@movie.average_rating_percent}%"
           .clear
-          = link_to "Average of #{@movie.reviews.count} critics", '#'
+          = link_to "Average of #{@movie.reviews.count} ratings", '#'
       .friendsLink.right
         %h4 Friends Linked
         %img{:src => "/images/bubblessabharwal.jpg"}
