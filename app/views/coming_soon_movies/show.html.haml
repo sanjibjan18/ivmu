@@ -3,8 +3,8 @@
   %span Movie Review:
   = @movie.name
 
-.containerIn
-  .moviBanner.left
+.containerIn.borderDiv
+  .leftMoviBanner.left
     .moviImage.left
       = image_tag @movie.banner_image, :size => "125x200"
     %a{:href => "#"}
@@ -15,8 +15,8 @@
   .moviDetail.right
     .detail
       %h3 Movie
-      .detailLeft.left
-        .criticsRating
+      %div{ :style => "margin-top:12px;", :class => "leftBox left"}
+        .rating
           %h4 Users rating
           .ratingBar.left
             = ratingbar(@movie.average_rating_percent)
@@ -26,7 +26,6 @@
           = link_to "Average of 20 critics", '#'
       .friendsLiked.right
         %h4 Friends Linked
-        %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
         %img{:src => "/images/bubblessabharwal.jpg"}
@@ -89,22 +88,26 @@
       .clear
   .clear
   .right
-    = link_to pluralize(@movie.comments.count, 'comment') , '#'
+    = link_to pluralize(@movie.comments.count, 'comment') , '#' , :id => 'comment_count'
   .clear
   #tabs
     %ul
-      %li
-        %a{:href => "#tabs-1"} Critics
-      %li
-        %a{:href => "#tabs-2"} Users
-      %li
-        %a{:href => "#tabs-3"} Friends
+      %li= link_to "Critics", "#tabs-1"
+      %li= link_to "Users", "#tabs-2"
+      %li= link_to "Friends", "#tabs-3"
     #tabs-1
-      %p sort by date
+      #critics_reviews
+
+      .clear
     #tabs-2
-      %p users
+      #movie_tweets
+
+      .clear
     #tabs-3
-      %p friends
+
   %br
-  = render '/comments/form', {:movie => @movie}
+  - unless current_user.blank?
+    = render '/comments/form', {:movie => @movie}
+#rate_movie{:style => 'display:none;'}
+  = render :partial => "reviews/form", :locals => { :movie => @movie}
 
