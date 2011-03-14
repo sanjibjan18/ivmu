@@ -3,6 +3,8 @@ class FacebookFeed < ActiveRecord::Base
 
   scope :like_name, lambda{|name| where("value like ? ", "#{name}%") }
   scope :by_fb_item_id, lambda{|item_id| where(:fb_item_id => item_id) }
+  scope :posts, lambda{ where(:feed_type => 'friends_post') }
+  scope :latest, lambda{ order('created_at desc') }
 
   def self.fetch_posts_for_films
     movies = []

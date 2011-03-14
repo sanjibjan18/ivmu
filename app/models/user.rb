@@ -144,7 +144,7 @@ class User < ActiveRecord::Base
   def friends_post_for_movie(movie)
     facebook_friends_ids = self.facebook_friends.collect(&:facebook_id)
     return [] if facebook_friends_ids.blank?
-    movie.facebook_feeds.where('fbid in (?)', facebook_friends_ids).limit(4) rescue []
+    movie.facebook_feeds.posts.latest.where('fbid in (?)', facebook_friends_ids).limit(4) rescue []
   end
 
   def friends_liked_movie(movie)
