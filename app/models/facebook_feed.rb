@@ -78,8 +78,5 @@ class FacebookFeed < ActiveRecord::Base
     end
   end
 
-
-
-
 end
 
