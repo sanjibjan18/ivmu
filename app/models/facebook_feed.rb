@@ -4,7 +4,7 @@ class FacebookFeed < ActiveRecord::Base
   scope :like_name, lambda{|name| where("value like ? ", "#{name}%") }
   scope :by_fb_item_id, lambda{|item_id| where(:fb_item_id => item_id) }
   scope :posts, lambda{ where(:feed_type => 'friends_post') }
-  scope :latest, lambda{ order('created_at desc') }
+  scope :latest, lambda{ order('posted_on desc') }
 
   def self.fetch_posts_for_films
     movies = []
@@ -60,14 +60,26 @@ class FacebookFeed < ActiveRecord::Base
               end # movie end
             end # unless post message blank
           end # each post end
-
         end
       end
     end
-
-
-
   end
+
+  def self.fetch_all_post_for_movie(movie)
+    posts = Mogli::Model::search("#{movie.name}",nil, {:type => 'post', :limit => 500})
+    while !posts.next_url.blank?  # fetch next method in mogli client append the data to same array so we check untill next url blank
+      posts.fetch_next
+    end
+
+    posts.each do |post|
+      if post.type == "status"
+        movie.facebook_feeds.create(:feed_type => 'friends_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date) rescue ''
+      end
+    end
+  end
+
+
+
 
 end
 
