@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
       #Store current user's likes
       unless likes.blank?
         likes.each do |like|
-          self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.facebook_omniauth.uid, :fb_item_id => like.id) unless self.facebook_feeds.where(:fb_item_id => like.id).exists?
+          self.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => self.facebook_omniauth.uid, :fb_item_id => like.id, :posted_on => like.created_time.to_date, :facebook_name => fb_user.name) unless self.facebook_feeds.where(:fb_item_id => like.id).exists?
         end
       end
 
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
             friend_likes.each do |friend_like|
               unless self.facebook_friends.where(:facebook_id => friend_like.id).exists?
                 if movie_page_ids.include?(friend_like.id.to_s)
-                  self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
+                  self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id, :posted_on => friend_like.created_time.to_date, :facebook_name => friend.name)
                 end
               end
             end

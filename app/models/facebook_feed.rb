@@ -28,7 +28,7 @@ class FacebookFeed < ActiveRecord::Base
 
       unless likes.blank?
         likes.each do |like|
-          user.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => user.facebook_omniauth.uid, :fb_item_id => like.id) unless user.facebook_feeds.where(:fb_item_id => like.id).exists?
+          user.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => user.facebook_omniauth.uid, :fb_item_id => like.id, :posted_on => like.created_time.to_date, :facebook_name => fb_user.name ) unless user.facebook_feeds.where(:fb_item_id => like.id).exists?
         end
       end
 
@@ -43,7 +43,7 @@ class FacebookFeed < ActiveRecord::Base
             friend_likes.each do |friend_like|
               unless user.facebook_friends.where(:facebook_id => friend_like.id).exists?
                 if movies.collect(&:fbpage_id).include?(friend_like.id.to_s)
-                  user.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id)
+                  user.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id, :posted_on => friend_like.created_time.to_date, :facebook_name => friend.name)
                 end
               end
             end

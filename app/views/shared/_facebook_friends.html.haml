@@ -11,8 +11,8 @@
         .photo.left
           = image_tag("https://graph.facebook.com/#{post.fbid}/picture")
         .profile.right
-          %h3  Jason Pierce
+          %h3= post.facebook_name rescue ''
           %p  Facebook
-          %p.date  6th Jan 2011
+          %p.date= Time.parse(post.posted_on.to_s).strftime('%d %B %Y').to_s rescue ''
       .clear
 
