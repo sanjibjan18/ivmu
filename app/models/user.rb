@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
             unless post.message.blank?
               Movie.latest.limit(6).compact.each do |movie|
                 if post.message.match("#{movie.name}")
-                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id)
+                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => friend.name, :posted_on => post.created_time.to_date)
                 end
               end # movie end
             end # unless post message blank
