@@ -601,13 +601,13 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
     margin:12px 20px 10px 10px;
 	width:200px;
 	background-color:#ddd;
-	border:none;
 }
-.pagination span{font-size:10px;line-height:25px;padding-left:5px;color:#555;}
-.pagination span.left{width:25px;height:25px;padding:0px;;}
-.pagination span.right{width:25px;height:25px;padding:0px;}
+
 
 .pagination a img{border:none;}
+
+.muvi_pagination{width: 200px;background-color:#ddd; height:25px;  margin:12px 20px 10px 10px;}
+.pagination_detail{width: 140px; padding: 6px 5px 0px 5px; font-weight: bold;}
 
 .footer{
 	width:990px;
