@@ -2,7 +2,7 @@
   %label  Sort By
   = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']], params[:sort] || 'release_date' ) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
 .right
-  = will_paginate(@critics_reviews,  :class => 'muvi_pagination')
+  = will_paginate(@critics_reviews,  :class => 'muvi_pagination', :params => {:controller => "critics_reviews" , :action => "index", :id => @movie.id })
 .clear
 - @critics_reviews.in_groups_of(2) do |group|
   - group.each do |critics_review|
