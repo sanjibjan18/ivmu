@@ -1,4 +1,5 @@
 module ApplicationHelper
+  WillPaginate::ViewHelpers.pagination_options[:renderer] = 'MuviPagination'
 
   def ratingbar(rating)
     text = ""
@@ -40,24 +41,6 @@ module ApplicationHelper
     content.html_safe
   end
 
-  def page_entries_info(collection, options = {})
-    entry_name = options[:entry_name] ||
-      (collection.empty?? 'entry' : collection.first.class.name.underscore.sub('_', ' '))
-
-    if collection.total_pages < 2
-      case collection.size
-      when 0; "No #{entry_name.pluralize.capitalize} found"
-      when 1; "1 #{entry_name.capitalize}"
-    else;   "%d to %d of %d #{entry_name.pluralize.capitalize}"
-      end
-    else
-      %{%d to %d of %d #{entry_name.pluralize.capitalize}} % [
-        collection.offset + 1,
-        collection.offset + collection.length,
-        collection.total_entries
-      ]
-    end
-  end
 
 end
 
