@@ -1,4 +1,8 @@
-- @movie.facebook_posts.each do |post|
+.right
+  #pagination
+    = will_paginate(@facebook_posts,  :class => 'muvi_pagination', :params => {:controller => "facebook_posts" , :action => "index", :id => @movie.id })
+.clear
+- @facebook_posts.each do |post|
   %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
     %div.reviewBox.left
       %div.reviewIcon.left

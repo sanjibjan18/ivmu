@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find_using_id(params[:id]).includes([:comments, :critics_reviews]).first
     @critics_reviews = @movie.critics_reviews.latest.paginate(:page => 1, :per_page => 2)
     @movie_tweets = @movie.tweets.latest.paginate(:page => 1, :per_page => 4)
+    @facebook_posts = @movie.facebook_posts.paginate(:page => 1, :per_page => 4)
   end
 end
 

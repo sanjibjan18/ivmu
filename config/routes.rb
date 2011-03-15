@@ -1,4 +1,6 @@
 Muvi::Application.routes.draw do
+  get "facebook_posts/index"
+
   resources :tweets
 
   resources :critics_reviews
