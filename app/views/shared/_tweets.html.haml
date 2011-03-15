@@ -1,12 +1,5 @@
-.pagination.right
-  %span.left
-    %a{:href => "#"}
-      %img{:src => "/images/paginationLeft.jpg"}
-  %span
-    = page_entries_info @movie_tweets
-  %span.right
-    %a{:href => "#"}
-      %img{:src => "/images/paginationRight.jpg"}
+.right
+  = will_paginate(@movie_tweets,  :class => 'muvi_pagination')
 .clear
 - @movie_tweets.in_groups_of(2) do |group|
   - group.each do |tweet|
