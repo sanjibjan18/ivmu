@@ -5,14 +5,7 @@
 
 .homeContainerIn.borderDiv
   = render 'shared/movies',  { :from => 'home'}
-  .pagination.right
-    %span.left
-      %a{:href => "#"}
-        %img{:src => "/images/paginationLeft.jpg"}
-    %span
-      1 to 6 of 50 Movies
-    %span.right
-      %a{:href => "#"}
-        %img{:src => "/images/paginationRight.jpg"}
+  .right
+    = will_paginate(@movies,  :class => 'muvi_pagination')
   .clear
 
