@@ -35,8 +35,7 @@
         %br
         = render :partial => 'shared/rate'
         %br
-        %a{:href => "#"}
-          %img{:src => "/images/recomendbutton.jpg"}
+        = link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
       .clear
     .detail
       %h3 MOVIE INFORMATION
@@ -120,6 +119,8 @@
   %br
   - unless current_user.blank?
     = render '/comments/form', {:movie => @movie}
+    #recommendations{:style => 'display:none;'}
+      = render "/recommendations/form", {:movie => @movie }
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}
 

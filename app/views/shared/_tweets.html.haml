@@ -11,7 +11,7 @@
         .review
           .photo.left
             - unless tweet.twitter_screen_name.blank?
-              = image_tag Twitter.profile_image("#{tweet.twitter_screen_name}", :size => 'normal')
+              = image_tag(Twitter.profile_image("#{tweet.twitter_screen_name}", :size => 'normal')) rescue ''
             - else
               = image_tag('twitter_no_photo')
           .profile.right
