@@ -1,0 +1,8 @@
+= content_for :heading do
+  ="All tweets by the user #{params[:twitter_name]}"
+
+
+%div
+  %p
+    - unless @movie_tweets.blank?
+      = render '/shared/tweets'

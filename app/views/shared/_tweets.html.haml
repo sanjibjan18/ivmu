@@ -1,7 +1,3 @@
-.right
-  #pagination
-    = will_paginate(@movie_tweets,  :class => 'muvi_pagination', :params => {:controller => "tweets" , :action => "index", :id => @movie.id })
-.clear
 - @movie_tweets.in_groups_of(2) do |group|
   - group.each do |tweet|
     - unless tweet.blank?

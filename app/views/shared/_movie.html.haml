@@ -19,7 +19,7 @@
             .ratingvalue.left
               = "#{@movie.average_critics_reviews_rating_percent}%"
             .clear
-            = link_to "Average of #{@movie.critics_reviews.count} critics", '#tabs-1'
+            = link_to "Average of #{@movie.critics_reviews.count} critics", '#critics', :onclick => "go_to_tab(0);"
         .rating
           %h4 Users Rating
           .ratingBar.left
@@ -27,7 +27,7 @@
           .ratingvalue.right
             = "#{@movie.average_rating_percent}%"
           .clear
-          = link_to "Average of #{@movie.reviews.count} ratings", '#tabs-1'
+          = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
         %h4 Friends Linked
         %img{:src => "/images/bubblessabharwal.jpg"}
@@ -94,22 +94,26 @@
   .right
     = link_to pluralize(@movie.comments.count, 'comment') , movie_comments_path(@movie) , :id => 'comment_count'
   .clear
-  #tabs
+  #reviews
     %ul
       -if from == 'movies'
-        %li= link_to "Critics", "#tabs-1"
-      %li= link_to "Users", "#tabs-2"
-      %li= link_to "Friends", "#tabs-3"
+        %li= link_to "Critics", "#critics"
+      %li= link_to "Users", "#users"
+      %li= link_to "Friends", "#friends"
     -if from == 'movies'
-      #tabs-1
+      #critics
         #critics_reviews
           = render '/shared/critics_reviews'
         .clear
-    #tabs-2
+    #users
       #movie_tweets
+        .right
+          #pagination
+            = will_paginate(@movie_tweets,  :class => 'muvi_pagination', :params => {:controller => "tweets" , :action => "index", :id => @movie.id })
+        .clear
         = render '/shared/tweets'
       .clear
-    #tabs-3
+    #friends
       #facebook_posts
         = render '/shared/facebook_friends'
       .clear

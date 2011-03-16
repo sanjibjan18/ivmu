@@ -2,7 +2,8 @@ Muvi::Application.routes.draw do
   get "facebook_posts/index"
 
   resources :tweets
-
+  match '/user_tweets/:twitter_name' => 'tweets#for_user'
+ 
   resources :critics_reviews
   resources :user_profiles
   resources :user_tokens

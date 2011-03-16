@@ -1,6 +1,6 @@
  $(document).ready(function($) {
     $('a[rel*=facebox]').facebox();
-    $( "#tabs" ).tabs();
+    $( "#reviews" ).tabs();
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
@@ -11,3 +11,9 @@ function critics_reviews_sort(movie_id, value) {
   $.getScript(url); return false;
 }
 
+
+function go_to_tab(index){
+  $("#reviews").tabs("select", index );
+  window.location.hash = '#reviews';
+
+}

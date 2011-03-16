@@ -12,5 +12,8 @@ class TweetsController < ApplicationController
     end
   end
 
+  def for_user
+    @movie_tweets = Tweet.where(:twitter_screen_name => params[:twitter_name])
+  end
 end
 
