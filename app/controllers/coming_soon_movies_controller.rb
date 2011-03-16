@@ -9,7 +9,7 @@ class ComingSoonMoviesController < ApplicationController
   def show
     @movie = Movie.find_using_id(params[:id]).first
     @movie_tweets = @movie.tweets.latest.paginate(:page => 1, :per_page => 4)
-    @facebook_posts = @movie.facebook_posts.paginate(:page => 1, :per_page => 4)
+    @facebook_posts = @movie.facebook_feeds.posts.latest.paginate(:page => 1, :per_page => 4)
   end
 
 end

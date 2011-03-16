@@ -4,7 +4,7 @@ class FacebookPostsController < ApplicationController
 
   def index
     @movie ||= Movie.find(params[:id])
-    @facebook_posts = @movie.facebook_posts.paginate(:page => params[:page], :per_page => 4)
+    @facebook_posts = @movie.facebook_feeds.posts.latest.paginate(:page => params[:page], :per_page => 4)
     respond_to do |format|
       format.html {}
       format.js {}

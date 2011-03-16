@@ -50,9 +50,6 @@ class Movie < ActiveRecord::Base
     user.facebook_friend_likes(user.facebook_omniauth.uid).by_fb_item_id(self.fbpage_id) unless user.facebook_omniauth.blank?
   end
 
-  def facebook_posts
-    self.facebook_feeds.posts.latest rescue []
-  end
 
   def self.fetch_tweets_and_facebook_feeds
     delay = 0

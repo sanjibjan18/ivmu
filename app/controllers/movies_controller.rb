@@ -12,9 +12,9 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_using_id(params[:id]).includes([:comments, :critics_reviews]).first
-    @critics_reviews = @movie.critics_reviews.latest.paginate(:page => 1, :per_page => 2)
-    @movie_tweets = @movie.tweets.latest.paginate(:page => 1, :per_page => 4)
-    @facebook_posts = @movie.facebook_posts.paginate(:page => 1, :per_page => 4)
+    @critics_reviews = @movie.critics_reviews.latest.paginate(:page => params[:page], :per_page => 2)
+    @movie_tweets = @movie.tweets.latest.paginate(:page => params[:page], :per_page => 4)
+    @facebook_posts = @movie.facebook_feeds.posts.latest.paginate(:page => params[:page], :per_page => 4)
   end
 end
 
