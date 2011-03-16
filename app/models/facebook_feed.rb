@@ -66,14 +66,16 @@ class FacebookFeed < ActiveRecord::Base
   end
 
   def self.fetch_all_post_for_movie(movie)
-    posts = Mogli::Model::search("#{movie.name}",nil, {:type => 'post', :limit => 500})
+    posts = Mogli::Model::search("#{movie.name}",nil, {:type => 'post', :limit => 1000})
     while !posts.next_url.blank?  # fetch next method in mogli client append the data to same array so we check untill next url blank
       posts.fetch_next
     end
 
     posts.each do |post|
       if post.type == "status"
-        movie.facebook_feeds.create(:feed_type => 'friends_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date) rescue ''
+        unless movie.facebook_feeds.where(:fb_item_id => post.id).exists?
+          movie.facebook_feeds.create(:feed_type => 'friends_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date) rescue ''
+        end
       end
     end
   end

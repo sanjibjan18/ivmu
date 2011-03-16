@@ -63,9 +63,18 @@ class Tweet < ActiveRecord::Base
     if (!movie.release_date.blank? && movie.release_date.to_date <= tweet.created_at.to_date)
       movie_tweet[:review] = true
     end
-
-
     movie.tweets.create(movie_tweet)
+  end
+
+  def self.fetch_tweet_for_movie(movie)
+     search = Twitter::Search.new
+     last_tweet = movie.tweets.last rescue nil
+     if last_tweet.blank?
+       Tweet.tweet_pagination(search.containing("#{movie.name}").per_page(100), movie)
+     else
+       Tweet.tweet_pagination(search.containing("#{movie.name}").since_date("#{last_tweet.created_at.to_date.to_s}").per_page(100), movie)
+     end
+     search.clear
   end
 
 end
