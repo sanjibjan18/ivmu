@@ -4,7 +4,11 @@ class FacebookPostsController < ApplicationController
 
   def index
     @movie ||= Movie.find(params[:id])
-    @facebook_posts = @movie.facebook_feeds.posts.latest.paginate(:page => params[:page], :per_page => 4)
+    @facebook_posts = if current_user && current_user.facebook_omniauth
+      @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4)
+    else
+       []
+    end
     respond_to do |format|
       format.html {}
       format.js {}

@@ -113,6 +113,10 @@ class User < ActiveRecord::Base
     review.rating unless review.blank?
   end
 
+  def facebook_friends_ids
+    self.facebook_friends.collect(&:facebook_id)
+  end
+
   def create_user_from_omniauth(omniauth)
     self.email = (omniauth['extra']['user_hash']['email'] rescue '' ) if omniauth['provider'] == 'facebook'
     self.build_user_profile(user_info_from_omniauth(omniauth))
@@ -146,7 +150,6 @@ class User < ActiveRecord::Base
   end
 
   def friends_post_for_movie(movie)
-    facebook_friends_ids = self.facebook_friends.collect(&:facebook_id)
     return [] if facebook_friends_ids.blank?
     movie.facebook_feeds.posts.latest.where('fbid in (?)', facebook_friends_ids).limit(4) rescue []
   end
