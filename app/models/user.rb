@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
               end
             end
           end
+
           #Fetch and store friends' posts.
           friend.posts.each do |post|
             unless post.message.blank?
@@ -90,6 +91,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+
+
 
   def reviwed_movie?(movie)
     #reviewed_movies.include?(movie)

@@ -30,8 +30,9 @@
           = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
         %h4 Friends Liked
-        -@facebook_posts.each do |post|
-          = image_tag("https://graph.facebook.com/#{post.fbid}/picture")
+        - if current_user
+          -@movie.friend_likes(current_user).each do |like|
+            = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
         %br
         = render :partial => 'shared/rate'
         - unless current_user.blank?
