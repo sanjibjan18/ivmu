@@ -34,8 +34,9 @@
           = image_tag("https://graph.facebook.com/#{post.fbid}/picture")
         %br
         = render :partial => 'shared/rate'
-        %br
-        = link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
+        - unless current_user.blank?
+          %br
+          = link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
       .clear
     .detail
       %h3 MOVIE INFORMATION
