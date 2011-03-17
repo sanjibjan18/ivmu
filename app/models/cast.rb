@@ -3,7 +3,7 @@ class Cast < ActiveRecord::Base
   self.establish_connection  $config["muvi_extract"]
 
 
-  has_many :movie_casts , :primary_key => 'name', :foreign_key => 'cast_name'
-  has_many :movies, :through => 'movie_casts'
+  has_many :movie_casts
+  has_many :movies, :through => :movie_casts
 end
 
