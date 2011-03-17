@@ -120,9 +120,6 @@
         = link_to image_tag('facebookicon.gif'), "/auth/facebook"
 
       .clear
-
-
-
   %br
   - unless current_user.blank?
     = render '/comments/form', {:movie => @movie}
