@@ -54,7 +54,7 @@ class Tweet < ActiveRecord::Base
 
 
   def self.create_tweet(tweet, movie)
-    movie_tweet = { :content => tweet.text, :twitter_id => tweet.from_user_id, :tweeted_on => tweet.created_at, :twitter_screen_name => tweet.from_user }
+    movie_tweet = { :content => tweet.text, :twitter_id => tweet.from_user_id, :tweeted_on => tweet.created_at, :twitter_screen_name => tweet.from_user, :tweet_id => tweet.id.to_s }
     user_profile = UserProfile.find_by_twitter_screen_name(tweet.from_user)
     if user_profile
       movie_tweet[:user_id] = user_profile.user_id
@@ -63,7 +63,7 @@ class Tweet < ActiveRecord::Base
     if (!movie.release_date.blank? && movie.release_date.to_date <= tweet.created_at.to_date)
       movie_tweet[:review] = true
     end
-    movie.tweets.create(movie_tweet)
+    movie.tweets.create!(movie_tweet) unless movie.tweets.collect(&:tweet_id).include?(tweet.id.to_s)
   end
 
   def self.fetch_tweet_for_movie(movie)
