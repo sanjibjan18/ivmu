@@ -20,7 +20,7 @@ class Movie < ActiveRecord::Base
   has_many :critics_reviews, :foreign_key => 'movie_name' , :primary_key => 'name'
   has_one :meta_detail
 
-  has_many :movie_casts, :foreign_key => 'movie_name' , :primary_key => 'name'
+  has_many :movie_casts
   has_many :casts, :through => :movie_casts
 
   accepts_nested_attributes_for :meta_detail, :allow_destroy => true
