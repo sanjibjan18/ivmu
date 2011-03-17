@@ -60,9 +60,9 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def friend_likes(user)
+  def friend_likes(user) # this method is used in movie show
      return [] if user.blank? || user.facebook_friends.blank?
-     facebook_friends_ids = user.facebook_friends.collect(&:facebook_id)
+     facebook_friends_ids = user.facebook_friends.collect(&:facebook_id) # get current user facebook friends ids
      FacebookFeed.friend_likes.friends_ids(facebook_friends_ids).movie_page_id(self.fbpage_id).limit(4)
   end
 
