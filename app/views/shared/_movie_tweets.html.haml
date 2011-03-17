@@ -1,23 +1,26 @@
-- @movie_tweets.in_groups_of(2) do |group|
-  - group.each do |tweet|
-    - unless tweet.blank?
-      %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
-        %div.reviewBox.left
-          %div.reviewIcon.left
-            = image_tag("/images/thumbUp.png")
-          %p
-            = tweet.content
-        .clear
-        .review
-          .photo.left
-            - unless tweet.twitter_screen_name.blank?
-              = image_tag(Twitter.profile_image("#{tweet.twitter_screen_name}", :size => 'normal')) rescue ''
-            - else
-              = image_tag('twitter_no_photo')
-          .profile.right
-            %h3= tweet.twitter_screen_name rescue  ''
-            %p  Twitter
-            %p.date= Time.parse(tweet.tweeted_on.to_s).strftime('%d %B %Y').to_s rescue ''
-        .clear
-.clear
+-if @movie_tweets.blank?
+  %h4 Tweets are  not present for this movie.
+-else
+  - @movie_tweets.in_groups_of(2) do |group|
+    - group.each do |tweet|
+      - unless tweet.blank?
+        %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
+          %div.reviewBox.left
+            %div.reviewIcon.left
+              = image_tag("/images/thumbUp.png")
+            %p
+              = tweet.content
+          .clear
+          .review
+            .photo.left
+              - unless tweet.twitter_screen_name.blank?
+                = image_tag(Twitter.profile_image("#{tweet.twitter_screen_name}", :size => 'normal')) rescue ''
+              - else
+                = image_tag('twitter_no_photo')
+            .profile.right
+              %h3= tweet.twitter_screen_name rescue  ''
+              %p  Twitter
+              %p.date= Time.parse(tweet.tweeted_on.to_s).strftime('%d %B %Y').to_s rescue ''
+          .clear
+  .clear
 

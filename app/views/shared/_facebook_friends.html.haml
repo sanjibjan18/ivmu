@@ -1,21 +1,24 @@
-.right
-  #pagination
-    = will_paginate(@facebook_posts,  :class => 'muvi_pagination', :params => {:controller => "facebook_posts" , :action => "index", :id => @movie.id })
-.clear
-- @facebook_posts.each do |post|
-  %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
-    %div.reviewBox.left
-      %div.reviewIcon.left
-        = image_tag("/images/thumbUp.png")
-      %p
-        = truncate(post.value, :length => 250)
-    .clear
-    .review
-      .photo.left
-        = image_tag("https://graph.facebook.com/#{post.fbid}/picture")
-      .profile.right
-        %h3= post.facebook_name rescue ''
-        %p  Facebook
-        %p.date= Time.parse(post.posted_on.to_s).strftime('%d %B %Y').to_s rescue ''
-    .clear
+- if @facebook_posts.blank?
+  %h4 Facebook Posts are not available for this movie.
+-else
+  .right
+    #pagination
+      = will_paginate(@facebook_posts,  :class => 'muvi_pagination', :params => {:controller => "facebook_posts" , :action => "index", :id => @movie.id })
+  .clear
+  - @facebook_posts.each do |post|
+    %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
+      %div.reviewBox.left
+        %div.reviewIcon.left
+          = image_tag("/images/thumbUp.png")
+        %p
+          = truncate(post.value, :length => 250)
+      .clear
+      .review
+        .photo.left
+          = image_tag("https://graph.facebook.com/#{post.fbid}/picture")
+        .profile.right
+          %h3= post.facebook_name rescue ''
+          %p  Facebook
+          %p.date= Time.parse(post.posted_on.to_s).strftime('%d %B %Y').to_s rescue ''
+      .clear
 
