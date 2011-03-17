@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
   end
 
   def for_user
-    @movie_tweets = Tweet.where(:twitter_screen_name => params[:twitter_name]).paginate(:page => params[:page], :per_page => 12)
+    @movie_tweets = Tweet.latest.where(:twitter_screen_name => params[:twitter_name]).paginate(:page => params[:page], :per_page => 12)
   end
 end
 
