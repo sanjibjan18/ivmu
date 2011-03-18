@@ -68,7 +68,7 @@
       .clear
   .clear
   .right
-    = link_to pluralize(@movie.comments.count, 'comment') , movie_comments_path(@movie) , :id => 'comment_count'
+    = link_to pluralize(@movie.comments.count, 'comment') , '#comments' , :id => 'comment_count'
   .clear
   #reviews
     %ul
