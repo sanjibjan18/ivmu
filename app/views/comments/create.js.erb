@@ -2,6 +2,7 @@
   $('#comment_comment').val('');
   $('#error_container_id').html('Successfully posted');
   $('#comment_count').html("<%= pluralize(@movie.comments.count, 'comment')%>");
+  $('#comments').prepend("<%= escape_javascript(render 'shared/comment', {:comment => @comment}) %>");
 <% else %>
    $('#error_container_id').html('<%= escape_javascript(render 'shared/error_display', {:error_object => @comment}) %>');
 <% end %>
