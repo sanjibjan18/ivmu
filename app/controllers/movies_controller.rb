@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
-  skip_before_filter :authenticate_user!
+ skip_before_filter :authenticate_user!
   layout 'website'
-  caches_action :index
+  caches_page :index
 
   def index
     @search = Movie.latest.search(params[:search])
@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
     @movie_tweets = @movie.tweets.latest.paginate(:page => params[:page], :per_page => 4)
     @facebook_posts = @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4) if current_user && current_user.facebook_omniauth
   end
+
 
   def autocomplete
     movie_names = Movie.where('name LIKE ?', "%#{params[:term]}%").limit(10).collect(&:name)
