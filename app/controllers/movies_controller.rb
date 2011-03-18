@@ -17,5 +17,11 @@ class MoviesController < ApplicationController
     @movie_tweets = @movie.tweets.latest.paginate(:page => params[:page], :per_page => 4)
     @facebook_posts = @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4) if current_user && current_user.facebook_omniauth
   end
+
+  def autocomplete
+    movie_names = Movie.where('name LIKE ?', "%#{params[:term]}%").limit(10).collect(&:name)
+    render :json => movie_names.to_json
+  end
+
 end
 

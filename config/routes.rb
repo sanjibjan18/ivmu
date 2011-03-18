@@ -13,7 +13,7 @@ Muvi::Application.routes.draw do
 
   devise_for :users
   match '/auth/:provider/callback' => 'user_tokens#create'
-
+  match 'autocomplete' => 'movies#autocomplete'
   resources :movies do
     resources :comments
     resources :reviews

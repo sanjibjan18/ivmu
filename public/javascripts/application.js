@@ -1,6 +1,7 @@
  $(document).ready(function($) {
     $('a[rel*=facebox]').facebox();
     $( "#reviews" ).tabs();
+    $("#search_name_contains").autocomplete({source: '/autocomplete'});
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
@@ -17,3 +18,4 @@ function go_to_tab(index){
   window.location.hash = '#reviews';
 
 }
+
