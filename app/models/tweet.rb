@@ -41,15 +41,15 @@ class Tweet < ActiveRecord::Base
     search.each do |tweet|
       Tweet.create_tweet(tweet, movie)
     end
-    if search.next_page?
-      search.fetch_next_page
-      Tweet.tweet_pagination(search, movie)
-    else
-      search.fetch_next_page
-      search.each do |tweet|
-        Tweet.create_tweet(tweet, movie)
-      end
-    end
+   # if search.next_page? # only 100 tweet created so this one commented
+   #   search.fetch_next_page
+   #   Tweet.tweet_pagination(search, movie)
+   # else
+   #   search.fetch_next_page
+   #   search.each do |tweet|
+   #     Tweet.create_tweet(tweet, movie)
+  #    end
+   # end
   end
 
 
