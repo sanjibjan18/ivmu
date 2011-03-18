@@ -7,6 +7,8 @@
       = f.label :comment, 'ADD COMMENTS'
     %div{:style => 'width:58%;float:left'}
       = f.text_area :comment, :rows => 4, :cols => 50
+      -if(defined? comment)
+        = f.hidden_field :parent_id, :value => comment.id
     %div{:style => 'width:25%;float:left'}
       .actions.right
         = image_submit_tag('postCommentButton.jpg')

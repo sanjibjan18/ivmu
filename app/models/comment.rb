@@ -1,14 +1,16 @@
 class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
-  after_save :post_to_wall
-  after_save :post_to_twitter
+  has_ancestry
+
+  #after_save :post_to_wall
+ # after_save :post_to_twitter
 
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
   default_scope :order => 'created_at DESC'
   validates :comment , :presence => true
-
+  scope :parent, where('ancestry IS NULL')
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.

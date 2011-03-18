@@ -1,8 +1,15 @@
 <% if @comment.errors.empty? %>
-  $('#comment_comment').val('');
-  $('#error_container_id').html('Successfully posted');
+  //$('#error_container_id').html('Successfully posted');
   $('#comment_count').html("<%= pluralize(@movie.comments.count, 'comment')%>");
-  $('#comments').prepend("<%= escape_javascript(render 'shared/comment', {:comment => @comment}) %>");
+  <% if @comment.ancestry %>
+    $("#comment_<%=@comment.ancestry%>_form").toggle();
+    $("#comment_<%= @comment.ancestry%> > .replies").append("<%= escape_javascript(render 'shared/comment_field', {:comment => @comment}) %>");
+    $("#comment_<%= @comment.ancestry%>").children('#comment_comment').val('');
+  <%else%>
+    $('#comment_comment').val('');
+    $('#comments').prepend("<%= escape_javascript(render 'shared/comment', {:comment => @comment}) %>");
+  <%end%>
+
 <% else %>
    $('#error_container_id').html('<%= escape_javascript(render 'shared/error_display', {:error_object => @comment}) %>');
 <% end %>

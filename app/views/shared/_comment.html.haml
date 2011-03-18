@@ -1,8 +1,12 @@
-= comment.comment
-by
-= comment.user.display_name
-&nbsp;
-= time_ago_in_words(comment.created_at)
-%br
-%br
+%div{:id => "comment_#{comment.id}"}
+  = render '/shared/comment_field', {:comment => comment }
+  -unless comment.descendants.blank?
+    .replies
+      %h3 Replies
+      -comment.descendants.each do |com|
+        = render '/shared/comment_field', {:comment => com }
+
+  = link_to "Reply","#comment_#{comment.id}_form", :onclick => "jQuery('#comment_#{comment.id}_form').toggle();"
+  %div{:id => "comment_#{comment.id}_form", :style => 'display:none;'}
+    = render '/comments/form', {:movie => @movie, :comment => comment }
 

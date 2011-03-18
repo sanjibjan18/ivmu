@@ -5,8 +5,7 @@
     %a{:href => "#"}
       %img{:src => "/images/viewtrailer.jpg"}
     %br
-    %a{:href => "#"}
-      %img{:src => "/images/followbutton.jpg"}
+    /= link_to image_tag("followbutton.jpg"), '#'
   .moviDetail.left
     .detail
       %h3 Movie
@@ -41,7 +40,7 @@
         = render :partial => 'shared/rate'
         - unless current_user.blank?
           %br
-          = link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
+          /= link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
       .clear
     .detail
       %h3 MOVIE INFORMATION
@@ -103,7 +102,7 @@
       = render "/recommendations/form", {:movie => @movie }
   %br
   #comments
-    -@movie.comments.each do |comment|
+    -@movie.comments.parent.each do |comment|
       = render '/shared/comment', { :comment => comment }
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}

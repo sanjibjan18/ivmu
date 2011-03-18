@@ -13,8 +13,7 @@ gem 'friendly_id', "~>3.1"
 gem "facebooker2"
 gem 'delayed_job'
 gem 'whenever',:require => false
-gem 'kaminari'
-
+gem 'ancestry'
 group :test, :development do
   gem "rspec-rails", ">= 2.0.1"
   gem 'factory_girl_rails'
