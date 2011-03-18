@@ -56,8 +56,8 @@
       %h5.cast
         CAST
         = link_to "See More (#{@movie.actors.count})", '#'
-      .leftBox.left
-        - @movie.movie_casts.actors.limit(6).each do |actor|
+      - @movie.movie_casts.actors.limit(6).each do |actor|
+        .leftBox.left
           .actress.left
             = image_tag(actor.cast.image)
           .actressNames.right
@@ -65,7 +65,7 @@
             %h4
               as
               = actor.role_name
-        .clear
+      .clear      
   .clear
   .right
     = link_to pluralize(@movie.comments.count, 'comment') , movie_comments_path(@movie) , :id => 'comment_count'
