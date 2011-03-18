@@ -1,16 +1,16 @@
 .containerIn.borderDiv
-  .leftMoviBanner.left
-    .moviImage.left
+  .moviBanner.left
+    .moviImage
       = image_tag @movie.banner_image, :size => "125x200"
     %a{:href => "#"}
       %img{:src => "/images/viewtrailer.jpg"}
     %br
     %a{:href => "#"}
       %img{:src => "/images/followbutton.jpg"}
-  .moviDetail.right
+  .moviDetail.left
     .detail
       %h3 Movie
-      %div{ :style => "margin-top:12px;", :class => "leftBox left"}
+      %div{ :style => "margin-top:12px;", :class => "moviRatingBox left"}
         -if from == 'movies'
           .rating
             %h4 Critics Rating
@@ -24,7 +24,7 @@
           %h4 Users Rating
           .ratingBar.left
             = ratingbar(@movie.average_rating_percent)
-          .ratingvalue.right
+          .ratingvalue.left
             = "#{@movie.average_rating_percent}%"
           .clear
           = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
@@ -57,7 +57,7 @@
         CAST
         = link_to "See More (#{@movie.actors.count})", '#'
       - @movie.movie_casts.actors.limit(6).each do |actor|
-        .leftBox.left
+        .moviCasts.left
           .actress.left
             = image_tag(actor.cast.image)
           .actressNames.right
