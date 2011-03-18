@@ -82,7 +82,7 @@ class FacebookFeed < ActiveRecord::Base
       if post.type == "status"
         begin
           unless movie.facebook_feeds.where('fb_item_id = ?', post.id.to_s).exists?
-            movie.facebook_feeds.create(:feed_type => 'friends_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id.to_s, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date)
+            movie.facebook_feeds.create(:feed_type => 'public_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id.to_s, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date)
           end
         rescue
           # this for any errors

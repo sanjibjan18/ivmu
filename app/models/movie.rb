@@ -60,7 +60,7 @@ class Movie < ActiveRecord::Base
     Movie.latest.each do |movie|
       Tweet.delay({:run_at => delay.minutes.from_now}).fetch_tweet_for_movie(movie)
       FacebookFeed.delay({:run_at => delay.minutes.from_now}).fetch_all_post_for_movie(movie)
-      delay += 30
+      delay += 15
     end
   end
 
