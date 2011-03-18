@@ -47,51 +47,25 @@
       %h3 MOVIE INFORMATION
       %h5
         DIRECTOR:
-        %span.director Raj Kumar
+        %span.director
+          = @movie.directors.collect{ |director| director.name }.to_sentence
         RELEASE DATE :
         %span
           = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
           (India)
       %h5.cast
         CAST
-        %a{:href => ""} See More (32)
+        = link_to "See More (#{@movie.actors.count})", '#'
       .leftBox.left
-        .actress.left
-          %img{:src => "/images/bubblessabharwal.jpg"}
-        .actressNames.right
-          %h4.large Bubbles Sabharwal
-          %h4 as Mallika Sehgal
+        - @movie.movie_casts.actors.limit(6).each do |actor|
+          .actress.left
+            = image_tag(actor.cast.image)
+          .actressNames.right
+            %h4.large= actor.cast.name
+            %h4
+              as
+              = actor.role_name
         .clear
-        .actress.left
-          %img{:src => "/images/ranimukherjee.jpg"}
-        .actressNames.right
-          %h4.large Rani Mukherjee
-          %h4 as Meera Gaity
-        .clear
-        .actress.left
-          %img{:src => "/images/myrakarn.jpg"}
-        .actressNames.right
-          %h4.large Myra Karn
-          %h4 as Jessica lall
-      .rightBox.right
-        .actress.left
-          %img{:src => "/images/neilbhoopalam.jpg"}
-        .actressNames.right
-          %h4.large Neil Bhoopalam
-          %h4 as Vikram Jai Singh
-        .clear
-        .actress.left
-          %img{:src => "/images/vidyabalan.jpg"}
-        .actressNames.right
-          %h4.large Vidya Balan
-          %h4 as Sabrina Lall
-        .clear
-        .actress.left
-          %img{:src => "/images/shireeshsharma.jpg"}
-        .actressNames.right
-          %h4.large Shireesh Sharma
-          %h4 as Pramod Bharadwaj
-      .clear
   .clear
   .right
     = link_to pluralize(@movie.comments.count, 'comment') , movie_comments_path(@movie) , :id => 'comment_count'

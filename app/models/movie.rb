@@ -22,6 +22,8 @@ class Movie < ActiveRecord::Base
 
   has_many :movie_casts
   has_many :casts, :through => :movie_casts
+  has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
+  has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
 
   accepts_nested_attributes_for :meta_detail, :allow_destroy => true
 

@@ -14,7 +14,7 @@ class CriticsReview < ActiveRecord::Base
 
   def film_critic_profile_image
     profile = FilmCritic.where('name = ?', self.film_critic_name).first
-    if profile.blank? && profile.thumbnail_image.blank?
+    if profile.blank? || profile.thumbnail_image.blank?
       return  "/images/jason.jpg"
     else
       return  "/thumbnails/#{profile.thumbnail_image.to_s}.png"

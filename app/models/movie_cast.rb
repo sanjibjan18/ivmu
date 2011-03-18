@@ -4,5 +4,7 @@ class MovieCast < ActiveRecord::Base
 
   belongs_to :movie
   belongs_to :cast
+
+  scope :actors, where("cast_type = ? ", "actor")
 end
 

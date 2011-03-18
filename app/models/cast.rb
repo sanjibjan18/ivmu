@@ -4,5 +4,10 @@ class Cast < ActiveRecord::Base
 
   has_many :movie_casts
   has_many :movies
+
+
+  def image
+    self.thumbnail_image.blank?? '/images/no-image.jpg' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
+  end
 end
 
