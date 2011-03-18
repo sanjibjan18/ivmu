@@ -34,7 +34,7 @@
           -@movie.friend_likes(current_user).each do |like|
             = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
         -else
-          %h4 login to see who likes this movie.
+          %h4 login to see who liked this movie.
           = link_to image_tag('facebookicon.gif'), "/auth/facebook"
 
         %br
@@ -116,8 +116,9 @@
         #facebook_posts
           = render '/shared/facebook_friends'
       -else
-        %h4 login to see who likes this movie.
-        = link_to image_tag('facebookicon.gif'), "/auth/facebook"
+        #facebook_login
+          %h4 login to see who liked this movie.
+          = link_to image_tag('facebookicon.gif'), "/auth/facebook"
 
       .clear
   %br

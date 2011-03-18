@@ -486,8 +486,10 @@ padding:0px 15px 5px 15px;border:1px solid #ddd;margin-bottom:15px;width:520px;}
 div.actressNames{width:152px;}
 div.actressNames h4.large{color:#186fa4;font-size:13px;margin-top:5px;}
 div.actressNames h4{color:#4f4f4f;font-size:11px;}
-
-
+#facebook_login {
+    padding:10px;
+    color:#000;
+}
 
 
 .containerIn .ui-widget-content { border: none;  color: #777;}
