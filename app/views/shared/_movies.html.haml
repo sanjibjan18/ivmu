@@ -10,7 +10,7 @@
           .right
             %div{:class => thumb_class(movie.average_critics_reviews_rating_percent)}
 
-          .rating.right
+          .rating.left
             -if from == 'home'
               %h4 Critics rating
               .ratingBar.left
@@ -27,7 +27,7 @@
             %div
             %h4
               = no_of_pepople_liked(movie)
-          %a{:href => "#" ,:style => "margin-left:10px;"}
+          %a{:href => "#" }
             %img{:src => "images/viewTrailerBtn.jpg"}
 
 -else

@@ -286,12 +286,12 @@ ul.links li a.profile, ul.links li a.logout{
 .moviBox{
 	width:130px;
 	background: url(/images/bannerBottom.jpg) no-repeat center bottom;
-	height:210px;
+	height:210px;margin-right:10px;
 }
 
 .moviBox img{ height: 200px; width: 130px}
 
-.title{height:45px;width:145px;margin-left:10px;}
+.title{height:45px;width:145px;}
 
 .title h3{font-size:14px;color:#196EA4;padding-right:25px;line-height:13px;}
 
@@ -299,8 +299,8 @@ ul.links li a.profile, ul.links li a.logout{
 .thmubs_down{background:url(/images/thumbDown.png) no-repeat;height:18px;width:18px;}
 
 .rating{
-	width:152px;
-	padding:9px;
+	width:161px;
+	padding:9px 0px 9px 9px;
 	height:102px;
 	margin-bottom:5px;
 	border:1px solid #CCD5DC;
