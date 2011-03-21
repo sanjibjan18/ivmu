@@ -122,7 +122,7 @@ ul.links li a.profile, ul.links li a.logout{
 .tabs li a{
    text-shadow: 0px -1px #2c6272, 0px 0px;
    border-bottom:none;
-   font-family:"NeoSans-Medium", Arial,Liberation Sans,DejaVu Sans,sans-serif;
+   font-family:"NeoSans-Medium";
    display: block;
    float: left;
    margin: 0px 6px 0px 0px;
@@ -270,8 +270,8 @@ ul.links li a.profile, ul.links li a.logout{
 
 
 .box{
-	width:308px;
-	padding:15px 12px;
+	width:312px;
+	padding:12px 10px;
 	height:205px;
 	background:#e7ecf2 url(/images/boxBg.jpg) repeat-x bottom;
 	border:1px solid #CCD5DC;
@@ -299,14 +299,14 @@ ul.links li a.profile, ul.links li a.logout{
 .thmubs_down{background:url(/images/thumbDown.png) no-repeat;height:18px;width:18px;}
 
 .rating{
-	width:147px;
+	width:152px;
 	padding:9px;
 	height:102px;
 	margin-bottom:5px;
 	border:1px solid #CCD5DC;
 	border-bottom:2px solid #CCD5DC;
 	background-color:#fff;
-	-moz-border-radius:5px;
+	-moz-border-radius:5px;text-align:left;
 	-webkit-border-radius:5px;
 }
 
