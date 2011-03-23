@@ -1,7 +1,7 @@
  $(document).ready(function($) {
     $('a[rel*=facebox]').facebox();
     $( "#reviews" ).tabs();
-    $("#search_name_contains").autocomplete({source: '/autocomplete', minLength: 3});
+    $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
