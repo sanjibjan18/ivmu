@@ -1,17 +1,17 @@
 .footer
-  .colOne.left
-    %iframe{:frameborder => "1px", :scrolling => "no", :src => "http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FMuviin%2F164862676894836&width=294&colorscheme=light&show_faces=true&stream=false&header=false&height=180", :style => "background-color:#ECECEC; overflow:hidden; width:294px; height:180px;"}
-  .colTwo.left
+  .likeBox.left
+    %iframe{:frameborder => "1px", :scrolling => "no", :src => "http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FMuviin%2F164862676894836&width=294&colorscheme=light&show_faces=true&stream=false&header=false&height=180", :style => "background-color:#ECECEC; overflow:hidden; width:290px; height:180px;"}
+  .col.left
     %h3 About Us
     %hr/
     %ul
       %li
-        %a{:href => "#"} what is Muvi
+        %a{:href => "#"} What is Muvi
       %li
         %a{:href => "#"} How do the reviews work
       %li
         %a{:href => "#"} FAQs
-  .colTwo.left
+  .col.left
     %h3 Contact Us
     %hr/
     %ul
@@ -21,10 +21,10 @@
         %a{:href => "#"} Advertise With Us
       %li
         %a{:href => "#"} Investor Relationships
-  .colTwo.left
-    %h3 Quick Statistics
+  .col.left
+    %h3.quickStatistics Quick Statistics
     %hr
-    %ul
+    %ul.Statistics
       %li
         = Movie.count
         Movies
@@ -34,7 +34,8 @@
       %li
         = Cast.count
         Celebrities
-  .claer
+  .clear
+.footerBottom
   .footerLeft.left
     %p © 2009-2010  Muvi.in.All Rights Reserved
   .footerRight.right
