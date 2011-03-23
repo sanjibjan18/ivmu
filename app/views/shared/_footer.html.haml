@@ -22,17 +22,18 @@
       %li
         %a{:href => "#"} Investor Relationships
   .colTwo.left
-    %h3 Upcoming Movies
-    %hr/
+    %h3 Quick Statistics
+    %hr
     %ul
       %li
-        %a{:href => "#"} Khoon Maaf
+        = Movie.count
+        Movies
       %li
-        %a{:href => "#"} Game
+        = Movie.count
+        Movie reviews
       %li
-        %a{:href => "#"} No One Killed Jessica
-      %li
-        %a{:href => "#"} Turning 30
+        = Cast.count
+        Celebrities
   .claer
   .footerLeft.left
     %p © 2009-2010  Muvi.in.All Rights Reserved
