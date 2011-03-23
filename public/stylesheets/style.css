@@ -34,8 +34,9 @@ quotes : "" "";
 
 /*******************************************************/
 @font-face {
-     font-family: "NeoSans-Medium";
-     src: url("NeoSans-Medium.otf");
+     font-family: "Neo Sans-Medium";
+     src: url("NeoSans-Medium.otf") format("opentype");
+
    }
 
 body {
@@ -122,7 +123,7 @@ ul.links li a.profile, ul.links li a.logout{
 .tabs li a{
    text-shadow: 0px -1px #2c6272, 0px 0px;
    border-bottom:none;
-   font-family:"NeoSans-Medium";
+   font-family:"Neo Sans-Medium";
    display: block;
    float: left;
    margin: 0px 6px 0px 0px;
@@ -211,17 +212,17 @@ ul.links li a.profile, ul.links li a.logout{
 ::-webkit-input-placeholder
 {
   color: #657787;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
-  letter-spacing: -1px;
+  font-family:"Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
 }
 
 ::-moz-input-placeholder
 {
   color: #657787;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
-  letter-spacing: -1px;
+  font-family:"Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
 }
 
 .search div.btn input{
