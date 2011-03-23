@@ -72,9 +72,48 @@ a{text-decoration:none;}
 
 .logo {margin-top: 15px;}
 
+.linkLeft{background:url(/images/linkLeftBg.png) no-repeat left;width:18px;height:34px;}
+.linkRight{background:url(/images/linkRightBg.png) no-repeat left;width:18px;height:34px;}
 
 ul.links{
-	background:  url(/images/linkBg.png) no-repeat;
+	background: url(/images/linkBg.png) repeat-x;
+	height:34px;
+	width:325px;
+}
+
+ul.links li{
+	display:inline;
+	float: left;
+	display: block;
+    line-height:34px;
+	margin-left:5px;
+	text-align:center;
+	margin-right:12px;
+	padding-right:18px;
+	background:url(/images/navLine.png) no-repeat right;
+}
+
+
+
+ul.links li a{ 
+	color:#fff;
+}
+
+ul.links li a.register{
+	background:url(/images/Reg_icon.png) no-repeat left;
+	padding-left:20px;
+    
+}
+ul.links li a.login{
+	background:url(/images/login.gif) no-repeat left;
+	padding-left:20px;
+}
+
+ul.links li.last {background-image:none;position:relative;top:0px;padding-right:0px;padding-left:0px;text-align:top;border-right:none;margin-right:0px;}
+
+/*
+ul.links{
+	background:red url(/images/lixnkBg.png) no-repeat;
 	height:34px;
 	width:345px;
 }
@@ -84,28 +123,29 @@ ul.links li{
 	text-decoration:none;
 	padding-right:20px;
 	padding-left:20px;
-	text-align:center;
-	line-height:30px;
+	text-align:center;padding-top:10px;padding-bottom:10px;    border-right:1px solid #fff;
 	width:90px;
 }
+ul.links li a img{float:right;height:30px;background:green;position:relative;}
 
+ul.links li.last{background-image:none;position:relative;top:0px;padding-right:10px;padding-left:0px;text-align:top;border-right:none;}
 
-ul.links li.last{background-image:none;position:relative;top:0px;padding-right:10px;padding-left:10px;}
-ul.links li a{color:#fff;text-decoration:none;font-weight:bold;font-size:11px;}
+ul.links li a{color:#fff;text-decoration:none;font-weight:bold;font-size:11px; }
+
 ul.links li a.register{
 	background:url(/images/Reg_icon.png) no-repeat left;
 	padding-left:18px;
-    position:relative;top:-10px;
+    
 }
 ul.links li a.login{
 	background:url(/images/login.gif) no-repeat left;
 	padding-left:18px;
-	position:relative;top:-10px;
+	
 }
 
 ul.links li a.profile, ul.links li a.logout{
 	padding-left:20px;
-}
+}*/
 
 
 #top_bar{margin-top: 10px; margin-bottom: 0px; }

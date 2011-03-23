@@ -2,15 +2,18 @@
   .left.logo
     = link_to image_tag('logo_in.png'), root_path
   .right
-    %ul.links.right
-      - unless current_user
-        %li= link_to 'Register', new_user_registration_path, :class => 'register'
-        %li= link_to 'Login', new_user_session_path, :class => 'login'
-        %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
-      - else
-        %li= link_to 'Profile', edit_user_profile_path(current_user), :class => 'profile'
+    .linkLeft.left
+    .linksMid.left
+      %ul.links.right
+        - unless current_user
+          %li= link_to 'Register', new_user_registration_path, :class => 'register'
+          %li= link_to 'Login', new_user_session_path, :class => 'login'
+          %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
+        - else
+          %li= link_to 'Profile', edit_user_profile_path(current_user), :class => 'profile'
 
-        %li.last= link_to 'Logout', destroy_user_session_path, :class => 'logout'
+          %li.last= link_to 'Logout', destroy_user_session_path, :class => 'logout'
+    .linkRight.right
     .clear
   /
     .languageSelect.right
