@@ -645,12 +645,20 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	background:url(/images/arrow.gif) no-repeat left;
 	padding-left:12px;
 	font-size:12px;
-	color:#8c8b88;
 }
 
 .footer ul li a{color:#fff;text-decoration:none;font-style:normal;}
 
-.footer ul li{color:#fff;font-style:italic;font-weight:bold;}
+.footer ul.quickStatistics li{
+    font-weight:bold;
+	line-height:18px;
+	list-style:none;
+	background:none;
+	font-size:12px;
+	padding-left:0px;
+	color:#fff;
+	font-style:italic;
+}
 
 .footerBottom{
 	width:960px;
