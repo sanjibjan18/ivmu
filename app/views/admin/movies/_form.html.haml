@@ -32,9 +32,7 @@
   %br
   = f.label :cinematography
   = f.text_field :cinematography
-  %br
-  = f.label :country_of_origin
-  = f.text_field :country_of_origin
+
   %br
   = f.label :estimated_budget
   = f.text_field :estimated_budget
@@ -47,15 +45,6 @@
   %br
   = f.label :featured_song
   = f.text_field :featured_song
-  %br
-  = f.label :award_nominations_award
-  = f.text_field :award_nominations_award
-  %br
-  = f.label :award_nominations_award_nominee
-  = f.text_field :award_nominations_award_nominee
-  %br
-  = f.label :award_nominations_nominated_work
-  = f.text_field :award_nominations_nominated_work
   %br
   = f.fields_for :meta_detail do |md|
     = md.label :meta_title

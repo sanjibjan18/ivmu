@@ -27,9 +27,7 @@
   %tr
     %th Cinematography
     %td= @movie.cinematography
-  %tr
-    %th Country Of Origin
-    %td= @movie.country_of_origin
+
   %tr
     %th Estimated budget
     %td= number_to_currency @movie.estimated_budget.to_f
@@ -42,15 +40,6 @@
   %tr
     %th Featured Song
     %td= @movie.featured_song
-  %tr
-    %th Award Nominations Award
-    %td= @movie.award_nominations_award
-  %tr
-    %th Award Nominations Award Nominee
-    %td= @movie.award_nominations_award_nominee
-  %tr
-    %th Award Nominations Award Nominated Work
-    %td= @movie.award_nominations_nominated_work
   %tr
     %th Meta Title
     %td= @movie.meta_detail.meta_title
