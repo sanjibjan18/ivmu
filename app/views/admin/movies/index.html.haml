@@ -20,7 +20,7 @@
     - @movies.each do |movie|
       %tr
         %td= movie.name
-        %td= movie.initial_release_date
+        %td= movie.release_date
         %td
           = link_to "show", admin_movie_path(movie)
           |
