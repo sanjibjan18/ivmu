@@ -8,8 +8,7 @@
           .title.left
             = link_to "<h3> #{movie.name} </h3>".html_safe, (from == 'coming_soon')? coming_soon_movie_path(movie) : movie_path(movie)
           .right
-            %div{:class => thumb_class(movie.average_critics_reviews_rating_percent)}
-
+            = thumb_class(movie.average_critics_reviews_rating_percent)
           .rating.left
             -if from == 'home'
               %h4 Critics rating

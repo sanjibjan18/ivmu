@@ -166,16 +166,16 @@ ul.links li a.profile, ul.links li a.logout{
    overflow: hidden;
    width: 80px;
    padding:0px 3px;line-height:10px;
-   height:25px;   
+   height:25px;
    -moz-border-radius: 9px 9px 9px 9px;
    -webkit-border-radius: 9px 9px 9px 9px;
    border-radius: 9px 9px 9px 9px;
    background: #fff;float:right;
 	margin-top:5px;
-  
+
    }
 #mainselection select{
-  background-color:#fff; 
+  background-color:#fff;
      margin-top:3px;
        border: 1px solid #fff;
 
@@ -212,7 +212,7 @@ ul.links li a.profile, ul.links li a.logout{
 ::-webkit-input-placeholder
 {
   color: #657787;
-  font-size:11px;
+  font-size:12px;
   font-weight:bold;
   font-family:"Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
 }
@@ -220,7 +220,7 @@ ul.links li a.profile, ul.links li a.logout{
 ::-moz-input-placeholder
 {
   color: #657787;
-  font-size:11px;
+  font-size:12px;
   font-weight:bold;
   font-family:"Arial" ,Liberation Sans,DejaVu Sans,sans-serif;
 }
@@ -297,8 +297,8 @@ ul.links li a.profile, ul.links li a.logout{
 .title h3{font-size:14px;color:#196EA4;padding-right:25px;line-height:13px;}
 
 .thmubs_up{background:url(/images/thumbUp.png) no-repeat;height:18px;width:18px;}
-.thmubs_down{background:url(/images/thumbDown.png) no-repeat;height:18px;width:18px;}
-
+.thmubs_down{background:url(/images/thumbDown.png) no-repeat;}
+img.thumb { height:18px;width:18px; }
 .rating{
 	width:161px;
 	padding:9px 0px 9px 9px;
@@ -395,7 +395,8 @@ h3.advertisement{line-height:30px;font-size:14px;}
 	min-height:210px;
 }
 
-.moviDetail{width:562px;margin-left:8px;}
+.moviDetail{width:562px;margin-left:8px;}
+
 .detail{background:#f3f8fc url(/images/moviDetailBg.jpg) repeat-x;
 padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 
@@ -464,7 +465,8 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 
-}
+}
+
 .friendsLink{
 	width:275px;
 	border-left:1px solid #ddd;

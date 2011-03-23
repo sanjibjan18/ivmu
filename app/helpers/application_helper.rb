@@ -12,13 +12,11 @@ module ApplicationHelper
   end
 
   def thumb_class(rating)
-    class_name = ''
     if rating.to_i >= 50
-      class_name = "thmubs_up"
+      return image_tag('thumbUp.png', :class => 'thumb', :title => 'Jhakaas')
     else
-      class_name = "thmubs_down"
+      return image_tag('thumbDown.png', :class => 'thumb', :title => 'Bakwaas')
     end
-    class_name
   end
 
   def meta_keywords_and_title(key, object)
