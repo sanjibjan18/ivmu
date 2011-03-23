@@ -613,8 +613,8 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 
 .pagination a img{border:none;}
 
-.muvi_pagination{width: 230px;background-color:#ddd; height:25px;  margin:12px 20px 10px 10px;}
-.pagination_detail{width: 170px; padding: 6px 5px 0px 5px; font-weight: bold;}
+.muvi_pagination{background-color:#ddd; height:25px;  margin:12px 20px 10px 10px;}
+.pagination_detail{min-width:100px; padding: 6px 5px 0px 5px; font-weight: bold;text-align:center;}
 
 .footer{
 	width:990px;

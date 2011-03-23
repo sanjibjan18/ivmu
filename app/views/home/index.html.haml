@@ -4,6 +4,7 @@
   %span Reviews
 .homeContainerIn.borderDiv
   = render 'shared/movies',  { :from => 'home'}
+  .clear
   .right
     = will_paginate(@movies,  :class => 'muvi_pagination')
   .clear
