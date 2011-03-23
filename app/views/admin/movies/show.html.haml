@@ -39,13 +39,13 @@
     %td= @movie.featured_song
   %tr
     %th Meta Title
-    %td= @movie.meta_detail.meta_title
+    %td= @movie.meta_detail.meta_title unless @movie.meta_detail.blank?
   %tr
     %th Meta Keywords
-    %td= @movie.meta_detail.meta_keywords
+    %td= @movie.meta_detail.meta_keywords unless @movie.meta_detail.blank?
   %tr
     %th Meta Description
-    %td= @movie.meta_detail.meta_description
+    %td= @movie.meta_detail.meta_description unless @movie.meta_detail.blank?
 = link_to 'Edit', edit_admin_movie_path(@movie)
 \- or -
 = link_to 'Back', admin_movies_path
