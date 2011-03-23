@@ -26,7 +26,7 @@ module ApplicationHelper
       description =  Setting.find_by_key("#{key}_page_meta_description").value rescue nil
     else
       unless object.blank?
-        title =  object.meta_detail.meta_title rescue nil
+        title =  object.meta_detail.meta_title rescue "#{object.name} Review, Trailers "
         keywords =  object.meta_detail.meta_keywords rescue nil
         description = object.meta_detail.meta_description rescue nil
       end
