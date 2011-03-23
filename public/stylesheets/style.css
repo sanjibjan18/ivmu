@@ -111,6 +111,13 @@ ul.links li a.login{
 
 ul.links li.last {background-image:none;position:relative;top:0px;padding-right:0px;padding-left:0px;text-align:top;border-right:none;margin-right:0px;}
 
+ul.links li a.profile{
+	padding-left:50px;padding-right:50px;
+}
+ul.links li a.logout{
+	padding-left:50px;padding-right:0px;
+}
+
 /*
 ul.links{
 	background:red url(/images/lixnkBg.png) no-repeat;
