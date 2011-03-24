@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
  skip_before_filter :authenticate_user!
   layout 'website'
-  caches_page :index
+
 
   def index
     @search = Movie.latest.search(params[:search])
