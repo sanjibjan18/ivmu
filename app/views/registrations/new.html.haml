@@ -1,0 +1,36 @@
+#login
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true, :remote => true }) do |f|
+    = devise_error_messages!
+    #errors
+    %fieldset.registration
+      .field
+        = f.label :email, 'Email address'
+        %br
+        = f.text_field :email
+      .field
+        = f.label :password
+        %br
+        = f.password_field :password
+      .field
+        = f.label :password_confirmation
+        %br
+        = f.password_field :password_confirmation
+      - resource.build_user_profile
+      = f.fields_for :user_profile do |up|
+        .field
+          = up.label :display_name, "Screen name"
+          = up.text_field :display_name
+        .field
+          = up.label :profile_image
+          = up.file_field :profile_image
+      .field
+        = f.check_box 'agreement'
+        I agree to the Muvi.in
+        = link_to 'user agreement'
+      .actions
+        = f.submit 'Register'
+        \- or -
+        = link_to 'Cancel', root_path
+  = link_to image_tag('/images/twitter_64.png',  :alt => "Twitter", :size => "64x64"), "/auth/twitter" ,:class => 'auth_provider'
+  = link_to image_tag('/images/facebook_64.png',  :alt => "Facebook", :size => "64x64"), "/auth/facebook" ,:class => 'auth_provider'
+

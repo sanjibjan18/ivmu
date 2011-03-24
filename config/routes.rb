@@ -1,8 +1,10 @@
 Muvi::Application.routes.draw do
+
+  resources :casts
   resources :tweets
   resources :facebook_posts
   match '/user_tweets/:twitter_name' => 'tweets#for_user'
-
+  match 'search' => 'search#index'
   resources :critics_reviews
   resources :user_profiles
   resources :user_tokens
@@ -11,7 +13,7 @@ Muvi::Application.routes.draw do
   match 'fetch' => 'home#fetch'
   match 'fetch_tweets' => 'home#fetch_tweets'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   match '/auth/:provider/callback' => 'user_tokens#create'
   match 'autocomplete' => 'movies#autocomplete'
   resources :movies do

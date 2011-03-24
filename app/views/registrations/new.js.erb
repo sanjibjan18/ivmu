@@ -1,0 +1,9 @@
+<% if resource.errors.empty? %>
+ alert('pppppppppppppppppppppppp');
+<%else%>
+  <% messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join %>
+
+  $('#errors').html("<ul> <%= messages.html_safe %></ul>");
+
+<%end%>
+

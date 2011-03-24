@@ -7,14 +7,18 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
     if resource.save
+      puts "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
       if resource.active?
-        redirect_to edit_member_path(resource)
+        puts "tttttttttttttttttttttttttttttttttttt"
+        #redirect_to edit_member_path(resource)
       else
-        set_flash_message :notice, :inactive_signed_up, :reason => resource.inactive_message.to_s
+        puts "ooooooooooooooooooooooooooooooooo"
+        #set_flash_message :notice, :inactive_signed_up, :reason => resource.inactive_message.to_s
         expire_session_data_after_sign_in!
-        redirect_to after_inactive_sign_up_path_for(resource)
+        #redirect_to after_inactive_sign_up_path_for(resource)
       end
     else
+      puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"
       clean_up_passwords(resource)
       render_with_scope :new
     end
@@ -39,7 +43,9 @@ class RegistrationsController < Devise::RegistrationsController
   def welcome
   end
 
-
+      def expire_session_data_after_sign_in!
+        session.keys.grep(/^devise\./).each { |k| session.delete(k) }
+      end
 
 end
 

@@ -1,0 +1,12 @@
+= render 'shared/meta_title_and_keywords', { :key => 'home'}
+= content_for :heading do
+  %span search for
+  = (params[:q] rescue '')
+
+.homeContainerIn.borderDiv
+  = render 'shared/movies',  { :from => 'home'}
+  .clear
+  - unless @casts.blank?
+    %h1 casts
+    = render 'shared/casts'
+

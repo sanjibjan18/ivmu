@@ -6,8 +6,8 @@
     .linksMid.left
       %ul.links.right
         - unless current_user
-          %li= link_to 'Register', new_user_registration_path, :class => 'register'
-          %li= link_to 'Login', new_user_session_path, :class => 'login'
+          %li= link_to 'Register', new_user_registration_path, :class => 'register', :rel => 'facebox'
+          %li= link_to 'Login', new_user_session_path, :class => 'login', :rel => 'facebox'
           %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
         - else
           %li= link_to 'Profile', edit_user_profile_path(current_user), :class => 'profile'
@@ -37,9 +37,9 @@
     .headerRight.right
       .search.right
         #search
-          = form_for Movie.search, :url => movies_path, :html => {:method => :get} do |f|
-            = f.text_field :name_contains, :value => (params[:search][:name_contains] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
+          = form_tag(search_path, :html => {:method => :get}) do |f|
+            = text_field_tag 'q', (params[:q] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
             .btn.right
-              = f.submit "Search"
+              = submit_tag "Search"
     .clear
 

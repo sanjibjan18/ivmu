@@ -2,10 +2,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :oauth2_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :display_name, :agreement
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :agreement, :user_profile_attributes
+
   attr_accessor :agreement
 
   validates_presence_of :agreement, :message => 'should be accepted.'
@@ -31,6 +32,8 @@ class User < ActiveRecord::Base
   has_many :facebook_friends
 
   scope :all_without_admin, where(:is_admin => false)
+  accepts_nested_attributes_for :user_profile
+
 
   def facebook_token
     facebook_omniauth.token

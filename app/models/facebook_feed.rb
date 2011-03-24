@@ -69,7 +69,7 @@ class FacebookFeed < ActiveRecord::Base
   end
 
   def self.fetch_all_post_for_movie(movie)
-    posts = Mogli::Model::search("#{movie.name}",nil, {:type => 'post', :limit => 400})
+    posts = Mogli::Model::search("#{movie.name}", nil, {:type => 'post', :limit => 400})
     FacebookFeed.create_facebook_feed(posts, movie) # create facebook posts
     while !posts.next_url.blank?  # fetch next method in mogli client append the data to same array so we check untill next url blank
       additional_posts = posts.fetch_next # retuns the pagnation post from next url

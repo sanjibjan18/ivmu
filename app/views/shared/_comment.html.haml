@@ -6,7 +6,7 @@
       -comment.descendants.each do |com|
         = render '/shared/comment_field', {:comment => com }
   -unless current_user.blank?
-    = link_to "Reply","#comment_#{comment.id}_form", :onclick => "jQuery('#comment_#{comment.id}_form').toggle();"
+    = link_to "Reply","#comment_#{comment.id}_form", :onclick => "jQuery('#comment_#{comment.id}_form').toggle();return false;"
     %div{:id => "comment_#{comment.id}_form", :style => 'display:none;'}
       = render '/comments/form', {:movie => @movie, :comment => comment }
 

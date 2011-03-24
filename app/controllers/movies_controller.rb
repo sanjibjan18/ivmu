@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
 
   def index
     @search = Movie.latest.search(params[:search])
-    @movies = @search.all.paginate(:page => params[:page], :per_page => 10)
+    @movies = @search.paginate(:page => params[:page], :per_page => 10)
     if @movies.size == 1
       redirect_to movie_path(@movies.first) and return
     end
