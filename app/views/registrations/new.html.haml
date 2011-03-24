@@ -15,7 +15,7 @@
         = f.label :password_confirmation
         %br
         = f.password_field :password_confirmation
-      - resource.build_user_profile
+      - f.object.build_user_profile
       = f.fields_for :user_profile do |up|
         .field
           = up.label :display_name, "Screen name"
