@@ -19,9 +19,11 @@
       = f.fields_for :user_profile do |up|
         .field
           = up.label :display_name, "Screen name"
+          %br
           = up.text_field :display_name
         .field
           = up.label :profile_image
+          %br
           = up.file_field :profile_image
       .field
         = f.check_box 'agreement'
