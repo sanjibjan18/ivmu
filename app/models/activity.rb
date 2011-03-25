@@ -3,12 +3,11 @@ class Activity < ActiveRecord::Base
   belongs_to :subject, :polymorphic => true
 
   validates_presence_of :action
-
-  class << self
-    def log(subject, action, actor_id)
-      self.create(:subject => subject, :action => action, :actor_id => actor_id)
-    end
+ 
+  def self.log_activity(subject, activity, actor_id)
+     self.create(:subject => subject, :action => activity, :actor_id => actor_id)
   end
+ 
 
 end
 
