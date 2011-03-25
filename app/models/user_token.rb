@@ -15,7 +15,11 @@ class UserToken < ActiveRecord::Base
     end
   end
 
-
+  def update_token_and_secret(omniauth)
+    self.token = (omniauth['credentials']['token'] rescue nil)
+    self.secret = (omniauth['credentials']['secret'] rescue nil)
+    self.save!
+  end
 
 end
 

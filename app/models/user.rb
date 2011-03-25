@@ -122,6 +122,7 @@ class User < ActiveRecord::Base
 
   def create_user_from_omniauth(omniauth)
     self.email = (omniauth['extra']['user_hash']['email'] rescue '' ) if omniauth['provider'] == 'facebook'
+    self.confirmed_at = Time.now
     self.build_user_profile(user_info_from_omniauth(omniauth))
     self.user_tokens.build(hash_from_omniauth(omniauth))
   end
