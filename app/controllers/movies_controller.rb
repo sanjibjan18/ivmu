@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
 
 
   def autocomplete
-    movie_names = Movie.where('name LIKE ?', "%#{params[:term]}%").limit(10).collect(&:name)
+    movie_names = Movie.search(:name_contains => params[:term]).paginate(:page => 1, :per_page => 10).collect(&:name)
     render :json => movie_names.to_json
   end
 
