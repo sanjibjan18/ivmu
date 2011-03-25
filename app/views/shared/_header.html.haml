@@ -38,7 +38,7 @@
       .search.right
         #search
           = form_tag(search_path, :html => {:method => :get}) do |f|
-            = text_field_tag 'q', (params[:q] rescue ''), :placeholder => "Enter Celebrity Name or Movie" ,:class => 'searchBox'
+            = text_field_tag 'q', (params[:q] rescue ''), :placeholder => "Enter Movie or Celebrity Name" ,:class => 'searchBox'
             .btn.right
               = submit_tag "Search"
     .clear
