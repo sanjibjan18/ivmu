@@ -5,6 +5,7 @@ class Devise::ConfirmationsController < ApplicationController
   def new
     build_resource({})
     #render_with_scope :new
+    render :layout => false
   end
 
   # POST /resource/confirmation
