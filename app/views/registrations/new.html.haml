@@ -33,6 +33,7 @@
         = f.submit 'Register'
         \- or -
         = link_to 'Cancel', root_path
+  %br      
   = link_to image_tag('twitter_connect.png',  :alt => "Twitter"), "/auth/twitter", :class => 'auth_provider'
   = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook", :class => 'auth_provider'
 
