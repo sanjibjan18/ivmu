@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
   has_ancestry
-
+  after_create :log_activity
   after_save :post_to_wall
   after_save :post_to_twitter
 
@@ -18,6 +18,10 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+
+  def log_activity
+    Activity.log(self, 'commented',  self.user_id)
+  end
 
   def post_to_wall
     unless self.user.facebook_omniauth.blank?

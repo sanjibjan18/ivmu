@@ -1,2 +1,6 @@
-%h1 Casts#index
-%p Find me in app/views/casts/index.html.haml
+= content_for :heading do
+  Celebrities
+
+- unless @casts.blank?
+  = render 'shared/casts'
+

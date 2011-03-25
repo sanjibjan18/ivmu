@@ -2,6 +2,8 @@ class Review < ActiveRecord::Base
   MAX_RATING = 5
   belongs_to :movie
   belongs_to :user
+
+  after_create :log_activity
   after_save :post_to_wall
   after_save :post_to_twitter
 
@@ -30,6 +32,10 @@ class Review < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def log_activity
+    Activity.log(self, 'rated',  self.user_id)
   end
 
   scope :for_movie, lambda{|movie| where(:movie_id => movie.id)}
