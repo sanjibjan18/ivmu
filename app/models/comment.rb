@@ -2,8 +2,9 @@ class Comment < ActiveRecord::Base
   include ActsAsCommentable::Comment
   has_ancestry
   belongs_to :commentable, :polymorphic => true
-  
+
   belongs_to :user
+  belongs_to :movie
   default_scope :order => 'created_at DESC'
   validates :comment , :presence => true
   scope :to_level, where('ancestry IS NULL')
@@ -11,14 +12,14 @@ class Comment < ActiveRecord::Base
   after_create :log_activity
   #after_save :post_to_wall
   #after_save :post_to_twitter
-  
+
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_voteable
- 
+
 
   def log_activity
-    Activity.log_activity(self, 'commented',  self.user_id)
+    Activity.log_activity(self, self.commentable, 'commented',  self.user_id)
   end
 
   def post_to_wall

@@ -102,7 +102,7 @@
       = render "/recommendations/form", {:movie => @movie }
   %br
   #comments
-    -@movie.comments.parent.each do |comment|
+    -@movie.comments.to_level.each do |comment|
       = render '/shared/comment', { :comment => comment }
 #rate_movie{:style => 'display:none;'}
   = render :partial => "reviews/form", :locals => { :movie => @movie}

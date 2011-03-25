@@ -4,8 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
   after_create :log_activity
-  after_save :post_to_wall
-  after_save :post_to_twitter
+ # after_save :post_to_wall
+  #after_save :post_to_twitter
 
   def post_to_wall
     unless self.user.facebook_omniauth.blank?
@@ -35,7 +35,7 @@ class Review < ActiveRecord::Base
   end
 
   def log_activity
-    Activity.log(self, 'rated',  self.user_id)
+    Activity.log_activity(self, self.movie, 'rated',  self.user_id)
   end
 
   scope :for_movie, lambda{|movie| where(:movie_id => movie.id)}
