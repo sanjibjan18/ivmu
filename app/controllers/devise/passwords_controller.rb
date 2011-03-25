@@ -5,7 +5,7 @@ class Devise::PasswordsController < ApplicationController
   # GET /resource/password/new
   def new
     build_resource({})
-    render_with_scope :new
+    render :layout => false
   end
 
   # POST /resource/password
@@ -14,7 +14,7 @@ class Devise::PasswordsController < ApplicationController
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions
-      redirect_to new_session_path(resource_name)
+      #redirect_to new_session_path(resource_name)
     else
       render_with_scope :new
     end
@@ -39,3 +39,4 @@ class Devise::PasswordsController < ApplicationController
     end
   end
 end
+

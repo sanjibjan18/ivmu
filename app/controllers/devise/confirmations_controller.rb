@@ -4,7 +4,7 @@ class Devise::ConfirmationsController < ApplicationController
   # GET /resource/confirmation/new
   def new
     build_resource({})
-    render_with_scope :new
+    #render_with_scope :new
   end
 
   # POST /resource/confirmation
@@ -13,7 +13,7 @@ class Devise::ConfirmationsController < ApplicationController
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions
-      redirect_to new_session_path(resource_name)
+     # redirect_to new_session_path(resource_name)
     else
       render_with_scope :new
     end
@@ -31,3 +31,4 @@ class Devise::ConfirmationsController < ApplicationController
     end
   end
 end
+
