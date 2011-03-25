@@ -1,43 +1,24 @@
 .sidebar.right
   .GrayHeaderBox
     %h3 Friends Activity
-    .row
-      .image.left
-        %img{:src => "/images/no-profile.png"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 UserA rated No One killed Jessica
-    .row
-      .image.left
-        %img{:src => "/images/no-profile.png"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbUp.png"}/
-      .names.right
-        %h4 Game - It's not over till it's over
-    .row
-      .image.left
-        %img{:src => "/images/no-profile.png"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 Khoon Maaf
-    .row
-      .image.left
-        %img{:src => "/images/no-profile.png"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 Hostel
-    %br/
-    %a{:href => "#"}
-      More
-      %span »
-      
+    -if current_user && current_user.facebook_omniauth
+      -Activity.friend_activities(current_user).each do |activity|
+        .row
+          .image.left
+            = image_tag(activity.actor.image)
+          .icon.right
+            - if activity.subject_type == "Review"
+              = rating_thumb(activity.subject.rating)
+            - else
+              &nbsp;
+          .names.right
+            %h4
+              = activity.actor.display_name
+              = activity.action
+              = activity.secondary_subject.name
+    - else
+      = link_to image_tag('facebookicon.gif'), "/auth/facebook"
+
   .GrayHeaderBox
     %h3 Top Box Office
     .row

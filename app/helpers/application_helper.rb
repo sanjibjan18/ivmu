@@ -19,6 +19,14 @@ module ApplicationHelper
     end
   end
 
+  def rating_thumb(rating)
+    if rating.to_f >= 2.5
+      return image_tag('thumbUp.png', :class => 'thumb')
+    else
+      return image_tag('thumbDown.png', :class => 'thumb')
+    end
+  end
+
   def meta_keywords_and_title(key, object)
     if key
       title =  Setting.find_by_key("#{key}_page_meta_title").value rescue nil

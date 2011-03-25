@@ -96,7 +96,9 @@ class User < ActiveRecord::Base
   end
 
 
-
+  def image
+     self.user_profile.profile_image_file_name.blank?? "/images/no-profile.png" : self.user_profile.profile_image.url(:thumb)
+  end
 
   def reviwed_movie?(movie)
     #reviewed_movies.include?(movie)
