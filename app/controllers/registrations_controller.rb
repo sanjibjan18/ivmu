@@ -1,7 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    super
+    build_resource({})
+    #render_with_scope :new
+    render :layout => false
   end
 
   def create

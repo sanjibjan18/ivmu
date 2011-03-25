@@ -5,7 +5,8 @@ class Devise::SessionsController < ApplicationController
   # GET /resource/sign_in
   def new
     clean_up_passwords(build_resource)
-    render_with_scope :new
+    #render_with_scope :new
+    render :layout => false
   end
 
   # POST /resource/sign_in
