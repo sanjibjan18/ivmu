@@ -15,25 +15,27 @@
         = f.label :password_confirmation
         %br
         = f.password_field :password_confirmation
-      - f.object.build_user_profile
-      = f.fields_for :user_profile do |up|
+      - resource.build_user_profile if resource.user_profile.blank?
+      = f.fields_for :user_profile do |ff|
         .field
-          = up.label :display_name, "Screen name"
+          = ff.label :display_name, "Full Name"
           %br
-          = up.text_field :display_name
+          = ff.text_field :display_name
         .field
-          = up.label :profile_image
+          = ff.label :profile_image
           %br
-          = up.file_field :profile_image
-      .field
-        = f.check_box 'agreement'
-        I agree to the Muvi.in
-        = link_to 'user agreement'
+          = ff.file_field :profile_image
+
+      %p
+        By clicking 'Register', you are indicating that you have read and agree to the
+        = link_to "Terms of service", '#'
       .actions
         = f.submit 'Register'
         \- or -
         = link_to 'Cancel', root_path
-  %br      
+  %br
+  %h3 Connect with Accounts
+  %p You will be able to see your friends movie reviews and interest, and post messages to them by  connecting to your social network accounts.
   = link_to image_tag('twitter_connect.png',  :alt => "Twitter"), "/auth/twitter", :class => 'auth_provider'
   = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook", :class => 'auth_provider'
 

@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   layout 'website'
 
   def show
-
   end
+
+
 
 end
 

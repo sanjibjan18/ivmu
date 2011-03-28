@@ -8,12 +8,15 @@
 
   .field
     = f.label :display_name
+    %br
     = f.text_field :display_name
   .field
     = f.label :dob
+    %br
     = f.text_field :dob
   .field
     = f.label :sex
+
     = f.radio_button :sex, 'male'
     male
     = f.radio_button :sex, 'female'

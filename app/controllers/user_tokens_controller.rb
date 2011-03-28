@@ -29,13 +29,11 @@ class UserTokensController < ApplicationController
     end
   end
 
-
-
   def destroy
     user_token = current_user.user_tokens.find(params[:id])
     user_token.destroy
     flash[:notice] = "Successfully destroyed authentication."
-    redirect_to edit_user_profile_path(current_user)
+    redirect_to edit_user_registration_path
   end
 
 end

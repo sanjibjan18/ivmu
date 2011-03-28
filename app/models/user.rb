@@ -5,11 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :agreement, :user_profile_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :user_profile_attributes
 
-  attr_accessor :agreement
 
-  validates_presence_of :agreement, :message => 'should be accepted.'
 
   has_many :facebook_feeds
   #has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}

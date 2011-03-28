@@ -10,7 +10,7 @@
           %li= link_to 'Login', new_user_session_path, :class => 'login', :rel => 'facebox'
           %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
         - else
-          %li= link_to 'Profile', edit_user_profile_path(current_user), :class => 'profile'
+          %li= link_to 'Profile', edit_user_registration_path, :class => 'profile'
 
           %li.last= link_to 'Logout', destroy_user_session_path, :class => 'logout'
     .linkRight.right
