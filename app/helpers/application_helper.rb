@@ -1,6 +1,12 @@
 module ApplicationHelper
   WillPaginate::ViewHelpers.pagination_options[:renderer] = 'MuviPagination'
 
+
+  def find_page(key)
+    page =  Page.find_reference(key).first rescue nil
+    page.blank?? "#" : page.permalink
+  end
+
   def ratingbar(rating)
     text = ""
     if rating.to_i >= 50

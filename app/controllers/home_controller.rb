@@ -17,5 +17,14 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
 
+  def page
+    begin
+      @page = Page.where('permalink = ?', params[:id]).first
+    rescue
+      logger.debug "*** RecordNotFound with id = #{params[:id]} ***"
+      render_404
+    end
+   end
+
 end
 

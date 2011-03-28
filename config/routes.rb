@@ -13,6 +13,8 @@ Muvi::Application.routes.draw do
   match 'fetch' => 'home#fetch'
   match 'fetch_tweets' => 'home#fetch_tweets'
 
+  match ":id" => "home#page"
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   match '/auth/:provider/callback' => 'user_tokens#create'
   match 'autocomplete' => 'movies#autocomplete'

@@ -5,22 +5,16 @@
     %h3 About Us
     %hr/
     %ul
-      %li
-        %a{:href => "#"} What is Muvi
-      %li
-        %a{:href => "#"} How do the reviews work
-      %li
-        %a{:href => "#"} FAQs
+      %li= link_to "What is Muvi", find_page('what-is-muvi')
+      %li= link_to "How do the reviews work", find_page('how-do-the-reviews-work')
+      %li= link_to "FAQs", find_page('faq')
   .col.left
     %h3 Contact Us
     %hr/
     %ul
-      %li
-        %a{:href => "#"} Submit a Question
-      %li
-        %a{:href => "#"} Advertise With Us
-      %li
-        %a{:href => "#"} Investor Relationships
+      %li= link_to "Submit a Question", find_page('submit-a-question')
+      %li= link_to "Advertise With Us", find_page('advertise-with-us')
+      %li= link_to "Investor Relationships", find_page('investor-relationships')
   .col.left
     %h3.quickStatistics Quick Statistics
     %hr
