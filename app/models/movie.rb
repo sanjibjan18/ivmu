@@ -78,7 +78,7 @@ class Movie < ActiveRecord::Base
   end
   
   def self.top_trending(limit_to)
- 
+    #self.select('films.*, SUM(tweets.id) as no_of_tweets').joins(:tweets).order("no_of_tweets").order(4)
   end
 end
 
