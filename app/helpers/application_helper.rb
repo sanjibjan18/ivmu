@@ -13,9 +13,9 @@ module ApplicationHelper
 
   def thumb_class(rating)
     if rating.to_i >= 50
-      return image_tag('thumbUp.png', :class => 'thumb', :title => 'Jhakaas')
+      return image_tag('thumbUp.png', :class => 'thumb', :title => 'Jhakaas', :alt => 'Jhakaas')
     else
-      return image_tag('thumbDown.png', :class => 'thumb', :title => 'Bakwaas')
+      return image_tag('thumbDown.png', :class => 'thumb', :title => 'Bakwaas', :alt => 'Bakwaas')
     end
   end
 

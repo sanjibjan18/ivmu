@@ -38,6 +38,10 @@ class Movie < ActiveRecord::Base
     self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
   end
 
+  def banner_image_thumb
+    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
+  end
+  
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count
   end
@@ -65,9 +69,16 @@ class Movie < ActiveRecord::Base
   end
 
   def friend_likes(user) # this method is used in movie show
-     return [] if user.blank? || user.facebook_friends.blank?
-     FacebookFeed.friend_likes.friends_ids(user.facebook_friends_ids).movie_page_id(self.fbpage_id).limit(4)
+    return [] if user.blank? || user.facebook_friends.blank?
+    FacebookFeed.friend_likes.friends_ids(user.facebook_friends_ids).movie_page_id(self.fbpage_id).limit(4)
   end
 
+  def self.top_box_office(limit_to)
+    self.order(:release_date).order(:gross_revenue).limit(limit_to)
+  end
+  
+  def self.top_trending(limit_to)
+ 
+  end
 end
 
