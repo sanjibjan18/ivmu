@@ -22,38 +22,15 @@
 
   .GrayHeaderBox
     %h3 Top Box Office
-    .row
-      .image.left
-        %img{:src => "/images/img1.jpg"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 No one killed Jessica
-    .row
-      .image.left
-        %img{:src => "/images/img2.jpg"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbUp.png"}/
-      .names.right
-        %h4 Game - It's not over till it's over
-    .row
-      .image.left
-        %img{:src => "/images/img3.jpg"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 Khoon Maaf
-    .row
-      .image.left
-        %img{:src => "/images/img4.jpg"}/
-      .icon.right
-        %a{:href => "#"}
-          %img{:src => "/images/thumbDown.png"}/
-      .names.right
-        %h4 Hostel
+    - Movie.top_box_office(4).each do |movie|
+      .row
+        .image.left
+          =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
+        .icon.right
+          %a{:href => "#"}
+            = thumb_class(movie.average_critics_reviews_rating_percent)
+        .names.right
+          %h4= movie.name
     %br/
     %a{:href => "#"}
       More
