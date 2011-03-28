@@ -23,6 +23,11 @@ class Movie < ActiveRecord::Base
   has_many :movie_casts
   has_many :casts, :through => :movie_casts
   has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
+  has_many :producers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "producer" }
+  has_many :musics, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "musics" }
+  has_many :writers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "writer" }
+  has_many :cinematographers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "cinematographer" }
+  has_many :editors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "editor" }
   has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
 
   accepts_nested_attributes_for :meta_detail, :allow_destroy => true
@@ -41,7 +46,7 @@ class Movie < ActiveRecord::Base
   def banner_image_thumb
     self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
   end
-  
+
   def average_rating
     reviews.blank? ? 'No ratings yet' : reviews.select("SUM(rating) as total").first.total.to_i / reviews.count
   end
@@ -76,9 +81,9 @@ class Movie < ActiveRecord::Base
   def self.top_box_office(limit_to)
     self.order(:release_date).order(:gross_revenue).limit(limit_to)
   end
-  
+
   def self.top_trending(limit_to)
- 
+
   end
 end
 
