@@ -22,7 +22,7 @@
 
   .GrayHeaderBox
     %h3 Top Box Office
-    - Movie.top_trending(4).each do |movie|
+    - Movie.top_box_office(4).each do |movie|
       .row
         .image.left
           =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
