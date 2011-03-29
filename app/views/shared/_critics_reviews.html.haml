@@ -21,7 +21,7 @@
             = image_tag(critics_review.film_critic_profile_image)
           .profile.right
             %h3= critics_review.film_critic_name
-            %p= critics_review.film_critic.organization
+            %p= critics_review.film_critic.organization rescue ''
             %p.date= Time.parse(critics_review.review_date.to_s).strftime('%d %B %Y').to_s rescue ''
 .clear
 

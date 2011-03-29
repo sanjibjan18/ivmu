@@ -3,7 +3,7 @@ class UserProfile < ActiveRecord::Base
   belongs_to :user
   validates_uniqueness_of :display_name
 
-  has_attached_file :profile_image, :styles => { :thumb=> "100x100#",:small  => "150x150>" }
+  has_attached_file :profile_image, :styles => { :thumb=> "100x100#", :small  => "150x150>" }
   attr_accessor :profile_image_url
 
   before_validation :download_remote_image, :if => :image_url_provided?
