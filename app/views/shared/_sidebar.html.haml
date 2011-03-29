@@ -19,35 +19,28 @@
     - else
       %p Log in to see your friends' activities
       = link_to image_tag('facebookicon.gif'), "/auth/facebook"
+  .GrayHeaderBox
+    -if request.fullpath =~ /coming_soon_movies/
+      %h3 Trending Now
+      -Movie.top_trending(4).each do |movie|
+        .row
+          .image.left
+            =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
+          .icon.right
+            %a{:href => "#"}
+              = thumb_class(movie.average_critics_reviews_rating_percent)
+          .names.right
+            %h4= movie.name
 
-  .GrayHeaderBox
-    %h3 Top Box Office
-    - Movie.top_box_office(4).each do |movie|
-      .row
-        .image.left
-          =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
-        .icon.right
-          %a{:href => "#"}
-            = thumb_class(movie.average_critics_reviews_rating_percent)
-        .names.right
-          %h4= movie.name
-    %br/
-    %a{:href => "#"}
-      More
-      %span »
-  .GrayHeaderBox
-    %h3 Recent Reviews
-    %br/
-    %img{:src => "/images/slider.jpg"}/
-    %a{:href => "#"}
-      Read Review
-      %span »
-    %a.watch{:href => "#"}
-      Watch Trailer
-      %span »
-  .advtBanner
-    %h3.advertisement Advertisement
-    %img{:src => "/images/advertisementBanner.jpg"}/
-  .advtBanner
-    %img{:src => "/images/advertisementBanner1.jpg"}/
+    -else
+      %h3 Top Box Office
+      - Movie.top_box_office(4).each do |movie|
+        .row
+          .image.left
+            =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
+          .icon.right
+            %a{:href => "#"}
+              = thumb_class(movie.average_critics_reviews_rating_percent)
+          .names.right
+            %h4= movie.name
 
