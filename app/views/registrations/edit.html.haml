@@ -26,6 +26,7 @@
       .field
         = ff.label :profile_image
         %br
+        = image_tag(ff.object.profile_image.url(:thumb)) unless ff.object.profile_image_file_name.blank?
         = ff.file_field :profile_image
       .field
         = ff.label :dob, 'Date of birth'

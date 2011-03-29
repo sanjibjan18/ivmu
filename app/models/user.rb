@@ -177,7 +177,6 @@ class User < ActiveRecord::Base
       self.reload
     end
     self.user_profile.update_attribute("twitter_screen_name", (omniauth['extra']['user_hash']['screen_name'] rescue '') ) if omniauth['provider'] == "twitter"
-    puts "zzzzzzzzzzzzzzzzzzzzz #{omniauth['user_info']['image']}"
     self.user_profile.update_attributes({:profile_image_url => omniauth['user_info']['image'] }) if self.user_profile.blank? || self.user_profile.profile_image_file_name.blank?
   end
 
