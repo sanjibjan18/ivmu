@@ -58,7 +58,7 @@ h1,h2,h3,h4{font-weight:bold;}
 .right{float:right;}
 .clear{clear:both;}
 p{line-height: 1.5em;}
-a{text-decoration:none;}
+a{text-decoration:none;color:#196EA4;}
 a:hover{text-decoration:underline;}
 
 .main{background:url(/images/bg.jpg) no-repeat top center;min-height:600px;}
@@ -132,13 +132,13 @@ ul.links li a.logout{
    text-shadow: 0px -1px #2c6272, 0px 0px;
    border-bottom:none;
    font-family:"Neo Sans-Medium", "Arial";
-   display: block;
+   display:block;
    float: left;
-   margin: 0px 6px 0px 0px;
-   padding: 0px 20px 0px 18px;
-   font-size: 15px;
-   color: #fff;
-   width: 92px;
+   margin:0px 6px 0px 0px;
+   padding:0px 20px 0px 18px;
+   font-size:15px;
+   color:#fff;
+   width:92px;
    line-height:41px;
    text-align:center;
    background:url('/images/tab.png') no-repeat;
@@ -147,7 +147,7 @@ ul.links li a.logout{
 
 
 .tabs li a:hover {
-	background: url('/images/active_tab.png') no-repeat;
+	background:url('/images/active_tab.png') no-repeat;
     background-color:none;
 	text-decoration:none;
 }
@@ -297,9 +297,9 @@ ul.links li a.logout{
 	height:210px;margin-right:10px;
 }
 
-.moviBox img{ height: 200px; width: 130px}
+.moviBox img{ height:200px; width:130px}
 
-.title{height:45px;width:145px;}
+.title{height:42px;width:145px;}
 
 .title h3{font-size:14px;color:#196EA4;padding-right:25px;line-height:13px;}
 
@@ -310,7 +310,7 @@ img.thumb { height:18px;width:18px; }
 .rating{
 	width:161px;
 	padding:9px 0px 9px 9px;
-	height:102px;
+	height:108px;
 	margin-bottom:5px;
 	border:1px solid #CCD5DC;
 	border-bottom:2px solid #CCD5DC;
@@ -319,7 +319,6 @@ img.thumb { height:18px;width:18px; }
 	-webkit-border-radius:5px;
 }
 
-.rating h4{color:#686565;font-size:12px;}
 
 .rating div.ratingBar{
     width:98px;
@@ -342,10 +341,10 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
   font-weight:bold;font-size:17px;letter-spacing:-1px;width:25px;text-align:left;color:#31384b;margin-left:5px;line-height:28px;
 }
 
-.rating h4 a {
-	background:url(/images/BthumbIcon.jpg) no-repeat right;padding:5px 20px 5px 0px;color:#222;
-}
+.rating h4{color:#686565;font-size:12px;}
 
+.rating h4 a {color:#686565;}
+.rating h4 span {padding-left:10px;}
 
 .GrayHeaderBox{
 	background:#fff url(/images/grayBoxHeader.jpg) no-repeat top;
@@ -661,6 +660,8 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	list-style:none;
 	font-size:12px;
 	color:#fff;
+	background:none;
+	padding-left:0px;
 	font-style:italic;
 }
 
