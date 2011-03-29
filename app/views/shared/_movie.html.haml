@@ -11,8 +11,8 @@
         %img{:src => "/images/Ficon.jpg"}
       %a{:href => "#"}
         %img{:src => "/images/Ticon.jpg"}
-    
-    = link_to image_tag("followbutton.jpg"), '#'
+
+    /= link_to image_tag("followbutton.jpg"), '#'
   .moviDetail.left
     .detail
       %h3 Movie
@@ -55,6 +55,24 @@
         DIRECTOR:
         %span.director
           = @movie.directors.collect{ |director| director.name }.to_sentence
+        PRODUCER:
+        %span
+          = @movie.producers.collect{ |producer| producer.name }.to_sentence
+        MUSIC:
+        %span
+          = @movie.musics.collect{ |music| music.name }.to_sentence
+        WRITER:
+        %span
+          = @movie.writers.collect{ |writer| writer.name }.to_sentence
+        EDITOR:
+        %span
+          = @movie.editors.collect{ |editor| editor.name }.to_sentence
+        CINEMATOGRAPHER:
+        %span
+          = @movie.cinematographers.collect{ |cinematographer| cinematographer.name }.to_sentence
+        DISTRIBUTOR:
+        %span
+          = @movie.distributors{ |distributor| distributor.name }
         RELEASE DATE :
         %span
           = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
