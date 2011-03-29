@@ -9,8 +9,14 @@ class Activity < ActiveRecord::Base
 
   validates_presence_of :action
 
-  def self.log_activity(subject, secondary_subject, activity, actor_id)
-     self.create(:subject => subject,:secondary_subject => secondary_subject, :action => activity, :actor_id => actor_id)
+  def self.log_activity(subject, secondary_subject, action, actor_id)
+    activity = Activity.where('actor_id = ?', actor_id).last
+    h = {:subject => subject,:secondary_subject => secondary_subject, :action => action}
+    if activity.blank?
+      self.create(h.merge!({:actor_id => actor_id}))
+    else
+      activity.update_attributes(h)
+    end
   end
 
 

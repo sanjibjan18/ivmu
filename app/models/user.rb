@@ -45,6 +45,9 @@ class User < ActiveRecord::Base
 
       likes = fb_user.likes
       friends = fb_user.friends
+      facebook_users_in_muvi =  {}
+      UserToken.where('provider = ?', 'facebook').collect { |p| facebook_users_in_muvi[p.uid] = p.user_id } # todo better way find all facebook user registered with ivmu
+
 
       #store facebook friends of current user in facebook_friends table
       fb_user.friends.collect(&:id).each do |friend_id|
@@ -82,7 +85,8 @@ class User < ActiveRecord::Base
             unless post.message.blank?
               Movie.latest.limit(6).compact.each do |movie|
                 if post.message.match("#{movie.name}")
-                  self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => friend.name, :posted_on => post.created_time.to_date)
+                  post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => friend.name, :posted_on => post.created_time.to_date)
+                  Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
                 end
               end # movie end
             end # unless post message blank

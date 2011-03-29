@@ -57,7 +57,8 @@ class FacebookFeed < ActiveRecord::Base
               movies.each do |movie|
                 if post.message.match("#{movie.name}")
                   unless user.facebook_friends_posts.where('movie_id = ? and fb_item_id = ?', movie.id, post.id ).exists?
-                    user.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id, :facebook_name => friend.name, :posted_on => post.created_time.to_date)
+                    post = user.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id, :facebook_name => friend.name, :posted_on => post.created_time.to_date)
+                    Activity.log_activity(post, movie, 'posted on wall' , user.id)
                   end
                 end
               end # movie end
@@ -69,20 +70,26 @@ class FacebookFeed < ActiveRecord::Base
   end
 
   def self.fetch_all_post_for_movie(movie)
+    facebook_users_in_muvi =  {}
+    UserToken.where('provider = ?', 'facebook').collect { |p| facebook_users_in_muvi[p.uid] = p.user_id } # todo better way find all facebook user registered with ivmu
+
     posts = Mogli::Model::search("#{movie.name}", nil, {:type => 'post', :limit => 400})
-    FacebookFeed.create_facebook_feed(posts, movie) # create facebook posts
+    FacebookFeed.create_facebook_feed(posts, movie, facebook_users_in_muvi) # create facebook posts
     while !posts.next_url.blank?  # fetch next method in mogli client append the data to same array so we check untill next url blank
       additional_posts = posts.fetch_next # retuns the pagnation post from next url
-      FacebookFeed.create_facebook_feed(additional_posts, movie)
+      FacebookFeed.create_facebook_feed(additional_posts, movie, facebook_users_in_muvi)
     end
   end
 
-  def self.create_facebook_feed(array, movie)
+  def self.create_facebook_feed(array, movie, facebook_users)
     array.each do |post|
       if post.type == "status"
         begin
           unless movie.facebook_feeds.where('fb_item_id = ?', post.id.to_s).exists?
-            movie.facebook_feeds.create(:feed_type => 'public_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id.to_s, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date)
+            post = movie.facebook_feeds.create(:feed_type => 'public_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id.to_s, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date)
+            if facebook_users.has_key?(post.from.id)
+              Activity.log_activity(post, movie, 'posted on wall' ,facebook_users[post.from.id.to_s])
+            end
           end
         rescue
           # this for any errors
@@ -90,6 +97,7 @@ class FacebookFeed < ActiveRecord::Base
       end
     end
   end
+
 
 
 end
