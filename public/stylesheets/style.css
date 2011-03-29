@@ -398,9 +398,14 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 .moviImage{
 	width:130px;
-	background: url(/images/W-bannertBottom.jpg) no-repeat center bottom;
-	min-height:210px;
+	background: url(/images/W-bannerBottom.jpg) no-repeat center bottom;
+	height:212px;
+	margin-bottom:10px;
 }
+
+.moviBanner div.shareThis{margin:10px 0px;}
+.moviBanner div.shareThis h3{color:#6CA8CB;font-size:12px;line-height:25px;}
+.moviBanner div.shareThis a img{margin:0px 5px 0px 2px;}
 
 .moviDetail{width:562px;margin-left:8px;}
 

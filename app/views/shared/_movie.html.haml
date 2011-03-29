@@ -4,8 +4,15 @@
       = image_tag @movie.banner_image, :size => "125x200"
     %a{:href => "#"}
       %img{:src => "/images/viewtrailer.jpg"}
-    %br
-    /= link_to image_tag("followbutton.jpg"), '#'
+    %div.shareThis
+      %h3
+        SHARE THIS
+      %a{:href => "#"}
+        %img{:src => "/images/Ficon.jpg"}
+      %a{:href => "#"}
+        %img{:src => "/images/Ticon.jpg"}
+    
+    = link_to image_tag("followbutton.jpg"), '#'
   .moviDetail.left
     .detail
       %h3 Movie
