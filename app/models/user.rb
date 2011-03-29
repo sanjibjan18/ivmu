@@ -191,7 +191,7 @@ class User < ActiveRecord::Base
     when 'twitter'
       user_info[:display_name] = user_info[:twitter_screen_name] = (omniauth['extra']['user_hash']['screen_name'] rescue '')
     end
-    user_info[:profile_image_url] = File.new(omniauth['extra']['user_hash']['image']) if self.user_profile.blank? || self.user_profile.profile_image_file_name.blank?
+    user_info[:profile_image_url] = omniauth['user_info']['image'] if self.user_profile.blank? || self.user_profile.profile_image_file_name.blank?
     user_info
   end
 
