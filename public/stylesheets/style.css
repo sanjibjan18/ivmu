@@ -59,6 +59,7 @@ h1,h2,h3,h4{font-weight:bold;}
 .clear{clear:both;}
 p{line-height: 1.5em;}
 a{text-decoration:none;}
+a:hover{text-decoration:underline;}
 
 .main{background:url(/images/bg.jpg) no-repeat top center;min-height:600px;}
 
@@ -70,7 +71,7 @@ a{text-decoration:none;}
 	clear:both;
 }
 
-.logo {margin-top: 15px;}
+.logo {margin-top:15px;}
 
 .linkLeft{background:url(/images/linkLeftBg.png) no-repeat left;width:18px;height:34px;}
 .linkRight{background:url(/images/linkRightBg.png) no-repeat left;width:18px;height:34px;}
@@ -93,11 +94,8 @@ ul.links li{
 	background:url(/images/navLine.png) no-repeat right;
 }
 
-
-
-ul.links li a{ 
-	color:#fff;
-}
+ul.links li a{color:#fff;}
+ul.links li a:hover{text-decoration:none;}
 
 ul.links li a.register{
 	background:url(/images/Reg_icon.png) no-repeat left;
@@ -117,44 +115,6 @@ ul.links li a.profile{
 ul.links li a.logout{
 	padding-left:50px;padding-right:0px;
 }
-
-/*
-ul.links{
-	background:red url(/images/lixnkBg.png) no-repeat;
-	height:34px;
-	width:345px;
-}
-
-ul.links li{
-	display:inline;
-	text-decoration:none;
-	padding-right:20px;
-	padding-left:20px;
-	text-align:center;padding-top:10px;padding-bottom:10px;
-    border-right:1px solid #fff;
-	width:90px;
-}
-ul.links li a img{float:right;height:30px;background:green;position:relative;}
-
-ul.links li.last{background-image:none;position:relative;top:0px;padding-right:10px;padding-left:0px;text-align:top;border-right:none;}
-
-ul.links li a{color:#fff;text-decoration:none;font-weight:bold;font-size:11px; }
-
-ul.links li a.register{
-	background:url(/images/Reg_icon.png) no-repeat left;
-	padding-left:18px;
-    
-}
-ul.links li a.login{
-	background:url(/images/login.gif) no-repeat left;
-	padding-left:18px;
-	
-}
-
-ul.links li a.profile, ul.links li a.logout{
-	padding-left:20px;
-}*/
-
 
 #top_bar{margin-top: 10px; margin-bottom: 0px; }
 
@@ -176,9 +136,7 @@ ul.links li a.profile, ul.links li a.logout{
    float: left;
    margin: 0px 6px 0px 0px;
    padding: 0px 20px 0px 18px;
-   text-decoration: none;
    font-size: 15px;
-   
    color: #fff;
    width: 92px;
    line-height:41px;
@@ -191,6 +149,7 @@ ul.links li a.profile, ul.links li a.logout{
 .tabs li a:hover {
 	background: url('/images/active_tab.png') no-repeat;
     background-color:none;
+	text-decoration:none;
 }
 
 .tabs li.active a {
@@ -347,6 +306,7 @@ ul.links li a.profile, ul.links li a.logout{
 .thmubs_up{background:url(/images/thumbUp.png) no-repeat;height:18px;width:18px;}
 .thmubs_down{background:url(/images/thumbDown.png) no-repeat;}
 img.thumb { height:18px;width:18px; }
+
 .rating{
 	width:161px;
 	padding:9px 0px 9px 9px;
@@ -418,7 +378,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 
 .icon{width:20%;text-align:right;}
 
-.GrayHeaderBox a{text-decoration:none;font-size:11px;color:#1B6CA3;font-weight:bold;}
+.GrayHeaderBox a{font-size:11px;color:#1B6CA3;font-weight:bold;}
 
 .GrayHeaderBox a.watch{color:#E077B9;}
 
@@ -478,7 +438,7 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 .detail h5 span.director{margin-right:100px;}
 
 .detail h5.cast{line-height:25px;border-bottom:none;font-size:11px;}
-.detail h5.cast a{color:#176B9F;text-decoration:none;}
+.detail h5.cast a{color:#176B9F;}
 
 
 .detail div.rating{
@@ -495,7 +455,6 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 .detail div.rating h4{color:#6E6E6E;font-size:14px;}
 
 .detail div.rating a{color:#649FC1;}
-
 
 .detail div.rating a{color:#196ea4;font-size:12px;}
 
@@ -695,7 +654,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	font-size:12px;
 }
 
-.footer ul li a{color:#fff;text-decoration:none;font-style:normal;}
+.footer ul li a{color:#fff;font-style:normal;}
 
 .footer ul.quickStatistics li{
     font-weight:bold;
