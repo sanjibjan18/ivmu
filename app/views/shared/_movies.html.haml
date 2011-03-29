@@ -23,11 +23,11 @@
             .ratingvalue.left
               = "#{movie.average_rating_percent}%"
             .clear
-            %div
-            %h4
-              = no_of_pepople_liked(movie)
-              %span
-                %img{:src => "images/BthumbIcon.jpg"}
+            - if current_user && current_user.facebook_omniauth
+              %h4
+                = no_of_pepople_liked(movie)
+                %span
+                  = image_tag("BthumbIcon.jpg")
           %a{:href => "#" }
             %img{:src => "images/viewTrailerBtn.jpg"}
 
