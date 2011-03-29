@@ -9,16 +9,16 @@ class FacebookFeed < ActiveRecord::Base
   scope :posts, where(:feed_type => 'friends_post')
   scope :friend_likes, where(:feed_type => 'friend_likes')
 
-  def self.fetch_posts_for_films
+  def self.fetch_posts_for_films(user)
     movies = []
     ["Dabangg", "No One Killed Jessica"].each do |movie_name|
       movies << Movie.find_by_name(movie_name)
     end
     movies.compact!
 
-    UserToken.where('provider = ?','facebook').each do |user_token|
-      user = user_token.user
-      client = Mogli::Client.new(user_token.token)
+    #UserToken.where('provider = ?','facebook').order('created_at DESC').each do |user_token|
+      #user = user_token.user
+      client = Mogli::Client.new(user.facebook_omniauth.token)
       fb_user = Mogli::User.find("me", client)
       likes = fb_user.likes
       friends = fb_user.friends
@@ -31,7 +31,13 @@ class FacebookFeed < ActiveRecord::Base
 
       unless likes.blank?
         likes.each do |like|
-          user.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => user.facebook_omniauth.uid, :fb_item_id => like.id, :posted_on => like.created_time.to_date, :facebook_name => fb_user.name ) unless user.facebook_feeds.where(:fb_item_id => like.id).exists?
+          if movies.collect(&:fbpage_id).include?(like.id.to_s)
+            unless user.facebook_feeds.where(:fb_item_id => like.id).exists?
+              like = user.facebook_feeds.create(:feed_type => 'likes', :value => like.name, :fbid => user.facebook_omniauth.uid, :fb_item_id => like.id, :posted_on => like.created_time.to_date, :facebook_name => fb_user.name )
+              movie = Movie.where('fbpage_id = ?', like.fb_item_id).first
+              Activity.log_activity(like, movie, 'liked' , user.id)
+            end
+          end
         end
       end
 
@@ -46,7 +52,10 @@ class FacebookFeed < ActiveRecord::Base
             friend_likes.each do |friend_like|
               unless user.facebook_friends.where(:facebook_id => friend_like.id).exists?
                 if movies.collect(&:fbpage_id).include?(friend_like.id.to_s)
-                  user.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id, :posted_on => friend_like.created_time.to_date, :facebook_name => friend.name)
+                  like = user.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id, :posted_on => friend_like.created_time.to_date, :facebook_name => friend.name)
+                  movie = Movie.where('fbpage_id = ?', like.fb_item_id).first
+                  facebook_user_present_in_db = UserToken.where('uid = ?', friend.id).first
+                  Activity.log_activity(like, movie, 'liked' , facebook_user_present_in_db.user.id) unless facebook_user_present_in_db.blank?
                 end
               end
             end
@@ -66,7 +75,7 @@ class FacebookFeed < ActiveRecord::Base
           end # each post end
         end
       end
-    end
+    #end
   end
 
   def self.fetch_all_post_for_movie(movie)

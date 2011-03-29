@@ -8,7 +8,7 @@ class UserTokensController < ApplicationController
     if user_token
       user_token.update_token_and_secret(omniauth)
       user_token.user.update_user_profile(omniauth) # update or create user profile
-      FacebookFeed.delay.fetch_posts_for_films
+      FacebookFeed.delay.fetch_posts_for_films(user_token.user)
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, user_token.user)
     elsif current_user
