@@ -50,46 +50,7 @@
           /= link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'
       .clear
     .detail
-      %h3 MOVIE INFORMATION
-      %h5
-        DIRECTOR:
-        %span.director
-          = @movie.directors.collect{ |director| director.name }.to_sentence
-        PRODUCER:
-        %span
-          = @movie.producers.collect{ |producer| producer.name }.to_sentence
-        MUSIC:
-        %span
-          = @movie.musics.collect{ |music| music.name }.to_sentence
-        WRITER:
-        %span
-          = @movie.writers.collect{ |writer| writer.name }.to_sentence
-        EDITOR:
-        %span
-          = @movie.editors.collect{ |editor| editor.name }.to_sentence
-        CINEMATOGRAPHER:
-        %span
-          = @movie.cinematographers.collect{ |cinematographer| cinematographer.name }.to_sentence
-        DISTRIBUTOR:
-        %span
-          = @movie.distributors{ |distributor| distributor.name }
-        RELEASE DATE :
-        %span
-          = Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
-          (India)
-      %h5.cast
-        CAST
-        = link_to "See More (#{@movie.actors.count})", '#'
-      - @movie.movie_casts.actors.limit(6).each do |actor|
-        .moviCasts.left
-          .actress.left
-            = image_tag(actor.cast.image)
-          .actressNames.right
-            %h4.large= actor.cast.name
-            %h4
-              as
-              = actor.role_name
-      .clear
+      = render '/shared/movie_information'
   .clear
   .right
     = link_to pluralize(@movie.comments.count, 'comment') , '#comments' , :id => 'comment_count'

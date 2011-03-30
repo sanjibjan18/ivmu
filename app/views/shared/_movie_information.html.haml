@@ -1,0 +1,76 @@
+%h3 MOVIE INFORMATION
+%h5.cast
+  CAST
+  /= link_to "See More (#{@movie.actors.count})", '#'
+.clear
+.border
+  - @movie.movie_casts.actors.limit(4).each do |actor|
+    .moviCasts.left
+      .actress.left
+        = image_tag(actor.cast.image)
+      .actressNames.right
+        %h4.large= actor.cast.name
+        %h4
+          as
+          = actor.role_name
+  .clear
+%h5
+  CREW
+.border
+  - @movie.directors.limit(1).each do |dir|
+    .moviCasts.left
+      .actress.left
+        = image_tag(dir.image)
+      .actressNames.right
+        %h4.large= dir.name
+        %h4
+          Director
+  - @movie.producers.limit(1).each do |prod|
+    .moviCasts.left
+      .actress.left
+        = image_tag(prod.image)
+      .actressNames.right
+        %h4.large= prod.name
+        %h4
+          Producer
+  - @movie.writers.limit(1).each do |wri|
+    .moviCasts.left
+      .actress.left
+        = image_tag(wri.image)
+      .actressNames.right
+        %h4.large= wri.name
+        %h4
+          Story
+  - @movie.musics.limit(1).each do |music|
+    .moviCasts.left
+      .actress.left
+        = image_tag(music.image)
+      .actressNames.right
+        %h4.large= music.name
+        %h4
+          Music
+  .clear
+%h5
+  OTHER INFORMATION
+.moviCasts.left
+  %h5
+    Release Date:
+    %span= Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
+
+  %h5
+    Genre:
+    %span= @movie.genre
+.moviCasts.left
+  %h5
+    Budget:
+    %span
+      Rs
+      = @movie.estimated_budget
+  %h5
+    Box office:
+    %span
+      Rs
+      = @movie.gross_revenue
+
+.clear
+

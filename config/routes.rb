@@ -13,7 +13,7 @@ Muvi::Application.routes.draw do
   match 'fetch' => 'home#fetch'
   match 'fetch_tweets' => 'home#fetch_tweets'
 
-  match ":id" => "home#page"
+
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   match '/auth/:provider/callback' => 'user_tokens#create'
@@ -91,5 +91,6 @@ Muvi::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  match ":id" => "home#page"
 end
 
