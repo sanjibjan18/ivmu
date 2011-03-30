@@ -7,7 +7,7 @@ class FacebookFeed < ActiveRecord::Base
   scope :movie_page_id, lambda{|page_id| where("fb_item_id = ?", page_id) }
   scope :latest,  order('posted_on desc')
   scope :posts, where(:feed_type => 'friends_post')
-  scope :friend_likes, where(:feed_type => 'friend_likes')
+  scope :friend_likes, where('feed_type = ? or feed_type = ?', 'friend_likes', 'likes')
 
   def self.fetch_posts_for_films(user)
     movies = []
