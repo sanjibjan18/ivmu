@@ -435,13 +435,12 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 	color:#4f4f4f;
 	line-height:28px;
 	font-size:11px;
-	border-bottom:1.5px dotted #5694bd;
 	margin:5px 0px;
 }
 .detail h5 span{color:#176B9F;}
 .detail h5 span.director{margin-right:100px;}
 
-.detail h5.cast{line-height:25px;border-bottom:none;font-size:11px;}
+.detail h5.cast{line-height:25px;font-size:11px;}
 .detail h5.cast a{color:#176B9F;}
 
 
@@ -477,7 +476,9 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 	-webkit-border-radius:3px;
 
 }
-
+.detail div.border {
+    border-bottom: 1px dotted #5794BD;
+}
 .friendsLink{
 	width:275px;
 	border-left:1px solid #ddd;
