@@ -56,16 +56,16 @@
   %h5
     Release Date:
     %span= Time.parse(@movie.release_date.to_s).strftime('%d %B %Y').to_s unless @movie.release_date.blank?
-
-  %h5
-    Genre:
-    %span= @movie.genre
-.moviCasts.left
   %h5
     Budget:
     %span
       Rs
       = @movie.estimated_budget
+
+.moviCasts.left
+  %h5
+    Genre:
+    %span= @movie.genre
   %h5
     Box office:
     %span
