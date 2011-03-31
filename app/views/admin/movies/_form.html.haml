@@ -81,7 +81,15 @@
     = md.label :meta_description
     = md.text_area :meta_description, :rows => 5
 
-
+  -unless @movie.new_record?
+    %p
+      Total number of facebook posts
+      = @movie.facebook_feeds.all_posts.count
+      = link_to "Manage Facebook Posts", admin_movie_movie_posts_path(@movie)
+    %p
+      Total number of tweets
+      = @movie.tweets.count
+      = link_to "Manage Tweets", admin_movie_movie_tweets_path(@movie)
   %hr
   .actions
     = f.submit 'Save'

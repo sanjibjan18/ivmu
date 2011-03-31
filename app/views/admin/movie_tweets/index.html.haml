@@ -1,2 +1,22 @@
-%h1 Admin::MovieTweets#index
-%p Find me in app/views/admin/movie_tweets/index.html.haml
+%h1 Movie Tweets
+
+= link_to "Back to Movie", edit_admin_movie_path(@movie)
+%table
+  %tr
+    %th Content
+    %th Twitter Screen name
+    %th Tweeted on
+    %th
+
+  - @movie.tweets.each do |tweet|
+    %tr
+      %td= truncate(tweet.content, :length => 70)
+      %td= tweet.twitter_screen_name
+      %td= tweet.tweeted_on.to_date
+      %td
+        = link_to 'Show', admin_movie_movie_tweet_path(@movie, tweet)
+        &nbsp; | &nbsp;
+        = link_to 'Destroy', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
+
+%br
+

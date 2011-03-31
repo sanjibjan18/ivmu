@@ -1,5 +1,7 @@
 Muvi::Application.routes.draw do
 
+
+
   resources :casts
   resources :tweets
   resources :facebook_posts
@@ -28,7 +30,10 @@ Muvi::Application.routes.draw do
 
   namespace :admin do
     root :to => 'movies#index'
-    resources :movies
+    resources :movies do
+      resources :movie_posts
+      resources :movie_tweets
+    end
     resources :users
     resources :pages
     resources :settings

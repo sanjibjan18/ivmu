@@ -1,2 +1,22 @@
-%h1 Admin::MoviePosts#index
-%p Find me in app/views/admin/movie_posts/index.html.haml
+%h1 Movie posts
+
+= link_to "Back to Movie", edit_admin_movie_path(@movie)
+%table
+  %tr
+    %th Content
+    %th facebook name
+    %th posted on
+    %th
+
+  - @facebook_feeds.each do |post|
+    %tr
+      %td= truncate(post.value, :length => 70)
+      %td= post.facebook_name
+      %td= post.posted_on
+      %td
+        = link_to 'Show', admin_movie_movie_post_path(@movie, post)
+        &nbsp; | &nbsp;
+        = link_to 'Destroy', admin_movie_movie_post_path(@movie, post), :confirm => 'Are you sure?', :method => :delete
+
+%br
+

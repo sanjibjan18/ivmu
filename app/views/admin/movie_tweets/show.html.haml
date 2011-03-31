@@ -1,0 +1,19 @@
+
+
+%table
+  %tr
+    %th Content
+    %td= @tweet.content
+  %tr
+    %th By
+    %td
+      = image_tag(Twitter.profile_image("#{@tweet.twitter_screen_name}", :size => 'normal')) rescue ''
+      = @tweet.twitter_screen_name
+  %tr
+    %th on
+    %td
+      = @tweet.tweeted_on.to_date
+= link_to "Back", :back
+|
+= link_to 'Destroy', admin_movie_movie_tweet_path(@movie, @tweet), :confirm => 'Are you sure?', :method => :delete
+
