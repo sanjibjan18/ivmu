@@ -12,31 +12,38 @@
     %th Facebook page id
     %td= @movie.fbpage_id
   %tr
-    %th Directed By
-    %td= @movie.directed_by
-  %tr
-    %th Tagline
-    %td= @movie.tagline
-  %tr
-    %th Produced By
-    %td= @movie.produced_by
-
-  %tr
-    %th Story By
-    %td= @movie.story_by
-  %tr
-    %th Cinematography
-    %td= @movie.cinematography
-
-  %tr
     %th Estimated budget
     %td= number_to_currency @movie.estimated_budget.to_f
   %tr
-    %th  Production Companies
-    %td= @movie.production_companies
+    %th Revenue
+    %td= number_to_currency @movie.gross_revenue.to_f
   %tr
-    %th Featured Song
-    %td= @movie.featured_song
+    %th Genre
+    %td= @movie.genre
+  %tr
+    %th Director
+    %td= @movie.directors.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th actors
+    %td= @movie.actors.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th producers
+    %td= @movie.producers.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th musics
+    %td= @movie.musics.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th writers
+    %td= @movie.writers.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th cinematographers
+    %td= @movie.cinematographers.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th distributors
+    %td= @movie.distributors.collect{ |ob| ob.cast_name }.to_sentence
+  %tr
+    %th editors
+    %td= @movie.editors.collect{ |ob| ob.cast_name }.to_sentence
   %tr
     %th Meta Title
     %td= @movie.meta_detail.meta_title unless @movie.meta_detail.blank?

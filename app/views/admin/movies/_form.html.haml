@@ -1,4 +1,4 @@
-= form_for([:admin, @movie]) do |f|
+= form_for([:admin, @movie], :html => { :multipart => true }) do |f|
   - if @movie.errors.any?
     #error_explanation
       %h2
@@ -11,38 +11,66 @@
   = f.label :name, "Movie Title"
   = f.text_field :name
   %br
-  = f.label :initial_release_date, "Released Date"
-  = f.text_field :initial_release_date, :id => 'release_date_lt'
+  = f.label :wiki_link, 'Wikipedia Page'
+  = f.text_field :wiki_link
   %br
-  = f.label :fbpage_id, "Facebook Page ID"
+  = f.label :fbpage_id, "Facebook Page"
   = f.text_field :fbpage_id
   %br
-  = f.label :directed_by , "Directed By"
-  = f.text_field :directed_by
+  = f.label :release_date, "Released Date"
+  = f.text_field :release_date, :id => 'release_date_lt'
   %br
-  = f.label :tagline
-  = f.text_field :tagline
-
-  %br
-  = f.label :produced_by
-  = f.text_field :produced_by
-  %br
-  = f.label :story_by
-  = f.text_field :story_by
-  %br
-  = f.label :cinematography
-  = f.text_field :cinematography
-
-  %br
-  = f.label :estimated_budget
+  = f.label :estimated_budget, 'Budget'
   = f.text_field :estimated_budget
   %br
-  = f.label :production_companies
-  = f.text_field :production_companies
+  = f.label :gross_revenue, 'Gross Revenue'
+  = f.text_field :gross_revenue
   %br
-  = f.label :featured_song
-  = f.text_field :featured_song
+  = f.label :genre, 'Genre'
+  = f.text_field :genre
+  #actors
+    %h3 Cast
+    = f.fields_for :actors do |actor|
+      = render 'movie_actor', { :ff => actor }
+    %p= link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
+  #crews
+    %h3 Crew
+    = f.fields_for :producers do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :directors do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :musics do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :writers do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :cinematographers do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :distributors do |prod|
+      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :editors do |prod|
+      = render 'movie_crew', { :ff => prod }
+    %p= link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
+
   %br
+  = f.label :poster, 'Poster'
+  = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
+  = f.file_field :poster
+  %br
+  = f.label :poster_release_date, 'Poster Release Date'
+  = f.text_field :poster_release_date
+  %br
+  = f.label :trailer, 'Trailer'
+  = f.file_field :trailer
+  %br
+  = f.label :trailer_release_date, 'Trailer Release Date'
+  = f.text_field :trailer_release_date
+  %br
+  #critics_reviews
+    %h3 Critics Review
+    = f.fields_for :critics_reviews do |cr|
+      = render 'critics_review', { :ff => cr }
+    %p= link_to_add_fields "Add Review", f, :critics_reviews, 'critics_review'
+
   = f.fields_for :meta_detail do |md|
     = md.label :meta_title
     = md.text_field :meta_title

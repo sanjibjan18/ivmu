@@ -15,6 +15,9 @@ class Admin::MoviesController < ApplicationController
   def new
    @movie = Movie.new
    @movie.build_meta_detail
+   @movie.actors.build
+   @movie.producers.build
+   @movie.critics_reviews.build
   end
 
   def edit

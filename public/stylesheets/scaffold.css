@@ -55,7 +55,7 @@ div.field, div.actions {
   list-style: square;
 }
 
-#wrapper{width: 960px; margin: 20px auto; }
+#wrapper{width: 1000px; margin: 20px auto; }
 .left{float: left;}
 .right{float: right;}
 .clear{clear: both;}
@@ -65,3 +65,40 @@ div.field, div.actions {
 
 textarea { width:100%; }
 
+#header{margin-bottom: 20px; border-bottom: 3px solid #ccc;}
+
+
+.tabs{margin:0px; padding: 0px;}
+
+.tabs li{display: inline;margin: 0; }
+
+.tabs li a{
+   text-shadow: 0px -1px #2c6272, 0px 0px;
+   border-bottom:none;
+   font-family:"Arial";
+   display:block;
+   font-weight: bold;
+   float: left;
+   margin:0px 4px 0px 0px;
+   padding:0px 20px 0px 18px;
+   font-size:15px;
+   color:#fff;
+   line-height:38px;
+   text-align:center;
+   background:url('/images/tab-bg.png') repeat-x;
+   text-decoration: none;
+    -moz-border-radius: 9px 9px 0px 0px;
+   -webkit-border-radius: 9px 9px 0px 0px;
+}
+
+
+.tabs li a:hover {
+	background:url('/images/active_tab.png') no-repeat;
+    background-color:none;
+	text-decoration:none;
+}
+
+.tabs li.active a {
+	background: url(/images/active_tab.png) no-repeat;
+	background-color:none;
+}

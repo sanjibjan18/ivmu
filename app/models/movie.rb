@@ -7,6 +7,8 @@ class Movie < ActiveRecord::Base
   acts_as_commentable
   # has_friendly_id :name
   has_permalink [:name], :update => true
+  has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" }
+  has_attached_file :trailer
 
   def to_param
     permalink
@@ -21,17 +23,27 @@ class Movie < ActiveRecord::Base
   has_one :meta_detail
 
   has_many :movie_casts
-  has_many :casts, :through => :movie_casts
-  has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
-  has_many :producers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "producer" }
-  has_many :musics, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "musics" }
-  has_many :writers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "writer" }
-  has_many :cinematographers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "cinematographer" }
-  has_many :distributors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "distributor" }
-  has_many :editors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "editor" }
-  has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
+  #to do better way
+ # has_many :casts, :through => :movie_casts
+ # has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
+#  has_many :producers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "producer" }
+# has_many :musics, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "musics" }
+ # has_many :writers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "writer" }
+ # has_many :cinematographers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "cinematographer" }
+ # has_many :distributors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "distributor" }
+ # has_many :editors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "editor" }
+ # has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
 
-  accepts_nested_attributes_for :meta_detail,:movie_casts, :critics_reviews , :allow_destroy => true
+  has_many :actors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "actor" }
+  has_many :directors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "director" }
+  has_many :producers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "producer" }
+  has_many :musics,  :class_name => 'MovieCast', :conditions => { "cast_type" => "musics" }
+  has_many :writers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "writer" }
+  has_many :cinematographers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "cinematographer" }
+  has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
+  has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
+
+  accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,:actors, :directors, :producers,:musics,:writers,:cinematographers, :distributors, :editors,  :allow_destroy => true
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('release_date desc nulls last')

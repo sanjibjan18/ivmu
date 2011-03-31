@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find_using_id(params[:id]).includes([:comments, :critics_reviews, :casts]).first
+    @movie = Movie.find_using_id(params[:id]).includes([:comments, :critics_reviews]).first
     @critics_reviews = @movie.critics_reviews.latest.paginate(:page => params[:page], :per_page => 2)
     @movie_tweets = @movie.tweets.latest.paginate(:page => params[:page], :per_page => 4)
     @facebook_posts = @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4) if current_user && current_user.facebook_omniauth
