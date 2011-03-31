@@ -107,3 +107,29 @@ table { width:100%;}
   text-align:left;
 }
 
+.main{
+	border:1px solid #ddd;
+	padding:10px;
+}
+
+.form label{
+    width: 130px;
+    float: left;
+    margin-bottom: 10px;
+    padding:5px 0px;
+ 
+}
+
+.form input{
+    width: 180px;
+    margin-bottom: 10px;
+    padding:3px 2px;
+ 
+}
+
+.cast{width:280px;float:left;}
+
+.cast label{width:70px;float:left;}
+
+.cast_photo{width:320px;float:left;}
+.cast_photo label{width:40px;float:left;}

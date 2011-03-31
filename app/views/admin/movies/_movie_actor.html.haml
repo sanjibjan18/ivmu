@@ -1,14 +1,13 @@
 #actor
-  %br
-  = ff.label :cast_name, "Cast name"
-  = ff.text_field :cast_name
-  %br
-  = ff.label :role_name, "Character"
-  = ff.text_field :role_name
-  %br
-  = ff.label :cast_thumbnail, 'Photo'
-  %br
-  = image_tag(ff.object.cast_thumbnail.url(:thumb)) unless ff.object.cast_thumbnail_file_name.blank?
-  = ff.file_field :cast_thumbnail
-  = link_to_remove_fields "Delete Cast", ff
+  %div.cast
+    = ff.label :cast_name, "Cast name"
+    = ff.text_field :cast_name
+  %div.cast
+    = ff.label :role_name, "Character"
+    = ff.text_field :role_name
+  %div.cast_photo
+    = ff.label :cast_thumbnail, 'Photo'
+    = image_tag(ff.object.cast_thumbnail.url(:thumb)) unless ff.object.cast_thumbnail_file_name.blank?
+    = ff.file_field :cast_thumbnail
+    = link_to_remove_fields "Delete Cast", ff
 

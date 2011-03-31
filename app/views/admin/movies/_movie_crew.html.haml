@@ -1,13 +1,13 @@
 #crew
-  %br
+  .clear
   = ff.label :cast_name, "Cast"
   = ff.text_field :cast_name
-  %br
+  .clear
   = ff.label :cast_type, "Type"
   = ff.select :cast_type, [['Producer','producer'], ['Director','director'], ['Musics','musics'], ['Writer','writer'], ['Cinematographer','cinematographer'], ['Distributor','distributor'], ['Editor','editor'] ]
-  %br
+  .clear
   = ff.label :cast_thumbnail, 'Photo'
-  %br
+  .clear
   = image_tag(ff.object.cast_thumbnail.url(:thumb)) unless ff.object.cast_thumbnail_file_name.blank?
   = ff.file_field :cast_thumbnail
 
