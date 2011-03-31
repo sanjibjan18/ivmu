@@ -10,28 +10,29 @@
 
   = f.label :name, "Movie Title"
   = f.text_field :name
-  %br
+  .clear
   = f.label :wiki_link, 'Wikipedia Page'
   = f.text_field :wiki_link
-  %br
+  .clear
   = f.label :fbpage_id, "Facebook Page"
   = f.text_field :fbpage_id
-  %br
+  .clear
   = f.label :release_date, "Released Date"
   = f.text_field :release_date, :id => 'release_date_lt'
-  %br
+  .clear
   = f.label :estimated_budget, 'Budget'
   = f.text_field :estimated_budget
-  %br
+  .clear
   = f.label :gross_revenue, 'Gross Revenue'
   = f.text_field :gross_revenue
-  %br
+  .clear
   = f.label :genre, 'Genre'
   = f.text_field :genre
   #actors
     %h3 Cast
     = f.fields_for :actors do |actor|
       = render 'movie_actor', { :ff => actor }
+    .clear
     %p= link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
   #crews
     %h3 Crew
@@ -51,20 +52,20 @@
       = render 'movie_crew', { :ff => edit }
     %p= link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
 
-  %br
+  .clear
   = f.label :poster, 'Poster'
   = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
   = f.file_field :poster
-  %br
+  .clear
   = f.label :poster_release_date, 'Poster Release Date'
   = f.text_field :poster_release_date
-  %br
+  .clear
   = f.label :trailer, 'Trailer'
   = f.file_field :trailer
-  %br
+  .clear
   = f.label :trailer_release_date, 'Trailer Release Date'
   = f.text_field :trailer_release_date
-  %br
+  .clear
   #critics_reviews
     %h3 Critics Review
     = f.fields_for :critics_reviews do |cr|
@@ -74,10 +75,10 @@
   = f.fields_for :meta_detail do |md|
     = md.label :meta_title
     = md.text_field :meta_title
-    %br
+    .clear
     = md.label :meta_keywords
     = md.text_area :meta_keywords, :rows => 5
-    %br
+    .clear
     = md.label :meta_description
     = md.text_area :meta_description, :rows => 5
 
