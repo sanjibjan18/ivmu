@@ -90,6 +90,10 @@
       Total number of tweets
       = @movie.tweets.count
       = link_to "Manage Tweets", admin_movie_movie_tweets_path(@movie)
+    %p
+      Total number of Comments
+      = @movie.comments.count
+      = link_to "Manage Comments", admin_movie_movie_comments_path(@movie)
   %hr
   .actions
     = f.submit 'Save'

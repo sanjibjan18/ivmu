@@ -1,0 +1,28 @@
+= form_for([:admin, @film_critic] ,:html => {:multipart => true}) do |f|
+  - if @film_critic.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@film_critic.errors.count, "error")
+        prohibited this page from being saved:
+      %ul
+        -@film_critic.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.label :name, "Name"
+  %br
+  = f.text_field :name
+  %br
+  = f.label :organization, "Organization"
+  %br
+  = f.text_field :organization
+  %br
+  = f.label :thumbnail_image, "Image"
+  = image_tag(@film_critic.thumbnail_image.url(:thumb)) unless @film_critic.new_record?
+  %br
+  = f.file_field :thumbnail_image
+  %br
+  .actions
+    = f.submit 'Save'
+    \- or -
+    = link_to 'Cancel', admin_film_critics_path
+

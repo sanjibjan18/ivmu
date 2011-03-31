@@ -21,7 +21,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find_using_id(params[:id]).includes([:tweets, :movie_casts]).first
+    @movie = Movie.find_using_id(params[:id]).includes([:tweets, :movie_casts, :comments]).first
     @movie.build_meta_detail if @movie.meta_detail.blank?
   end
 

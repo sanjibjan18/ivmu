@@ -1,0 +1,15 @@
+%table
+  %tr
+    %th Comment
+    %td= @comment.comment
+  %tr
+    %th by
+    %td= @comment.user.display_name
+  %tr
+    %th commented on
+    %td= @comment.created_at.to_date
+
+=link_to "Back", :back
+|
+= link_to 'Destroy', admin_movie_movie_comment_path(@movie, @comment), :confirm => 'Are you sure?', :method => :delete
+

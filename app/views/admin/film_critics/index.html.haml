@@ -1,0 +1,18 @@
+= link_to 'New film Critic', new_admin_film_critic_path
+%table.listing
+  %tr
+    %th Name
+    %th organization
+    %th Actions
+
+  - @film_critics.each do |fc|
+    %tr
+      %td
+        = image_tag(fc.thumbnail_image.url(:thumb))
+        = fc.name
+      %td= fc.organization
+      %td
+        = link_to "Edit", edit_admin_film_critic_path(fc)
+        |
+        = link_to "Destroy",  :confirm => 'Are you sure?', :method => :delete
+

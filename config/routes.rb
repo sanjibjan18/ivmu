@@ -2,6 +2,8 @@ Muvi::Application.routes.draw do
 
 
 
+
+
   resources :casts
   resources :tweets
   resources :facebook_posts
@@ -33,7 +35,9 @@ Muvi::Application.routes.draw do
     resources :movies do
       resources :movie_posts
       resources :movie_tweets
+      resources :movie_comments
     end
+    resources :film_critics
     resources :users
     resources :pages
     resources :settings

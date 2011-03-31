@@ -1,0 +1,21 @@
+%h1 Movie Comments
+
+= link_to "Back to Movie", edit_admin_movie_path(@movie)
+%br
+%table
+  %tr
+    %th Comment
+    %th by
+    %th commented on
+    %th
+
+  - @movie.comments.each do |comment|
+    %tr
+      %td= truncate(comment.comment, :length => 70)
+      %td= comment.user.display_name
+      %td= comment.created_at.to_date
+      %td
+        = link_to 'Show', admin_movie_movie_comment_path(@movie, comment)
+        &nbsp; | &nbsp;
+        = link_to 'Destroy', admin_movie_movie_comment_path(@movie, comment), :confirm => 'Are you sure?', :method => :delete
+
