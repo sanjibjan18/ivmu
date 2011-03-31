@@ -4,7 +4,7 @@
   = ff.text_field :cast_name
   %br
   = ff.label :cast_type, "Type"
-  = ff.select :cast_type, options_for_select([ ['Producer','producer'], ['Director','director'], ['Musics','musics'], ['Writer','writer'], ['Cinematographer','cinematographer'], ['Distributor','distributor'], ['Editor','editor'] ])
+  = ff.select :cast_type, [['Producer','producer'], ['Director','director'], ['Musics','musics'], ['Writer','writer'], ['Cinematographer','cinematographer'], ['Distributor','distributor'], ['Editor','editor'] ]
   %br
   = ff.label :cast_thumbnail, 'Photo'
   %br

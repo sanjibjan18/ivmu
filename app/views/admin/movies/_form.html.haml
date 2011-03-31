@@ -37,18 +37,18 @@
     %h3 Crew
     = f.fields_for :producers do |prod|
       = render 'movie_crew', { :ff => prod }
-    = f.fields_for :directors do |prod|
-      = render 'movie_crew', { :ff => prod }
-    = f.fields_for :musics do |prod|
-      = render 'movie_crew', { :ff => prod }
-    = f.fields_for :writers do |prod|
-      = render 'movie_crew', { :ff => prod }
-    = f.fields_for :cinematographers do |prod|
-      = render 'movie_crew', { :ff => prod }
-    = f.fields_for :distributors do |prod|
-      = render 'movie_crew', { :ff => prod }
-    = f.fields_for :editors do |prod|
-      = render 'movie_crew', { :ff => prod }
+    = f.fields_for :directors do |dir|
+      = render 'movie_crew', { :ff => dir }
+    = f.fields_for :musics do |mus|
+      = render 'movie_crew', { :ff => mus }
+    = f.fields_for :writers do |wri|
+      = render 'movie_crew', { :ff => wri }
+    = f.fields_for :cinematographers do |cine|
+      = render 'movie_crew', { :ff => cine }
+    = f.fields_for :distributors do |dist|
+      = render 'movie_crew', { :ff => dist }
+    = f.fields_for :editors do |edit|
+      = render 'movie_crew', { :ff => edit }
     %p= link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
 
   %br
@@ -80,6 +80,8 @@
     %br
     = md.label :meta_description
     = md.text_area :meta_description, :rows => 5
+
+
   %hr
   .actions
     = f.submit 'Save'

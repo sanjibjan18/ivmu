@@ -4,7 +4,7 @@
   = ff.select :film_critic_name, options_for_select(FilmCritic.option_list)
   %br
   = ff.label :rating, "Review Stars"
-  = ff.select :rating, options_for_select([ ['1','1'], ['2','2'],['3','3'],['4','4'],['5','5']])
+  = ff.select :rating, [ ['1','1'], ['2','2'],['3','3'],['4','4'],['5','5']]
   %br
   = ff.label :summary, "Review Text"
   = ff.text_field :summary
