@@ -2,12 +2,12 @@
   = f.label :name_contains, 'Movie title'
   = f.text_field :name_contains
   = f.label :release_date_gteq, 'Release Date between'
-  = f.text_field :release_date_gteq , :id => 'release_date_lt'
+  = f.text_field :release_date_gteq , :id => 'release_date_lt', :size => 10
   = f.label :release_date_lteq, 'and'
-  = f.text_field :release_date_lteq, :id => 'release_date_gt'
+  = f.text_field :release_date_lteq, :id => 'release_date_gt',  :size => 10
   = f.submit "Search"
-
-= link_to "New Movie", new_admin_movie_path
+  = link_to "New Movie", new_admin_movie_path
+%br
 
 %table.listing
   %tr
