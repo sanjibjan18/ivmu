@@ -93,12 +93,17 @@ textarea { width:100%; }
 
 
 .tabs li a:hover {
-	background:url('/images/active_tab.png') no-repeat;
+	background:url('/images/activetab.jpg') repeat-x;
     background-color:none;
 	text-decoration:none;
 }
 
 .tabs li.active a {
-	background: url(/images/active_tab.png) no-repeat;
+	background: url(/images/activetab.jpg) repeat-x;
 	background-color:none;
 }
+table { width:100%;}
+.listing tr th {
+  text-align:left;
+}
+
