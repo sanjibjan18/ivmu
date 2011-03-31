@@ -8,7 +8,7 @@
         -@movie.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.label :name, "Movie Name"
+  = f.label :name, "Movie Title"
   = f.text_field :name
   %br
   = f.label :initial_release_date, "Released Date"

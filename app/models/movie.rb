@@ -31,7 +31,7 @@ class Movie < ActiveRecord::Base
   has_many :editors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "editor" }
   has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
 
-  accepts_nested_attributes_for :meta_detail, :allow_destroy => true
+  accepts_nested_attributes_for :meta_detail,:movie_casts, :critics_reviews , :allow_destroy => true
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('release_date desc nulls last')
