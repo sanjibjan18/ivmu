@@ -5,7 +5,7 @@ class Admin::CelebritiesController < ApplicationController
 
   def index
     @search = Celebrity.order_by_name.search(params[:search])
-    @celebrities = @search.all
+    @celebrities = @search.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
