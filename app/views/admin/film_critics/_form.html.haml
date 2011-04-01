@@ -9,19 +9,17 @@
           %li= msg
 
   = f.label :name, "Name"
-  %br
   = f.text_field :name
-  %br
+  .clear
   = f.label :organization, "Organization"
-  %br
   = f.text_field :organization
-  %br
+  .clear
   = f.label :thumbnail_image, "Image"
   = image_tag(@film_critic.thumbnail_image.url(:thumb)) unless @film_critic.new_record?
-  %br
   = f.file_field :thumbnail_image
-  %br
-  .actions
+  %hr
+  .clear
+  .actions.btn
     = f.submit 'Save'
     \- or -
     = link_to 'Cancel', admin_film_critics_path

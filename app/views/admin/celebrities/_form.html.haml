@@ -25,12 +25,13 @@
   = f.file_field :profile_picture
   .clear
   = f.label :summary, 'Summary'
-  = f.text_area :summary
+  = f.text_area :summary, :rows => 5
   .clear
   = f.label :twitterid, 'TwitterID'
   = f.text_field :twitterid
   .clear
-  .actions
+  %hr
+  .actions.btn
     = f.submit 'Save'
     \- or -
     = link_to 'Cancel', admin_celebrities_path

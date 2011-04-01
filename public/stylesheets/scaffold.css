@@ -191,4 +191,5 @@ h2.heading{
 
 .add{margin-bottom:30px;}
 .add a, span.delete a{background:#CCCCCC;padding:5px;border:1px solid #222;}
-.actions{margin:0 auto;text-align:center;}
+.actions{margin:20px 0px;text-align:center;}
+.btn{text-align:left;margin-left:110px;}
