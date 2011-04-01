@@ -109,11 +109,19 @@ table { width:100%;}
 
 .main{
 	border:1px solid #ddd;
-	padding:10px;
+	padding:12px;
+}
+h1.heading{
+	font-size:13px;
+	text-decoration:underline;
+}
+h2.heading{
+	font-size:12px;
 }
 
+
 .form label{
-    width: 130px;
+    width: 110px;
     float: left;
     margin-bottom: 10px;
     padding:5px 0px;
@@ -121,15 +129,26 @@ table { width:100%;}
 }
 
 .form input{
-    width: 180px;
+    width: 200px;
     margin-bottom: 10px;
-    padding:3px 2px;
+    padding:5px 3px;
+	border:1px solid #888;
  
 }
 
-.cast{width:280px;float:left;}
+.cast{width:350px;float:left;}
 
-.cast label{width:70px;float:left;}
+.character_type{width:310px;float:left;}
+.character_type label{
+    width: 80px;
+    float: left;
+    margin-bottom: 10px;
+    padding:5px 0px;
+ 
+}
+.photo{width:155px;float:left;bacxkground:red;}
+.photo label{width:40px;float:left;}
+.photo input{width:95px;padding:0px 3px;border:none;}
 
-.cast_photo{width:320px;float:left;}
-.cast_photo label{width:40px;float:left;}
+.delete{width:85px;float:left;backxground:green;}
+.add{width:65px;float:left;backgxround:red;}

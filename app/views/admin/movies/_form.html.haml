@@ -29,13 +29,14 @@
   = f.label :genre, 'Genre'
   = f.text_field :genre
   #actors
-    %h3 Cast
+    %h2.heading Cast
     = f.fields_for :actors do |actor|
       = render 'movie_actor', { :ff => actor }
-    .clear
-    %p= link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
+    %div.add
+      = link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
+  .clear
   #crews
-    %h3 Crew
+    %h2.heading Crew
     = f.fields_for :producers do |prod|
       = render 'movie_crew', { :ff => prod }
     = f.fields_for :directors do |dir|
@@ -50,9 +51,10 @@
       = render 'movie_crew', { :ff => dist }
     = f.fields_for :editors do |edit|
       = render 'movie_crew', { :ff => edit }
-    %p= link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
+    %div.add
+      = link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
 
-  .clear
+
   = f.label :poster, 'Poster'
   = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
   = f.file_field :poster
