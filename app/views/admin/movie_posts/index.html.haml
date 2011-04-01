@@ -6,6 +6,7 @@
     %th Content
     %th facebook name
     %th posted on
+    %th Review
     %th
 
   - @facebook_feeds.each do |post|
@@ -13,10 +14,13 @@
       %td= truncate(post.value, :length => 70)
       %td= post.facebook_name
       %td= post.posted_on
+      %td= post.review
       %td
         = link_to 'Show', admin_movie_movie_post_path(@movie, post)
         &nbsp; | &nbsp;
+        = link_to 'Edit', edit_admin_movie_movie_post_path(@movie, post)
+        &nbsp; | &nbsp;
         = link_to 'Destroy', admin_movie_movie_post_path(@movie, post), :confirm => 'Are you sure?', :method => :delete
 
-%br
+= will_paginate @facebook_feeds
 

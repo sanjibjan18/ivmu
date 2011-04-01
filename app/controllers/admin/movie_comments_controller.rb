@@ -5,6 +5,7 @@ class Admin::MovieCommentsController < ApplicationController
   layout 'admin'
 
   def index
+    @comments = @movie.comments.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show

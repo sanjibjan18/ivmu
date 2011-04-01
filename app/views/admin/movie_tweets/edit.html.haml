@@ -1,0 +1,31 @@
+%h1.heading Edit Tweet
+.form
+  = form_for(@tweet, :url => admin_movie_movie_tweet_path(@movie,@tweet), :html => { :method => :put, :multipart => true }) do |f|
+    - if @tweet.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@tweet.errors.count, "error")
+          prohibited this page from being saved:
+        %ul
+          -@tweet.errors.full_messages.each do |msg|
+            %li= msg
+
+    = f.label :content, "Tweet"
+    = @tweet.content
+    .clear
+    = f.label :twitter_screen_name, "Screen Name"
+    = image_tag(Twitter.profile_image("#{@tweet.twitter_screen_name}", :size => 'normal')) rescue ''
+    = @tweet.twitter_screen_name
+    .clear
+    = f.label :tweet_id, "Twitter Id"
+    = @tweet.tweet_id
+    .clear
+    = f.label :review, "Review"
+    = f.select :review, review_options
+
+    %hr
+    .actions
+      = f.submit 'Save'
+      \- or -
+      = link_to 'Cancel', admin_movie_movie_tweets_path(@movie)
+

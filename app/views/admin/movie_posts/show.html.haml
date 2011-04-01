@@ -5,6 +5,9 @@
     %th Content
     %td= @post.value
   %tr
+    %th Review
+    %td= @post.review
+  %tr
     %th By
     %td
       = image_tag("https://graph.facebook.com/#{@post.fbid}/picture")

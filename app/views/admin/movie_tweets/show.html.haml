@@ -5,6 +5,9 @@
     %th Content
     %td= @tweet.content
   %tr
+    %th Review
+    %td= @tweet.review
+  %tr
     %th By
     %td
       = image_tag(Twitter.profile_image("#{@tweet.twitter_screen_name}", :size => 'normal')) rescue ''

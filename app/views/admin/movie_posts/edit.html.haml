@@ -1,0 +1,32 @@
+%h1.heading Edit Facebook Post
+.form
+  = form_for(@post, :url => admin_movie_movie_post_path(@movie,@post), :html => { :method => :put, :multipart => true }) do |f|
+    - if @post.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@post.errors.count, "error")
+          prohibited this page from being saved:
+        %ul
+          -@post.errors.full_messages.each do |msg|
+            %li= msg
+
+    = f.label :value, "Post"
+    = @post.value
+    .clear
+    = f.label :facebook_name, "Facebook Name"
+    = image_tag("https://graph.facebook.com/#{@post.fbid}/picture")
+    = @post.facebook_name
+    .clear
+    = f.label :fbid, "Facebook id"
+    = @post.fbid
+    .clear
+    = f.label :review, "Review"
+    = f.select :review, review_options
+    .clear
+
+    %hr
+    .actions
+      = f.submit 'Save'
+      \- or -
+      = link_to 'Cancel', admin_movie_movie_posts_path(@movie)
+

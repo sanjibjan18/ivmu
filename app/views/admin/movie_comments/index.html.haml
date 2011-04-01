@@ -9,7 +9,7 @@
     %th commented on
     %th
 
-  - @movie.comments.each do |comment|
+  - @comments.each do |comment|
     %tr
       %td= truncate(comment.comment, :length => 70)
       %td= comment.user.display_name
@@ -18,4 +18,6 @@
         = link_to 'Show', admin_movie_movie_comment_path(@movie, comment)
         &nbsp; | &nbsp;
         = link_to 'Destroy', admin_movie_movie_comment_path(@movie, comment), :confirm => 'Are you sure?', :method => :delete
+
+= will_paginate @comments
 

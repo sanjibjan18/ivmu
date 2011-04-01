@@ -60,9 +60,9 @@ class Tweet < ActiveRecord::Base
       movie_tweet[:user_id] = user_profile.user_id
     end
 
-    if (!movie.release_date.blank? && movie.release_date.to_date <= tweet.created_at.to_date)
-      movie_tweet[:review] = true
-    end
+    #if (!movie.release_date.blank? && movie.release_date.to_date <= tweet.created_at.to_date)
+    #  movie_tweet[:review] = true
+    #end
     unless movie.tweets.collect(&:tweet_id).include?(tweet.id.to_s)
       tw = movie.tweets.create(movie_tweet)
       Activity.log_activity(tw, movie, 'twitted', user_profile.user_id) if user_profile

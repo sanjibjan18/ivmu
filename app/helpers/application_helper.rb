@@ -5,6 +5,11 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
+
+  def review_options
+    [ ['Positive','positive'], ['Negative','negative'],['Neutral','neutral'],['Ignore','ignore']]
+  end
+
   def link_to_add_fields(name, f, association, render_partial)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
