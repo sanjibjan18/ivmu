@@ -4,10 +4,10 @@ class Celebrity < ActiveRecord::Base
 
   has_attached_file :profile_picture, :styles => { :thumb=> "45x45#", :small  => "150x150#" }
   has_many :movie_casts
-
+  scope :order_by_name, order('name asc nulls last')
 
   def self.option_list
-    list ||= self.order('name ASC').all.collect{|cl| [cl.name, cl.id] }
+    list ||= self.order_by_name.all.collect{|cl| [cl.name, cl.id] }
   end
 end
 

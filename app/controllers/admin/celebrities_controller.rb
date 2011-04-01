@@ -4,7 +4,7 @@ class Admin::CelebritiesController < ApplicationController
   layout 'admin'
 
   def index
-    @search = Celebrity.search(params[:search])
+    @search = Celebrity.order_by_name.search(params[:search])
     @celebrities = @search.all
   end
 
