@@ -7,7 +7,7 @@ class Celebrity < ActiveRecord::Base
 
 
   def self.option_list
-    self.all.collect{|cl| [cl.name, cl.id] }
+    list ||= self.order('name ASC').all.collect{|cl| [cl.name, cl.id] }
   end
 end
 
