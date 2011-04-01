@@ -5,7 +5,7 @@ class FilmCritic < ActiveRecord::Base
 
 
   def self.option_list
-    self.all.collect{|fc| [fc.organization, fc.name] }
+    l ||= self.all.collect{|fc| [fc.name, fc.name] }
   end
 end
 
