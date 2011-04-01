@@ -1,10 +1,9 @@
-#crew
-  %div.cast
+.crew
+  %div.col_one
     = ff.label :celebrity_id, "Cast"
     = ff.select :celebrity_id, Celebrity.option_list
-  %div.character_type
+  %div.col_two
     = ff.label :cast_type, "Type"
     = ff.select :cast_type, [['Producer','producer'], ['Director','director'], ['Musics','musics'], ['Writer','writer'], ['Cinematographer','cinematographer'], ['Distributor','distributor'], ['Editor','editor'] ]
-  %div.delete
     = link_to_remove_fields "Delete Crew", ff
 

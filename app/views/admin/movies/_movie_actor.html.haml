@@ -1,10 +1,9 @@
-#actor
-  %div.cast
+.actor
+  %div.col_one
     = ff.label :celebrity_id, "Cast"
     = ff.select :celebrity_id, Celebrity.option_list
-  %div.character_type
+  %div.col_two
     = ff.label :role_name, "Character"
     = ff.text_field :role_name
-  %div.delete
     = link_to_remove_fields "Delete Cast", ff
 

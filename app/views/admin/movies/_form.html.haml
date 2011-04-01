@@ -9,10 +9,10 @@
           %li= msg
 
   = f.label :name, "Movie Title"
-  = f.text_field :name
+  = f.text_field :name ,:class => 'large'
   .clear
   = f.label :wiki_link, 'Wikipedia Page'
-  = f.text_field :wiki_link
+  = f.text_field :wiki_link ,:class => 'large'
   .clear
   = f.label :fbpage_id, "Facebook Page"
   = f.text_field :fbpage_id
@@ -32,7 +32,7 @@
     %h2.heading Cast
     = f.fields_for :actors do |actor|
       = render 'movie_actor', { :ff => actor }
-    %div
+    %div.add.clear
       = link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
   .clear
   #crews
@@ -51,25 +51,27 @@
       = render 'movie_crew', { :ff => dist }
     = f.fields_for :editors do |edit|
       = render 'movie_crew', { :ff => edit }
-    %div.add
+    %div.add.clear
       = link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
 
-
-  = f.label :poster, 'Poster'
-  = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
-  = f.file_field :poster
   .clear
-  = f.label :poster_release_date, 'Poster Release Date'
-  = f.text_field :poster_release_date
+  %div.col_one
+    = f.label :poster, 'Poster'
+    = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
+    = f.file_field :poster
+  %div.col_two
+    = f.label :poster_release_date, 'Poster Release Date' ,:class => 'date'
+    = f.text_field :poster_release_date
   .clear
-  = f.label :trailer, 'Trailer'
-  = f.file_field :trailer
-  .clear
-  = f.label :trailer_release_date, 'Trailer Release Date'
-  = f.text_field :trailer_release_date
+  %div.col_one
+    = f.label :trailer, 'Trailer'
+    = f.file_field :trailer
+  %div.col_two
+    = f.label :trailer_release_date, 'Trailer Release Date' ,:class => 'date'
+    = f.text_field :trailer_release_date
   .clear
   #critics_reviews
-    %h3 Critics Review
+    %h2.heading Critics Review
     = f.fields_for :critics_reviews do |cr|
       = render 'critics_review', { :ff => cr }
     %p= link_to_add_fields "Add Review", f, :critics_reviews, 'critics_review'

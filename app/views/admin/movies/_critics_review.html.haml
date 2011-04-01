@@ -1,16 +1,16 @@
-#critics_review
-  %br
-  = ff.label :film_critic_name, ""
-  = ff.select :film_critic_name, options_for_select(FilmCritic.option_list)
-  %br
-  = ff.label :rating, "Review Stars"
-  = ff.select :rating, [ ['1','1'], ['2','2'],['3','3'],['4','4'],['5','5']]
-  %br
-  = ff.label :summary, "Review Text"
-  = ff.text_field :summary
-  %br
-  = ff.label :link, "Link To Review"
-  = ff.text_field :link
+.critics_review
+  %div.col_one
+    = ff.label :film_critic_name, ""
+    = ff.select :film_critic_name, options_for_select(FilmCritic.option_list)
+  %div.col_two
+    = ff.label :rating, "Review Stars"
+    = ff.select :rating, [ ['1','1'], ['2','2'],['3','3'],['4','4'],['5','5']]
+  %div.col_three
+    = ff.label :summary, "Review Text"
+    = ff.text_field :summary
+  %div.col_four
+    = ff.label :link, "Link To Review"
+    = ff.text_field :link
 
-  = link_to_remove_fields "Delete Review", ff
+    = link_to_remove_fields "Delete Review", ff
 
