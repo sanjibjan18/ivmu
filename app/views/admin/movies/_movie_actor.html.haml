@@ -5,5 +5,6 @@
   %div.col_two
     = ff.label :role_name, "Character"
     = ff.text_field :role_name
-    = link_to_remove_fields "Delete Cast", ff
+    %span.delete
+      = link_to_remove_fields "Delete Cast", ff 
 

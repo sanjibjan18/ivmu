@@ -74,7 +74,8 @@
     %h2.heading Critics Review
     = f.fields_for :critics_reviews do |cr|
       = render 'critics_review', { :ff => cr }
-    %p= link_to_add_fields "Add Review", f, :critics_reviews, 'critics_review'
+    %div.add.clear
+      = link_to_add_fields "Add Review", f, :critics_reviews, 'critics_review'
 
   = f.fields_for :meta_detail do |md|
     = md.label :meta_title
