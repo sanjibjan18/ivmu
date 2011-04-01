@@ -188,13 +188,15 @@ h2.heading{
 .critics_review div.col_three label{
  width:110px;
 }
+
 .critics_review div.review_text input{
  width:720px;
+ height:30px;
+ margin-bottom:10px;
 }
-
 
 
 .add{margin-bottom:30px;}
 .add a, span.delete a{background:#CCCCCC;padding:5px;border:1px solid #222;}
 .actions{margin:20px 0px;margin-left:110px;}
-.btn{text-align:left;}
+
