@@ -55,7 +55,7 @@ div.field, div.actions {
   list-style: square;
 }
 
-#wrapper{width: 1300px; margin: 20px auto; }
+#wrapper{width: 1000px; margin: 20px auto; }
 .left{float: left;}
 .right{float: right;}
 .clear{clear: both;}
@@ -186,10 +186,15 @@ h2.heading{
  width:320px;float:left;
 }
 .critics_review div.col_three label{
- width:90px;
+ width:110px;
 }
+.critics_review div.review_text input{
+ width:720px;
+}
+
+
 
 .add{margin-bottom:30px;}
 .add a, span.delete a{background:#CCCCCC;padding:5px;border:1px solid #222;}
-.actions{margin:20px 0px;text-align:center;}
-.btn{text-align:left;margin-left:110px;}
+.actions{margin:20px 0px;margin-left:110px;}
+.btn{text-align:left;}

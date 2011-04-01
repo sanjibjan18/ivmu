@@ -6,11 +6,12 @@
     = ff.label :rating, "Review Stars"
     = ff.select :rating, [ ['1','1'], ['2','2'],['3','3'],['4','4'],['5','5']]
   %div.col_three
-    = ff.label :summary, "Review Text"
-    = ff.text_field :summary
-  %div.col_four
     = ff.label :link, "Link To Review"
     = ff.text_field :link
+  .clear
+  %div.review_text
+    = ff.label :summary, "Review Text"
+    = ff.text_field :summary
     %span.delete
       = link_to_remove_fields "Delete Review", ff
 .clear
