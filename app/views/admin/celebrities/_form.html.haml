@@ -1,0 +1,37 @@
+= form_for([:admin, @celebrity], :html => { :multipart => true }) do |f|
+  - if @celebrity.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@celebrity.errors.count, "error")
+        prohibited this page from being saved:
+      %ul
+        -@celebrity.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.label :name, "Name"
+  = f.text_field :name
+  .clear
+  = f.label :celebrity_type, 'Type'
+  = f.text_field :celebrity_type
+  .clear
+  = f.label :birthdate, 'Birthdate'
+  = f.text_field :birthdate
+  .clear
+  = f.label :birthplace, 'Birth Place'
+  = f.text_field :birthplace
+  .clear
+  = f.label :profile_picture, 'Profile Picture'
+  = image_tag(@celebrity.profile_picture.url(:thumb)) unless @celebrity.new_record?
+  = f.file_field :profile_picture
+  .clear
+  = f.label :summary, 'Summary'
+  = f.text_area :summary
+  .clear
+  = f.label :twitterid, 'TwitterID'
+  = f.text_field :twitterid
+  .clear
+  .actions
+    = f.submit 'Save'
+    \- or -
+    = link_to 'Cancel', admin_celebrities_path
+

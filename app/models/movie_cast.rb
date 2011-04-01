@@ -4,6 +4,7 @@ class MovieCast < ActiveRecord::Base
 
   belongs_to :movie
   belongs_to :cast
+  belongs_to :celebrity
   has_attached_file :cast_thumbnail, :styles => { :thumb=> "45x45#", :small  => "150x150#" }
 
   scope :actors, where("cast_type = ? ", "actor")

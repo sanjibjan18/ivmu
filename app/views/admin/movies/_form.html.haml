@@ -32,7 +32,7 @@
     %h2.heading Cast
     = f.fields_for :actors do |actor|
       = render 'movie_actor', { :ff => actor }
-    %div.add
+    %div
       = link_to_add_fields "Add Cast", f, :actors, 'movie_actor'
   .clear
   #crews

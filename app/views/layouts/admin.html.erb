@@ -24,7 +24,7 @@
     <div class='clear'></div>
     <ul class= 'tabs'>
           <li> <%= link_to 'Manage movies', admin_movies_path, :class => ('active' if request.fullpath =~ /movies/) %> </li>
-          <li> <%= link_to 'Manage celebrities', '#' %> </li>
+          <li> <%= link_to 'Manage celebrities', admin_celebrities_path %> </li>
           <li> <%= link_to 'Manage users', admin_users_path, :class => ('active' if request.fullpath == /users/) %> </li>
           <!--<li> <%= link_to 'Manage comments', '#', :class => ('active' if request.fullpath == '/') %> </li>-->
           <li> <%= link_to "CMS/Static pages", admin_pages_path , :class => ('active' if request.fullpath == /pages/)%> </li>

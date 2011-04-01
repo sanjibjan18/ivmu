@@ -1,0 +1,27 @@
+= link_to "New Celebrity", new_admin_celebrity_path
+%br
+
+%table.listing
+  %tr
+    %th Celebrity Name
+    %th Type
+    %th Actions
+
+  - unless @celebrities.blank?
+    - @celebrities.each do |celebrity|
+      %tr
+        %td
+          = image_tag(celebrity.profile_picture.url(:thumb) )
+          = celebrity.name
+        %td= celebrity.celebrity_type
+        %td
+          = link_to "show", admin_celebrity_path(celebrity)
+          |
+          = link_to "Edit", edit_admin_celebrity_path(celebrity)
+          |
+          = link_to "Destroy", admin_celebrity_path(celebrity) , :confirm => 'Are you sure?', :method => :delete
+  -else
+    %tr
+      %td{:colspan => 3}
+        %p Sorry there are no results for your filter request(s)
+
