@@ -3,8 +3,8 @@ class Tweet < ActiveRecord::Base
   belongs_to :movie
 
   scope :latest, order('tweeted_on desc nulls last')
-  scope :reviews, where('interest = ?', FALSE)
-  scope :interests, where('interest = ?', TRUE)
+  scope :reviews, where(:interest => false)
+  scope :interests, where(:interest => true)
 
   def self.fetch_tweets #(user)
     last_tweet = Tweet.last
