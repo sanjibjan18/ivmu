@@ -41,13 +41,5 @@ class Review < ActiveRecord::Base
   scope :for_movie, lambda{|movie| where(:movie_id => movie.id)}
 
 
-  def link_detail
-    detail = {}
-    detail[:name] =  "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",
-    detail[:link] = "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}"
-    detail[:description] = ''
-    detail
-
-  end
 end
 
