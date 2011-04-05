@@ -4,8 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
   after_create :log_activity
- # after_save :post_to_wall
-  #after_save :post_to_twitter
+  after_save :post_to_wall
+  after_save :post_to_twitter
 
   def post_to_wall
     unless self.user.facebook_omniauth.blank?

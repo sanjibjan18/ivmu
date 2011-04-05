@@ -30,5 +30,8 @@ class HomeController < ApplicationController
     @content = Page.find_reference('contact-us').first rescue nil
   end
 
+  def user_agreement
+  end
+
 end
 
