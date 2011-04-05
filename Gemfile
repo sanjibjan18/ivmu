@@ -25,6 +25,7 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'twitter'
 gem 'exception_notification_rails3', :require => 'exception_notifier'
 gem 'paperclip'
+gem 'recaptcha', :require => 'recaptcha/rails', :path => 'vendor/gems/rfc2822-recaptcha'
 
 
 # Bundle edge Rails instead:
