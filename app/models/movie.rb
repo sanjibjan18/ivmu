@@ -53,11 +53,11 @@ class Movie < ActiveRecord::Base
   scope :comming_soon_movies, where("release_date > ? ", Date.today)
 
   def banner_image
-    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
+    self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
   end
 
   def banner_image_thumb
-    self.thumbnail_image.blank?? '/images/no-logo.png' : "/thumbnails/#{self.thumbnail_image.to_s}.png"
+   self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
   end
 
   def average_rating
