@@ -57,7 +57,7 @@ class Movie < ActiveRecord::Base
   end
 
   def banner_image_thumb
-   self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
+   self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:thumb)
   end
 
   def average_rating
