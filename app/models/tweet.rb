@@ -3,6 +3,8 @@ class Tweet < ActiveRecord::Base
   belongs_to :movie
 
   scope :latest, order('tweeted_on desc nulls last')
+  scope :reviews, where('interest = ?', FALSE)
+  scope :interests, where('interest = ?', TRUE)
 
   def self.fetch_tweets #(user)
     last_tweet = Tweet.last
@@ -60,9 +62,9 @@ class Tweet < ActiveRecord::Base
       movie_tweet[:user_id] = user_profile.user_id
     end
 
-    #if (!movie.release_date.blank? && movie.release_date.to_date <= tweet.created_at.to_date)
-    #  movie_tweet[:review] = true
-    #end
+    if (!movie.release_date.blank? && tweet.created_at.to_date < movie.release_date.to_date)
+      movie_tweet[:interest] = true
+    end
     unless movie.tweets.collect(&:tweet_id).include?(tweet.id.to_s)
       tw = movie.tweets.create(movie_tweet)
       Activity.log_activity(tw, movie, 'twitted', user_profile.user_id) if user_profile
