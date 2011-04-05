@@ -1,0 +1,33 @@
+= form_for(@user_message || UserMessage.new) do |f|
+  -if f.object.errors.any?
+    #errorExplanation
+      %h3= "Sorry. Message could not be sent due to following reasons."
+      %ul.errors
+        - f.object.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :purpose, 'Purpose'
+    %br
+    = f.select :purpose, [['Submit feedback and ideas','Submit feedback and ideas'],['Advertise with us','Advertise with us'],['Partbership request','Partbership request'],['Investor relationship', 'Investor relationship'],['Other','other'] ]
+  .field
+    = f.label :email, 'Email Address'
+    %span *
+    %br
+    = f.text_field :email, :size => '35'
+  .field
+    = f.label :phone_no, 'Phone Number'
+    %br
+    = f.text_field :phone_no
+
+
+  .field
+    = f.label :message, "Your message"
+    %span *
+    %br
+    = f.text_area :message, :rows => '6', :class => 'message'
+  .field
+    = raw recaptcha_tags :display => {:theme => 'white', :tabindex => 0}
+  %br
+  .actions
+    = f.submit 'Send'
+

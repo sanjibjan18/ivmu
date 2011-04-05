@@ -1,10 +1,12 @@
 Muvi::Application.routes.draw do
-
+  resources :user_messages
   resources :casts
   resources :tweets
   resources :facebook_posts
   match '/user_tweets/:twitter_name' => 'tweets#for_user'
   match 'search' => 'search#index'
+  match 'contact_us' => 'home#contact_us'
+
   resources :critics_reviews
   resources :user_profiles
   resources :user_tokens
