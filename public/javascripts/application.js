@@ -6,7 +6,7 @@
        $.getScript(this.href); return false;
      });
     $(".login, .register").fancybox();
-    $("a[rel=registration]").fancybox();
+    $("a[rel=example_group]").fancybox();
 
 });
 
