@@ -1,10 +1,11 @@
  $(document).ready(function($) {
     $('a[rel*=facebox]').facebox();
-    $( "#reviews" ).tabs();
+    $("#reviews" ).tabs();
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
+    $(".ajaxfancy").fancybox();
 });
 
 function critics_reviews_sort(movie_id, value) {
