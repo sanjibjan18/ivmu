@@ -1,6 +1,25 @@
 -@casts.each do |cast|
-  %div
-    = cast.name
-    %br
-    = image_tag(cast.image)
+  .box.left
+    .celebrityImage.left
+      = image_tag(cast.image)
+    .celebrityDetail.left
+      .title
+        = cast.name
+      .rating
+        %h4 Popularity Index
+        .ratingBar.left
+          
+        .ratingvalue.left
+          54%
+        .clear
+        .userFriends.left
+          Users
+        .number-ofFans.left
+          200 fans
+        .clear
+        .userFriends.left
+          Friends
+        .number-ofFans.left
+          2 friends are fans
+.clear
 
