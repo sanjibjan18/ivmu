@@ -1,7 +1,7 @@
 class FacebookPostsController < ApplicationController
   skip_before_filter :authenticate_user!
   layout 'website'
-  caches_action :index
+  caches_page :index
 
   def index
     @movie ||= Movie.find(params[:id])
