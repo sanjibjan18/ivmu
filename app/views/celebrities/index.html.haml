@@ -1,2 +1,7 @@
-%h1 Celebrities#index
-%p Find me in app/views/celebrities/index.html.haml
+= content_for :heading do
+  Celebrities
+
+- unless @celebrities.blank?
+  .homeContainerIn.borderDiv
+    = render 'shared/celebrities'
+

@@ -6,6 +6,8 @@
        $.getScript(this.href); return false;
      });
     $(".ajaxfancy").fancybox();
+    $("a[rel=example_group]").fancybox();
+
 });
 
 function critics_reviews_sort(movie_id, value) {

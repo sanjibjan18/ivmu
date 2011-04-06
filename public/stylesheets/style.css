@@ -340,11 +340,17 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .negative { background:url(/images/R-RatingBar.jpg) repeat-x; }
 
 .ratingvalue {
-  font-weight:bold;font-size:17px;letter-spacing:-1px;width:25px;text-align:left;color:#31384b;margin-left:5px;line-height:28px;
+    font-weight:bold;
+	font-size:17px;
+	letter-spacing:-1px;
+	width:25px;
+	text-align:left;
+	color:#31384b;
+	margin-left:5px;
+	line-height:28px;
 }
 
 .rating h4{color:#686565;font-size:12px;}
-
 .rating h4 a {color:#686565;}
 .rating h4 span {padding-left:10px;}
 
@@ -392,6 +398,46 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .advtBanner img{width:210px;height:150px;}
 
 h3.advertisement{line-height:30px;font-size:14px;}
+
+/*................... Celebrity page css................*/
+
+.celebrityImage{
+	width:130px;
+	background:url(/images/bannerBottom.jpg) no-repeat center bottom;
+	height:210px;margin-right:10px;
+}
+
+.celebrityImage img{ height:200px; width:130px}
+
+.celebrityDetail{height:42px;width:145px;}
+
+.celebrityDetail div.title{
+	height:42px;
+	width:145px;
+	font-size:14px;
+	color:#196EA4;
+	padding-right:25px;
+	line-height:13px;
+}
+
+
+.userFriends{
+    width:45px;
+	margin-top:10px;
+	font-size:11px;
+	font-weight:bold;
+}
+
+.number-ofFans {
+	font-weight:bold;
+	font-size:11px;
+	width:110px;
+	letter-spacing:-1px;
+	text-align:left;
+    margin-top:10px;
+	color:#31384b;
+	margin-left:5px;
+}
 
 
 /*................... Show page css................*/
@@ -648,8 +694,6 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 
 .col hr{margin:5px 10px 5px 0px;border-top:1px solid #394A5E;border-bottom:1px solid #5F798A;}
 
-.col h3.quickStatistics{font-style:italic;}
-
 .footer ul{margin:0px;}
 
 .footer ul li{
@@ -661,7 +705,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	font-size:12px;
 }
 
-.footer ul li a{color:#fff;font-style:normal;}
+.footer ul li a{color:#fff;}
 
 .footer ul.quickStatistics li{
     font-weight:bold;
@@ -670,7 +714,6 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	color:#fff;
 	background:none;
 	padding-left:0px;
-	font-style:italic;
 }
 
 .footerBottom{
