@@ -61,11 +61,11 @@ class Movie < ActiveRecord::Base
   end
 
   def average_rating
-    tweetss.blank? ? 'No ratings yet' : tweets.select("SUM(rating) as total").first.total.to_i / tweets.count
+    tweets.blank? ? 'No ratings yet' : tweets.select("SUM(rating) as total").first.total.to_i / tweets.count(:all,:conditions=>["interest = ?","f"])
   end
 
   def average_rating_percent
-    tweets.blank? ? 0 : (100 * tweets.select("SUM(rating) as total").first.total.to_i) / tweets.count
+    tweets.blank? ? 0 : (100 * tweets.select("SUM(rating) as total").first.total.to_i) / tweets.count(:all,:conditions=>["interest = ?","f"])
   end
 
   def average_critics_reviews_rating_percent
