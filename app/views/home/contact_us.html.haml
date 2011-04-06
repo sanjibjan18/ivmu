@@ -1,19 +1,20 @@
 = render 'shared/meta_title_and_keywords', { :key => 'home'}
-= content_for :heading do
-  %span
-    = link_to "Home >>".html_safe, root_path
-    contact us
+.breadcrumb
+  = content_for :heading do
+    %span
+      = link_to "Home &#187;".html_safe, root_path
+      contact us
 
 %h2 Contact Us
 
+.containerIn.borderDiv
+  = @content.content.html_safe unless @content.blank?
 
-= @content.content.html_safe unless @content.blank?
+  %p Use the following form to contact us. We will get back to you within 24 hours.
 
-%p Use the following form to contact us. We will get back to you within 24 hours.
-
-- if notice
-  %p.notice
-    = notice
-#enquiry_form
-  = render '/user_messages/form'
+  - if notice
+    %p.notice
+      = notice
+  #enquiry_form
+    = render '/user_messages/form'
 
