@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     name = {:name_contains => params[:q]}
     @search = Movie.latest.search(name)
     @movies = @search.paginate(:page => params[:page], :per_page => 10)
-    @cast_search = Cast.search(name)
+    @cast_search = Celebrity.search(name)
     @casts = @cast_search.paginate(:page => params[:page], :per_page => 10)
 
     if @movies.size == 1 && @casts.blank?
