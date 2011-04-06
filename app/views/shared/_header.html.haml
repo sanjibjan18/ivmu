@@ -6,8 +6,8 @@
     .linksMid.left
       %ul.links.right
         - unless current_user
-          %li= link_to 'Register', new_user_registration_path, :class => 'register ajaxfancy'
-          %li= link_to 'Login', new_user_session_path, :class => 'login ajaxfancy'
+          %li= link_to 'Register', new_user_registration_path, :class => 'register', :id => 'register'
+          %li= link_to 'Login', new_user_session_path, :class => 'login', :id => 'login'
           %li.last= link_to image_tag('/images/facebookicon.gif'), "/auth/facebook"
         - else
           %li= link_to 'Profile', edit_user_registration_path, :class => 'profile'
@@ -27,9 +27,11 @@
       %ul.tabs
         %li{:class => ('active' if request.fullpath == '/')}
           = link_to 'Reviews', root_path
-        %li= link_to 'Coming Soon', coming_soon_movies_path , :class => ('active' if request.fullpath =~ /coming_soon_movies/)
+        %li{:class => ('active' if request.fullpath =~ /coming_soon_movies/)}
+          = link_to 'Coming Soon', coming_soon_movies_path
         /%li= link_to "Movie News", '#'
-        %li= link_to "Celebrities", celebrities_path, :class => ('active' if request.fullpath =~ /celebrities/)
+        %li{:class => ('active' if request.fullpath =~ /celebrities/)}
+          = link_to "Celebrities", celebrities_path
         /%li= link_to "Community", '#'
     .headerRight.right
       .search.right
