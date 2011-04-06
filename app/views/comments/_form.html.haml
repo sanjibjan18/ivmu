@@ -5,8 +5,8 @@
   .field
     %div{:style => 'width:15%;float:left;margin-top:5px;'}
       = f.label :comment, 'ADD COMMENTS'
-    %div{:style => 'width:58%;float:left'}
-      = f.text_area :comment, :rows => 4, :cols => 50
+    %div{:style => 'width:58%;float:left;margin-left:10px;'}
+      = f.text_area :comment, :rows => 4, :cols => 55
       -if(defined? comment)
         = f.hidden_field :parent_id, :value => comment.id
     %div{:style => 'width:25%;float:left'}
