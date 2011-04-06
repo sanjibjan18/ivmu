@@ -1,11 +1,11 @@
 class Admin::MoviePostsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :admin?
-  before_filter :find_movie
+  before_filter :find_movie, :except => [:facebook_review_update]
   layout 'admin'
 
   def index
-    @facebook_feeds = @movie.facebook_feeds.all_posts.paginate(:page => params[:page], :per_page => 50)
+    @facebook_feeds = @movie.facebook_feeds.latest.all_posts.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
@@ -30,10 +30,18 @@ class Admin::MoviePostsController < ApplicationController
       end
     end
   end
+
   def destroy
     @movie.facebook_feeds.find(params[:id]).destroy
     redirect_to admin_movie_movie_posts_path(@movie)
   end
+
+  def facebook_review_update
+   post = FacebookFeed.find(params[:id])
+   post.update_attributes({:review => params[:option]})
+   render :nothing => true
+  end
+
 
 
   private

@@ -4,15 +4,13 @@ $(document).ready(function($) {
 
     $('.tweet_option_change').change(function() {
       tweet_id = $(this).attr('id').split('review_')[1]
-      $.ajax({
-          type: "POST",
-       url: "/admin/movie_tweets/tweet_update",
-         data: "id=" + tweet_id + "&option=" + $(this).val()
-
- });
-
+      $.ajax({type: "POST",url: "/tweet_review_update", data: "id=" + tweet_id + "&option=" + $(this).val()});
     });
 
+    $('.facebook_option_change').change(function() {
+      facebook_id = $(this).attr('id').split('review_')[1]
+      $.ajax({type: "POST",url: "/facebook_review_update", data: "id=" + facebook_id + "&option=" + $(this).val()});
+    });
 });
 
 function remove_fields(link) {

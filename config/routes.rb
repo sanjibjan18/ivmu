@@ -8,6 +8,10 @@ Muvi::Application.routes.draw do
   match 'user_agreement' => 'home#user_agreement'
   match '/auth/:provider/callback' => 'user_tokens#create'
   match 'autocomplete' => 'movies#autocomplete'
+
+  match "tweet_review_update", :to => "admin/movie_tweets#tweet_review_update", :via => "post"
+  match "facebook_review_update", :to => "admin/movie_posts#facebook_review_update", :via => "post"
+
   root :to => "home#index"
 
   resources :user_messages
@@ -34,11 +38,7 @@ Muvi::Application.routes.draw do
       resources :movie_tweets
       resources :movie_comments
     end
-    resources :movie_tweets do
-      collection do
-          post 'tweet_update'
-      end
-    end
+
     resources :celebrities
     resources :film_critics
     resources :users

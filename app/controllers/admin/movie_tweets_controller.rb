@@ -37,7 +37,7 @@ class Admin::MovieTweetsController < ApplicationController
   end
 
 
-  def tweet_update
+  def tweet_review_update
    tweet = Tweet.find(params[:id])
    tweet.update_attributes({:review => params[:option]})
    render :nothing => true
