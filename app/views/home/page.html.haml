@@ -1,13 +1,14 @@
 = render 'shared/meta_title_and_keywords', { :key => 'home'}
-= content_for :heading do
-  %span
-    = link_to "Home >>".html_safe, root_path
-    = @page.title
+.breadcrumb
+  = content_for :heading do
+    %span
+      = link_to "Home &#187;".html_safe, root_path
+      = @page.title
 
 %h2= @page.title
-
-- unless @page.blank?
-  = @page.content.html_safe
-- else
-  No page found.
+.containerIn.borderDiv
+  - unless @page.blank?
+    = @page.content.html_safe
+  - else
+    No page found.
 
