@@ -23,6 +23,9 @@
       <%= render :partial => 'shared/header' %>
       <div id="wrapper">
         <div class="container left">
+          <div class="breadcrumb">
+            <%= yield :breadcrumb %>
+          </div>
           <h2> <%= yield :heading %> </h2>
 
           <%= yield %>

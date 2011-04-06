@@ -2,6 +2,12 @@
 = content_for :heading do
   Latest Movie
   %span Reviews
+
+= content_for :breadcrumb do
+  %span
+    = link_to "Home &#187;".html_safe, root_path
+    Reviews
+
 .homeContainerIn.borderDiv
   = render 'shared/movies',  { :from => 'home'}
   .clear

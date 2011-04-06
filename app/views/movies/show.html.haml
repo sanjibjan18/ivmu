@@ -3,5 +3,13 @@
   %span Movie Review:
   = @movie.name
 
+= content_for :breadcrumb do
+  %span
+    = link_to "Home &#187;".html_safe, root_path
+    = link_to "Reviews &#187;".html_safe, root_path
+    = @movie.name
+
+
+
 = render '/shared/movie', {:from => 'movies'}
 

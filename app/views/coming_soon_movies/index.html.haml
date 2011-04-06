@@ -2,6 +2,11 @@
 = content_for :heading do
   Coming soon
 
+= content_for :breadcrumb do
+  %span
+    = link_to "Home &#187;".html_safe, root_path
+    Coming Soon
+
 .homeContainerIn.borderDiv
   = render :partial => 'shared/movies', :locals => { :from => 'coming_soon'}
   .right

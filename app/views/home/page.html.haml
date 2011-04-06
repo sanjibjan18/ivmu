@@ -1,9 +1,9 @@
 = render 'shared/meta_title_and_keywords', { :key => 'home'}
-.breadcrumb
-  = content_for :heading do
-    %span
-      = link_to "Home &#187;".html_safe, root_path
-      = @page.title
+
+= content_for :breadcrumb do
+  %span
+    = link_to "Home &#187;".html_safe, root_path
+    = @page.title
 
 %h2= @page.title
 .containerIn.borderDiv
