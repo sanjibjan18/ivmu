@@ -1,11 +1,11 @@
 class Admin::MovieTweetsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :admin?
-  before_filter :find_movie
+  before_filter :find_movie, :except => [:tweet_update]
   layout 'admin'
 
   def index
-   @tweets =  @movie.tweets.paginate(:page => params[:page], :per_page => 50)
+   @tweets =  @movie.tweets.latest.paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
@@ -34,6 +34,13 @@ class Admin::MovieTweetsController < ApplicationController
   def destroy
     @movie.tweets.find(params[:id]).destroy
     redirect_to admin_movie_movie_tweets_path(@movie)
+  end
+
+
+  def tweet_update
+   tweet = Tweet.find(params[:id])
+   tweet.update_attributes({:review => params[:option]})
+   render :nothing => true
   end
 
 

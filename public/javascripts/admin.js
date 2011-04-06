@@ -1,6 +1,18 @@
 $(document).ready(function($) {
     $('#celebrity_birthdate, #release_date_lt, #release_date_gt, #movie_poster_release_date, #movie_trailer_release_date').datepicker({ dateFormat: 'yy-mm-dd' });
     $('#page_content').htmlarea();
+
+    $('.tweet_option_change').change(function() {
+      tweet_id = $(this).attr('id').split('review_')[1]
+      $.ajax({
+          type: "POST",
+       url: "/admin/movie_tweets/tweet_update",
+         data: "id=" + tweet_id + "&option=" + $(this).val()
+
+ });
+
+    });
+
 });
 
 function remove_fields(link) {

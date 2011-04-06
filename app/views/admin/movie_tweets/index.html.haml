@@ -6,19 +6,19 @@
     %th Content
     %th Twitter Screen name
     %th Tweeted on
+    %th Rating
     %th Review
     %th
 
   - @tweets.each do |tweet|
     %tr
-      %td= truncate(tweet.content, :length => 70)
+      %td= truncate(tweet.content, :length => 60)
       %td= tweet.twitter_screen_name
       %td= tweet.tweeted_on.to_date
-      %td= tweet.review
+      %td= tweet.rating
+      %td= select_tag "review_#{tweet.id}", options_for_select(review_options, tweet.review), :class => 'tweet_option_change'
       %td
         = link_to 'Show', admin_movie_movie_tweet_path(@movie, tweet)
-        &nbsp; | &nbsp;
-        = link_to 'Edit', edit_admin_movie_movie_tweet_path(@movie, tweet)
         &nbsp; | &nbsp;
         = link_to 'Destroy', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
 

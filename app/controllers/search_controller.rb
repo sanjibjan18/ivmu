@@ -8,13 +8,13 @@ class SearchController < ApplicationController
     @search = Movie.latest.search(name)
     @movies = @search.paginate(:page => params[:page], :per_page => 10)
     @cast_search = Celebrity.search(name)
-    @casts = @cast_search.paginate(:page => params[:page], :per_page => 10)
+    @celebrities = @cast_search.paginate(:page => params[:page], :per_page => 10)
 
-    if @movies.size == 1 && @casts.blank?
+    if @movies.size == 1 && @celebrities.blank?
       redirect_to movie_path(@movies.first) and return
     end
-    if @movies.blank? && @casts.size == 1
-      redirect_to cast_path(@casts.first) and return
+    if @movies.blank? && @celebrities.size == 1
+      redirect_to celebrity_path(@celebrities.first.id) and return
     end
 
 =begin
