@@ -7,7 +7,7 @@ module ApplicationHelper
 
 
   def review_options
-    option ||= [ ['Positive','positive'], ['Negative','negative'],['Neutral','neutral'],['Ignore','ignore']]
+    option ||= [ ['Positive','pos'], ['Negative','neg'],['Neutral','neu'],['Ignore','ign']]
   end
 
   def link_to_add_fields(name, f, association, render_partial)
