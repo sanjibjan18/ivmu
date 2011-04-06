@@ -5,8 +5,8 @@
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
-    $(".ajaxfancy").fancybox();
-    $("a[rel=example_group]").fancybox();
+    $(".login, .register").fancybox();
+    $("a[rel=registration]").fancybox();
 
 });
 
