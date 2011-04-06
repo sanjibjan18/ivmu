@@ -422,23 +422,21 @@ h3.advertisement{line-height:30px;font-size:14px;}
 
 
 .userFriends{
-    width:50px;
-    height:17px;
-    margin-bottom:5px;
-	margin-top:2px;
-	font-size:12px;
-	font-weight:bold;backxground:red;
+    width:45px;
+	margin-top:10px;
+	font-size:11px;
+	font-weight:bold;
 }
 
 .number-ofFans {
 	font-weight:bold;
-	font-size:12px;
+	font-size:11px;
+	width:110px;
 	letter-spacing:-1px;
-	width:103px;
-	height:17px;
-	text-align:left;margin-top:2px;
+	text-align:left;
+    margin-top:10px;
 	color:#31384b;
-	margin-left:5px;backxground:red;
+	margin-left:5px;
 }
 
 
