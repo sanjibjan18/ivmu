@@ -9,5 +9,9 @@ class Celebrity < ActiveRecord::Base
   def self.option_list
     list ||= self.order_by_name.all.collect{|cl| [cl.name, cl.id] }
   end
+
+  def image
+    self.profile_picture_file_name.blank?? '/images/no-image.jpg' : self.profile_picture.url(:small).to_s
+  end
 end
 
