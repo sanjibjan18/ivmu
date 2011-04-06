@@ -65,7 +65,7 @@ class Movie < ActiveRecord::Base
   end
 
   def average_rating_percent
-    reviews.blank? ? 0 : (100 * reviews.select("SUM(rating) as total").first.total.to_i) / (reviews.count * 5)
+    reviews.blank? ? 0 : (100 * reviews.select("SUM(rating) as total").first.total.to_i) / (reviews.count * 5) rescue 0
   end
 
   def average_critics_reviews_rating_percent
