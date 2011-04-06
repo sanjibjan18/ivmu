@@ -340,11 +340,17 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .negative { background:url(/images/R-RatingBar.jpg) repeat-x; }
 
 .ratingvalue {
-  font-weight:bold;font-size:17px;letter-spacing:-1px;width:25px;text-align:left;color:#31384b;margin-left:5px;line-height:28px;
+    font-weight:bold;
+	font-size:17px;
+	letter-spacing:-1px;
+	width:25px;
+	text-align:left;
+	color:#31384b;
+	margin-left:5px;
+	line-height:28px;
 }
 
 .rating h4{color:#686565;font-size:12px;}
-
 .rating h4 a {color:#686565;}
 .rating h4 span {padding-left:10px;}
 
@@ -392,6 +398,48 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .advtBanner img{width:210px;height:150px;}
 
 h3.advertisement{line-height:30px;font-size:14px;}
+
+/*................... Celebrity page css................*/
+
+.celebrityImage{
+	width:130px;
+	background:url(/images/bannerBottom.jpg) no-repeat center bottom;
+	height:210px;margin-right:10px;
+}
+
+.celebrityImage img{ height:200px; width:130px}
+
+.celebrityDetail{height:42px;width:145px;}
+
+.celebrityDetail div.title{
+	height:42px;
+	width:145px;
+	font-size:14px;
+	color:#196EA4;
+	padding-right:25px;
+	line-height:13px;
+}
+
+
+.userFriends{
+    width:50px;
+    height:17px;
+    margin-bottom:5px;
+	margin-top:2px;
+	font-size:12px;
+	font-weight:bold;backxground:red;
+}
+
+.number-ofFans {
+	font-weight:bold;
+	font-size:12px;
+	letter-spacing:-1px;
+	width:103px;
+	height:17px;
+	text-align:left;margin-top:2px;
+	color:#31384b;
+	margin-left:5px;backxground:red;
+}
 
 
 /*................... Show page css................*/
