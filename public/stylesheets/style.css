@@ -694,8 +694,6 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 
 .col hr{margin:5px 10px 5px 0px;border-top:1px solid #394A5E;border-bottom:1px solid #5F798A;}
 
-.col h3.quickStatistics{font-style:italic;}
-
 .footer ul{margin:0px;}
 
 .footer ul li{
@@ -707,7 +705,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	font-size:12px;
 }
 
-.footer ul li a{color:#fff;font-style:normal;}
+.footer ul li a{color:#fff;}
 
 .footer ul.quickStatistics li{
     font-weight:bold;
@@ -716,7 +714,6 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 	color:#fff;
 	background:none;
 	padding-left:0px;
-	font-style:italic;
 }
 
 .footerBottom{
