@@ -5,10 +5,22 @@
   = f.text_field :release_date_gteq , :id => 'release_date_lt', :size => 10
   = f.label :release_date_lteq, 'and'
   = f.text_field :release_date_lteq, :id => 'release_date_gt',  :size => 10
+
   = f.check_box :poster_file_name_is_blank
   = f.label :poster_file_name_is_blank, 'Missing Poster'
+
   = f.check_box :trailer_file_name_is_blank
   = f.label :trailer_file_name_is_blank, 'Missing Trailer'
+
+
+  = f.check_box :movie_casts_count_is_blank
+  = f.label :movie_casts_count_is_blank, 'Missing Cast'
+
+  = f.check_box :critics_reviews_count_is_blank
+  = f.label :critics_reviews_count_is_blank, 'Missing Critics Review'
+
+  = f.check_box :tweets_count_is_blank
+  = f.label :tweets_count_is_blank, 'Missing Tweet Review'
   = f.submit "Search"
   = link_to "New Movie", new_admin_movie_path
 %br
