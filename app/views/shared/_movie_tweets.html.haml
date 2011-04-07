@@ -9,7 +9,7 @@
             %div.reviewIcon.left
               = thumb_class((tweet.rating * 50 rescue 0))
             %p
-              = tweet.content
+              = tweet.content.html_safe
           .clear
           .review
             .photo.left
