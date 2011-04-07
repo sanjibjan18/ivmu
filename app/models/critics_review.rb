@@ -14,7 +14,7 @@ class CriticsReview < ActiveRecord::Base
 
   def film_critic_profile_image
     film_critic = FilmCritic.where('name = ?', self.film_critic_name).first
-    return film_critic.thumbnail_image.url(:thumb).to_s
+    return (film_critic.thumbnail_image.url(:thumb).to_s rescue '/images/no-logo.png')
 
   end
 
