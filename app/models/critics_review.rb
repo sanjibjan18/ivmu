@@ -1,5 +1,5 @@
 class CriticsReview < ActiveRecord::Base
-  belongs_to :movie, :foreign_key => "movie_name"#, :counter_cache => true
+  belongs_to :movie, :foreign_key => "movie_name", :counter_cache => true
   belongs_to :film_critic, :foreign_key => :film_critic_name
 
   scope :latest, order('review_date desc nulls last')
