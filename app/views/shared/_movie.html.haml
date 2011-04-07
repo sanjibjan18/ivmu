@@ -29,15 +29,18 @@
             .clear
             = link_to "Average of #{@movie.critics_reviews.count} critics", '#critics', :onclick => "go_to_tab(0);"
         .rating
-          %h4 Users Rating
+          %h4= (from == 'movies')? 'Users Rating' : 'Users Interest'
           .ratingBar.left
             = ratingbar(@movie.average_rating_percent)
           .ratingvalue.left
             = "#{@movie.average_rating_percent}%"
           .clear
-          = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
+          -if from == 'movies'
+            = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
+          -else
+            = link_to "#{@movie.reviews.count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
-        %h4 Friends Liked
+        %h4= (from == 'movies')? 'Friends Liked' : 'Friends who are interested'
         - if current_user && current_user.facebook_omniauth
           -@movie.friend_likes(current_user).each do |like|
             = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
@@ -93,5 +96,5 @@
     -@movie.comments.to_level.each do |comment|
       = render '/shared/comment', { :comment => comment }
 #rate_movie{:style => 'display:none;'}
-  = render :partial => "reviews/form", :locals => { :movie => @movie}
+  = render :partial => "reviews/form", :locals => { :movie => @movie, :review => ((from == 'movies')? false : true) }
 

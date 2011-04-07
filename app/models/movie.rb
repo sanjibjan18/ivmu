@@ -52,6 +52,8 @@ class Movie < ActiveRecord::Base
   scope :released, where("release_date <= ? ", Date.today)
   scope :comming_soon_movies, where("release_date > ? ", Date.today)
 
+#  scope :backwards_name, where("id in (?)", Tweet.select('distinct movie_id').collect(&:movie_id))
+
   def banner_image
     self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
   end

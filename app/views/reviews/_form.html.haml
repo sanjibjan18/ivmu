@@ -12,8 +12,10 @@
       Facebook
       = f.check_box :twitter
       Twitter
+    = f.hidden_field :review, :value => ( review || false  )
     .field
-      %label Rate
+      %label
+        = (review == false)? 'Rate' : 'Interest'
       = f.radio_button :rating, '1'
       1
       = f.radio_button :rating, '2'

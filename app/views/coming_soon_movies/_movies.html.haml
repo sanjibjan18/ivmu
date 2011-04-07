@@ -4,29 +4,26 @@
       - unless movie.blank?
         .box.left
           .moviBox.left
-            = link_to image_tag(movie.banner_image), movie_path(movie)
+            = link_to image_tag(movie.banner_image), coming_soon_movie_path(movie)
           .title.left
-            = link_to "<h3> #{movie.name} </h3>".html_safe, movie_path(movie)
+            = link_to "<h3> #{movie.name} </h3>".html_safe, coming_soon_movie_path(movie)
           .right
             = thumb_class(movie.average_critics_reviews_rating_percent)
           .rating.left
-            %h4 Critics rating
-            .ratingBar.left
-              = ratingbar(movie.average_critics_reviews_rating_percent)
-            .ratingvalue.left
-              = "#{movie.average_critics_reviews_rating_percent}%"
-            .clear
-            %h4 Users rating
+            %h4 Interest
             .ratingBar.left
               = ratingbar(movie.average_rating_percent)
             .ratingvalue.left
               = "#{movie.average_rating_percent}%"
             .clear
+
             - if current_user && current_user.facebook_omniauth
               %h4
-                = no_of_pepople_liked(movie)
-                %span
-                  = image_tag("BthumbIcon.jpg")
+                = no_of_pepople_interest(movie)
+            %br
+            %h4
+              Release Date:
+              = Time.parse(movie.release_date.to_s).strftime('%d %B %Y').to_s unless movie.release_date.blank?
           %a{:href => "#" }
             %img{:src => "images/viewTrailerBtn.jpg"}
 

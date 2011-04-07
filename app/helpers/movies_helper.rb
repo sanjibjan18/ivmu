@@ -7,5 +7,13 @@ module MoviesHelper
       '0 friends liked it!'
     end
   end
+
+  def no_of_pepople_interest(movie)
+    if current_user
+      '2 friends are interested'
+    else
+      '0 friends are interested'
+    end
+  end
 end
 
