@@ -1,11 +1,14 @@
 = form_for @search, :url => admin_movies_path, :html => {:method => :get} do |f|
+
   = f.label :name_contains, 'Movie title'
   = f.text_field :name_contains
   = f.label :release_date_gteq, 'Release Date between'
   = f.text_field :release_date_gteq , :id => 'release_date_lt', :size => 10
   = f.label :release_date_lteq, 'and'
   = f.text_field :release_date_lteq, :id => 'release_date_gt',  :size => 10
-
+  = f.submit "Search"
+  = link_to "New Movie", new_admin_movie_path
+  .clear
   = f.check_box :poster_file_name_is_blank
   = f.label :poster_file_name_is_blank, 'Missing Poster'
 
@@ -21,8 +24,7 @@
 
   = f.check_box :tweets_count_is_blank
   = f.label :tweets_count_is_blank, 'Missing Tweet Review'
-  = f.submit "Search"
-  = link_to "New Movie", new_admin_movie_path
+
 %br
 
 %table.listing
