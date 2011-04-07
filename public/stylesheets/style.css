@@ -258,7 +258,7 @@ ul.links li a.logout{
 .container h2{font-size:17px;color:#D649A5;line-height:42px;}
 .container h2 span{color:#445B6D;font-weight:bold;}
 .breadcrumb { margin-top:10px;}
-.breadcrumb h2 span a, span{font-size:12px;line-height:15px;}
+.breadcrumb h2 span a, div.breadcrumb span{font-size:11px;line-height:15px;}
 
 .sidebar{
 	width:210px;
