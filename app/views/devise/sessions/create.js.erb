@@ -1,3 +1,7 @@
 $(document).trigger('close.facebox');
-location.reload(true);
+<% if current_user.is_admin %>
+  location.href = "/admin";
+<%else%>
+   location.reload(true);
+<%end%>
 
