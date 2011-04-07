@@ -71,7 +71,7 @@ a:hover{text-decoration:underline;}
 	clear:both;
 }
 
-.logo {margin-top:15px;}
+.logo {margin-top:15px;height:76px;}
 
 .linkLeft{background:url(/images/linkLeftBg.png) no-repeat left;width:18px;height:34px;}
 .linkRight{background:url(/images/linkRightBg.png) no-repeat left;width:18px;height:34px;}
@@ -116,16 +116,15 @@ ul.links li a.logout{
 	padding-left:50px;padding-right:0px;
 }
 
-#top_bar{margin-top: 10px; margin-bottom: 0px; }
+#top_bar{margin-bottom: 0px;}
 
 .headerLeft{width:68%; }
 
 .headerRight{width:31%;  }
 
-.tabs{margin:0px; padding: 0px;}
+.tabs{margin:0px 0px 0px 0px; position:relative;bottom:-17px;padding:0px;}
 
 .tabs li{display: inline;margin: 0; }
-
 
 
 .tabs li a{
@@ -139,15 +138,16 @@ ul.links li a.logout{
    font-size:15px;
    color:#fff;
    width:92px;
-   line-height:41px;
+   line-height:47px;
+   height:57px;
    text-align:center;
-   background:url('/images/tab.png') no-repeat;
+   background:url('/images/tab.png') no-repeat bottom;
 
 }
 
 
 .tabs li a:hover {
-	background:url('/images/active_tab.png') no-repeat;
+	background:url('/images/active_tab.png') no-repeat bottom;
     background-color:none;
 	text-decoration:none;
 }
@@ -192,7 +192,7 @@ ul.links li a.logout{
 	width:281px;
 	height:34px;
 	padding:6px 3px 0px 6px;
-  text-align:left;
+  text-align:left;position:relative;bottom:-17px;
 }
 
 #search {
