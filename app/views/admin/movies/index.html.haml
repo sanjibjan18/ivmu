@@ -5,6 +5,10 @@
   = f.text_field :release_date_gteq , :id => 'release_date_lt', :size => 10
   = f.label :release_date_lteq, 'and'
   = f.text_field :release_date_lteq, :id => 'release_date_gt',  :size => 10
+  = f.check_box :poster_file_name_is_blank
+  = f.label :poster_file_name_is_blank, 'Missing Poster'
+  = f.check_box :trailer_file_name_is_blank
+  = f.label :trailer_file_name_is_blank, 'Missing Trailer'
   = f.submit "Search"
   = link_to "New Movie", new_admin_movie_path
 %br
@@ -24,6 +28,8 @@
           = link_to "show", admin_movie_path(movie)
           |
           = link_to "Edit", edit_admin_movie_path(movie)
+          |
+          = link_to "Destroy", admin_movie_path(movie), :confirm => 'Are you sure?', :method => :delete
   -else
     %tr
       %td{:colspan => 3}

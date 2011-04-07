@@ -17,7 +17,6 @@ class Admin::MoviesController < ApplicationController
    @movie.build_meta_detail
    @movie.actors.build
    @movie.producers.build
-   @movie.critics_reviews.build
   end
 
   def edit
@@ -54,7 +53,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_using_id(params[:id]).first
     @movie.destroy
     redirect_to(admin_movies_url)
   end

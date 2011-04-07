@@ -17,7 +17,9 @@
               .ratingvalue.left
                 = "#{movie.average_critics_reviews_rating_percent}%"
               .clear
-            %h4 Users rating
+            %h4
+              Users
+              = (from == 'coming_soon')? 'interest' : 'rating'
             .ratingBar.left
               = ratingbar(movie.average_rating_percent)
             .ratingvalue.left
