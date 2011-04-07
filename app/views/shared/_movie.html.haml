@@ -36,7 +36,7 @@
             = "#{@movie.average_rating_percent}%"
           .clear
           -if from == 'movies'
-            = link_to "Average of #{@movie.reviews.count} ratings", '#users', :onclick => "go_to_tab(1);"
+            = link_to "Average of #{@movie.average_rating_percent} ratings", '#users', :onclick => "go_to_tab(1);"
           -else
             = link_to "#{@movie.reviews.count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
