@@ -7,7 +7,8 @@ class Movie < ActiveRecord::Base
   acts_as_commentable
   # has_friendly_id :name
   has_permalink [:name], :update => true
-  has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" }
+  has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" },
+                :url => "/system/:attachment/:id/:style/:filename"
   has_attached_file :trailer
 
   def to_param
