@@ -14,7 +14,7 @@
             = image_tag(critics_review.critic_image)
           %div.reviewText.left
             %p
-              = truncate(critics_review.summary, :length => 120)
+              = truncate(critics_review.summary, :length => 140)
           .clear
           = link_to "Read full review", critics_review.link, :target => '_blank'
         .clear
