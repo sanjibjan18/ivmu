@@ -543,6 +543,19 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 .friends_image img{ margin:5px 1.5px 0px 0px;}
 .friends_image a img{ margin:0px;}
 
+.friends_image div.image{
+	background-color:#fff;
+	padding:2px;
+	border:1px solid #ddd;
+	width:42px;
+	height:42px;
+}
+
+.friends_image div.image img{
+	width:42px;
+	height:42px;
+}
+
 .detail div.moviCasts{width:260px;}
 
 .actress{background-color:#fff;padding:2px;border:1px solid #ddd;width:45px;height:45px;margin-bottom:5px;border:1px solid #eee;margin-top:3px;}
