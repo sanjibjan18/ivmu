@@ -3,18 +3,18 @@ class Movie < ActiveRecord::Base
   $config = YAML.load_file(File.join(File.dirname(__FILE__), '../../config/database.yml'))
   self.establish_connection  $config["muvi_extract"]
   set_table_name 'films'
-
+  set_primary_key :id
   acts_as_commentable
   # has_friendly_id :name
-  has_permalink [:name], :update => true
+#  has_permalink [:name], :update => true
   has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" },
                 :url => "/system/:attachment/:id/:style/:filename",
                 :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
   has_attached_file :trailer
 
-  def to_param
-    permalink
-  end
+#  def to_param
+ #   permalink
+ # end
 
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
