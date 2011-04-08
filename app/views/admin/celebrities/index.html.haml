@@ -1,6 +1,6 @@
 = form_for @search, :url => admin_celebrities_path, :html => {:method => :get} do |f|
 
-  = f.label :name_contains, 'Movie title'
+  = f.label :name_contains, 'Celebrity title'
   = f.text_field :name_contains
 
   = f.check_box :profile_picture_file_name_is_blank

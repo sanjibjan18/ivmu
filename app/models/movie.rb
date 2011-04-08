@@ -16,7 +16,6 @@ class Movie < ActiveRecord::Base
     permalink
   end
 
-  attr_accessible :movie_casts_attributes, :actors_attributes, :meta_detail_attributes, :critics_reviews_attributes, :wiki_link, :name, :gross_revenue, :poster_release_date, :poster, :genre, :estimated_budget, :release_date, :trailer_release_date, :producers_attributes, :fbpage_id
 
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
