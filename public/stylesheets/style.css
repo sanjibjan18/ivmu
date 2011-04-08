@@ -539,8 +539,9 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 	font-size:14px;
 	margin-top:12px;
 }
-.friendsLink img{ margin:5px 1.5px 0px 0px;}
-.friendsLink a img{ margin:0px;}
+.friends_image{height:75px;}
+.friends_image img{ margin:5px 1.5px 0px 0px;}
+.friends_image a img{ margin:0px;}
 
 .detail div.moviCasts{width:260px;}
 

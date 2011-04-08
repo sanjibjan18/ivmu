@@ -41,12 +41,13 @@
             = link_to "#{@movie.average_rating_count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
         %h4= (from == 'movies')? 'Friends Liked' : 'Friends who are interested'
-        - if current_user && current_user.facebook_omniauth
-          -@movie.friend_likes(current_user).each do |like|
-            = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
-        -else
-          %h4 login to see who liked this movie.
-          = link_to image_tag('facebookicon.gif'), "/auth/facebook"
+        .friends_image
+          - if current_user && current_user.facebook_omniauth
+            -@movie.friend_likes(current_user).each do |like|
+              = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
+          -else
+            %h4 login to see who liked this movie.
+            = link_to image_tag('facebookicon.gif'), "/auth/facebook"
 
         %br
         = render :partial => 'shared/rate'
