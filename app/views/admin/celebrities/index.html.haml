@@ -1,4 +1,19 @@
-= link_to "New Celebrity", new_admin_celebrity_path
+= form_for @search, :url => admin_celebrities_path, :html => {:method => :get} do |f|
+
+  = f.label :name_contains, 'Movie title'
+  = f.text_field :name_contains
+
+  = f.check_box :profile_picture_file_name_is_blank
+  = f.label :profile_picture_file_name_is_blank, 'Missing Picture'
+
+  = f.submit "Search"
+  = link_to "New Celebrity", new_admin_celebrity_path
+  .clear
+
+
+%br
+
+
 %br
 
 %table.listing
