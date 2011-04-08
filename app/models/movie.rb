@@ -8,7 +8,8 @@ class Movie < ActiveRecord::Base
   # has_friendly_id :name
   has_permalink [:name], :update => true
   has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" },
-                :url => "/system/:attachment/:id/:style/:filename"
+                :url => "/system/:attachment/:id/:style/:filename",
+                :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
   has_attached_file :trailer
 
   def to_param
