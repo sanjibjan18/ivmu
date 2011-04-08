@@ -1,5 +1,5 @@
 %div.sortbyDate.left
-  %label  Sort By: 
+  %label  Sort By:
   = select_tag "sort", options_for_select([['Date', 'release_date'], ['Rating','rating']], params[:sort] || 'release_date' ) , :onchange => "critics_reviews_sort(#{@movie.id}, this.value);"
 .right
   #pagination
@@ -20,9 +20,9 @@
         .clear
         .review
           .photo.left
-            = image_tag(critics_review.film_critic_profile_image)
+            = image_tag(critics_review.film_critic.profile_image)
           .profile.right
-            %h3= critics_review.film_critic_name
+            %h3= critics_review.film_critic.name
             %p= critics_review.film_critic.organization rescue ''
             %p.date= Time.parse(critics_review.review_date.to_s).strftime('%d %B %Y').to_s rescue ''
 .clear

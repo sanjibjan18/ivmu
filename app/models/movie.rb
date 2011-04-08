@@ -22,7 +22,7 @@ class Movie < ActiveRecord::Base
   has_many :recommendations
   has_many :tweets
   has_many :facebook_feeds
-  has_many :critics_reviews, :foreign_key => 'movie_name' , :primary_key => 'name'
+  has_many :critics_reviews
   has_one :meta_detail
 
   has_many :movie_casts
