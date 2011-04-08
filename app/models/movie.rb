@@ -6,15 +6,17 @@ class Movie < ActiveRecord::Base
   set_primary_key :id
   acts_as_commentable
   # has_friendly_id :name
-#  has_permalink [:name], :update => true
+  has_permalink [:name], :update => true
   has_attached_file :poster, :styles => { :thumb=> "35x35#", :medium  => "130x200#" },
                 :url => "/system/:attachment/:id/:style/:filename",
                 :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
   has_attached_file :trailer
 
-#  def to_param
- #   permalink
- # end
+  def to_param
+    permalink
+  end
+
+  attr_accessible :movie_casts_attributes, :actors_attributes, :meta_detail_attributes, :critics_reviews_attributes, :wiki_link, :name, :gross_revenue, :poster_release_date, :poster, :genre, :estimated_budget, :release_date, :trailer_release_date, :producers_attributes, :fbpage_id
 
   has_many :reviews
   has_many :reviwers, :through => :reviews, :source => :user
