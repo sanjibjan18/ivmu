@@ -619,7 +619,7 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 .containerIn div.reviewBox{
     width:289px;
 	padding:15px 12px;
-	height:100px;
+	height:80px;
 	border:1px solid #6ACDD8;
 	border-bottom:none;
 	-moz-border-radius-topright	:5px;
@@ -628,19 +628,21 @@ div.actressNames h4{color:#4f4f4f;font-size:11px;}
 	-webkit-border-top-left-radius:5px;
 
 }
-.containerIn div.reviewBox p{color:#222;margin-bottom:20px;}
-.containerIn div.reviewBox a{color:#1C6EA6;line-height:30px;margin-top:20px;}
-
 div.reviewBox{
     width:289px;
 	padding:15px 12px;
-	height:100px;
+	height:80px;
 	border:1px solid #6ACDD8;
-	-moz-border-radius	:5px;
-	-webkit-border-radius:5px;
+    -moz-border-radius-topright:5px;
+ 	-webkit-border-top-right-radius:5px;
+	-moz-border-radius-topleft:5px;
+ 	-webkit-border-top-left-radius:5px;
 }
 
-.reviewIcon{width:15%;min-height:200px;}
+.reviewIcon{width:22px;height:80px;text-align:right;}
+.reviewText{width:255px;height:80px;}
+.reviewText p{color:#222;margin-bottom:10px;}
+.reviewText a{color:#1C6EA6;}
 
 .field label{color:#4F6475;font-size:11px;font-weight:bold;}
 .field textarea{border:1px solid #CBC8C8;}
