@@ -6,10 +6,11 @@
       - unless tweet.blank?
         %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
           %div.reviewBox.left
-            %div.reviewIcon.left
+            %div.reviewIcon.right
               = thumb_class((tweet.rating * 50 rescue 0))
-            %p
-              = tweet.content.html_safe
+            %div.reviewText.left
+              %p
+                = tweet.content.html_safe
           .clear
           .review
             .photo.left
