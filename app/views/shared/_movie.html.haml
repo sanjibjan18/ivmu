@@ -51,7 +51,7 @@
             = link_to image_tag('facebookicon.gif'), "/auth/facebook"
 
         %br
-        = render :partial => 'shared/rate'
+        = render :partial => 'shared/rate', :locals => { :from => from }
         - unless current_user.blank?
           %br
           /= link_to image_tag('recomendbutton.jpg'), '#recommendations', :rel => 'facebox'

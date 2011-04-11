@@ -1,8 +1,7 @@
+- image = (from == 'movies')? 'ratebutton.jpg' : 'express_intrest.jpg'
 - unless current_user.blank?
-  = link_to image_tag('ratebutton.jpg'), '#rate_movie', :rel => 'facebox'
+  = link_to image_tag(image), '#rate_movie', :rel => 'facebox'
 -else
-  = link_to image_tag('ratebutton.jpg'), new_user_session_path, :rel => 'facebox'
+  = link_to image_tag(image), new_user_session_path, :rel => 'facebox'
 %br
-%img{:src => "/images/express_intrest.jpg", :alt => "express_intrest"}
-
 
