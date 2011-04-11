@@ -97,6 +97,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def password_is_blank?
+    self.encrypted_password.blank? && self.password_salt.blank?
+  end
 
   def image
      self.user_profile.profile_image_file_name.blank?? "/images/no-profile.png" : self.user_profile.profile_image.url(:thumb)
@@ -126,6 +129,7 @@ class User < ActiveRecord::Base
 
   def create_user_from_omniauth(omniauth)
     self.email = (omniauth['extra']['user_hash']['email'] rescue '' ) if omniauth['provider'] == 'facebook'
+    self.confirmation_token = nil
     self.confirmed_at = Time.now
     self.build_user_profile(user_info_from_omniauth(omniauth))
     self.user_tokens.build(hash_from_omniauth(omniauth))
@@ -178,6 +182,11 @@ class User < ActiveRecord::Base
     end
     self.user_profile.update_attribute("twitter_screen_name", (omniauth['extra']['user_hash']['screen_name'] rescue '') ) if omniauth['provider'] == "twitter"
     self.user_profile.update_attributes({:profile_image_url => omniauth['user_info']['image'] }) if self.user_profile.blank? || self.user_profile.profile_image_file_name.blank?
+  end
+
+
+  def password_required?
+    new_record?
   end
 
   protected

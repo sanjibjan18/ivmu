@@ -10,18 +10,18 @@ class UserTokensController < ApplicationController
       user_token.user.update_user_profile(omniauth) # update or create user profile
       FacebookFeed.delay.fetch_posts_for_films(user_token.user)
       flash[:notice] = "Signed in successfully."
-      sign_in_and_redirect(:user, user_token.user)
+      login_user(user_token.user) # login the user, and check for password is blank
     elsif current_user
        current_user.create_user_tokens(omniauth) if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
        # create a user token
       flash[:notice] = "Authentication successful."
-      redirect_to root_url
+      login_user(current_user) # login the user, and check for password is blank
     else
       user = User.new
       user.create_user_from_omniauth(omniauth)
       if user.save(false)
         flash[:notice] = "Signed in successfully."
-        sign_in_and_redirect(:user, user)
+        login_user(user) # login the user, and check for password is blank
       else
         session[:omniauth] = omniauth.except('extra')
         redirect_to new_user_registration_url
@@ -34,6 +34,15 @@ class UserTokensController < ApplicationController
     user_token.destroy
     flash[:notice] = "Successfully destroyed authentication."
     redirect_to edit_user_registration_path
+  end
+
+  def login_user(user)
+    sign_in(:user, user)
+    if user.password_is_blank?
+      redirect_to edit_user_registration_path
+    else
+      sign_in_and_redirect(:user, user)
+    end
   end
 
 end
