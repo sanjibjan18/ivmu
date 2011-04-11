@@ -201,6 +201,7 @@ class User < ActiveRecord::Base
       user_info[:display_name] = user_info[:twitter_screen_name] = (omniauth['extra']['user_hash']['screen_name'] rescue '')
     end
     user_info[:profile_image_url] = omniauth['user_info']['image'] if self.user_profile.blank? || self.user_profile.profile_image_file_name.blank?
+    puts "oooooooooooooooooo #{user_info[:profile_image_url]}"
     user_info
   end
 

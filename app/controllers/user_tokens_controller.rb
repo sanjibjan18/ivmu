@@ -20,6 +20,7 @@ class UserTokensController < ApplicationController
       user = User.new
       user.create_user_from_omniauth(omniauth)
       if user.save(false)
+        user.update_user_profile(omniauth) # to to better way fix profile image
         flash[:notice] = "Signed in successfully."
         login_user(user) # login the user, and check for password is blank
       else
