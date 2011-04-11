@@ -6,14 +6,14 @@ class Review < ActiveRecord::Base
   after_create :log_activity
   after_save :post_to_wall
   after_save :post_to_twitter
-
+  scope :for_movie, lambda{|movie| where(:movie_id => movie.id)}
   def post_to_wall
     unless self.user.facebook_omniauth.blank?
       if self.facebook
         begin
           client = Mogli::Client.new(self.user.facebook_token)
           @myself  = Mogli::User.find("me", client)
-          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => '&nbsp;', :picture => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/"+ self.movie.banner_image.to_s, :actions => {"name" =>  "See Muvi.in Review", "link" => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}"} })
+          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => "RELEASE DATE: #{self.movie_release_date}", :picture => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/"+ self.movie.banner_image.to_s, :actions => {"name" =>  "See Muvi.in Review", "link" => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}"} })
           @myself.feed_create(post)
         rescue Mogli::Client::OAuthException
           # getting this strange exception. (#506) Duplicate status message
@@ -38,7 +38,10 @@ class Review < ActiveRecord::Base
     Activity.log_activity(self, self.movie, 'rated',  self.user_id)
   end
 
-  scope :for_movie, lambda{|movie| where(:movie_id => movie.id)}
+  def movie_release_date
+    Time.parse(self.movie.release_date.to_s).strftime('%b %d, %Y').to_s rescue ''
+  end
+
 
 
 end
