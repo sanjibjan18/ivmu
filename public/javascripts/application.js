@@ -5,6 +5,12 @@
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
      });
+
+    $("#coming_soon_sort").live("change", function() {
+       $.get('/coming_soon_movies', 'sort ='+ this.val(), null, "script");
+       return false;
+     });
+
     $("#register").fancybox();
     $("#login").fancybox();
 
