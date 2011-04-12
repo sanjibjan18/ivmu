@@ -4,8 +4,8 @@ class AddPosterUpdatedAtAndTrailerUpdatedAtMovies < ActiveRecord::Migration
   end
 
   def self.up
-  #  add_column :films, :poster_updated_at,   :datetime
-   # add_column :films, :trailer_updated_at,   :datetime
+    add_column :films, :poster_updated_at,   :datetime
+    add_column :films, :trailer_updated_at,   :datetime
 
     Movie.all.each do |movie|
       hash = {}
