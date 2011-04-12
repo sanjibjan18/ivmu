@@ -4,7 +4,7 @@ class ComingSoonMoviesController < ApplicationController
   #caches_page :index
 
   def index
-    @search = Movie.comming_soon_movies.search
+    @search = Movie.comming_soon_movies.search(params[:search])
     params[:sort] ||= 'latest_update'
     case params[:sort]
     when 'latest_update'
@@ -12,6 +12,7 @@ class ComingSoonMoviesController < ApplicationController
     when 'user_interest'
 
     when 'release_date'
+      @search = @search.relation.sort_by_release_date_asc
     end
 
     @movies = @search.paginate(:page => params[:page], :per_page => 6)

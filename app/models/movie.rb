@@ -50,6 +50,8 @@ class Movie < ActiveRecord::Base
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('release_date desc nulls last')
+  scope :sort_by_release_date_asc, order('release_date asc nulls last')
+
   scope :limit, lambda{|l| limit(limit) }
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :released, where("release_date <= ? or  release_date IS NULL", Date.today)
