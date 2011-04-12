@@ -7,7 +7,7 @@
      });
 
     $("#coming_soon_sort").live("change", function() {
-       $.get('/coming_soon_movies', 'sort ='+ this.val(), null, "script");
+       $.get('/coming_soon_movies', 'sort='+ $('#coming_soon_sort').val(), null, "script");
        return false;
      });
 

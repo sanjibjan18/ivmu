@@ -7,9 +7,13 @@
     = link_to "Home &#187;".html_safe, root_path
     Coming Soon
 
-.homeContainerIn.borderDiv
-  = render :partial => 'movies'
-  .right
-    = will_paginate(@movies,  :class => 'muvi_pagination')
-  .clear
+
+= select_tag "Sort", options_for_select([['Latest Update', 'latest_update'], ['User Interest', 'user_interest'],['Release Date','release_date']]), :id => 'coming_soon_sort'
+
+#coming_soon
+  .homeContainerIn.borderDiv
+    = render :partial => 'movies'
+    .right
+      = will_paginate(@movies,  :class => 'muvi_pagination')
+    .clear
 

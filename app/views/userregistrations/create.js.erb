@@ -1,0 +1,7 @@
+<% if @user.errors.empty? %>
+  alert('A confirmation email has been sent to your email address. Please click on the link sent in the email to confirm your account.');
+  location.href = "/";
+<% else %>
+   $('#error_container_id').html('<%= escape_javascript(render 'shared/error_display', {:error_object => @user}) %>');
+<% end %>
+

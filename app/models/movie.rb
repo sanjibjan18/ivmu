@@ -57,6 +57,9 @@ class Movie < ActiveRecord::Base
 
 #  scope :backwards_name, where("id in (?)", Tweet.select('distinct movie_id').collect(&:movie_id))
 
+  scope :sort_by_custom_name_asc, order('custom_name ASC')
+
+
   def banner_image
     self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
   end

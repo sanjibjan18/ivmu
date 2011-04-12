@@ -1,9 +1,24 @@
 class ComingSoonMoviesController < ApplicationController
   skip_before_filter :authenticate_user!
   layout 'website'
-  caches_page :index
+  #caches_page :index
+
   def index
-    @movies = Movie.comming_soon_movies.paginate(:page => params[:page] || 1, :per_page => 6)
+    @search = Movie.comming_soon_movies.search
+    params[:sort] ||= 'latest_update'
+    case params[:sort]
+    when 'latest_update'
+
+    when 'user_interest'
+
+    when 'release_date'
+    end
+
+    @movies = @search.paginate(:page => params[:page], :per_page => 6)
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def show

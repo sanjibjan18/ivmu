@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :user_profile_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :oauth2_token, :user_profile_attributes, :user_tokens_attributes
 
-
+  before_validation :copy_password
 
   has_many :facebook_feeds
   #has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
@@ -30,8 +30,12 @@ class User < ActiveRecord::Base
   has_many :facebook_friends
 
   scope :all_without_admin, where(:is_admin => false)
-  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :user_profile, :user_tokens
 
+  def copy_password
+    #self.password_confirmation = params[:user][:password] unless params[:user][:password].blank?
+    self.password_confirmation = self.password unless self.password.blank?
+  end
 
   def facebook_token
     facebook_omniauth.token

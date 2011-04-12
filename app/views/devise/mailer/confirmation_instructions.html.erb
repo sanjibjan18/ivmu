@@ -1,0 +1,11 @@
+<h5>Hi <%= @resource.display_name %>,</h5>
+
+<h5>Please confirm your Muvi.in account by clicking this link:</h5>
+
+<p><%= confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+
+<h5> Once you confirm, you will have full access to Muvi.in and all future notifications will be sent to this email address. </h5>
+
+<h5> The Muvi.in Team </h5>
+

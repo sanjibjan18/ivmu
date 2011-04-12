@@ -1,12 +1,14 @@
 Muvi::Application.routes.draw do
 
+
+
   match '/user_tweets/:twitter_name' => 'tweets#for_user'
   match 'search' => 'search#index'
   match 'contact_us' => 'home#contact_us'
   match 'fetch' => 'home#fetch'
   match 'fetch_tweets' => 'home#fetch_tweets'
   match 'user_agreement' => 'home#user_agreement'
-  match '/auth/:provider/callback' => 'user_tokens#create'
+  match '/auth/:provider/callback' => 'userregistrations#new'
   match 'autocomplete' => 'movies#autocomplete'
 
   match "tweet_review_update", :to => "admin/movie_tweets#tweet_review_update", :via => "post"
@@ -15,6 +17,7 @@ Muvi::Application.routes.draw do
   root :to => "home#index"
 
   resources :user_messages
+  resources :userregistrations
   resources :casts
   resources :celebrities
   resources :tweets
@@ -24,6 +27,7 @@ Muvi::Application.routes.draw do
   resources :user_tokens
   resources :coming_soon_movies
   devise_for :users, :controllers => { :registrations => "registrations" }
+
   resources :movies do
     resources :comments
     resources :reviews

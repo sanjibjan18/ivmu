@@ -15,8 +15,10 @@
       - if devise_mapping.rememberable?
         .field
           = f.check_box :remember_me
-          = f.label :remember_me
+          = f.label :remember_me, 'Remember me on this computer'
       .actions
         = f.submit "Login"
+        \- or -
+        = link_to 'Cancel', root_path
 = render :partial => "devise/shared/links"
 
