@@ -23,9 +23,10 @@ class Devise::ConfirmationsController < ApplicationController
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
-
+    puts "pppppppppppppppppp #{resource.inspect}"
     if resource.errors.empty?
       set_flash_message :notice, :confirmed
+      WelcomeMailer.send_welcome_mail(resource).deliver
       sign_in_and_redirect(resource_name, resource)
     else
       render_with_scope :new
