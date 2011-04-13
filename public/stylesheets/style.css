@@ -79,7 +79,7 @@ a:hover{text-decoration:underline;}
 ul.links{
 	background: url(/images/linkBg.png) repeat-x;
 	height:34px;
-	width:325px;
+	
 }
 
 ul.links li{
@@ -87,11 +87,10 @@ ul.links li{
 	float: left;
 	display: block;
     line-height:34px;
-	margin-left:5px;
 	text-align:center;
-	margin-right:12px;
-	padding-right:18px;
 	background:url(/images/navLine.png) no-repeat right;
+    width:120px;
+    padding-right:5px;
 }
 
 ul.links li a{color:#fff;}
@@ -100,21 +99,14 @@ ul.links li a:hover{text-decoration:none;}
 ul.links li a.register{
 	background:url(/images/Reg_icon.png) no-repeat left;
 	padding-left:20px;
-
 }
 ul.links li a.login{
 	background:url(/images/login.gif) no-repeat left;
 	padding-left:20px;
 }
 
-ul.links li.last {background-image:none;position:relative;top:0px;padding-right:0px;padding-left:0px;text-align:top;border-right:none;margin-right:0px;}
+ul.links li.last {background-image:none;width:100px; padding-left:5px; padding-right:0px;}
 
-ul.links li a.profile{
-	padding-left:50px;padding-right:50px;
-}
-ul.links li a.logout{
-	padding-left:50px;padding-right:0px;
-}
 
 #top_bar{margin-bottom: 0px;}
 

@@ -10,9 +10,9 @@
           %li.last
             = link_to 'Login', new_user_session_path, :class => 'login', :id => 'login'
         - else
-          %li= link_to 'Profile', edit_user_registration_path, :class => 'profile'
+          %li= link_to 'Profile', edit_user_registration_path
 
-          %li.last= link_to 'Logout', destroy_user_session_path, :class => 'logout'
+          %li.last= link_to 'Logout', destroy_user_session_path
     .linkRight.right
     .clear
   /
