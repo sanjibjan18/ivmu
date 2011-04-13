@@ -54,8 +54,8 @@ class Movie < ActiveRecord::Base
 
   scope :limit, lambda{|l| limit(limit) }
   scope :name_is_not_blank, where("name IS NOT NULL")
-  scope :released, where("release_date <= ? or  release_date IS NULL", Date.today)
-  scope :comming_soon_movies, where("release_date > ? ", Date.today)
+  scope :released, where("release_date <= ?", Date.today)
+  scope :comming_soon_movies, where("release_date > ?  or release_date IS NULL", Date.today)
 
 #  scope :backwards_name, where("id in (?)", Tweet.select('distinct movie_id').collect(&:movie_id))
 

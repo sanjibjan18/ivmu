@@ -21,13 +21,13 @@ class User < ActiveRecord::Base
   has_many :friend_ships
   has_many :friends, :through => :friend_ships, :class_name => 'User'
   has_many :recommendations
-  has_one :user_profile
-  has_many :user_tokens
+  has_one :user_profile, :dependent => :destroy
+  has_many :user_tokens, :dependent => :destroy
   has_one :facebook_omniauth, :class_name => "UserToken", :conditions => { :provider => 'facebook' }
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
   has_many :tweets
-  has_many :twitter_friends
-  has_many :facebook_friends
+  has_many :twitter_friends, :dependent => :destroy
+  has_many :facebook_friends, :dependent => :destroy
 
   scope :all_without_admin, where(:is_admin => false)
   accepts_nested_attributes_for :user_profile, :user_tokens
