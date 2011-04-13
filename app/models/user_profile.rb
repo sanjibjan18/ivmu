@@ -1,7 +1,7 @@
 require 'open-uri'
 class UserProfile < ActiveRecord::Base
   belongs_to :user
-  validates_uniqueness_of :display_name
+  #validates_uniqueness_of :display_name
 
   has_attached_file :profile_image, :styles => { :thumb=> "100x100#", :small  => "150x150>" }
   attr_accessor :profile_image_url

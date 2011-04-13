@@ -1,0 +1,32 @@
+#login
+  = form_for(@user, :url => userregistrations_path(:format => 'js'), :html => { :remote => true}) do |f|
+    #error_container_id
+    %fieldset.registration
+
+      = f.fields_for :user_tokens do |ut|
+        = ut.hidden_field :provider
+        = ut.hidden_field :uid
+        = ut.hidden_field :token
+        = ut.hidden_field :secret
+
+      = f.fields_for :user_profile do |ff|
+        .field
+          = ff.label :display_name, "Full Name"
+          %br
+          = ff.text_field :display_name
+      .field
+        = f.label :email, 'Email address'
+        %br
+        = f.text_field :email
+      .field
+        = f.label :password
+        %br
+        = f.password_field :password
+      %p
+        By clicking 'Register', you are indicating that you have read and agree to the
+        = link_to "Terms of service", user_agreement_path
+      .actions
+        = f.submit 'Register'
+        \- or -
+        = link_to 'Cancel', root_path
+  %br

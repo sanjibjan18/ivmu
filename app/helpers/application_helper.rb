@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def find_page(key)
     page =  Page.find_reference(key).first rescue nil
-    page.blank?? "#" : "/#{page.permalink}"
+    page.blank? ? "#" : "/#{page.permalink}"
   end
 
   def ratingbar(rating)

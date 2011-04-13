@@ -6,7 +6,7 @@ class Devise::SessionsController < ApplicationController
   def new
     clean_up_passwords(build_resource)
     #render_with_scope :new
-    render :layout => false
+    #render :layout => false
   end
 
   # POST /resource/sign_in
@@ -24,6 +24,7 @@ class Devise::SessionsController < ApplicationController
   end
 
   def failure
+    
   end
 
 end

@@ -1,0 +1,40 @@
+.registration
+  %p
+    = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook" 
+    See your friends movie reviews and interest by registering using Facebook
+  %br  
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true, :remote => true }) do |f|
+    = devise_error_messages!
+    #errors
+    %fieldset.registration
+      - resource.build_user_profile if resource.user_profile.blank?
+      = f.fields_for :user_profile do |ff|
+        .field
+          = ff.label :display_name, "Full Name"
+          %br
+          = ff.text_field :display_name
+      %br    
+      .field
+        = f.label :email, 'Email address'
+        %br
+        = f.text_field :email
+      %br  
+      .field
+        = f.label :password
+        %br
+        = f.password_field :password
+      %br
+      %p
+        By clicking 'Register', you are indicating that you have read and agree to the
+        = link_to "Terms of service", user_agreement_path
+      %br  
+      .actions
+        = f.submit 'Register'
+        \- or -
+        = link_to 'Cancel', root_path
+  /%br
+  /%h3 Connect with Accounts
+  /%p You will be able to see your friends movie reviews and interest, and post messages to them by  connecting to your social network accounts.
+  /= link_to image_tag('twitter_connect.png',  :alt => "Twitter"), "/auth/twitter", :class => 'auth_provider'
+/  = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook", :class => 'auth_provider'
+

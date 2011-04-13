@@ -1,7 +1,7 @@
 class UserregistrationsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:create, :new]
   layout 'website'
-
+  
   def new
     omniauth = request.env["omniauth.auth"]
     user_token = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
@@ -9,7 +9,6 @@ class UserregistrationsController < ApplicationController
       user_token.update_token_and_secret(omniauth)
       user_token.user.update_user_profile(omniauth) # update or create user profile
       FacebookFeed.delay.fetch_posts_for_films(user_token.user)
-      flash[:notice] = "Signed in successfully."
       login_user(user_token.user) # login the user, and check for password is blank
     elsif current_user
        current_user.create_user_tokens(omniauth) if current_user.has_user_token?(omniauth['provider'], omniauth['uid'])
@@ -26,6 +25,8 @@ class UserregistrationsController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.save
+    #flash[:notice] = "Please make sure that, you have confirmed your Muvi.in registration."
+    #redirect_to new_user_session_path
   end
 
   def show
