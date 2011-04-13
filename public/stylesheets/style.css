@@ -260,6 +260,7 @@ ul.links li a.logout{
 .breadcrumb {margin-top:20px;}
 .breadcrumb h2 span a, div.breadcrumb span{font-size:11px;line-height:15px;}
 
+
 .sidebar{
 	width:210px;
 	min-height:470px;
@@ -677,6 +678,8 @@ div.reviewBox a{color:#1C6EA6;}
 	border:1px solid #CBC8C8;
 	background: #fff url(/images/size-selectbox-bg.gif) top center no-repeat;
 }
+
+.latestUpdate select {padding:2px 3px;margin-top:10px;}
 
 a#comment_count{color:#4F86A6;text-decoration:underline;}
 

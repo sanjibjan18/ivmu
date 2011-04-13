@@ -1,15 +1,19 @@
 = render 'shared/meta_title_and_keywords', { :key => 'home'}
-= content_for :heading do
-  Coming soon
 
 = content_for :breadcrumb do
   %span
     = link_to "Home &#187;".html_safe, root_path
     Coming Soon
 
+= content_for :heading do
+  .left
+    %b
+      Coming soon
 
-= select_tag "Sort", options_for_select([['Latest Update', 'latest_update'], ['User Interest', 'user_interest'],['Release Date','release_date']]), :id => 'coming_soon_sort'
+.right.latestUpdate
+  = select_tag "Sort", options_for_select([['Latest Update', 'latest_update'], ['User Interest', 'user_interest'],['Release Date','release_date']]), :id => 'coming_soon_sort'
 
+.clear
 #coming_soon
   .homeContainerIn.borderDiv
     = render :partial => 'movies'
