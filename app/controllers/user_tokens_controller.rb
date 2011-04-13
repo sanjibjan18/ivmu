@@ -1,7 +1,6 @@
 class UserTokensController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:create]
 
-
   def create
     omniauth = request.env["omniauth.auth"]
     user_token = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])

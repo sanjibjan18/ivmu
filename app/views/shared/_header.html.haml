@@ -7,8 +7,8 @@
       %ul.links.right
         - unless current_user
           %li= link_to 'Register', new_user_registration_path, :class => 'register', :id => 'register'
-          %li= link_to 'Login', new_user_session_path, :class => 'login', :id => 'login'
           %li.last
+            = link_to 'Login', new_user_session_path, :class => 'login', :id => 'login'
         - else
           %li= link_to 'Profile', edit_user_registration_path, :class => 'profile'
 
