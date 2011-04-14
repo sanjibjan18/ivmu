@@ -2,23 +2,29 @@
   %p
     = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook", :class => "popup", :"data-width" => 600, :"data-height" => 400
     See your friends movie reviews and interest by registering using Facebook
-  %br  
+  %br
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true, :remote => true }) do |f|
     = devise_error_messages!
     #errors
     %fieldset.registration
+      - resource.user_tokens.build if resource.user_tokens.blank?
+      = f.fields_for :user_tokens do |ut|
+        = ut.hidden_field :provider
+        = ut.hidden_field :uid
+        = ut.hidden_field :token
+        = ut.hidden_field :secret
       - resource.build_user_profile if resource.user_profile.blank?
       = f.fields_for :user_profile do |ff|
         .field
           = ff.label :display_name, "Full Name"
           %br
           = ff.text_field :display_name
-      %br    
+      %br
       .field
         = f.label :email, 'Email address'
         %br
         = f.text_field :email
-      %br  
+      %br
       .field
         = f.label :password
         %br
@@ -27,7 +33,7 @@
       %p
         By clicking 'Register', you are indicating that you have read and agree to the
         = link_to "Terms of service", user_agreement_path
-      %br  
+      %br
       .actions
         = f.submit 'Register'
         \- or -

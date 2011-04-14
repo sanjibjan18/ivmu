@@ -1,6 +1,12 @@
 :javascript
   if(window.opener){
-    $('#test', window.opener.document).html("this is test");
+    $('#user_user_profile_attributes_display_name', window.opener.document).val('#{@user_data[:name]}');
+    $('#user_email', window.opener.document).val('#{@user_data[:email]}');
+    $('#user_user_tokens_attributes_0_provider', window.opener.document).val('#{@user_data[:provider]}');
+    $('#user_user_tokens_attributes_0_uid', window.opener.document).val('#{@user_data[:uid]}');
+    $('#user_user_tokens_attributes_0_token', window.opener.document).val('#{@user_data[:token]}');
+    $('#user_user_tokens_attributes_0_secret', window.opener.document).val('#{@user_data[:secret]}');
+
     window.close()
   }
 

@@ -13,7 +13,7 @@ class Review < ActiveRecord::Base
         begin
           client = Mogli::Client.new(self.user.facebook_token)
           @myself  = Mogli::User.find("me", client)
-          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => "RELEASE DATE: #{self.movie_release_date}", :picture => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/"+ self.movie.banner_image.to_s, :actions => {"name" =>  "See Muvi.in Review", "link" => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}"} })
+          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "http://ec2-122-248-194-131.ap-southeast-1.compute.amazonaws.com/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => "RELEASE DATE: #{self.movie_release_date}", :picture => "#{self.movie.poster.url(:medium)}", :actions => {"name" =>  "See Muvi.in Review", "link" => "#{movie_url(self.movie)}"} })
           @myself.feed_create(post)
         rescue Mogli::Client::OAuthException
           # getting this strange exception. (#506) Duplicate status message

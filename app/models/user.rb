@@ -30,7 +30,8 @@ class User < ActiveRecord::Base
   has_many :facebook_friends, :dependent => :destroy
 
   scope :all_without_admin, where(:is_admin => false)
-  accepts_nested_attributes_for :user_profile, :user_tokens
+  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :user_tokens, :reject_if => proc { |attributes| attributes['uid'].blank? }
 
   def copy_password
     #self.password_confirmation = params[:user][:password] unless params[:user][:password].blank?

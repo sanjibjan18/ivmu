@@ -17,15 +17,15 @@ class Movie < ActiveRecord::Base
   end
 
 
-  has_many :reviews
+  has_many :reviews , :dependent => :destroy
   has_many :reviwers, :through => :reviews, :source => :user
-  has_many :recommendations
-  has_many :tweets
-  has_many :facebook_feeds
-  has_many :critics_reviews
-  has_one :meta_detail
+  has_many :recommendations, :dependent => :destroy
+  has_many :tweets, :dependent => :destroy
+  has_many :facebook_feeds, :dependent => :destroy
+  has_many :critics_reviews, :dependent => :destroy
+  has_one :meta_detail, :dependent => :destroy
 
-  has_many :movie_casts
+  has_many :movie_casts, :dependent => :destroy
   #to do better way
  # has_many :casts, :through => :movie_casts
  # has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
