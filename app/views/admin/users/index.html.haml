@@ -9,10 +9,10 @@
     %th display name
 
   -unless @users.blank?
-    = form_tag(delete_users_admin_users_path) do
-      -@users.each do |user|
+    = form_tag(delete_users_admin_users_path) do |d|
+      - @users.each do |user|
         %tr
-          %td= check_box_tag("users[]", user.id, false)
+          %td= check_box_tag("user_ids[]", user.id, false)
           %td= user.email
           %td= (user.facebook_omniauth.blank?? "" : 'yes')
           %td= (user.twitter_omniauth.blank?? "" : 'yes')
@@ -22,5 +22,7 @@
               = "test_#{user.id}"
             -else
               = user.user_profile.display_name
-      = submit_tag "Delete"
+      %tr
+        %td{:colspan => 4} &nbsp;
+        %td= submit_tag "Delete"
 

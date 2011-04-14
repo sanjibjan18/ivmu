@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
 
 
   def delete_users
+    User.where('id in (?)', params[:user_ids]).destroy_all unless params[:user_ids].blank?
     redirect_to admin_users_path
   end
 
