@@ -11,6 +11,18 @@ $(document).ready(function($) {
       facebook_id = $(this).attr('id').split('review_')[1]
       $.ajax({type: "POST",url: "/facebook_review_update", data: "id=" + facebook_id + "&option=" + $(this).val()});
     });
+
+  $('#check_all').click(function(){
+	$("input[type='checkbox']").each(function(){
+        	if (this.checked == false) {
+			this.checked = true;
+		} else {
+			this.checked = false;
+		}
+	});
+});
+
+
 });
 
 function remove_fields(link) {

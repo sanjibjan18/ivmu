@@ -2,15 +2,14 @@
 
 %table.listing
   %tr
-    %th
-      %input{:name => "checkall", :onclick => "checkedAll();", :title => "Check All/Uncheck", :type => "checkbox"}/
+    %th= check_box_tag('check_all')
     %th Email
     %th fb user
     %th twitter user
     %th display name
 
   -unless @users.blank?
-    = form_tag(delete_users_admin_users_path, :html => {:id => 'user_edit'}) do
+    = form_tag(delete_users_admin_users_path) do
       -@users.each do |user|
         %tr
           %td= check_box_tag("users[]", user.id, false)
