@@ -1,6 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :user
-  belongs_to :movie#, :counter_cache => true
+  belongs_to :movie, :counter_cache => true
 
   scope :latest, order('tweeted_on desc nulls last')
   scope :reviews, where(:interest => false)
