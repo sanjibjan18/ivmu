@@ -17,5 +17,11 @@ every 1.day do
    runner "Tweet.fetch_tweets"
 end
 
+
+every 2.hours do
+  runner "Movie.update_reviews_precentage"
+end
+
+
 # Learn more: http://github.com/javan/whenever
 
