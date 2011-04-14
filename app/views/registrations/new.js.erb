@@ -1,3 +1,9 @@
 $('#registration').html('<%= escape_javascript(render "new") %>'); 
 $('#registration').dialog({ modal: true,  width: 600, height: 350, title: 'Muvi.in registration' });
 
+$(document).ready(function($) {
+  $("a.popup").click(function(e) {
+    popupCenter($(this).attr("href"), $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
+    e.stopPropagation(); return false;
+  });
+});

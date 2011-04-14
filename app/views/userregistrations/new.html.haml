@@ -1,1 +1,6 @@
-= render "new"
+:javascript
+  if(window.opener){
+    $('#test', window.opener.document).html("this is test");
+    window.close()
+  }
+

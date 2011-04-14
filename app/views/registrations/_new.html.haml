@@ -1,6 +1,6 @@
 .registration
   %p
-    = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook" 
+    = link_to image_tag('fb_connect.png',  :alt => "Facebook"), "/auth/facebook", :class => "popup", :"data-width" => 600, :"data-height" => 400
     See your friends movie reviews and interest by registering using Facebook
   %br  
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true, :remote => true }) do |f|
