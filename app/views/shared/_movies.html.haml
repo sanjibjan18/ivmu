@@ -8,19 +8,19 @@
           .title.left
             = link_to "<h3> #{movie.name} </h3>".html_safe, movie_path(movie)
           .right
-            = thumb_class(movie.average_critics_reviews_rating_percent)
+            = thumb_class(movie.critics_percent)
           .rating.left
             %h4 Critics rating
             .ratingBar.left
-              = ratingbar(movie.average_critics_reviews_rating_percent)
+              = ratingbar(movie.critics_percent)
             .ratingvalue.left
-              = "#{movie.average_critics_reviews_rating_percent}%"
+              = "#{movie.critics_percent}%"
             .clear
             %h4 Users rating
             .ratingBar.left
-              = ratingbar(movie.average_rating_percent)
+              = ratingbar(movie.user_percent)
             .ratingvalue.left
-              = "#{movie.average_rating_percent}%"
+              = "#{movie.user_percent}%"
             .clear
             - if current_user && current_user.facebook_omniauth
               %h4

@@ -31,12 +31,12 @@
         .rating
           %h4= (from == 'movies')? 'Users Rating' : 'Users Interest'
           .ratingBar.left
-            = ratingbar(@movie.average_rating_percent)
+            = ratingbar(@movie.user_percent)
           .ratingvalue.left
-            = "#{@movie.average_rating_percent}%"
+            = "#{@movie.user_percent}%"
           .clear
           -if from == 'movies'
-            = link_to "Average of #{@movie.average_rating_percent} ratings", '#users', :onclick => "go_to_tab(1);"
+            = link_to "Average of #{@movie.user_percent} ratings", '#users', :onclick => "go_to_tab(1);"
           -else
             = link_to "#{@movie.average_rating_count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
