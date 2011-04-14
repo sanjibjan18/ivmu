@@ -45,7 +45,8 @@ class Movie < ActiveRecord::Base
   has_many :cinematographers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "cinematographer" }
   has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
   has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
-
+  
+  has_many :casts,  :class_name => 'MovieCast'
   accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,:actors, :directors, :producers,:musics,:writers,:cinematographers, :distributors, :editors,  :allow_destroy => true
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }

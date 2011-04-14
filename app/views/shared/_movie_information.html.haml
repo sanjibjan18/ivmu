@@ -4,7 +4,7 @@
   /= link_to "See More (#{@movie.actors.count})", '#'
 .clear
 .border
-  - @movie.actors.limit(4).each do |actor|
+  - @actors.each do |actor|
     .moviCasts.left
       .actress.left
         = image_tag(actor.celebrity.profile_picture.url(:thumb))
@@ -17,36 +17,36 @@
 %h5
   CREW
 .border
-  - @movie.directors.limit(1).each do |dir|
+  - unless @director.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(dir.celebrity.profile_picture.url(:thumb))
+        = image_tag(@director.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= dir.celebrity.name
+        %h4.large= @director.celebrity.name
         %h4
           Director
-  - @movie.producers.limit(1).each do |prod|
+  - unless @producer.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(prod.celebrity.profile_picture.url(:thumb))
+        = image_tag(@producer.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= prod.celebrity.name
+        %h4.large= @producer.celebrity.name
         %h4
           Producer
-  - @movie.writers.limit(1).each do |wri|
+  - unless @writer.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(wri.celebrity.profile_picture.url(:thumb))
+        = image_tag(@writer.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= wri.celebrity.name
+        %h4.large= @writer.celebrity.name
         %h4
           Story
-  - @movie.musics.limit(1).each do |music|
+  - unless @music.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(music.celebrity.profile_picture.url(:thumb))
+        = image_tag(@music.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= music.celebrity.name
+        %h4.large= @music.celebrity.name
         %h4
           Music
   .clear
