@@ -19,12 +19,13 @@ class MoviesController < ApplicationController
     movie_casts = @movie.casts
     @actors = []
     @movie.casts.each do |cast|
-      case cast.cast_type
+      case cast.cast_type do
       when 'actor' then @actors << cast
       when 'director' then @director = cast
       when 'producer' then @producer = cast
       when 'writer' then @writer = cast
       when 'musics' then @music = cast
+      end
     end
   end
 
