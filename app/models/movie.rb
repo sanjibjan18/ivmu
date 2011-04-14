@@ -118,5 +118,17 @@ class Movie < ActiveRecord::Base
     #self.select('films.*, SUM(tweets.id) as no_of_tweets').joins(:tweets).order("no_of_tweets").order(4)
     []
   end
+
+  def self.update_reviews_precentage
+    Movie.latest.includes(:tweets, :reviews, :critics_reviews).each do |movie|
+      review_count = movie.reviews.blank? ? 0 : (100 * movie.reviews.select("SUM(rating) as total").first.total.to_i) / (movie.reviews.count * 5) rescue 0
+      tweet_count = movie.tweets.blank? ? 0 : (100 * movie.tweets.select("SUM(rating) as total").first.total.to_i) / movie.tweets.count(:all,:conditions=>["interest = ?","f"]) rescue 0
+      critics_percent = movie.critics_reviews.blank? ? 0 : (100 * movie.critics_reviews.select("SUM(rating) as total").first.total.to_i) / (movie.critics_reviews.count * 5)
+      user_percent =  (review_count + tweet_count)/ 2 rescue 0
+      movie.update_attribute('critics_percent', critics_percent) unless movie.critics_percent == critics_percent
+      movie.update_attribute('user_percent',  user_percent) unless movie.user_percent == user_percent
+    end
+  end
+
 end
 
