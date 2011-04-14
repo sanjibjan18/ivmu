@@ -23,9 +23,9 @@
           .rating
             %h4 Critics Rating
             .ratingBar.left
-              = ratingbar(@movie.average_critics_reviews_rating_percent)
+              = ratingbar(@movie.critics_percent)
             .ratingvalue.left
-              = "#{@movie.average_critics_reviews_rating_percent}%"
+              = "#{@movie.critics_percent}%"
             .clear
             = link_to "Average of #{@movie.critics_reviews.count} critics", '#critics', :onclick => "go_to_tab(0);"
         .rating
@@ -36,7 +36,7 @@
             = "#{@movie.user_percent}%"
           .clear
           -if from == 'movies'
-            = link_to "Average of #{@movie.user_percent} ratings", '#users', :onclick => "go_to_tab(1);"
+            = link_to "Average of #{@movie.tweets_count} ratings", '#users', :onclick => "go_to_tab(1);"
           -else
             = link_to "#{@movie.average_rating_count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
