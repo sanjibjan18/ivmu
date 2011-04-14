@@ -1,7 +1,7 @@
 #login
   .wrapper
     #message
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :remote => true) do |f|
+    = form_for(@user,  :url => session_path(@user), :remote => true) do |f|
       #errors
       %fieldset.registration
       .field

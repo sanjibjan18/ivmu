@@ -24,7 +24,7 @@ class Devise::SessionsController < ApplicationController
   end
 
   def failure
-    
+    puts "pppppppppppp #{resource.inspect}"
   end
 
 end

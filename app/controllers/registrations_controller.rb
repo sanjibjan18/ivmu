@@ -13,8 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
       unless resource.active?
         expire_session_data_after_sign_in!
       end
-    else
-      clean_up_passwords(resource)
+      clean_up_passwords(build_resource)
     end
   end
 
