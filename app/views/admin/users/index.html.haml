@@ -9,7 +9,7 @@
     %th display name
 
   -unless @users.blank?
-    = form_tag(delete_users_admin_users_path) do |d|
+    = form_tag(delete_users_admin_users_path) do
       - @users.each do |user|
         %tr
           %td= check_box_tag("user_ids[]", user.id, false)

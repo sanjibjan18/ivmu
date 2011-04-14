@@ -18,23 +18,29 @@
 
 %table.listing
   %tr
+    %th= check_box_tag('check_all')
     %th Celebrity Name
     %th Type
     %th Actions
 
   - unless @celebrities.blank?
-    - @celebrities.each do |celebrity|
+    = form_tag(delete_celebrities_admin_celebrities_path) do
+      - @celebrities.each do |celebrity|
+        %tr
+          %td= check_box_tag("celebrity_ids[]", celebrity.id, false)
+          %td
+            = image_tag(celebrity.profile_picture.url(:thumb) )
+            = celebrity.name
+          %td= celebrity.celebrity_type
+          %td
+            = link_to "show", admin_celebrity_path(celebrity)
+            |
+            = link_to "Edit", edit_admin_celebrity_path(celebrity)
+            |
+            = link_to "Destroy", admin_celebrity_path(celebrity) , :confirm => 'Are you sure?', :method => :delete
       %tr
-        %td
-          = image_tag(celebrity.profile_picture.url(:thumb) )
-          = celebrity.name
-        %td= celebrity.celebrity_type
-        %td
-          = link_to "show", admin_celebrity_path(celebrity)
-          |
-          = link_to "Edit", edit_admin_celebrity_path(celebrity)
-          |
-          = link_to "Destroy", admin_celebrity_path(celebrity) , :confirm => 'Are you sure?', :method => :delete
+        %td{:colspan => 3} &nbsp;
+        %td= submit_tag "Delete"
   -else
     %tr
       %td{:colspan => 3}

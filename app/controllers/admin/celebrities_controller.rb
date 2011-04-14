@@ -53,5 +53,10 @@ class Admin::CelebritiesController < ApplicationController
     redirect_to(admin_celebrities_url)
   end
 
+  def delete_celebrities
+    Celebrity.where('id in (?)', params[:celebrity_ids]).destroy_all unless params[:celebrity_ids].blank?
+    redirect_to admin_celebrities_path
+  end
+
 end
 

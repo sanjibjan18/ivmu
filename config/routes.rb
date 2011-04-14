@@ -43,7 +43,9 @@ Muvi::Application.routes.draw do
       resources :movie_comments
     end
 
-    resources :celebrities
+    resources :celebrities do
+      post :delete_celebrities, :on => :collection
+    end
     resources :film_critics
     resources :users do
        post :delete_users, :on => :collection
