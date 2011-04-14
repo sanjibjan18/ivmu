@@ -26,7 +26,7 @@ class Movie < ActiveRecord::Base
   has_one :meta_detail, :dependent => :destroy
 
   has_many :movie_casts, :dependent => :destroy
-  #to do better way
+  #to do better way .
  # has_many :casts, :through => :movie_casts
  # has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
 #  has_many :producers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "producer" }
