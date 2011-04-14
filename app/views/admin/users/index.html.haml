@@ -2,21 +2,26 @@
 
 %table.listing
   %tr
+    %th
+      %input{:name => "checkall", :onclick => "checkedAll();", :title => "Check All/Uncheck", :type => "checkbox"}/
     %th Email
     %th fb user
     %th twitter user
     %th display name
 
   -unless @users.blank?
-    -@users.each do |user|
-      %tr
-        %td= user.email
-        %td= (user.facebook_omniauth.blank?? "" : 'yes')
-        %td= (user.twitter_omniauth.blank?? "" : 'yes')
-        %td
-          - if user.user_profile.blank?
-            -UserProfile.create!(:display_name => "test_#{user.id}", :user_id => user.id)
-            = "test_#{user.id}"
-          -else
-            = user.user_profile.display_name
+    = form_tag(delete_users_admin_users_path, :html => {:id => 'user_edit'}) do
+      -@users.each do |user|
+        %tr
+          %td= check_box_tag("users[]", user.id, false)
+          %td= user.email
+          %td= (user.facebook_omniauth.blank?? "" : 'yes')
+          %td= (user.twitter_omniauth.blank?? "" : 'yes')
+          %td
+            - if user.user_profile.blank?
+              -UserProfile.create!(:display_name => "test_#{user.id}", :user_id => user.id)
+              = "test_#{user.id}"
+            -else
+              = user.user_profile.display_name
+      = submit_tag "Delete"
 

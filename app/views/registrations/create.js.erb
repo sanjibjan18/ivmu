@@ -1,3 +1,8 @@
-alert('A confirmation email has been sent to your email address. Please click on the link sent in the email to confirm your account.');
-location.href = "/";
+<% if resource.errors.empty?  %>
+ $('.registration').html('<%= escape_javascript(render '/devise/sessions/new') %>')
+ $('#message').html("Woo Hoo! you have successfully registered. Confirm the account through the link in the email and you are all set to go.");
+ <%else%>
+  <% messages = resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join %>
+  $('#errors').html("<%= messages.html_safe %>");
+ <%end%>
 

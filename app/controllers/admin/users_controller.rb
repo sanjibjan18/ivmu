@@ -7,5 +7,10 @@ class Admin::UsersController < ApplicationController
     @users = User.all_without_admin
   end
 
+
+  def delete_users
+    redirect_to admin_users_path
+  end
+
 end
 
