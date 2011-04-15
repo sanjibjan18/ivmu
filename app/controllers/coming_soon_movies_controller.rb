@@ -26,6 +26,17 @@ class ComingSoonMoviesController < ApplicationController
     @movie = Movie.find_using_id(params[:id]).first
     #@movie_tweets = @movie.tweets.latest.paginate(:page => 1, :per_page => 4)
     @facebook_posts = @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4) if current_user && current_user.facebook_omniauth
+    movie_casts = @movie.casts
+    @actors = []
+    @movie.casts.each do |cast|
+      case cast.cast_type
+      when 'actor' then @actors << cast
+      when 'director' then @director = cast
+      when 'producer' then @producer = cast
+      when 'writer' then @writer = cast
+      when 'musics' then @music = cast
+      end
+    end
   end
 
 end
