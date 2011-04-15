@@ -12,10 +12,7 @@
       = f.label :password
       %br
       = f.password_field :password
-    .field
-      = f.label :password_confirmation
-      %br
-      = f.password_field :password_confirmation
+      &nbsp; Type new password if you would like to change
 
     - resource.build_user_profile if resource.user_profile.blank?
     = f.fields_for :user_profile do |ff|
@@ -28,14 +25,7 @@
         %br
         = image_tag(ff.object.profile_image.url(:thumb)) unless ff.object.profile_image_file_name.blank?
         = ff.file_field :profile_image
-      .field
-        = ff.label :dob, 'Date of birth'
-        %br
-        = ff.text_field :dob
-      .field
-        = ff.label :dob, 'Sex'
-        %br
-        = ff.select :sex, ['Male', 'Female']
+
 
 
   #div
