@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
     @tweet_search = Tweet.reviews.search({:movie_id_eq => @movie.id, :meta_sort => "tweeted_on.desc"})
     @movie_tweets = @tweet_search.all.paginate(:page => params[:page], :per_page => 4)
     respond_to do |format|
-      format.html {}
+      format.html { render :layout => false}
       format.js {}
     end
   end

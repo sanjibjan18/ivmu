@@ -66,17 +66,13 @@
     %ul
       -if from == 'movies'
         %li= link_to "Critics", "#critics"
-      %li= link_to "Users", "#users"
+      %li= link_to "Users", tweets_path(:id => @movie.id)
       %li= link_to "Friends", "#friends"
     -if from == 'movies'
       #critics
         #critics_reviews
           = render '/shared/critics_reviews'
         .clear
-    #users
-      #movie_tweets
-        = render '/shared/tweets'
-      .clear
     #friends
       -if current_user && current_user.facebook_omniauth
         #facebook_posts

@@ -1,0 +1,7 @@
+#movie_tweets
+  .right
+    #pagination
+      = will_paginate(@movie_tweets,  :class => 'muvi_pagination', :params => {:controller => "tweets" , :action => "index", :id => @movie.id })
+  .clear
+  = render '/shared/movie_tweets'
+
