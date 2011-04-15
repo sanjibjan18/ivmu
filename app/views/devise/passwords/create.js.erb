@@ -1,3 +1,8 @@
-$('#login').html('You will receive an email with instructions about how to reset your password in a few minutes.').delay(5000);
-location.reload(true);
+<% if resource.errors.empty?  %>
+ $('#errors').html("");
+ $('#message').html("You will receive an email with instructions about how to reset your password in a few minutes.");
+ <%else%>
+ <% messages = resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join %>
+  $('#errors').html("<%= messages.html_safe %>");
+ <%end%>
 

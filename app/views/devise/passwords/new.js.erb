@@ -1,6 +1,4 @@
-<% if resource.errors.empty? %>
-<%else%>
-  <% messages = resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join %>
-  $('#errors').html("<%= messages.html_safe %>");
-<%end%>
+$('#login').dialog('destroy');
+$('#login').html('<%= escape_javascript(render "new") %>');
+$('#login').dialog({ modal: true,  width: 600, height: 350, title: 'Muvi.in Forgot password' });
 

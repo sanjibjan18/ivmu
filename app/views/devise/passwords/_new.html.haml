@@ -1,0 +1,15 @@
+#login
+  #message
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :remote => true, :method => :post }) do |f|
+    = devise_error_messages!
+    #errors
+    %fieldset.registration
+      .field
+        = f.label :email, "Email Address"
+        %br
+        = f.email_field :email
+      %br
+      .actions
+        = f.submit "Send me reset password instructions"
+  = render :partial => "devise/shared/links"
+
