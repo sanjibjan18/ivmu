@@ -27,7 +27,7 @@ class HomeController < ApplicationController
    end
 
   def contact_us
-    @content = Page.find_reference('contact-us').first rescue nil
+    #@content = Page.find_reference('contact-us').first rescue nil
   end
 
   def user_agreement
