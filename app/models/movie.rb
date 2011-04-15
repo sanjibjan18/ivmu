@@ -45,22 +45,22 @@ class Movie < ActiveRecord::Base
   has_many :cinematographers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "cinematographer" }
   has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
   has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
-  
+
   has_many :casts,  :class_name => 'MovieCast'
   accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,:actors, :directors, :producers,:musics,:writers,:cinematographers, :distributors, :editors,  :allow_destroy => true
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('release_date desc nulls last')
   scope :sort_by_release_date_asc, order('release_date asc nulls last')
-
+  scope :sort_by_user_interest_desc, order('user_percent desc nulls last')
+  scope :sort_by_poster_and_trailer_desc, order('poster_updated_at desc nulls last, trailer_updated_at desc nulls last')
   scope :limit, lambda{|l| limit(limit) }
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :released, where("release_date <= ?", Date.today)
   scope :comming_soon_movies, where("release_date > ?  or release_date IS NULL", Date.today)
 
-#  scope :backwards_name, where("id in (?)", Tweet.select('distinct movie_id').collect(&:movie_id))
 
-  scope :sort_by_custom_name_asc, order('custom_name ASC')
+
 
 
   def banner_image

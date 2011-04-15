@@ -8,9 +8,9 @@ class ComingSoonMoviesController < ApplicationController
     params[:sort] ||= 'latest_update'
     case params[:sort]
     when 'latest_update'
-
+      @search = @search.relation.sort_by_poster_and_trailer_desc
     when 'user_interest'
-
+      @search = @search.relation.sort_by_user_interest_desc
     when 'release_date'
       @search = @search.relation.sort_by_release_date_asc
     end

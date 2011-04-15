@@ -1,2 +1,2 @@
-$("#coming_soon").html("<div class='homeContainerIn borderDiv'><%= escape_javascript(render('movies'))%> <div class='right'> <%= will_paginate(@movies,  :class => 'muvi_pagination') %></div><div class='clear'></div></div>");
+$("#coming_soon").html("<div class='homeContainerIn borderDiv'>'<%= escape_javascript(render("/coming_soon_movies/movies"))%>'<div class='right'> '<%= escape_javascript(will_paginate(@movies,  :class => "muvi_pagination")) %> '</div><div class='clear'></div></div>");
 
