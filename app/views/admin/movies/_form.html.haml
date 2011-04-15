@@ -31,8 +31,6 @@
   .clear
   #actors
     %h2.heading Cast
-    = @movie.actors.count
-    = @movie.movie_casts.count
     = f.fields_for :actors do |actor|
       = render 'movie_actor', { :ff => actor }
     %div.add.clear
