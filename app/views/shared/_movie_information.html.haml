@@ -4,16 +4,17 @@
   /= link_to "See More (#{@movie.actors.count})", '#'
 .clear
 .border
-  - @actors.each do |actor|
-    .moviCasts.left
-      .actress.left
-        = image_tag(actor.celebrity.profile_picture.url(:thumb))
-      .actressNames.right
-        %h4.large= actor.celebrity.name
-        %h4
-          as
-          = actor.role_name
-  .clear
+  - unless @actors.blank?
+    - @actors.each do |actor|
+      .moviCasts.left
+        .actress.left
+          = image_tag(actor.celebrity.profile_picture.url(:thumb))
+        .actressNames.right
+          %h4.large= actor.celebrity.name
+          %h4
+            as
+            = actor.role_name
+    .clear
 %h5
   CREW
 .border
