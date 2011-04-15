@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
   MAX_RATING = 5
-  belongs_to :movie
+  belongs_to :movie, :counter_cache => true
   belongs_to :user
 
   after_create :log_activity
