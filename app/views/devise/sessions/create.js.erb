@@ -1,7 +1,11 @@
-
+<% if flash[:alert] %>
+$('#errors').html("<h3><%= flash[:alert] %> </h3>");
+<%else%>
 <% if current_user.is_admin %>
   location.href = "/admin";
 <%else%>
    location.reload(true);
+<%end%>
+
 <%end%>
 
