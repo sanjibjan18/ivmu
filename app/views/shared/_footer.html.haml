@@ -21,15 +21,15 @@
     %h3 Quick Statistics
     %hr
     %ul.quickStatistics
-      site_stat = SiteStat.first
+      - stat = SiteStat.first
       %li
-        = site_stat.movies_count
+        = stat.movies_count
         Movies
       %li
-        = site_stat.reviews_count
+        = stat.reviews_count
         Movie reviews
       %li
-        = site_stat.celebrities_count
+        = stat.celebrities_count
         Celebrities
   .clear
 .footerBottom
