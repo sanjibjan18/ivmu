@@ -24,8 +24,8 @@ module ApplicationHelper
     page.blank? ? "#" : "/#{page.permalink}"
   end
 
-  def ratingbar(rating ||= 0)
-    rating =|| 0
+  def ratingbar(rating)
+    rating =||0
     text = ""
     if rating.to_i >= 50
       text += "<div class='positive' style='width:#{rating}%;'>&nbsp;</div>"
@@ -35,7 +35,8 @@ module ApplicationHelper
     text.html_safe
   end
 
-  def thumb_class(rating ||= 0)
+  def thumb_class(rating)
+    rating =|| 0
     if rating.to_i >= 50
       return image_tag('thumbUp.png', :class => 'thumb', :title => 'Jhakaas', :alt => 'Jhakaas')
     else
@@ -43,7 +44,8 @@ module ApplicationHelper
     end
   end
 
-  def rating_thumb(rating ||= 0)
+  def rating_thumb(rating)
+    rating =|| 0
     if rating.to_f >= 2.5
       return image_tag('thumbUp.png', :class => 'thumb')
     else
