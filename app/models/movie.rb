@@ -50,6 +50,9 @@ class Movie < ActiveRecord::Base
   has_many :casts,  :class_name => 'MovieCast'
   accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,:actors, :directors, :producers,:musics,:writers,:cinematographers, :distributors, :editors,  :allow_destroy => true
 
+  accepts_nested_attributes_for :movie_casts, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }
+
+
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
   scope :latest, order('release_date desc nulls last')
   scope :sort_by_release_date_asc, order('release_date asc nulls last')

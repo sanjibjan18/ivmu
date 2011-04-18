@@ -58,5 +58,11 @@ class Admin::CelebritiesController < ApplicationController
     redirect_to admin_celebrities_path
   end
 
+  def autocomplete
+    celebrity_names = Celebrity.search(:name_contains => params[:term]).all.collect do |user|
+      { "label" => user.name, "value" => user.id }
+    end
+    render :json => celebrity_names.to_json
+  end
 end
 

@@ -10,6 +10,7 @@ Muvi::Application.routes.draw do
   match 'user_agreement' => 'home#user_agreement'
   match '/auth/:provider/callback' => 'userregistrations#new'
   match 'autocomplete' => 'movies#autocomplete'
+  match 'celebrityAutocomplete' => 'admin/celebrities#autocomplete'
 
   match "tweet_review_update", :to => "admin/movie_tweets#tweet_review_update", :via => "post"
   match "facebook_review_update", :to => "admin/movie_posts#facebook_review_update", :via => "post"

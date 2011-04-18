@@ -1,11 +1,16 @@
 .actor
   %div.col_one
     = ff.label :celebrity_id, "Cast"
-    = ff.select :celebrity_id, Celebrity.option_list
+    = ff.hidden_field :celebrity_id
+    = text_field_tag 'name', celebrity_name(ff.object.celebrity_id), :class => "castName"
   %div.col_two
     = ff.label :role_name, "Character"
     = ff.text_field :role_name
     %span.delete
       = link_to_remove_fields "Delete Cast", ff
 .clear
+
+
+:javascript
+  $(document).ready(function() { $(".castName").autocomplete({source: '/celebrityAutocomplete',select: function( event, ui ) {$(this).val(ui.item.label);$(this).prev().val( ui.item.value );return false;}}); });
 

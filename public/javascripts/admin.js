@@ -11,6 +11,13 @@ $(document).ready(function($) {
       facebook_id = $(this).attr('id').split('review_')[1]
       $.ajax({type: "POST",url: "/facebook_review_update", data: "id=" + facebook_id + "&option=" + $(this).val()});
     });
+   $(".castName").autocomplete({ source: '/celebrityAutocomplete',
+     select: function( event, ui ) {
+				$(this).val(ui.item.label);
+				$(this).prev().val( ui.item.value );
+                return false;
+			}
+   });
 
   $('#check_all').click(function(){
 	$("input[type='checkbox']").each(function(){

@@ -1,11 +1,16 @@
 .crew
   %div.col_one
     = ff.label :celebrity_id, "Cast"
-    = ff.select :celebrity_id, Celebrity.option_list
+    = ff.hidden_field :celebrity_id
+    = text_field_tag 'name', celebrity_name(ff.object.celebrity_id), :class => "castName"
   %div.col_two
     = ff.label :cast_type, "Type"
     = ff.select :cast_type, [['Producer','producer'], ['Director','director'], ['Musics','musics'], ['Writer','writer'], ['Cinematographer','cinematographer'], ['Distributor','distributor'], ['Editor','editor'] ]
     %span.delete
       = link_to_remove_fields "Delete Crew", ff
 .clear
+
+
+:javascript
+  $(document).ready(function() { $(".castName").autocomplete({source: '/celebrityAutocomplete',select: function( event, ui ) {$(this).val(ui.item.label);$(this).prev().val( ui.item.value );return false;}}); });
 
