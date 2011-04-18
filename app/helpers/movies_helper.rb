@@ -8,6 +8,10 @@ module MoviesHelper
     end
   end
 
+  def option_for_genre
+    [['Drama', 'drama'], ['Romance', 'romance'], ['Comedy', 'comedy'], ['Action', 'action'], ['Thriller', 'thriller'], ['Horror','horror']  ]
+  end
+
   def no_of_pepople_interest(movie)
     if current_user
       '2 friends are interested'

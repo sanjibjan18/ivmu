@@ -15,6 +15,7 @@ class Movie < ActiveRecord::Base
   def to_param
     permalink
   end
+  serialize :genre
 
 
   has_many :reviews , :dependent => :destroy

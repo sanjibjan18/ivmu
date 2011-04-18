@@ -27,7 +27,7 @@
   = f.text_field :gross_revenue
   .clear
   = f.label :genre, 'Genre'
-  = f.text_field :genre
+  = select_tag 'movie[genre][]', options_for_select(option_for_genre, @movie.genre || 'drama'), { :multiple => true }
   .clear
   #actors
     %h2.heading Cast
