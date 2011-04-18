@@ -19,7 +19,7 @@
     %td= number_to_currency @movie.gross_revenue.to_f
   %tr
     %th Genre
-    %td= @movie.genre.to_sentence
+    %td= @movie.genre.to_sentence rescue @movie.genre
   %tr
     %th Director
     %td= @movie.directors.collect{ |ob| (ob.celebrity.name) }.to_sentence
