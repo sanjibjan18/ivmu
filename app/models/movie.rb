@@ -28,38 +28,21 @@ class Movie < ActiveRecord::Base
 
   has_many :movie_casts, :dependent => :destroy
   #to do better way .
- # has_many :casts, :through => :movie_casts
- # has_many :directors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "director" }
-#  has_many :producers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "producer" }
-# has_many :musics, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "musics" }
- # has_many :writers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "writer" }
- # has_many :cinematographers, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "cinematographer" }
- # has_many :distributors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "distributor" }
- # has_many :editors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "editor" }
- # has_many :actors, :through => :movie_casts, :source => :cast, :conditions => { "movie_casts.cast_type" => "actor" }
 
   has_many :actors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "actor" }
-  has_many :directors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "director" }
-  has_many :producers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "producer" }
-  has_many :musics,  :class_name => 'MovieCast', :conditions => { "cast_type" => "musics" }
-  has_many :writers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "writer" }
-  has_many :cinematographers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "cinematographer" }
-  has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
-  has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
+  has_many :crew_members,  :class_name => 'MovieCast', :conditions => [ "cast_type != ?", 'actor' ]
+#  has_many :producers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "producer" }
+ # has_many :musics,  :class_name => 'MovieCast', :conditions => { "cast_type" => "musics" }
+ # has_many :writers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "writer" }
+ # has_many :cinematographers,  :class_name => 'MovieCast', :conditions => { "cast_type" => "cinematographer" }
+ # has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
+ # has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
 
-  has_many :casts,  :class_name => 'MovieCast'
   accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,  :allow_destroy => true
 
   accepts_nested_attributes_for :movie_casts, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :actors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :directors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :producers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :musics, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :writers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :cinematographers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :distributors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :editors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
-
+  accepts_nested_attributes_for :crew_members, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
 
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }

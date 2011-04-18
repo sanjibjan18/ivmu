@@ -9,14 +9,24 @@ class Admin::MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find_using_id(params[:id]).first
+    @movie = Movie.find_using_id(params[:id]).includes([:movie_casts]).first
+    @actors = []
+    @movie.movie_casts.each do |cast|
+      case cast.cast_type
+      when 'actor' then @actors << cast
+      when 'director' then @director = cast
+      when 'producer' then @producer = cast
+      when 'writer' then @writer = cast
+      when 'musics' then @music = cast
+      end
+    end
   end
 
   def new
    @movie = Movie.new
    @movie.build_meta_detail
    @movie.actors.build
-   @movie.producers.build
+   @movie.crew_members.build
   end
 
   def edit
@@ -29,7 +39,7 @@ class Admin::MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to([:admin, @movie], :notice => 'Movies was successfully created.') }
+        format.html { redirect_to(edit_admin_movie_path(@movie), :notice => 'Movies was successfully created.') }
         format.xml  { render :xml => @movie, :status => :created, :location => @movie }
       else
         format.html { render :action => "new" }

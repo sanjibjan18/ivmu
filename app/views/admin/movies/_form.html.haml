@@ -38,20 +38,8 @@
   .clear
   #crews
     %h2.heading Crew
-    = f.fields_for :producers do |prod|
+    = f.fields_for :crew_members do |prod|
       = render 'movie_crew', { :ff => prod }
-    = f.fields_for :directors do |dir|
-      = render 'movie_crew', { :ff => dir }
-    = f.fields_for :musics do |mus|
-      = render 'movie_crew', { :ff => mus }
-    = f.fields_for :writers do |wri|
-      = render 'movie_crew', { :ff => wri }
-    = f.fields_for :cinematographers do |cine|
-      = render 'movie_crew', { :ff => cine }
-    = f.fields_for :distributors do |dist|
-      = render 'movie_crew', { :ff => dist }
-    = f.fields_for :editors do |edit|
-      = render 'movie_crew', { :ff => edit }
     %div.add.clear
       = link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
 

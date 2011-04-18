@@ -8,9 +8,15 @@
 
     .field
       %label Post to
-      = f.check_box :facebook
+      -if  current_user.facebook_omniauth.blank?
+        = f.check_box :facebook, :disabled => 'disabled'
+      -else
+        = f.check_box :facebook
       Facebook
-      = f.check_box :twitter
+      -if  current_user.twitter_omniauth.blank?
+        = f.check_box :twitter, :disabled =>  'disabled'
+      -else
+        = f.check_box :twitter
       Twitter
     = f.hidden_field :review, :value => ( review || false  )
     .field

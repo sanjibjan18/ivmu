@@ -21,11 +21,12 @@
     %th Genre
     %td= @movie.genre.to_sentence rescue @movie.genre
   %tr
+    %th actors
+    %td= @actors.collect{ |ob| ob.celebrity.name }.to_sentence
+  %tr
     %th Director
     %td= @movie.directors.collect{ |ob| (ob.celebrity.name) }.to_sentence
-  %tr
-    %th actors
-    %td= @movie.actors.collect{ |ob| ob.celebrity.name }.to_sentence
+
   %tr
     %th producers
     %td= @movie.producers.collect{ |ob| ob.celebrity.name }.to_sentence
