@@ -1,3 +1,7 @@
 $('#registration').html('<%= escape_javascript(render "new") %>');
 $('#registration').dialog({ modal: true,  width: 500, height: 300, title: 'Muvi.in signin' });
 
+<% if flash[:alert] %>
+  $('#message').html('<%= flash[:alert]%>');
+<%end%>
+

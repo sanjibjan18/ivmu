@@ -1,5 +1,5 @@
 <% if resource.errors.empty?  %>
-  $('#errors').html("");
+  $('#registration').dialog('destroy');
   $('#registration').html('<%= escape_javascript(render '/devise/sessions/new') %>')
   $('#message').html("Password was successfully changed. Please login with your new password");
   $('#registration').dialog({ modal: true,  width: 600, height: 350, title: 'Muvi.in Login' });

@@ -1,6 +1,8 @@
 <% if resource.errors.empty?  %>
- $('.registration').html('<%= escape_javascript(render '/devise/sessions/new') %>')
- $('#message').html("Woo Hoo! you have successfully registered. Confirm the account through the link in the email and you are all set to go.");
+  $('#registration').dialog('destroy');
+  $('#registration').html('<%= escape_javascript(render '/devise/sessions/new') %>')
+  $('#message').html("Woo Hoo! you have successfully registered. Confirm the account through the link in the email and you are all set to go.");
+  $('#registration').dialog({ modal: true,  width: 500, height: 300, title: 'Muvi.in signin' });
  <%else%>
   <% messages = resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join %>
   $('#errors').html("<%= messages.html_safe %>");
