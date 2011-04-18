@@ -48,9 +48,18 @@ class Movie < ActiveRecord::Base
   has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
 
   has_many :casts,  :class_name => 'MovieCast'
-  accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,:actors, :directors, :producers,:musics,:writers,:cinematographers, :distributors, :editors,  :allow_destroy => true
+  accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,  :allow_destroy => true
 
-  accepts_nested_attributes_for :movie_casts, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }
+  accepts_nested_attributes_for :movie_casts, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :actors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :directors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :producers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :musics, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :writers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :cinematographers, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :distributors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :editors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
+
 
 
   scope :find_using_id, lambda {|perm| where("permalink = ?", perm) }
