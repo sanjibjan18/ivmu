@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def ratingbar(rating)
-    rating =||0
+    rating =|| 0
     text = ""
     if rating.to_i >= 50
       text += "<div class='positive' style='width:#{rating}%;'>&nbsp;</div>"
