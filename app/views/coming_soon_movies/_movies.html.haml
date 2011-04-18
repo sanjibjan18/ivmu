@@ -14,7 +14,7 @@
             .ratingBar.left
               = ratingbar(movie.user_percent)
             .ratingvalue.left
-              = "#{movie.user_percent}%"
+              = "#{movie.user_percent || 0}%"
             .clear
 
             - if current_user && current_user.facebook_omniauth

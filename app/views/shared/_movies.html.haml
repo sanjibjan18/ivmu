@@ -14,13 +14,13 @@
             .ratingBar.left
               = ratingbar(movie.critics_percent)
             .ratingvalue.left
-              = "#{movie.critics_percent}%"
+              = "#{movie.critics_percent || 0}%"
             .clear
             %h4 Users rating
             .ratingBar.left
               = ratingbar(movie.user_percent)
             .ratingvalue.left
-              = "#{movie.user_percent}%"
+              = "#{movie.user_percent || 0}%"
             .clear
             - if current_user && current_user.facebook_omniauth
               %h4
