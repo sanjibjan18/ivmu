@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def ratingbar(rating)
-    rating =|| 0
+    rating ||= 0
     text = ""
     if rating.to_i >= 50
       text += "<div class='positive' style='width:#{rating}%;'>&nbsp;</div>"
@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def thumb_class(rating)
-    rating =|| 0
+    rating ||= 0
     if rating.to_i >= 50
       return image_tag('thumbUp.png', :class => 'thumb', :title => 'Jhakaas', :alt => 'Jhakaas')
     else
@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def rating_thumb(rating)
-    rating =|| 0
+    rating ||= 0
     if rating.to_f >= 2.5
       return image_tag('thumbUp.png', :class => 'thumb')
     else
