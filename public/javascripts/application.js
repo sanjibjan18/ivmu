@@ -1,6 +1,7 @@
  $(document).ready(function($) {
+
     $('a[rel*=facebox]').facebox();
-    $("#reviews").tabs();
+    $("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
@@ -38,9 +39,12 @@ function popupCenter(url, width, height, name) {
 }
 
 
+
+
 $(document).ready(function($) {
   $("a.popup").click(function(e) {
     popupCenter($(this).attr("href"), $(this).attr("data-width"), $(this).attr("data-height"), "authPopup");
     e.stopPropagation(); return false;
   });
 });
+
