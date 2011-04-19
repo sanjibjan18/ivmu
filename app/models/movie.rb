@@ -127,5 +127,19 @@ class Movie < ActiveRecord::Base
     end
   end
 
+
+  def self.update_top_box_office
+    TopBoxOffice.destroy_all
+    Movie.top_box_office(4).each_with_index do |movie, idx|
+      TopBoxOffice.create({:movie_id => movie.id, :position => idx})
+    end
+  end
+
+  def self.update_top_trending
+    TopTrending.destroy_all
+    Movie.find_by_sql("select id, (tweets_count+facebook_feeds_count) as count from films order by count DESC limit 4;").each_with_index do |movie, idx|
+      TopTrending.create({:movie_id => movie.id, :position => idx})
+    end
+  end
 end
 

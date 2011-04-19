@@ -15,6 +15,8 @@
 #
 every 1.day do
    runner "Tweet.fetch_tweets"
+   runner "Movie.update_top_box_office"
+   runner "Movie.update_top_trending"
 end
 
 

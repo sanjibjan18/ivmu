@@ -22,25 +22,25 @@
   .GrayHeaderBox
     -if request.fullpath =~ /coming_soon_movies/
       %h3 Trending Now
-      -Movie.top_trending(4).each do |movie|
+      -TopTrending.includes(:movie).all.each do |tb|
         .row
           .image.left
-            =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
+            =image_tag(tb.movie.banner_image_thumb, :width => 42, :height => 42)
           .icon.right
             %a{:href => "#"}
-              = thumb_class(movie.average_critics_reviews_rating_percent)
+              = thumb_class(tb.movie.critics_percent)
           .names.right
-            %h4= movie.name
+            %h4= tb.movie.name
 
     -else
       %h3 Top Box Office
-      - Movie.top_box_office(4).each do |movie|
+      - TopBoxOffice.includes(:movie).all.each do |tb|
         .row
           .image.left
-            =image_tag(movie.banner_image_thumb, :width => 42, :height => 42)
+            =image_tag(tb.movie.banner_image_thumb, :width => 42, :height => 42)
           .icon.right
             %a{:href => "#"}
-              = thumb_class(movie.average_critics_reviews_rating_percent)
+              = thumb_class(tb.movie.critics_percent)
           .names.right
-            %h4= movie.name
+            %h4= tb.movie.name
 
