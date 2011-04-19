@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     @actors = Celebrity.where('id in (?)', [@movie.castid1, @movie.castid2,@movie.castid3, @movie.castid4]) rescue nil
     @director = Celebrity.find(@movie.directorid) rescue nil
     @producer = Celebrity.find(@movie.producerid) rescue nil
-    @musics = Celebrity.find(@movie.musicdirid) rescue nil
+    @music = Celebrity.find(@movie.musicdirid) rescue nil
     @writer = nil
 
   #  @movie.movie_casts.includes([:celebrity]).each do |cast|
