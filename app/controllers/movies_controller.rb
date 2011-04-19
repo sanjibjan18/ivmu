@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
    # @musics = Celebrity.find(@movie.musicdirid) rescue nil
     #@writer = nil
     @actors = []
-    @movie.movie_casts.each do |cast|
+    @movie.movie_casts.includes(:celebrity).each do |cast|
       case cast.cast_type
       when 'actor' then @actors << cast
       when 'director' then @director = cast
