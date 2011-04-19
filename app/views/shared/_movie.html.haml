@@ -67,23 +67,12 @@
       -if from == 'movies'
         %li= link_to "Critics", "#critics"
       %li= link_to "Users<span>&nbsp;</span>".html_safe, tweets_path(:id => @movie.id)
-      %li= link_to "Friends", "#friends"
+      %li= link_to "Friends <span>&nbsp;</span>".html_safe, facebook_posts_path(:id => @movie.id)
     -if from == 'movies'
       #critics
         #critics_reviews
           = render '/shared/critics_reviews'
         .clear
-    #friends
-      -if current_user && current_user.facebook_omniauth
-        #facebook_posts
-          = render '/shared/facebook_friends'
-      -else
-        #facebook_login
-          %h4 login to see who liked this movie.
-          = link_to image_tag('facebookicon.gif'), "/auth/facebook"
-
-      .clear
-
   %br
   - unless current_user.blank?
     = render '/comments/form', {:movie => @movie}

@@ -1,0 +1,8 @@
+-if current_user && current_user.facebook_omniauth
+  #facebook_posts
+    = render '/shared/facebook_friends'
+-else
+  #facebook_login
+    %h4 login to see who liked this movie.
+    = link_to image_tag('facebookicon.gif'), "/auth/facebook"
+

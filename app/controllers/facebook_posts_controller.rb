@@ -11,7 +11,7 @@ class FacebookPostsController < ApplicationController
        []
     end
     respond_to do |format|
-      format.html {}
+      format.html { render :layout => false}
       format.js {}
     end
   end
