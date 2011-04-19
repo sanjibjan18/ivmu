@@ -79,7 +79,7 @@ a:hover{text-decoration:underline;}
 ul.links{
 	background: url(/images/linkBg.png) repeat-x;
 	height:34px;
-	
+
 }
 
 ul.links li{
@@ -375,7 +375,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 
 .row div.names{width:48%;margin:2px;}
 .row div.names h4{color:#1B6CA3;font-size:12px;}
-
+.row div.names h5{color:#222;margin-top:2px;font-size:11px;}
 .icon{width:20%;text-align:right;}
 
 .GrayHeaderBox a{font-size:11px;color:#1B6CA3;font-weight:bold;}

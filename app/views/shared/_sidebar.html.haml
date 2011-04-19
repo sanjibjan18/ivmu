@@ -30,7 +30,7 @@
             %a{:href => "#"}
               = thumb_class(tb.movie.critics_percent)
           .names.right
-            %h4= tb.movie.name
+            %h4= link_to tb.movie.name, movie_path(tb.movie)
 
     -else
       %h3 Top Box Office
@@ -42,5 +42,8 @@
             %a{:href => "#"}
               = thumb_class(tb.movie.critics_percent)
           .names.right
-            %h4= tb.movie.name
+            %h4= link_to tb.movie.name, movie_path(tb.movie)
+            %h5
+              = image_tag('rupee-icon_black.gif')
+              = tb.movie.gross_revenue
 
