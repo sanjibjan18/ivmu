@@ -8,12 +8,12 @@
 
     .field
       %label Post to
-      -if  current_user.facebook_omniauth.blank?
+      -if current_user.blank? || current_user.facebook_omniauth.blank?
         = f.check_box :facebook, :disabled => 'disabled'
       -else
         = f.check_box :facebook
       Facebook
-      -if  current_user.twitter_omniauth.blank?
+      -if current_user.blank? || current_user.twitter_omniauth.blank?
         = f.check_box :twitter, :disabled =>  'disabled'
       -else
         = f.check_box :twitter
