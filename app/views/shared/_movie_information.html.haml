@@ -45,9 +45,9 @@
   - unless @music.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(@music.celebrity.profile_picture.url(:thumb))
+        = image_tag(@music.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= @music.celebrity.name
+        %h4.large= @music.name
         %h4
           Music
   .clear
