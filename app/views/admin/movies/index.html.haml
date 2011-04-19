@@ -39,8 +39,6 @@
         %td= movie.name
         %td= movie.release_date
         %td
-          = link_to "show", admin_movie_path(movie)
-          |
           = link_to "Edit", edit_admin_movie_path(movie)
           |
           = link_to "Destroy", admin_movie_path(movie), :confirm => 'Are you sure?', :method => :delete

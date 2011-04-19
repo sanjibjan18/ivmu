@@ -26,6 +26,9 @@
   = f.label :gross_revenue, 'Gross Revenue'
   = f.text_field :gross_revenue
   .clear
+  = f.label :alias_name, 'Alias Name'
+  = f.text_field :alias_name
+  .clear
   = f.label :genre, 'Genre'
   = select_tag 'movie[genre][]', options_for_select(option_for_genre, @movie.genre || 'drama'), { :multiple => true }
   .clear
