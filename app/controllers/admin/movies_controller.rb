@@ -53,7 +53,7 @@ class Admin::MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.update_attributes(params[:movie])
-        format.html { redirect_to([:admin, @movie], :notice => 'movie was successfully updated.') }
+        format.html { redirect_to(edit_admin_movie_path(@movie), :notice => 'movie was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
