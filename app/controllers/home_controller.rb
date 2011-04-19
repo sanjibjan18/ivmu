@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @movies = Movie.latest.released.paginate(:page => params[:page], :per_page => 6)
+    puts "pppppppppppppppp http://#{ActionMailer::Base.default_url_options[:host]}"
   end
 
   def fetch
