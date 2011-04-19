@@ -8,12 +8,12 @@
     - @actors.each do |actor|
       .moviCasts.left
         .actress.left
-          = image_tag(actor.profile_picture.url(:thumb))
+          = image_tag(actor.celebrity.profile_picture.url(:thumb))
         .actressNames.right
-          %h4.large= actor.name
+          %h4.large= actor.celebrity.name
           %h4
             as
-            /= actor.role_name
+            = actor.role_name
     .clear
 %h5
   CREW
@@ -21,33 +21,33 @@
   - unless @director.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(@director.profile_picture.url(:thumb))
+        = image_tag(@director.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= @director.name
+        %h4.large= @director.celebrity.name
         %h4
           Director
   - unless @producer.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(@producer.profile_picture.url(:thumb))
+        = image_tag(@producer.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= @producer.name
+        %h4.large= @producer.celebrity.name
         %h4
           Producer
   - unless @writer.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(@writer.profile_picture.url(:thumb))
+        = image_tag(@writer.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= @writer.name
+        %h4.large= @writer.celebrity.name
         %h4
           Story
   - unless @music.blank?
     .moviCasts.left
       .actress.left
-        = image_tag(@music.profile_picture.url(:thumb))
+        = image_tag(@music.celebrity.profile_picture.url(:thumb))
       .actressNames.right
-        %h4.large= @music.name
+        %h4.large= @music.celebrity.name
         %h4
           Music
   .clear

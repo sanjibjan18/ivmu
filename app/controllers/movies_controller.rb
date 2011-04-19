@@ -16,21 +16,21 @@ class MoviesController < ApplicationController
     #@movie_tweets = @movie.tweets.reviews.latest.paginate(:page => params[:page], :per_page => 4)
    # @facebook_posts = @movie.facebook_feeds.posts.friends_ids(current_user.facebook_friends_ids).latest.paginate(:page => params[:page], :per_page => 4) if current_user && current_user.facebook_omniauth
     #TODO try improving this
-    @actors = Celebrity.where('id in (?)', [@movie.castid1, @movie.castid2,@movie.castid3, @movie.castid4]) rescue nil
-    @director = Celebrity.find(@movie.directorid) rescue nil
-    @producer = Celebrity.find(@movie.producerid) rescue nil
-    @music = Celebrity.find(@movie.musicdirid) rescue nil
-    @writer = nil
-
-  #  @movie.movie_casts.includes([:celebrity]).each do |cast|
-   #   case cast.cast_type
-    #  when 'actor' then @actors << cast
-    #  when 'director' then @director = cast
-    #  when 'producer' then @producer = cast
-     # when 'writer' then @writer = cast
-     # when 'musics' then @music = cast
-     # end
-    #end
+    #@actors = Celebrity.where('id in (?)', [@movie.castid1, @movie.castid2,@movie.castid3, @movie.castid4]) rescue nil
+    #@director = Celebrity.find(@movie.directorid) rescue nil
+    #@producer = Celebrity.find(@movie.producerid) rescue nil
+   # @musics = Celebrity.find(@movie.musicdirid) rescue nil
+    #@writer = nil
+    @actors = []
+    @movie.movie_casts.each do |cast|
+      case cast.cast_type
+      when 'actor' then @actors << cast
+      when 'director' then @director = cast
+      when 'producer' then @producer = cast
+      when 'writer' then @writer = cast
+      when 'musics' then @music = cast
+      end
+    end
   end
 
 
