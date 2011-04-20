@@ -7,7 +7,7 @@ class FacebookFeed < ActiveRecord::Base
   scope :friends_ids, lambda{|ids| where("fbid in (?)", ids) }
   scope :movie_page_id, lambda{|page_id| where("fb_item_id = ?", page_id) }
   scope :latest,  order('posted_on desc nulls last')
-  scope :posts, where(:feed_type => 'friends_post')
+  scope :posts, where('feed_type = ? or feed_type = ?', 'public_post', 'friends_post')
   scope :friend_likes, where('feed_type = ? or feed_type = ?', 'friend_likes', 'likes')
   scope :all_posts, where('feed_type = ? or feed_type = ?', 'friends_post', 'public_post')
 

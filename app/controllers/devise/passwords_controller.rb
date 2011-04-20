@@ -21,6 +21,7 @@ class Devise::PasswordsController < ApplicationController
 
   # PUT /resource/password
   def update
+    params[:user][:password_confirmation] = params[:user][:password]
     self.resource = resource_class.reset_password_by_token(params[resource_name])
     clean_up_passwords(build_resource) if resource.errors.empty?
   end
