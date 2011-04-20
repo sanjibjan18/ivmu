@@ -1,6 +1,6 @@
 class UserMessagesController < ApplicationController
   layout 'website'
-
+  skip_before_filter :authenticate_user!
   def create
     @user_message = UserMessage.new(params[:user_message])
     if @user_message.save
