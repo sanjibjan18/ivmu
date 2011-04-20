@@ -763,3 +763,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
   opacity:0.5;
 }
 
+.hidden {
+    display:none;
+}
+
