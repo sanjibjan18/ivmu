@@ -5,6 +5,7 @@ class Tweet < ActiveRecord::Base
   scope :latest, order('tweeted_on desc nulls last')
   scope :reviews, where(:interest => false)
   scope :interests, where(:interest => true)
+  scope :pos_or_neg, where("review = ? or review = ? ", 'pos', 'neg')
 
   def self.fetch_tweets #(user)
     last_tweet = Tweet.last
