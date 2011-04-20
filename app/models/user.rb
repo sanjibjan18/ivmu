@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 
   def fetch_fb_feeds
     unless self.facebook_omniauth.blank?
-      movie_page_ids = Movie.limit(6).collect(&:fbpage_id)
+      movie_page_ids = Movie.latest.limit(6).collect(&:fbpage_id)
       client = Mogli::Client.new(self.facebook_token)
       fb_user = Mogli::User.find("me", client)
 

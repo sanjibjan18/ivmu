@@ -8,6 +8,7 @@ class UserregistrationsController < ApplicationController
     if user_token # already token is there
       user_token.update_token_and_secret(omniauth)
       user_token.user.update_user_profile(omniauth) # update or create user profile
+      user_token.user.delay.fetch_fb_feeds if omniauth['provider'] == 'facebook'
       unless user_token.user.confirmed_at.blank? # user is confirmed or not
         sign_in(:user, user_token.user)
       else
