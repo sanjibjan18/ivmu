@@ -31,6 +31,7 @@ class HomeController < ApplicationController
   end
 
   def user_agreement
+    @page = Page.find_by_permalink('terms-and-conditions') rescue nil
   end
 
 end
