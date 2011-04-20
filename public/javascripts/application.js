@@ -14,6 +14,13 @@
 
     /*$("#register").fancybox();
     $("#login").fancybox(); */
+    $("#loading").bind("ajaxSend", function(){
+       $('#loading').show();
+       $('body').addClass('layer');
+    }).bind("ajaxComplete", function(){
+       $('#loading').hide();
+       $('body').removeClass('layer');
+   });
 
 
 });

@@ -743,3 +743,23 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 .footerLeft p{line-height:50px;font-weight:bold;color:#44596a;font-size:11px;}
 .footerRight{width:28%;text-align:right;position:relative;top:-25px;}
 
+#loading {
+  width:100px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: url(/images/spinner3-black.gif) no-repeat center ;
+  text-align:center;
+  padding:10px;
+  font:normal 16px Tahoma, Geneva, sans-serif;
+  margin-left: -50px;
+  margin-top: -50px;
+  z-index:2;
+  overflow: auto;
+}
+
+.layer {
+  opacity:0.5;
+}
+
