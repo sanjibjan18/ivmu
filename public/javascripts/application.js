@@ -1,5 +1,5 @@
  $(document).ready(function($) {
-        $('a[rel*=facebox]').facebox();
+    $('a[rel*=facebox]').facebox();
     $("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
@@ -10,18 +10,6 @@
        $.get('/coming_soon_movies', 'sort='+ $('#coming_soon_sort').val(), null, "script");
        return false;
      });
-
-    /*$("#register").fancybox();
-    $("#login").fancybox(); */
-    $("#loading").bind("ajaxSend", function(){
-       $('#loading').show();
-       $('body').addClass('layer');
-    }).bind("ajaxComplete", function(){
-       $('#loading').hide();
-       $('body').removeClass('layer');
-   });
-
-
 });
 
 function critics_reviews_sort(movie_id, value) {
@@ -44,8 +32,15 @@ function popupCenter(url, width, height, name) {
   return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
 }
 
+function showSpinner() {
+  $('#loading').show();
+  $('body').addClass('layer');
+}
 
-
+function hideSpinner() {
+  $('#loading').hide();
+  $('body').removeClass('layer');
+}
 
 $(document).ready(function($) {
   $("a.popup").click(function(e) {

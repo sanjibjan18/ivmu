@@ -7,9 +7,9 @@
     .linksMid.left
       %ul.links.right
         - unless current_user
-          %li= link_to 'Register', new_user_registration_path, :remote => true
+          %li= link_to 'Register', new_user_registration_path, :remote => true, :onclick => "showSpinner();return false;"
           %li.last
-            = link_to 'Login', new_user_session_path, :remote => true
+            = link_to 'Login', new_user_session_path, :remote => true, :onclick => "showSpinner();return false;"
         - else
           %li= link_to 'Profile', edit_user_registration_path
 
