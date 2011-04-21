@@ -31,15 +31,19 @@ function popupCenter(url, width, height, name) {
   return window.open(url, name, "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
 }
 
-function showSpinner() {
-  $('#loading').show();
-  $('body').addClass('layer');
+
+function registration() {
+  $('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
+  $('#registration').dialog({ modal: true,  width: 600, height: 350, title: 'Muvi.in registration' });
+  return false;
 }
 
-function hideSpinner() {
-  $('#loading').hide();
-  $('body').removeClass('layer');
+function login() {
+  $('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
+  $('#registration').dialog({  modal: true,  width: 500, height: 300, title: 'Muvi.in signin'});
+  return false;
 }
+
 
 $(document).ready(function($) {
   $("a.popup").click(function(e) {
