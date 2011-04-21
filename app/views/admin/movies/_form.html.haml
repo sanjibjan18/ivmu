@@ -56,8 +56,10 @@
     = f.text_field :poster_release_date, :value => (@movie.poster_release_date || Date.today.to_date)
   .clear
   %div.col_one
-    = f.label :trailer, 'Trailer'
-    = f.file_field :trailer
+    - @movie.build_video if @movie.video.blank?
+    = f.fields_for :video do |vi|
+      = vi.label :trailer, 'Trailer'
+      = vi.file_field :trailer
   %div.col_two
     = f.label :trailer_release_date, 'Trailer Release Date' ,:class => 'date'
     = f.text_field :trailer_release_date, :value => (@movie.trailer_release_date || Date.today.to_date)

@@ -1,4 +1,6 @@
  $(document).ready(function($) {
+
+
     $("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
@@ -38,6 +40,8 @@ function registration() {
   return false;
 }
 
+
+
 function login() {
   $('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
   $('#registration').dialog({  modal: true,  width: 500, height: 300, title: 'Muvi.in signin'});
@@ -51,4 +55,20 @@ $(document).ready(function($) {
     e.stopPropagation(); return false;
   });
 });
+
+
+$(document).ready(function(){
+
+   $('.trailerLink').click(function(event){
+        event.preventDefault();
+       $('#trailer').dialog( {
+                title: "Trailer",
+                modal: true,
+                height: 380,
+                width: 550
+                });
+        return false;
+    });
+
+ });
 

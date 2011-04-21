@@ -25,6 +25,7 @@ class Movie < ActiveRecord::Base
   has_many :facebook_feeds, :dependent => :destroy
   has_many :critics_reviews, :dependent => :destroy
   has_one :meta_detail, :dependent => :destroy
+  has_one :video, :dependent => :destroy
 
   has_many :movie_casts, :dependent => :destroy
   #to do better way .
@@ -38,8 +39,7 @@ class Movie < ActiveRecord::Base
  # has_many :distributors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "distributor" }
  # has_many :editors,  :class_name => 'MovieCast', :conditions => { "cast_type" => "editor" }
 
-  accepts_nested_attributes_for :meta_detail, :movie_casts, :critics_reviews,  :allow_destroy => true
-
+  accepts_nested_attributes_for :meta_detail,:video, :movie_casts, :critics_reviews,  :allow_destroy => true
   accepts_nested_attributes_for :movie_casts, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :actors, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :crew_members, :reject_if => proc { |attributes| attributes['celebrity_id'].blank? }, :allow_destroy => true
