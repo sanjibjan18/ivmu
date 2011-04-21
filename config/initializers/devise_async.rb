@@ -3,7 +3,7 @@ module Devise
   module Models
     module Confirmable
       alias_method :send_confirmation_instructions_without_delay, :send_confirmation_instructions
-      handle_asynchronously :send_confirmation_instructions
+      handle_asynchronously :send_confirmation_instructions, :priority => 0
     end
 
   #  module Recoverable
