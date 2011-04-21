@@ -1,7 +1,7 @@
 - image = (from == 'movies')? 'ratebutton.jpg' : 'express_intrest.jpg'
 - unless current_user.blank?
-  = link_to image_tag(image), '#rate_movie', :rel => 'facebox'
+  = link_to image_tag(image), '#', :onclick => "$('#rate_movie').dialog({ modal: true,  width: 750, height: 350, title: 'Muvi.in' });return false;"
 -else
-  = link_to image_tag(image), new_user_session_path, :rel => 'facebox'
+  = link_to image_tag(image), new_user_session_path, :remote => true
 %br
 

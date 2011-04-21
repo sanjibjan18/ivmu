@@ -1,5 +1,4 @@
  $(document).ready(function($) {
-    $('a[rel*=facebox]').facebox();
     $("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
