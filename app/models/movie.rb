@@ -141,5 +141,12 @@ class Movie < ActiveRecord::Base
       TopTrending.create({:movie_id => movie.id, :position => idx})
     end
   end
+
+  def self.update_tweets_count
+    Movie.latest.each do |movie|
+      movie.update_attribute('tweets_count', movie.tweets.pos_or_neg.count)
+    end
+  end
+
 end
 
