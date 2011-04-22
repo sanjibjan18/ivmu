@@ -64,8 +64,8 @@ $(document).ready(function(){
        $('#trailer').dialog( {
                 title: "Trailer",
                 modal: true,
-                height: 340,
-                width: 540
+                height: 350,
+                width: 550
                 });
         return false;
     });
