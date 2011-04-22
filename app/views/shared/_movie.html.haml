@@ -3,17 +3,14 @@
     %a#player{:href => "#{@movie.video.trailer.url.to_s}", :style => "display:block;width:520px;height:330px"}
     %script
       flowplayer("player", "/flash/flowplayer-3.2.7.swf", { clip:   {autoPlay: false, autoBuffering: false    }  });
-  -else
-    No trailer Found.
-
-
+  
 .containerIn.borderDiv
   .moviBanner.left
     .moviImage
       = image_tag @movie.banner_image, :size => "125x200"
-
-    %a{:href => "#", :class => 'trailerLink'}
-      %img{:src => "/images/viewtrailer.jpg"}
+    -if @movie.video
+      %a{:href => "#", :class => 'trailerLink'}
+        %img{:src => "/images/viewtrailer.jpg"}
     %div.shareThis
       %h3
         SHARE THIS

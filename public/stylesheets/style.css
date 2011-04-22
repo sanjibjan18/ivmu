@@ -712,6 +712,9 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 .spinner img {margin-top: 100px;  }
 .footer ul{margin:0px;}
 
+/* hide jquery ui dialog'*/
+.ui-dialog-titlebar { display:none; }
+
 .footer ul li{
 	display:block;
 	line-height:22px;
