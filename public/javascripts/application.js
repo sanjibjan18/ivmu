@@ -1,7 +1,7 @@
  $(document).ready(function($) {
 
 
-    $("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
+    //$("#reviews").tabs({ spinner: '<img src="/images/spinner.gif"/>' });
     $("#q").autocomplete({source: '/autocomplete', minLength: 3});
     $("#pagination .muvi_pagination a").live("click", function() {
        $.getScript(this.href); return false;
@@ -35,7 +35,7 @@ function popupCenter(url, width, height, name) {
 
 
 function registration() {
-  $('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
+  //$('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
   $('#registration').dialog({ modal: true,  width: 600, height: 350, title: 'Muvi.in registration' });
   return false;
 }
@@ -43,7 +43,7 @@ function registration() {
 
 
 function login() {
-  $('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
+  //$('#registration').html('<div class="spinner"><img src="/images/spinner-black.gif"/></div>');
   $('#registration').dialog({  modal: true,  width: 500, height: 300, title: 'Muvi.in signin'});
   return false;
 }
@@ -64,8 +64,8 @@ $(document).ready(function(){
        $('#trailer').dialog( {
                 title: "Trailer",
                 modal: true,
-                height: 380,
-                width: 550
+                height: 340,
+                width: 530
                 });
         return false;
     });
