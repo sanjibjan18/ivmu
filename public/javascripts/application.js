@@ -65,7 +65,7 @@ $(document).ready(function(){
                 title: "Trailer",
                 modal: true,
                 height: 340,
-                width: 530
+                width: 540
                 });
         return false;
     });
