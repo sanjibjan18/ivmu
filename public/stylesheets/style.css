@@ -713,7 +713,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 .footer ul{margin:0px;}
 
 /* hide jquery ui dialog'*/
-.ui-dialog-titlebar { display:none; }
+#trailer .ui-dialog-titlebar { display:none; }
 
 .footer ul li{
 	display:block;
