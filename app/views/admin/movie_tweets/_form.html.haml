@@ -1,0 +1,30 @@
+.tweet_form
+  - if @tweet.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@tweet.errors.count, "error")
+        prohibited this page from being saved:
+      %ul
+        -@tweet.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.label :content, "Tweet"
+  = f.text_area :content
+  .clear
+  = f.label :twitter_screen_name, "Screen Name"   
+  = image_tag(Twitter.profile_image("#{@tweet.twitter_screen_name}", :size => 'normal')) rescue ''
+  = f.text_field :twitter_screen_name
+  .clear
+  = f.label :tweet_id, "Twitter Id"
+  = f.text_field :tweet_id
+  .clear
+  = f.label :review, "Review"
+  = f.select :review, review_options
+
+  %hr
+  .actions
+    = f.submit 'Save'
+    \- or -
+    = link_to 'Cancel', admin_movie_movie_tweets_path(@movie)
+ 
+

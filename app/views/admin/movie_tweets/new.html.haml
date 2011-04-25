@@ -1,0 +1,4 @@
+%h1.heading New Tweet
+.form
+  = form_for(@tweet, :url => admin_movie_movie_tweet_path(@movie), :html => { :multipart => true }) do |f|
+    = render 'form'

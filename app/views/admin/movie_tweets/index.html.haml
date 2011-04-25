@@ -1,6 +1,7 @@
 %h1 Movie Tweets
 
 = link_to "Back to Movie", edit_admin_movie_path(@movie)
+= link_to "Add new tweet",new_admin_movie_movie_tweet_path(@movie)
 %table
   %tr
     %th Content
@@ -9,15 +10,15 @@
     %th Rating
     %th Review
     %th
-
-  - @tweets.each do |tweet|
-    %tr
-      %td= tweet.content
-      %td= tweet.twitter_screen_name
-      %td= tweet.tweeted_on.to_date
-      %td= tweet.rating
-      %td= select_tag "review_#{tweet.id}", options_for_select(review_options, tweet.review), :class => 'tweet_option_change'
-      %td= link_to 'Delete', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
+  -unless @tweets.blank?
+    - @tweets.each do |tweet|
+      %tr
+        %td= tweet.content
+        %td= tweet.twitter_screen_name
+        %td= tweet.tweeted_on.to_date
+        %td= tweet.rating
+        %td= select_tag "review_#{tweet.id}", options_for_select(review_options, tweet.review), :class => 'tweet_option_change'
+        %td= link_to 'Delete', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @tweets
 
