@@ -3,7 +3,7 @@
     %a#player{:href => "#{@movie.video.trailer.url.to_s}", :style => "display:block;width:520px;height:330px"}
     %script
       flowplayer("player", "/flash/flowplayer-3.2.7.swf", { clip:   {autoPlay: false, autoBuffering: false    }  });
-  
+
 .containerIn.borderDiv
   .moviBanner.left
     .moviImage
@@ -43,7 +43,7 @@
             = "#{@movie.user_percent || 0}%"
           .clear
           -if from == 'movies'
-            = link_to "Average of #{@movie.tweets_count} ratings", '#users', :onclick => "go_to_tab(1);"
+            = link_to "Average of #{@movie.tweets_count.to_i + @movie.reviews_count.to_i} ratings", '#users', :onclick => "go_to_tab(1);"
           -else
             = link_to "#{@movie.average_rating_count} users", '#users', :onclick => "go_to_tab(1);"
       .friendsLink.right
