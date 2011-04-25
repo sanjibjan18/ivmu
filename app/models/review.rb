@@ -28,7 +28,7 @@ class Review < ActiveRecord::Base
     unless self.user.twitter_omniauth.blank?
       if self.twitter
         begin
-          self.user.twitter.update("#{self.description}")
+          self.user.twitter.update("#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts. #{self.description}, #{SITE_URL}/movies/#{self.movie.permalink}")
         rescue Twitter::Unauthorized
         end
       end
