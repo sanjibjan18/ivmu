@@ -56,9 +56,6 @@ class Movie < ActiveRecord::Base
   scope :comming_soon_movies, where("release_date > ?  or release_date IS NULL", Date.today)
 
 
-
-
-
   def banner_image
     self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
   end
@@ -121,7 +118,11 @@ class Movie < ActiveRecord::Base
       review_count = movie.reviews.blank? ? 0 : (100 * movie.reviews.select("SUM(rating) as total").first.total.to_i) / (movie.reviews.count * 5) rescue 0
       tweet_count = movie.tweets.blank? ? 0 : (100 * movie.tweets.select("SUM(rating) as total").first.total.to_i) / movie.tweets.count(:all,:conditions=>["interest = ?","f"]) rescue 0
       critics_percent = movie.critics_reviews.blank? ? 0 : (100 * movie.critics_reviews.select("SUM(rating) as total").first.total.to_i) / (movie.critics_reviews.count * 5)
-      user_percent =  (review_count + tweet_count)/ 2 rescue 0
+      if review_count == 0 || tweet_count == 0
+        user_percent =  (review_count + tweet_count)
+      else
+        user_percent =  (review_count + tweet_count)/ 2 rescue 0
+      end
       movie.update_attribute('critics_percent', critics_percent) unless movie.critics_percent == critics_percent
       movie.update_attribute('user_percent',  user_percent) unless movie.user_percent == user_percent
     end
