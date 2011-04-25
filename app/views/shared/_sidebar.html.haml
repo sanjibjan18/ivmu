@@ -5,7 +5,7 @@
       -Activity.friend_activities(current_user).each do |activity|
         .row
           .image.left
-            = image_tag(activity.actor.image) rescue nil
+            = image_tag((activity.actor.image rescue 'no-logo.png'))
           .icon.right
             - if activity.subject_type == "Review"
               = rating_thumb(activity.subject.rating)
