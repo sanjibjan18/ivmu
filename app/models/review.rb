@@ -14,8 +14,7 @@ class Review < ActiveRecord::Base
         begin
           client = Mogli::Client.new(self.user.facebook_token)
           @myself  = Mogli::User.find("me", client)
-          default_host = 'http://' +  ActionMailer::Base.default_url_options[:host] # default host
-          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "#{default_host}/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => "RELEASE DATE: #{self.movie_release_date}", :picture => "#{self.movie.poster.url(:medium)}", :actions => {"name" =>  "See Muvi.in Review", "link" => "#{default_host}/movies/#{self.movie.permalink}"} })
+          post = Mogli::Post.new({:message => self.description, :name => "#{self.user.display_name} rated #{self.movie.name} #{self.rating} starts",:link => "#{SITE_URL}/movies/#{self.movie.permalink}",:caption => '&nbsp;', :description => "RELEASE DATE: #{self.movie_release_date}", :picture => "#{SITE_URL}#{self.movie.poster.path(:medium)}", :actions => {"name" =>  "See Muvi.in Review", "link" => "#{SITE_URL}/movies/#{self.movie.permalink}"} })
           @myself.feed_create(post)
         rescue Mogli::Client::OAuthException
           # getting this strange exception. (#506) Duplicate status message

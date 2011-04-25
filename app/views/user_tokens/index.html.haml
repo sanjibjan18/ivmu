@@ -20,8 +20,9 @@
       %td= user_token.secret
       %td= link_to 'Show', user_token
       %td= link_to 'Edit', edit_user_token_path(user_token)
-      %td= link_to 'Destroy', user_token, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Delete', user_token, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
 = link_to 'New User token', new_user_token_path
+

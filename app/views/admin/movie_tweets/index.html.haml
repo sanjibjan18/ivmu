@@ -17,7 +17,7 @@
       %td= tweet.tweeted_on.to_date
       %td= tweet.rating
       %td= select_tag "review_#{tweet.id}", options_for_select(review_options, tweet.review), :class => 'tweet_option_change'
-      %td= link_to 'Destroy', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Delete', admin_movie_movie_tweet_path(@movie, tweet), :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @tweets
 

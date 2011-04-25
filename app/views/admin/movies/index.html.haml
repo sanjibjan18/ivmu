@@ -41,7 +41,7 @@
         %td
           = link_to "Edit", edit_admin_movie_path(movie)
           |
-          = link_to "Destroy", admin_movie_path(movie), :confirm => 'Are you sure?', :method => :delete
+          = link_to "Delete", admin_movie_path(movie), :confirm => 'Are you sure?', :method => :delete
   -else
     %tr
       %td{:colspan => 3}

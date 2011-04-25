@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   layout 'website'
 
   def index
+    puts "zzzzzzzzzzzzzzzzzz #{SITE_URL}"
     @movies = Movie.latest.released.paginate(:page => params[:page], :per_page => 6)
   end
 

@@ -15,7 +15,7 @@
       %td= post.facebook_name
       %td= post.posted_on
       %td= select_tag "review_#{post.id}", options_for_select(review_options, post.review), :class => 'facebook_option_change'
-      %td= link_to 'Destroy', admin_movie_movie_post_path(@movie, post), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Delete', admin_movie_movie_post_path(@movie, post), :confirm => 'Are you sure?', :method => :delete
 
 = will_paginate @facebook_feeds
 
