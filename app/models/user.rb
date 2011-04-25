@@ -91,7 +91,8 @@ class User < ActiveRecord::Base
               Movie.latest.limit(6).compact.each do |movie|
                 if post.message.match("#{movie.name}")
                   post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => friend.name, :posted_on => post.created_time.to_date)
-                  Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
+                  #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
+                  Activity.create_log_for_each_friend(post, movie, 'posted on wall', friend.id)
                 end
               end # movie end
             end # unless post message blank

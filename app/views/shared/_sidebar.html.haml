@@ -5,7 +5,7 @@
       -Activity.friend_activities(current_user).each do |activity|
         .row
           .image.left
-            = image_tag(activity.actor.image)
+            = image_tag(activity.actor.image) rescue nil
           .icon.right
             - if activity.subject_type == "Review"
               = rating_thumb(activity.subject.rating)
@@ -13,7 +13,7 @@
               &nbsp;
           .names.right
             %h4
-              = activity.actor.display_name
+              = activity.actor_name
               = activity.action
               = activity.secondary_subject.name
     - else

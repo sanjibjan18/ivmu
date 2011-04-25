@@ -98,9 +98,10 @@ class FacebookFeed < ActiveRecord::Base
         begin
           unless movie.facebook_feeds.where('fb_item_id = ?', post.id.to_s).exists?
             post = movie.facebook_feeds.create(:feed_type => 'public_post', :value => post.message, :fbid => post.from.id, :fb_item_id => post.id.to_s, :movie_id => movie.id, :facebook_name => post.from.name, :posted_on => post.created_time.to_date)
-            if facebook_users.has_key?(post.from.id)
-              Activity.log_activity(post, movie, 'posted on wall' ,facebook_users[post.from.id.to_s])
-            end
+            #if facebook_users.has_key?(post.from.id)
+              #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users[post.from.id.to_s])
+              Activity.create_log_for_each_friend(post, movie, 'posted on wall', post.from.id)
+            #end
           end
         rescue
           # this for any errors
