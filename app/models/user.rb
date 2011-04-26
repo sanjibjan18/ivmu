@@ -60,21 +60,20 @@ class User < ActiveRecord::Base
         end
       end
       #fetch current user post
+      posts = fb_user.posts # fetch post
       Movie.all.each do |movie|
-        fb_user.posts.each do |post|
-              unless post.message.blank?
-                if post.message.match("#{movie.name}")
-                  if movie.facebook_feeds.find_by_fb_item_id(post.id.to_s).blank?
-                    post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => fb_user.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => fb_user.name, :posted_on => post.created_time.to_date)
-                    #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
-                    Activity.create_log_for_each_friend(post, movie, 'posted on wall', fb_user.id, fb_user.name)
-                  end
-                end
-              end # unless post message blank
+        posts.each do |post|
+          unless post.message.blank?
+            if post.message.match("#{movie.name}")
+              if movie.facebook_feeds.find_by_fb_item_id(post.id.to_s).blank?
+                post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => fb_user.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => fb_user.name, :posted_on => post.created_time.to_date)
+                #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
+                Activity.create_log_for_each_friend(post, movie, 'posted on wall', fb_user.id, fb_user.name)
+              end
+            end
+           end # unless post message blank
         end # each post end
       end # movie end
-
-
 
       #Store current user's likes
       unless likes.blank?
@@ -101,8 +100,9 @@ class User < ActiveRecord::Base
           end
 
           #Fetch and store friends' posts.
+          posts = friend.posts
           Movie.all.each do |movie|
-            friend.posts.each do |post|
+            posts.each do |post|
               unless post.message.blank?
                 if post.message.match("#{movie.name}")
                   if movie.facebook_feeds.find_by_fb_item_id(post.id.to_s).blank?
@@ -114,7 +114,6 @@ class User < ActiveRecord::Base
               end # unless post message blank
             end # each post end
           end # movie end
-
         end
       end
     end
