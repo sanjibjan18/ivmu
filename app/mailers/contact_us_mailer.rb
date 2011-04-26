@@ -3,7 +3,7 @@ class ContactUsMailer < ActionMailer::Base
 
   def send_contact_us(object)
     @object = object
-    mail(:to => 'info@muvi.in',:reply_to => @object.email, :subject => 'Contact from website')
+    mail(:to => 'info@muvi.in', :reply_to => @object.email, :subject => 'Message from muvi.in user')
   end
 end
 
