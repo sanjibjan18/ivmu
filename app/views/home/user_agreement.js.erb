@@ -1,3 +1,3 @@
 $('#login').html('<%= escape_javascript(render "user_agreement") %>');
-$('#login').dialog({ modal: true,  width: 700, height: 500, title: 'Muvi.in Terms of Service' });
+$('#login').dialog({ modal: true,  width: $(window).width() -30, height: height: $(window).height() -40, title: 'Muvi.in Terms of Service' });
 
