@@ -44,22 +44,40 @@ class User < ActiveRecord::Base
 
   def fetch_fb_feeds
     unless self.facebook_omniauth.blank?
-      movie_page_ids = Movie.latest.limit(6).collect(&:fbpage_id)
+      puts "ssssssssssssssss"
       client = Mogli::Client.new(self.facebook_token)
       fb_user = Mogli::User.find("me", client)
 
       likes = fb_user.likes
       friends = fb_user.friends
-      facebook_users_in_muvi =  {}
-      UserToken.where('provider = ?', 'facebook').collect { |p| facebook_users_in_muvi[p.uid] = p.user_id } # todo better way find all facebook user registered with ivmu
+      #facebook_users_in_muvi =  {}
+     # UserToken.where('provider = ?', 'facebook').collect { |p| facebook_users_in_muvi[p.uid] = p.user_id } # todo better way find all facebook user registered with ivmu
 
 
       #store facebook friends of current user in facebook_friends table
       fb_user.friends.collect(&:id).each do |friend_id|
+        puts "ppppppppppppppppppp"
         unless self.facebook_friends.collect(&:facebook_id).include?(friend_id.to_s)
           self.facebook_friends.create!(:facebook_id => friend_id)
         end
       end
+      puts "rrrrrrrrrrrrrrrrrrr"
+      #fetch current user post
+      Movie.all.each do |movie|
+        puts "oooooooooooooooooooooooooo"
+        fb_user.posts.each do |post|
+              unless post.message.blank?
+                if post.message.match("#{movie.name}")
+                  puts "zzzzzzzzzzzzzzzzzzz"
+                  post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => fb_user.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => fb_user.name, :posted_on => post.created_time.to_date)
+                  #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
+                  Activity.create_log_for_each_friend(post, movie, 'posted on wall', fb_user.id)
+                end
+              end # unless post message blank
+        end # each post end
+      end # movie end
+
+
 
       #Store current user's likes
       unless likes.blank?
@@ -78,7 +96,7 @@ class User < ActiveRecord::Base
           unless friend_likes.blank?
             friend_likes.each do |friend_like|
               unless self.facebook_friends.where(:facebook_id => friend_like.id).exists?
-                if movie_page_ids.include?(friend_like.id.to_s)
+                if Movie.find_by_fbpage_id(friend_like.id.to_s)
                   self.facebook_feeds.create(:feed_type => 'friend_likes', :value => friend_like.name, :fbid => friend.id, :fb_item_id => friend_like.id, :posted_on => friend_like.created_time.to_date, :facebook_name => friend.name)
                 end
               end
@@ -86,17 +104,18 @@ class User < ActiveRecord::Base
           end
 
           #Fetch and store friends' posts.
-          friend.posts.each do |post|
-            unless post.message.blank?
-              Movie.latest.limit(6).compact.each do |movie|
+          Movie.all.each do |movie|
+            friend.posts.each do |post|
+              unless post.message.blank?
                 if post.message.match("#{movie.name}")
+                  puts "ddddddddddddddd"
                   post = self.facebook_friends_posts.create(:feed_type => 'friends_post', :value => post.message, :fbid => friend.id, :fb_item_id => post.id, :movie_id => movie.id,:facebook_name => friend.name, :posted_on => post.created_time.to_date)
                   #Activity.log_activity(post, movie, 'posted on wall' ,facebook_users_in_muvi[post.from.id.to_s]) if facebook_users_in_muvi.has_key?(friend.id)
                   Activity.create_log_for_each_friend(post, movie, 'posted on wall', friend.id)
                 end
-              end # movie end
-            end # unless post message blank
-          end # each post end
+              end # unless post message blank
+            end # each post end
+          end # movie end
 
         end
       end
