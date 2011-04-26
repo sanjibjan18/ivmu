@@ -62,10 +62,9 @@ $(document).ready(function(){
    $('.trailerLink').click(function(event){
         event.preventDefault();
        $('#trailer').dialog( {
-                title: "Trailer",
                 modal: true,
-                height: 345,
-                width: 545
+                height: 355,
+                width: 550
                 });
         return false;
     });
