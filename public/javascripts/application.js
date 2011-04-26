@@ -63,9 +63,15 @@ $(document).ready(function(){
         event.preventDefault();
        $('#trailer').dialog( {
                 modal: true,
-                height: 355,
+                height: 360,
                 width: 550
                 });
+        return false;
+    });
+    $('.MovieTrailerLink').click(function(event){
+        event.preventDefault();
+        movie_id = this.id.split('movie_link_')[1];
+        $("#movie_"+movie_id).dialog( {modal: true,height: 360,width: 550 });
         return false;
     });
 

@@ -28,8 +28,13 @@
                 %span
                   = image_tag("BthumbIcon.jpg")
           - if movie.video
-            %a{:href => "#", :class => 'trailerLink' }
+            %a{:href => "#",:id => "movie_link_#{movie.id}", :class => 'MovieTrailerLink' }
               %img{:src => "images/viewTrailerBtn.jpg"}
+            %div{:id => "movie_#{movie.id}", :class => 'hidden'}
+              %a{:id => "movie_video_#{movie.id}",  :href => "#{movie.video.trailer.url.to_s}", :style => "display:block;width:520px;height:330px"}
+              %script
+                flowplayer("movie_video_#{movie.id}", "/flash/flowplayer-3.2.7.swf", { clip: {autoPlay: false, autoBuffering: false  }  });
+
 
 -else
   %h3 No Movies Found
