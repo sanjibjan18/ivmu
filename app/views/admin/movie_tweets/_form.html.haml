@@ -1,4 +1,4 @@
-.tweet_form
+= form_for([:admin, :movie, @tweet], :html => { :multipart => true }) do |f|
   - if @tweet.errors.any?
     #error_explanation
       %h2
