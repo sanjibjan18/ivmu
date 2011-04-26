@@ -19,7 +19,10 @@ class Comment < ActiveRecord::Base
 
 
   def log_activity
-    Activity.log_activity(self, self.commentable, 'commented',  self.user_id)
+    #Activity.log_activity(self, self.commentable, 'commented',  self.user_id)
+    if self.user.facebook_omniauth
+      Activity.create_log_for_each_friend(self, self.commentable, 'commented' , self.user.facebook_omniauth.uid, self.user.display_name)
+    end
   end
 
   def post_to_wall
