@@ -32,7 +32,7 @@ class Activity < ActiveRecord::Base
 
   def self.create_log_for_each_friend(post, movie, action, facebook_id, facebook_name)
     FacebookFriend.where('facebook_id = ?', facebook_id).each do |friend|
-      Activity.fb_log(post, movie, action, facebook_name, friend.user.id)
+      Activity.fb_log(post, movie, action, facebook_name, friend.user_id)
     end
   end
 
