@@ -41,6 +41,7 @@ Muvi::Application.routes.draw do
     resources :movies do
       resources :movie_posts
       resources :movie_tweets
+      resources :tweets, :controller => :movie_tweets
       resources :movie_comments
     end
 
