@@ -6,10 +6,6 @@
         - f.object.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :purpose, 'Purpose'
-    %br
-    = f.select :purpose, [['Submit feedback and ideas','Submit feedback and ideas'],['Advertise with us','Advertise with us'],['Partbership request','Partbership request'],['Investor relationship', 'Investor relationship'],['Other','other'] ]
-  .field
     = f.label :email, 'Email Address'
     %span *
     %br

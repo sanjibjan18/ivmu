@@ -34,7 +34,8 @@
       -if current_user.instance_eval("#{account}_omniauth").blank?
         = link_to image_tag("#{account}_64.png",  :alt => "#{account}"), "/auth/#{account}" ,:class => 'auth_provider'
       -else
-        = link_to "Remove #{account} account", user_token_path(current_user.instance_eval("#{account}_omniauth")) , :method => :delete, :confirm => "Are you sure?"
+        = account
+        &nbsp;
 
 
     .actions

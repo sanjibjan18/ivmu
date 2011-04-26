@@ -27,8 +27,9 @@
                 = no_of_pepople_liked(movie)
                 %span
                   = image_tag("BthumbIcon.jpg")
-          %a{:href => "#" }
-            %img{:src => "images/viewTrailerBtn.jpg"}
+          - if movie.video
+            %a{:href => "#", :class => 'trailerLink' }
+              %img{:src => "images/viewTrailerBtn.jpg"}
 
 -else
   %h3 No Movies Found
