@@ -57,6 +57,9 @@
   .clear
   %div.col_one
     - @movie.build_video if @movie.video.blank?
+    -if @movie.video
+      = @movie.video.trailer.url.to_s
+    %br  
     = f.fields_for :video do |vi|
       = vi.label :trailer, 'Trailer'
       = vi.file_field :trailer
