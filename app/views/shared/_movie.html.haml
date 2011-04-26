@@ -51,7 +51,7 @@
         .friends_image
           - if current_user && current_user.facebook_omniauth
             -@movie.friend_likes(current_user).each do |like|
-              .image
+              .images.left
                 = image_tag("https://graph.facebook.com/#{like.fbid}/picture")
           -else
             %h4 login to see who liked this movie.

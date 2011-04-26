@@ -369,7 +369,7 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 }
 
 .row{background-color:#EBF0F3;margin-top:8px;padding:5px;height:43px;}
-.image{background-color:#fff;padding:3px;border:1px solid #ddd;width:35px;height:35px;}
+.image{background-color:#fff;padding:3px;border:1px solid #ddd;width:35px;height:35px;margin-right:3px;}
 
 .image img{width:35px;height:35px;}
 
@@ -533,18 +533,19 @@ padding:0px 15px 0px 15px;border:1px solid #ddd;margin-bottom:15px;width:532px;}
 	margin-top:12px;
 }
 .friends_image{height:65px;}
-.friends_image img{ margin:5px 1.5px 0px 0px;}
+
 .friends_image a img{ margin:0px;}
 
-.friends_image div.image{
+.friends_image div.images{
 	background-color:#fff;
 	padding:2px;
 	border:1px solid #ddd;
 	width:42px;
 	height:42px;
+	margin-right:3px;
 }
 
-.friends_image div.image img{
+.friends_image div.images img{
 	width:42px;
 	height:42px;
 }
@@ -713,7 +714,7 @@ a#comment_count{color:#4F86A6;text-decoration:underline;}
 .footer ul{margin:0px;}
 
 /* hide jquery ui dialog'*/
- 
+
 
 .footer ul li{
 	display:block;
