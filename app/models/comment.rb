@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
       begin
         client = Mogli::Client.new(self.user.facebook_token)
         @myself  = Mogli::User.find("me", client)
-        post = Mogli::Post.new(:message => self.comment)
+        post = Mogli::Post.new({:message => "#{SITE_URL}/movies/#{self.commentable.permalink}' \n #{self.comment}"})
         @myself.feed_create(post)
       rescue Mogli::Client::OAuthException
         #getting this strange exception. (#506) Duplicate status message
