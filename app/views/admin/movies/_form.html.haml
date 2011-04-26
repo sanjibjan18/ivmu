@@ -45,21 +45,28 @@
       = render 'movie_crew', { :ff => prod }
     %div.add.clear
       = link_to_add_fields "Add Crew", f, :movie_casts, 'movie_crew'
-
+      
   .clear
   %div.col_one
-    = f.label :poster, 'Poster'
     = image_tag(f.object.poster.url(:thumb)) unless f.object.poster_file_name.blank?
+  .clear
+  
+  %div.col_one
+    = f.label :poster, 'Poster'
     = f.file_field :poster
   %div.col_two
     = f.label :poster_release_date, 'Poster Release Date' ,:class => 'date'
     = f.text_field :poster_release_date, :value => (@movie.poster_release_date || Date.today.to_date)
   .clear
   %div.col_one
-    - @movie.build_video if @movie.video.blank?
     -if @movie.video
-      = @movie.video.trailer.url.to_s
-    %br  
+      %br
+      %label Trailer link
+     = @movie.video.trailer.url.to_s
+      %br  
+  .clear    
+  %div.col_one
+    - @movie.build_video if @movie.video.blank?
     = f.fields_for :video do |vi|
       = vi.label :trailer, 'Trailer'
       = vi.file_field :trailer
