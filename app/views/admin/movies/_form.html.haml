@@ -55,11 +55,14 @@
     = f.label :poster_release_date, 'Poster Release Date' ,:class => 'date'
     = f.text_field :poster_release_date, :value => (@movie.poster_release_date || Date.today.to_date)
   .clear
+  
+  -if @movie.video
+    %br
+    %label Trailer link
+    = @movie.video.trailer.url.to_s
+    %br  
   %div.col_one
     - @movie.build_video if @movie.video.blank?
-    -if @movie.video
-      = @movie.video.trailer.url.to_s
-    %br  
     = f.fields_for :video do |vi|
       = vi.label :trailer, 'Trailer'
       = vi.file_field :trailer
