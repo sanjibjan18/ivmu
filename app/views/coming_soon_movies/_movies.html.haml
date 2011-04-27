@@ -26,7 +26,7 @@
             %div{:id => "movie_#{movie.id}", :class => 'hidden'}
               %a{:id => "movie_video_#{movie.id}",  :href => "#{movie.video.trailer.url.to_s}", :style => "display:block;width:520px;height:330px"}
               %script
-                flowplayer("movie_video_#{movie.id}", "/flash/flowplayer-3.2.7.swf", { clip: {autoPlay: false, autoBuffering: false  }  });
+                flowplayer("movie_video_#{movie.id}", "/flash/flowplayer.commercial-3.2.7.swf", { key: '#$567265dcf3d158c66d6',logo: {url: '/images/logo_in.png',fullscreenOnly: false},clip: {autoPlay: false, autoBuffering: false  }  });
 -else
   %h3 No Movies Found
 
