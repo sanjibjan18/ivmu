@@ -7,7 +7,7 @@
         %div{ :style => "width:320px;margin:10px 0px 10px 20px;", :class => "left"}
           %div.reviewBox.left
             %div.reviewIcon.right
-              = thumb_class((tweet.rating * 50 rescue 0))
+              = thumb_class((tweet.review == 'pos' ? 100 : 0))
             %div.reviewText.left
               %p
                 = tweet.content.html_safe
