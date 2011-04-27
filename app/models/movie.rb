@@ -49,7 +49,7 @@ class Movie < ActiveRecord::Base
   scope :latest, order('release_date desc nulls last')
   scope :sort_by_release_date_asc, order('release_date asc nulls last')
   scope :sort_by_user_interest_desc, order('user_percent desc nulls last')
-  scope :sort_by_poster_and_trailer_desc, order('poster_updated_at desc nulls last, trailer_updated_at desc nulls last')
+  scope :sort_by_poster_and_trailer_desc, order('poster_updated_at, trailer_updated_at desc nulls last')
   scope :limit, lambda{|l| limit(limit) }
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :released, where("release_date <= ?", Date.today)
