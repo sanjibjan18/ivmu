@@ -28,18 +28,6 @@ class AddIndexToTables < ActiveRecord::Migration
     add_index :activities, :secondary_subject_type
     add_index :activities, :facebook_id
     add_index :critics_reviews, :movie_id
-    add_index :top_box_offices, :movie_id
-    add_index :top_trendings, :movie_id
-    add_index :facebook_feeds, :movie_id
-    add_index :facebook_feeds, :feed_type
-    add_index :facebook_feeds, :fbid
-    add_index :facebook_feeds, :fb_item_id
-    add_index :facebook_friends, :user_id
-    add_index :facebook_friends, :facebook_id
-    add_index :meta_details, :movie_id
-    add_index :pages, :reference
-    add_index :reviews, :user_id
-    add_index :reviews, :movie_id
     add_index :critics_reviews, :film_critic_id
   end
 
