@@ -5,6 +5,24 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
+  def activity_message(activity)
+    message = ''
+    message += activity.actor_name.to_s
+    if activity.action.to_s == 'liked'
+       message += ' liked ' + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
+    else
+      message += ' said '+ activity.subject.value + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
+    end
+    message.html_safe
+  end
+
+  def path_for_movie(movie)
+    if movie.release_date.blank? || movie.release_date > Date.today
+      return coming_soon_movie_path(movie)
+    else
+      return movie_path(movie)
+    end
+  end
 
   def review_options
     option ||= [['Select a opinion', ''], ['Positive','pos'], ['Negative','neg'],['Neutral','neu'],['Ignore','ign']]

@@ -5,17 +5,10 @@
       -Activity.friend_activities(current_user).each do |activity|
         .row
           .image.left
-            = image_tag((activity.actor.image rescue 'no-logo.png'))
-          .icon.right
-            - if activity.subject_type == "Review"
-              = rating_thumb(activity.subject.rating)
-            - else
-              &nbsp;
+            = image_tag("https://graph.facebook.com/#{activity.facebook_id}/picture")
           .names.right
             %h4
-              = activity.actor_name
-              = activity.action
-              = activity.secondary_subject.name
+              = activity_message(activity)
     - else
       %p Log in to see your friends' activities
       = link_to image_tag('facebookicon.gif'), "/auth/facebook"

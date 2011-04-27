@@ -20,13 +20,7 @@ module MoviesHelper
     end
   end
 
-  def path_for_movie(movie)
-    if movie.release_date.blank? || movie.release_date > Date.today
-      return coming_soon_movie_path(movie)
-    else
-      return movie_path(movie)
-    end
-  end
+
 
 end
 

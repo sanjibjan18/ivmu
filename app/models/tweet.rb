@@ -20,25 +20,7 @@ class Tweet < ActiveRecord::Base
     end # all movies end
   end # def end
 
-  def self.fetch_tweets_for_films #(user)
-    search = Twitter::Search.new
-    movies = []
-    ["Dabangg", "No One Killed Jessica"].each do |movie_name|
-      movies << Movie.find_by_name(movie_name)
-    end
-    movies.compact!
 
-    movies.each do |movie|
-        last_tweet = movie.tweets.last rescue nil
-        if last_tweet.blank?
-          Tweet.tweet_pagination(search.containing("#{movie.name}").per_page(100), movie)
-        else
-          Tweet.tweet_pagination(search.containing("#{movie.name}").since_date("#{last_tweet.created_at.to_date.to_s}").per_page(100), movie)
-        end
-        search.clear
-
-    end # all movies end
-  end # def end
 
   def self.tweet_pagination(search, movie)
     search.each do |tweet|

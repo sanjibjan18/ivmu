@@ -37,11 +37,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.friend_activities(user)
-     #return [] if user.facebook_friends_ids.blank?
-     #user_ids = UserToken.where("provider = ? and uid in (?)", 'facebook', user.facebook_friends_ids).collect(&:user_id)
-     #return [] if user_ids.blank?
-    # self.actor_ids(user_ids).latest.limit(4)
-    self.where('user_id = ?', user.id).limit(4)
+    self.where('user_id = ?', user.id).includes(:subject, :secondary_subject).limit(4)
   end
 
 
