@@ -66,12 +66,15 @@ $(document).ready(function(){
                 height: 360,
                 width: 550
                 });
+        $f().play();
         return false;
     });
     $('.MovieTrailerLink').click(function(event){
         event.preventDefault();
         movie_id = this.id.split('movie_link_')[1];
         $("#movie_"+movie_id).dialog( {modal: true,height: 360,width: 550 });
+        var player_id = "movie_video_"+ movie_id;
+        $f(player_id).play();
         return false;
     });
 
