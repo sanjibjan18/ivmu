@@ -350,7 +350,9 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 .GrayHeaderBox{
 	background:#fff url(/images/grayBoxHeader.jpg) no-repeat top;
 	width:191px;
-	height:275px;
+	min-height:275px;
+	height:auto !important; /* for ie */
+    height:275px;
 	border-bottom:1px solid #ccc;
 	padding:0px 10px 10px 10px;
 	margin-bottom:20px;
@@ -368,14 +370,27 @@ div.positive, div.negative{-moz-border-radius:3px;-webkit-border-radius:3px;heig
 	line-height:30px;
 }
 
-.row{background-color:#EBF0F3;margin-top:8px;padding:5px;height:43px;}
-.image{background-color:#fff;padding:3px;border:1px solid #ddd;width:35px;height:35px;margin-right:3px;}
+.row{
+    background-color:#EBF0F3;
+    margin-top:8px;
+    padding:5px;
+    min-height:43px;
+	height:auto !important; /* for ie */
+    height:43px;
+    width:181px;
+    }
 
-.image img{width:35px;height:35px;}
+.row div.image{background-color:#fff;padding:3px;border:1px solid #ddd;width:35px;height:35px;margin-right:5px;}
 
-.row div.names{width:48%;margin:2px;}
+.row div.image img{width:35px;height:35px;}
+
+.row p{font-size:12px;}
+
+/*
+.row div.names{width:130px;margin:2px;}
 .row div.names h4{color:#1B6CA3;font-size:12px;}
 .row div.names h5{color:#222;margin-top:2px;font-size:11px;}
+*/
 .icon{width:20%;text-align:right;}
 
 .GrayHeaderBox a{font-size:11px;color:#1B6CA3;font-weight:bold;}

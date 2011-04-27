@@ -6,9 +6,8 @@
         .row
           .image.left
             = image_tag("https://graph.facebook.com/#{activity.facebook_id}/picture")
-          .names.right
-            %h4
-              = activity_message(activity)
+          %p
+            = activity_message(activity)
     - else
       %p Log in to see your friends' activities
       = link_to image_tag('facebookicon.gif'), "/auth/facebook"
