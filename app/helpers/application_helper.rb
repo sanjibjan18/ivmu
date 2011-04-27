@@ -9,9 +9,9 @@ module ApplicationHelper
     message = ''
     message += activity.actor_name.to_s
     if activity.action.to_s == 'liked'
-       message += ' liked ' + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
+       message += ' liked ' + ' ' + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
     else
-      message += ' said '+ activity.subject.value + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
+      message += ' said '+ activity.subject.value + ' ' + link_to(activity.secondary_subject.name, path_for_movie(activity.secondary_subject))
     end
     message.html_safe
   end
