@@ -138,7 +138,8 @@ class Movie < ActiveRecord::Base
 
   def self.update_top_trending
     TopTrending.destroy_all
-    Movie.find_by_sql("select id, (tweets_count+facebook_feeds_count) as count from films where release_date >='#{Date.today.to_date.to_s}' order by count DESC limit 4;").each_with_index do |movie, idx|
+    date = (Date.today - 30).to_date.to_s
+    Movie.find_by_sql("select id, (tweets_count+facebook_feeds_count) as count from films where release_date >='#{date}' order by count DESC limit 4;").each_with_index do |movie, idx|
       TopTrending.create({:movie_id => movie.id, :position => idx})
     end
   end
