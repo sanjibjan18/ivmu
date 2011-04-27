@@ -6,7 +6,7 @@ class UserToken < ActiveRecord::Base
 
 
   def pull_data_from_facebook
-    self.user.delay.fetch_fb_feeds if self.provider == 'facebook'
+    self.user.delay.fetch_fb_feeds
   end
 
   def pull_data_from_twitter

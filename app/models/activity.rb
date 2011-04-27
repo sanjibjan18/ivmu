@@ -20,19 +20,19 @@ class Activity < ActiveRecord::Base
   end
 
 
-  def self.fb_log(subject, secondary_subject, action, actor_name, user_id)
-    h = {:subject => subject,:secondary_subject => secondary_subject, :action => action, :user_id => user_id, :actor_name => actor_name}
+  def self.fb_log(subject, secondary_subject, action, user_id, actor_name, facebook_id)
+    values = {:subject => subject,:secondary_subject => secondary_subject, :action => action, :user_id => user_id, :actor_name => actor_name, :facebook_id => facebook_id}
     count = Activity.where('user_id = ?', user_id).count
     if count.to_i == 4
-      Activity.where('user_id = ?', user_id).last.update_attributes(h)
+      Activity.where('user_id = ?', user_id).last.update_attributes(values)
     else
-      Activity.create(h)
+      Activity.create(values)
     end
   end
 
   def self.create_log_for_each_friend(post, movie, action, facebook_id, facebook_name)
     FacebookFriend.where('facebook_id = ?', facebook_id).each do |friend|
-      Activity.fb_log(post, movie, action, facebook_name, friend.user_id)
+      Activity.fb_log(post, movie, action, friend.user_id, facebook_name, facebook_id)
     end
   end
 

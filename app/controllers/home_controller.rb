@@ -8,7 +8,6 @@ class HomeController < ApplicationController
 
   def fetch
     current_user.delay.fetch_fb_feeds
-    FacebookFeed.delay.fetch_posts_for_films(current_user) if current_user
     redirect_to root_path
   end
 
