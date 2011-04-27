@@ -9,9 +9,9 @@
           %li= msg
 
   = f.label :content, "Tweet"
-  = f.text_area :content
+  = f.text_area :content, :rows => 3
   .clear
-  = f.label :twitter_screen_name, "Screen Name"   
+  = f.label :twitter_screen_name, "Screen Name"
   = image_tag(Twitter.profile_image("#{@tweet.twitter_screen_name}", :size => 'normal')) rescue ''
   = f.text_field :twitter_screen_name
   .clear
@@ -19,12 +19,11 @@
   = f.text_field :tweet_id
   .clear
   = f.label :review, "Review"
-  = f.select :review, review_options
+  = f.select :review, tweet_review_options
 
   %hr
   .actions
     = f.submit 'Save'
     \- or -
     = link_to 'Cancel', admin_movie_movie_tweets_path(@movie)
- 
 
