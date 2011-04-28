@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
       end
       #fetch current user post
       posts = fb_user.posts # fetch post
-      Movie.all.each do |movie|
+      Movie.name_without_dictionary_word.each do |movie|
         posts.each do |post|
           unless post.message.blank?
             if post.message.match("#{movie.name}")
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
 
           #Fetch and store friends' posts.
           posts = friend.posts
-          Movie.all.each do |movie|
+          Movie.name_without_dictionary_word.each do |movie|
             posts.each do |post|
               unless post.message.blank?
                 if post.message.match("#{movie.name}")

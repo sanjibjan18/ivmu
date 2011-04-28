@@ -125,7 +125,7 @@ h2.heading{
     float: left;
     margin-bottom: 10px;
     padding:5px 0px;
- 
+
 }
 
 .form input{
@@ -133,26 +133,26 @@ h2.heading{
     margin-bottom: 10px;
     padding:5px 3px;
 	border:1px solid #888;
- 
+
 }
 
 .form select{
     width: 210px;
     margin-bottom: 10px;
     padding:5px 3px;
- 
+
 }
 
 .form textarea{
     width: 400px;
     margin-bottom: 10px;
     padding:5px 3px;
- 
+
 }
 
 .form input.large{
     width: 500px;
-   
+
 }
 
 .col_one{width:350px;float:left;}
@@ -166,6 +166,9 @@ h2.heading{
 }
 
 .col_two label.date{width: 150px;}
+
+.checkbox{width:300px;}
+
 
 .critics_review div.col_one{
  width:350px;float:left;

@@ -10,7 +10,7 @@ class Tweet < ActiveRecord::Base
   def self.fetch_tweets #(user)
     last_tweet = Tweet.last
     search = Twitter::Search.new
-    Movie.name_is_not_blank.latest.limit(6).each do |movie|
+    Movie.name_without_dictionary_word.name_is_not_blank.latest.limit(6).each do |movie|
       if last_tweet.blank?
         Tweet.tweet_pagination(search.containing("#{movie.name}").per_page(100), movie)
       else

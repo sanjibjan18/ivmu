@@ -54,7 +54,7 @@ class Movie < ActiveRecord::Base
   scope :name_is_not_blank, where("name IS NOT NULL")
   scope :released, where("release_date <= ?", Date.today)
   scope :comming_soon_movies, where("release_date > ?  or release_date IS NULL", Date.today)
-
+  scope :name_without_dictionary_word, where("dictionary_word = ?", false)
 
   def banner_image
     self.poster_file_name.blank?? '/images/no-logo.png' : self.poster.url(:medium)
@@ -92,7 +92,7 @@ class Movie < ActiveRecord::Base
 
   def self.fetch_tweets_and_facebook_feeds
     delay = 0
-    Movie.latest.each do |movie|
+    Movie.name_without_dictionary_word.latest.each do |movie|
       Tweet.delay({:run_at => delay.minutes.from_now}).fetch_tweet_for_movie(movie)
       FacebookFeed.delay({:run_at => delay.minutes.from_now}).fetch_all_post_for_movie(movie)
       delay += 15

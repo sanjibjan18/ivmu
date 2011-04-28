@@ -10,8 +10,8 @@ class Comment < ActiveRecord::Base
   scope :to_level, where('ancestry IS NULL')
 
   after_create :log_activity
-  after_save :post_to_wall
-  after_save :post_to_twitter
+  #after_save :post_to_wall
+  #after_save :post_to_twitter
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.

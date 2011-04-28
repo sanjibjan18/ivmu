@@ -7,9 +7,12 @@
       %ul
         -@movie.errors.full_messages.each do |msg|
           %li= msg
-
-  = f.label :name, "Movie Title"
-  = f.text_field :name ,:class => 'large'
+  .left
+    = f.label :name, "Movie Title"
+    = f.text_field :name ,:class => 'large'
+  .right.checkbox
+    = f.check_box :dictionary_word
+    Dictionary Word
   .clear
   = f.label :wiki_link, 'Wikipedia Page'
   = f.text_field :wiki_link ,:class => 'large'
