@@ -1,5 +1,5 @@
 $(document).ready(function($) {
-    $('#celebrity_birthdate, #release_date_lt, #release_date_gt, #movie_poster_release_date, #movie_trailer_release_date').datepicker({ dateFormat: 'yy-mm-dd' });
+    $('#celebrity_birthdate, #release_date_lt, #release_date_gt, #movie_media_updated_date').datepicker({ dateFormat: 'yy-mm-dd' });
     $('#page_content').htmlarea();
 
     $('.tweet_option_change').change(function() {

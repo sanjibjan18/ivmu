@@ -4,5 +4,7 @@ class Video < ActiveRecord::Base
 
   belongs_to :movie
   has_attached_file :trailer
+
+
 end
 
