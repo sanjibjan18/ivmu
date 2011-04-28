@@ -5,6 +5,32 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
+  def thumb_class_for_union_result(result) # this method is used in shared/movie_tweets
+    if result[0].to_s == 'movie_tweet'
+      return thumb_class((result[4].to_s == 'pos')? 100 : 0)
+    else
+      return thumb_class(0) if result[3].blank?
+      return thumb_class((result[3].to_f >= 2.5)? 100 : 0)
+    end
+  end
+
+  def display_name(result) # this method is used in shared/movie_tweets
+    if result[0].to_s == 'movie_tweet'
+      return result[5] rescue  ''
+    else
+      return User.find(result[1]).display_name
+    end
+  end
+
+  def display_image(result)
+    if result[0].to_s == 'movie_tweet'
+       return image_tag(Twitter.profile_image("#{result[5]}", :size => 'normal')) rescue image_tag('no-profile.png')
+    else
+       return image_tag(User.find(result[1]).image)
+    end
+  end
+
+
   def activity_message(activity)
     message = ''
     message += activity.actor_name.to_s
