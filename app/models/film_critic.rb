@@ -2,10 +2,10 @@ class FilmCritic < ActiveRecord::Base
   has_many :critics_reviews
 
   has_attached_file :thumbnail_image, :styles => { :thumb=> "45x45#", :small  => "150x150#" }
-
+  scope :order_by_name, order('name asc nulls last')
 
   def self.option_list
-    l ||= self.all.collect{|fc| [fc.name, fc.id] }
+    l ||= self.order_by_name.all.collect{|fc| [fc.name, fc.id] }
   end
 
   def profile_image
