@@ -77,5 +77,7 @@ class Tweet < ActiveRecord::Base
      search.clear
   end
 
+
+
 end
 
