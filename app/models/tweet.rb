@@ -6,6 +6,7 @@ class Tweet < ActiveRecord::Base
   scope :reviews, where(:interest => false)
   scope :interests, where(:interest => true)
   scope :pos_or_neg, where("review = ? or review = ? ", 'pos', 'neg')
+  scope :neu_or_ign, where("review = ? or review = ? ", 'neu', 'ign')
 
   def self.fetch_tweets
     last_tweet = Tweet.last
@@ -75,6 +76,13 @@ class Tweet < ActiveRecord::Base
        Tweet.tweet_pagination(search.containing("#{movie.name}").since_date("#{last_tweet.created_at.to_date.to_s}").per_page(100), movie)
      end
      search.clear
+  end
+
+  def self.delete_neu_or_ign_tweets
+    Tweet.neu_or_ign.each do |tweet|
+      TweetIgnNeu.create(tweet.attributes.except("id", "updated_at", "created_at"))
+      tweet.destroy
+    end
   end
 
 
