@@ -2,7 +2,7 @@
   -if @movie.video
     %a#player{:href => "#{@movie.video.trailer.url.to_s}", :style => "display:block;width:520px;height:330px"}
     %script
-      flowplayer("player", "/flash/flowplayer.commercial-3.2.7.swf", { key: '#$567265dcf3d158c66d6',logo: {url: '/images/logo_in.png',fullscreenOnly: false},clip: {autoPlay: false, autoBuffering: false  }  });
+      flowplayer("player", "/flash/flowplayer.commercial-3.2.7.swf", { key: '#$567265dcf3d158c66d6',logo: {url: '/images/flowplayerLogo.png',fullscreenOnly: false, top: 215, right: 10  },clip: {autoPlay: false, autoBuffering: false  }  });
 
 .containerIn.borderDiv
   .moviBanner.left

@@ -167,8 +167,11 @@ h2.heading{
 
 .col_two label.date{width: 150px;}
 
+
+
 .checkbox{width:300px;}
 
+.checkbox input[type="checkbox"]{width:20px;}
 
 .critics_review div.col_one{
  width:350px;float:left;

@@ -63,7 +63,7 @@ $(document).ready(function(){
         event.preventDefault();
        $('#trailer').dialog( {
                 modal: true,
-                height: 360,
+                height: 373,
                 width: 550
                 });
         $f().play();
@@ -72,7 +72,7 @@ $(document).ready(function(){
     $('.MovieTrailerLink').click(function(event){
         event.preventDefault();
         movie_id = this.id.split('movie_link_')[1];
-        $("#movie_"+movie_id).dialog( {modal: true,height: 360,width: 550 });
+        $("#movie_"+movie_id).dialog( {modal: true,height: 373,width: 550 });
         var player_id = "movie_video_"+ movie_id;
         $f(player_id).play();
         return false;
