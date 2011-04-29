@@ -18,7 +18,7 @@
             .profile.right
               %h3= display_name(tweet)
               %p= (tweet[0].to_s == 'movie_tweet')? 'Twitter' : 'Muvi.in'
-              %p.date= Time.parse(tweet[0]).strftime('%d %B %Y').to_s rescue ''
+              %p.date= Time.parse(tweet[6]).strftime('%d %B %Y').to_s rescue ''
           .clear
   .clear
 
