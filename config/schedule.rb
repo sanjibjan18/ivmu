@@ -17,11 +17,11 @@ every 1.day do
    runner "Tweet.fetch_tweets"
    runner "Movie.update_top_box_office"
    runner "Movie.update_top_trending"
-   runner "Movie.update_tweets_count"
 end
 
 
 every 2.hours do
+  runner "Movie.update_tweets_count"
   runner "Movie.update_reviews_precentage"
 end
 
