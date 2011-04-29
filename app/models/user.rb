@@ -9,23 +9,23 @@ class User < ActiveRecord::Base
 
   before_validation :copy_password
 
-  has_many :facebook_feeds
+  has_many :facebook_feeds , :dependent => :destroy
   #has_many :facebook_friends, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend'}
   has_many :facebook_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'likes'}
   has_many :facebook_friend_likes, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friend_likes'}
   has_many :facebook_friends_posts, :class_name => 'FacebookFeed', :conditions => {:feed_type => 'friends_post'}
 
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
   #has_many :reviewed_movies, :through => :reviews, :source => :movie, :foreign_key => :movie_id
-  has_many :comments
-  has_many :friend_ships
+  has_many :comments, :dependent => :destroy
+  has_many :friend_ships, :dependent => :destroy
   has_many :friends, :through => :friend_ships, :class_name => 'User'
-  has_many :recommendations
+  has_many :recommendations, :dependent => :destroy
   has_one :user_profile, :dependent => :destroy
   has_many :user_tokens, :dependent => :destroy
   has_one :facebook_omniauth, :class_name => "UserToken", :conditions => { :provider => 'facebook' }
   has_one :twitter_omniauth, :class_name => "UserToken", :conditions => { :provider => 'twitter' }
-  has_many :tweets
+  has_many :tweets, :dependent => :destroy
   has_many :twitter_friends, :dependent => :destroy
   has_many :facebook_friends, :dependent => :destroy
 
