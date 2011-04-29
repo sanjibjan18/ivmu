@@ -146,7 +146,7 @@ class Movie < ActiveRecord::Base
 
   def self.update_tweets_count
     Movie.latest.each do |movie|
-      movie.update_attribute('tweets_count', movie.tweets.pos_or_neg.count)
+      movie.update_attribute('tweets_count', movie.tweets.reviews.pos_or_neg.count)
     end
   end
 
