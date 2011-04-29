@@ -1,7 +1,7 @@
 .critics_review
   %div.col_one
     = ff.label :film_critic_id, ""
-    = ff.select :film_critic_id, options_for_select(FilmCritic.option_list)
+    = ff.select :film_critic_id, options_for_select(FilmCritic.option_list, ff.object.film_critic_id)
   %div.col_two
     = ff.label :rating, "Review Stars"
     = ff.select :rating, [ ['1', '1'], ['1.5', '1.5'], ['2','2'], ['2.5','2.5'], ['3','3'], ['3.5','3.5'], ['4','4'], ['4.5','4.5'], ['5','5']]
