@@ -7,7 +7,7 @@ class Tweet < ActiveRecord::Base
   scope :interests, where(:interest => true)
   scope :pos_or_neg, where("review = ? or review = ? ", 'pos', 'neg')
 
-  def self.fetch_tweets #(user)
+  def self.fetch_tweets
     last_tweet = Tweet.last
     search = Twitter::Search.new
     Movie.name_without_dictionary_word.name_is_not_blank.latest.limit(6).each do |movie|
@@ -20,6 +20,18 @@ class Tweet < ActiveRecord::Base
     end # all movies end
   end # def end
 
+  def self.fetch_tweets_for_all_movies
+    last_tweet = Tweet.last
+    search = Twitter::Search.new
+    Movie.name_without_dictionary_word.name_is_not_blank.latest.each do |movie|
+      if last_tweet.blank?
+        Tweet.tweet_pagination(search.containing("#{movie.name}").per_page(100), movie)
+      else
+        Tweet.tweet_pagination(search.containing("#{movie.name}").since_date("#{last_tweet.created_at.to_date.to_s}").per_page(100), movie)
+      end
+      search.clear
+    end # all movies end
+  end # def end
 
 
   def self.tweet_pagination(search, movie)
